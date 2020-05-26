@@ -23,6 +23,13 @@ The standard GTF fields have the following restrictions:
   * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md).
  If specified, it must be specified for all exons of the transcript.
 
+
+An example submission GTF file is at [../examples/example.gtf](../examples/example.gtf).
+
+## File naming
+Files must be named `xxx.gtf` (FIXME defend better) and maybe compressed with `gzip` and 
+then have a name in the form `xxx.gtf.gz`.
+
 ## Validation
 
 A validation program is provide dfor the annotation GTFs, and the submitter must run this before submitting the file.
