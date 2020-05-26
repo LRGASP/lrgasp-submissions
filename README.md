@@ -2,7 +2,9 @@
 Definition and validators for LRGASP submissions
 
 ## Documentation
+- [Reference genomes and transcripts](reference-genomes.md) (**needs to be written**)
 - [Genome annotation submission format](docs/annotation-format.md)
+- [Transcript expression matrix submission format](expression_matrix_format.md)
 - [Pilot data sets](docs/pilot-data.md)
 
 
