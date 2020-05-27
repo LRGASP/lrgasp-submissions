@@ -12,7 +12,7 @@ that are provided, however, they will still be validated for syntax and consiste
 The standard GTF fields have the following restrictions:
 * seqname - Must be one of the sequence identifiers in the LRGAPS [reference genomes](reference-genomes.md).
 * source - **FIXME: making this a submission name is a nice way to prevent data confusion**
-* feature - Only `exon` is used.
+* feature - Only `exon` is used. Other types of records are ignored.
 * start - Standard, one-based start position.
 * end - Standard, one-based end position.
 * score - Ignored.
