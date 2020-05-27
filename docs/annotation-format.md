@@ -21,8 +21,8 @@ The standard GTF fields have the following restrictions:
 * attributes:
   * `transcript_id` - Required for all `exon` features and assigned by the submitter.
   * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md).
- If specified, it must be specified for all exons of the transcript.
-
+ If present, it must be specified for all exons of the transcript.
+  * Other attributes are ignored
 
 An example submission GTF file is at [../examples/example.gtf](../examples/example.gtf).
 
