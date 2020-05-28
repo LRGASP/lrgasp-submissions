@@ -9,8 +9,7 @@ Definition and validators for LRGASP submissions
 - [Pilot data sets](docs/pilot-data.md)
 
 ## Submissions
-- [Submitted transcript models](docs/transcript_submissions.md)
-- [Submitted expression predictions](docs/expression_submissions.md)
+- On Google Drive. More instructions TBD.
 
 ## Contacts
 - [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu)
