@@ -20,11 +20,14 @@ The standard GTF fields have the following restrictions:
 * frame - Should be `.` on `exon` features, but not valid. Others features types may be validated.
 * attributes:
   * `transcript_id` - Required for all `exon` features and assigned by the submitter.
-  * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md). If present, it must be specified for all exons of the transcript.
-  * `reference_gene_id` - Optional, used to indicate the gene is a reference call for the specified [reference gene](reference-genomes.md).  This maybe specified without a `reference_transcript_id` attribute if the models is not as assigned to a specific transcript within the gene. If present, it must be specified for all exons of the transcript.
+  * `gene_id` - Optional, but highly recommend as some tools, like those from the UCSC Browser, may not parse GTF without a `gene_id` attribute.
+  * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md).
+  * `reference_gene_id` - Optional, used to indicate the gene is a reference call for the specified [reference gene](reference-genomes.md).  This maybe specified without a `reference_transcript_id` attribute if the models is not as assigned to a specific transcript within the gene.
   * Other attributes are ignored
 
-An example submission GTF file is at [../examples/example.gtf](../examples/example.gtf).
+All of the attributes specified above must be repeated on all exons of a
+transcript with the same value.  An example submission GTF file is at
+[../examples/example.gtf](../examples/example.gtf).
 
 ## File naming
 Files must be named `xxx.gtf` (FIXME defend better) and maybe compressed with `gzip` and 
