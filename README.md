@@ -7,6 +7,9 @@ Definition and validators for LRGASP submissions
 - [Transcript expression matrix submission format](docs/expression_matrix_format.md)
 - [Pilot data sets](docs/pilot-data.md)
 
+## Submissions
+- [Submitted transcript models](docs/transcript_submissions.md)
+- [Submitted expression predictions](docs/expression_submissions.md)
 
 ## Contacts
 - [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu)
