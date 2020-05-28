@@ -1,9 +1,18 @@
 # sample LRGASP GTF submission file
-chr16	submission1	exon	3625051	3627533	0	-	.	transcript_id "trans_98"; 
-chr16	submission1	exon	3632840	3633180	0	-	.	transcript_id "trans_98"; 
-chr16	submission1	exon	3747770	3748265	0	+	.	transcript_id "trans_99"; 
-chr16	submission1	exon	3748712	3750781	0	+	.	transcript_id "trans_99"; 
-chr16	submission1	exon	3747802	3750706	0	-	.	transcript_id "trans_00"; 
-chr16	submission1	exon	3862390	3866730	0	-	.	transcript_id "trans_01"; 
-chr16	submission1	exon	3871150	3871276	0	-	.	transcript_id "trans_01"; 
-chr16	submission1	exon	3884288	3884423	0	-	.	transcript_id "trans_01"; 
+chr16	mylab	exon	3625051	3627533	0	-	.	transcript_id "trans_98"
+chr16	mylab	exon	3632840	3633180	0	-	.	transcript_id "trans_98"
+chr16	mylab	exon	3747770	3748265	0	+	.	transcript_id "trans_99"
+chr16	mylab	exon	3748712	3750781	0	+	.	transcript_id "trans_99"
+chr16	mylab	exon	3747802	3750706	0	-	.	transcript_id "trans_00"
+chr16	mylab	exon	3862390	3866730	0	-	.	transcript_id "trans_01"
+chr16	mylab	exon	3871150	3871276	0	-	.	transcript_id "trans_01"
+chr16	mylab	exon	3884288	3884423	0	-	.	transcript_id "trans_01"
+chr1	mylab	exon	11869	12227	.	+	.	reference_transcript_id "trans_100"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000456328.2"
+chr1	mylab	exon	12613	12721	.	+	.	reference_transcript_id "trans_100"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000456328.2"
+chr1	mylab	exon	13221	14409	.	+	.	reference_transcript_id "trans_100"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000456328.2"
+chr1	mylab	exon	12010	12057	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
+chr1	mylab	exon	12179	12227	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
+chr1	mylab	exon	12613	12697	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
+chr1	mylab	exon	12975	13052	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
+chr1	mylab	exon	13221	13374	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
+chr1	mylab	exon	13453	13670	.	+	.	reference_transcript_id "trans_101"; reference_gene_id "ENSG00000223972.5"; reference_transcript_id "ENST00000450305.2"
