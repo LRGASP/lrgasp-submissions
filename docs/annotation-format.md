@@ -11,13 +11,13 @@ that are provided, however, they will still be validated for syntax and consiste
 
 The standard GTF fields have the following restrictions:
 * seqname - Must be one of the sequence identifiers in the LRGAPS [reference genomes](reference-genomes.md).
-* source - **FIXME: making this a submission name is a nice way to prevent data confusion**
+* source - Ignored.
 * feature - Only `exon` is used. Other types of records are ignored.
 * start - Standard, one-based start position.
 * end - Standard, one-based end position.
 * score - Ignored.
-* strand - Must be specified as `+` or `-` on `exon` features, other features types may be validated.
-* frame - Must be `.` on `exon` features, other features types may be validated.
+* strand - Must be specified as `+`, `-` or `.` on `exon` features, other features types may be validated.
+* frame - Should be `.` on `exon` features, but not valid. Others features types may be validated.
 * attributes:
   * `transcript_id` - Required for all `exon` features and assigned by the submitter.
   * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md).
