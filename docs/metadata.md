@@ -1,42 +1,35 @@
 # METADATA file
 
-1.  Laboratory name and email contact: Name of the lab or group
-    representing the submission (mandatory)
+## Laboratory name and email contact
+LongReadsExpertLab
 
-LongReadsExpertLab; LongReadsExpertLab@university.edu
+## Contact email
+LongReadsExpertLab@university.edu
 
-1.  URL: URL to the lab (optional)
+## URL
+http://LongReadsExpertLab.edu
 
-<http://LongReadsExpertLab.edu>
-
-1.  Github: link to Github repository with complete code to reproduce
-    analysis pipeline (mandarory)
-
+## Github
 http://github.com/LongReadsExpertLab
 
-1.  List of submitted files
+## List of submitted files 
+LongReadsExpertLab_transcriptModels_species_sample_technology
+LongReadsExpertLab_quantificationData_species_technology
+  
 
-2.  Details (should be given for each of the submitted files)
+## Details 
+File: LongReadsExpertLab_transcriptModels_human__GM12878_Pacbio
+Description: transcript models of human sample computed with software1 strong parameters
+Long_reads_technology: Pacbio
+Species: human
+Sample: GM12878
+Software:  Software1 v1.0;  Software2 v2.0
+Additional data:  CAGE data from https://fantom.gsc.riken.jp/5/datafiles/latest/extra/CAGE_peaks/
 
-e.1. Description: brief description of the submitted file. The same
-should follow the convention
-
-Labname\_transcriptModels\_species\_sample OR
-
-Labname\_exprssionData\_species
-
-e.2 Software: List of software packages, version used (mandatory)
-
-Software1 v1.0
-
-Software2 v2.0
-
-e.3 Additional data. Descriptions, links and accession of additional
-data files used (not provided by LRGASP)
-
-CAGE data from [<span
-class="underline">https://fantom.gsc.riken.jp/5/datafiles/latest/extra/CAGE\_peaks/</span>](https://fantom.gsc.riken.jp/5/datafiles/latest/extra/CAGE_peaks/)
-
-e.4 Units (for transcript expression matrix)
-
-TPM
+File: LongReadsExpertLab_expressionData_human_
+Description: quantification data for human samples X Y and Z
+Long_reads_technology: Pacbio
+Species: human
+Samples: Sample1, Sample2 
+Software:  Software3 v1.0
+Units: TPM
