@@ -20,7 +20,7 @@ The standard GTF fields have the following restrictions:
 * frame - Should be `.` on `exon` features, but not valid. Others features types may be validated.
 * attributes:
   * `transcript_id` - Required for all `exon` features and assigned by the submitter.
-  * `gene_id` - Optional, but highly recommend as some tools, like those from the UCSC Browser, may not parse GTF without a `gene_id` attribute.
+  * `gene_id` - Required for all `exon` features.  While not evaluated by LRGASP, it is unclear if this is require by GTF. Some tools, such as the UCSC Genome Browse and command-line tools, will fail without `gene_id`.  The assigned `gene_id` doesn't have to represent an actual gene. However, it must not reflect impossible genes, such as those on different chromosomes.  If gene assignment are not supported, it suggest that each transcript is assigned it own `gene_id`, which maybe the same as the `transcript_id`.
   * `reference_transcript_id` - Optional, used to indicate the transcript is a reference call for the specified [reference transcript](reference-genomes.md).
   * `reference_gene_id` - Optional, used to indicate the gene is a reference call for the specified [reference gene](reference-genomes.md).  This maybe specified without a `reference_transcript_id` attribute if the models is not as assigned to a specific transcript within the gene.
   * Other attributes are ignored
