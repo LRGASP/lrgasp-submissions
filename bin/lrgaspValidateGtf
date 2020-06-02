@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import argparse
+import logging
+
+def parse_args():
+    desc = """Validate that a LRGASP annotation submission GTF meets requirements.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("gtf",
+                        help="GTF file to validate")
+    return parser.parse_args()
+
+def df_obj_print(gtf_df):
+    recs = gtf_df.to_records()
+    for r in recs:
+        print(r)
+
+def df_nt_print(gtf_df):
+    from collections import namedtuple
+    Feat =  namedtuple('Feat', gtf_df.columns)
+    for row in gtf_df.itertuples():
+        print(Feat(*row[1:]))
+
+def tryGtfparse(gtf):
+    from gtfparse import read_gtf
+    logging.getLogger().setLevel(logging.WARN)
+    gtf_df = read_gtf(gtf)
+    #df_obj_print(gtf_df)
+    df_nt_print(gtf_df)
+
+def main(args):
+    tryGtfparse(args.gtf)
+
+main(parse_args())
