@@ -1,0 +1,62 @@
+{
+    "submitter_id": "",
+    "submission_id": "",
+    "description": "",
+    "notes": "",
+    "model_results": {
+        "analysis_id": "",
+        "description": "",
+        "technology": "",
+        "protocol": "",
+        "samples": [
+            ""
+        ],
+        "notes": "",
+        "results": [
+            {
+                "fname": "",
+                "ftype": "",
+                "md5": "",
+                "units": "",
+                "notes": ""
+            }
+        ],
+        "software": [
+            {
+                "name": "",
+                "description": "",
+                "version": "",
+                "url": "",
+                "notes": ""
+            }
+        ]
+    },
+    "expression_results": {
+        "analysis_id": "",
+        "description": "",
+        "technology": "",
+        "protocol": "",
+        "samples": [
+            ""
+        ],
+        "notes": "",
+        "results": [
+            {
+                "fname": "",
+                "ftype": "",
+                "md5": "",
+                "units": "",
+                "notes": ""
+            }
+        ],
+        "software": [
+            {
+                "name": "",
+                "description": "",
+                "version": "",
+                "url": "",
+                "notes": ""
+            }
+        ]
+    }
+}
