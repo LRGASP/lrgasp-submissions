@@ -45,7 +45,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
   * ``fname`` - name of file (without directory), compressed with required extensions.
   * ``ftype`` - type of file: 
     * ``modelGTF``- [Transcript model format](annotation-format.md)
-    * ``readModelMap`` - [Read to model map](reads2transcript_format.md)
+    * ``readModelMap`` - [Read to transcript model map](reads_transcript_map_format.md)
     * ``expressionMatrix`` - [Transcript expression matrix format](expression_matrix_format.md)
   * ``md5`` - md5 sum of file, as a hexadecimal string (standard output from ``md5sum`` command)
   * ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.

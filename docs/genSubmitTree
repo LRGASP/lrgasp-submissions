@@ -12,6 +12,7 @@ SUBMISSION_MD = "submission.json"
 
 MOD_ONT1 = "mod_ont1"
 MOD_ONT1_MODELS =  "models.gtf.gz"
+MOD_ONT1_READS_TRANS_MAP =  "reads_transcripts.tsv.gz"
 
 EXP_ONT1_1 = "exp_ont1"
 EXP_ONT1_1_MATRIX = "express.tsv.gz"
@@ -45,6 +46,7 @@ def build_tree(g):
     add_dir(g, SUBMITTER_ID, MOD_ONT1)
     add_file(g, MOD_ONT1, SUBMISSION_MD)
     add_file(g, MOD_ONT1, MOD_ONT1_MODELS)
+    add_file(g, MOD_ONT1, MOD_ONT1_READS_TRANS_MAP)
 
     add_dir(g, SUBMITTER_ID, EXP_ONT1_1)
     add_file(g, EXP_ONT1_1, SUBMISSION_MD)
@@ -68,6 +70,6 @@ def build_tree(g):
 def mk_graph():
     g = pgv.AGraph()
     build_tree(g)
-    g.draw("submit_tree.png", prog="dot")
+    g.draw("submit_tree.png", prog="dot", args="-Grankdir=LR")
 
 mk_graph()

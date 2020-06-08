@@ -14,7 +14,12 @@ Each submitter is given a file area to upload their results (mechanism to be det
 
 The general structure is show by this diagram:
 
-<submit_tree.png>
+
+![Sumission file hierarchy diagram](submit_tree.png)
+
+
+
+
 
 
 
