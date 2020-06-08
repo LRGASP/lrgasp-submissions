@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+
+# generates directory tree example using graphviz
+import pygraphviz as pgv
+
+# directory names are both name and label, files are labels, with unique
+# names generate from parent
+SUBMITTER_ID = 'my_submitter_id'
+
+SUBMITTER_MD = "submitter.json"
+SUBMISSION_MD = "submission.json"
+
+MOD_ONT1 = "mod_ont1"
+MOD_ONT1_MODELS =  "models.gtf.gz"
+
+EXP_ONT1_1 = "exp_ont1"
+EXP_ONT1_1_MATRIX = "express.tsv.gz"
+
+EXP_ONT1_2 = "exp_ont2"
+EXP_ONT1_2_MATRIX = "express.tsv.gz"
+
+MOD_PB1 = "mod_pb1"
+MOD_PB1_MODELS = "models.gtf.gz"
+EXP_PB1 = "exp_pb1"
+EXP_PB1_MATRIX = "express.tsv.gz"
+
+
+def add_dir(g, parent, name):
+    g.add_node(name, shape='folder')
+    if parent is not None:
+        g.add_edge(parent, name)
+
+def add_file(g, parent, label):
+    name = parent + '/' + label
+    g.add_node(name, shape='rect', label=label)
+    g.add_edge(parent, name)
+
+def add_model_link(g, expr, mod):
+    pass
+
+def build_tree(g):
+    add_dir(g, None, SUBMITTER_ID)
+    add_file(g, SUBMITTER_ID, SUBMITTER_MD)
+
+    add_dir(g, SUBMITTER_ID, MOD_ONT1)
+    add_file(g, MOD_ONT1, SUBMISSION_MD)
+    add_file(g, MOD_ONT1, MOD_ONT1_MODELS)
+
+    add_dir(g, SUBMITTER_ID, EXP_ONT1_1)
+    add_file(g, EXP_ONT1_1, SUBMISSION_MD)
+    add_model_link(g, EXP_ONT1_1, MOD_ONT1)
+    add_file(g, EXP_ONT1_1, EXP_ONT1_1_MATRIX)
+
+    add_dir(g, SUBMITTER_ID, EXP_ONT1_2)
+    add_file(g, EXP_ONT1_2, SUBMISSION_MD)
+    add_model_link(g, EXP_ONT1_2, MOD_ONT1)
+    add_file(g, EXP_ONT1_2, EXP_ONT1_2_MATRIX)
+
+    add_dir(g, SUBMITTER_ID, MOD_PB1)
+    add_file(g, MOD_PB1, SUBMISSION_MD)
+    add_file(g, MOD_PB1, MOD_PB1_MODELS)
+
+    add_dir(g, SUBMITTER_ID, EXP_PB1)
+    add_file(g, EXP_PB1, SUBMISSION_MD)
+    add_model_link(g, EXP_PB1, MOD_PB1)
+    add_file(g, EXP_PB1, EXP_PB1_MATRIX)
+
+def mk_graph():
+    g = pgv.AGraph()
+    build_tree(g)
+    g.draw("submit_tree.png", prog="dot")
+
+mk_graph()

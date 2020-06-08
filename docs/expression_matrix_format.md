@@ -1,4 +1,4 @@
-# Transcript expression matrix submission format
+# Transcript expression matrix format
 
 The format required for providing quantification results by the user should be a **tab-separated** matrix in which long read-defined transcripts will be the rows and samples/replicates will be columns.
 

@@ -1,4 +1,4 @@
-# Genome annotation submission format
+# Transcript model format
 
 ## GTF format
 Genome transcript annotation submissions are in GTF format

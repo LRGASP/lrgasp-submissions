@@ -1,14 +1,14 @@
 # Reference genomes and transcripts
 
 
-## Genome Reference (GRCh38)
+## Genome Reference
 
 ### Human 
-ENCODE reference which will include SIRVs
+GRCh38 (UCSC hg38), ENCODE version reference with SIRVs added
 
 ### Mouse
 
-MM10
+GRCm38 (UCSC mm10), using UCSC/ENCODE/UCSC 
 
 ## Transcriptome Reference
 
