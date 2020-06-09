@@ -10,6 +10,9 @@
 
 GRCm38 (UCSC mm10), using UCSC/ENCODE/UCSC 
 
+### Manatee
+https://www.ncbi.nlm.nih.gov/assembly/GCF_000243295.1/
+
 ## Transcriptome Reference
 
 ### Human
