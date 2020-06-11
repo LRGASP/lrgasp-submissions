@@ -5,7 +5,7 @@ Definition and validators for LRGASP submissions
 - [Submission structure](docs/submission.md)
 - [Metadata](docs/metadata.md)
 - [Reference genomes and transcripts](docs/reference-genomes.md)
-- [Transcript model format](docs/model-format.md.md)
+- [Transcript model format](docs/model-format.md)
 - [Read to model map format](docs/reads_transcript_map_format.md)
 - [Transcript expression matrix format](docs/expression_matrix_format.md)
 - [Pilot data sets](docs/pilot-data.md)
