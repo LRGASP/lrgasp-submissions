@@ -8,7 +8,7 @@ use.  Templates and a validator are provided.
 This file contains information about the submitting group.  This is at the top
 of the submitter's tree (see [Submission structure](submission.md)) and
 applies to all submissions by the group.  See
-[``submitter.json``](../examples/metadata/submitter.json) for an example.  An
+[``submitter.json``](../examples/submitter.json) for an example.  An
 empty template is also available:
 [``submitter.json``](../templates/submitter.json).
 
@@ -20,7 +20,6 @@ empty template is also available:
   * ``name`` - name of the contact
   * ``email`` - e-mail of the contact, which can be an e-mail list
   * ``notes`` - notes about the contact (optional)
-* ``submit_time`` - time file was received (add by LRGASP submission)
 
 ## ``submission.json``
 This file describes the submission, specifying all data files.  Once is create
@@ -28,22 +27,22 @@ in each submission directory (see [Submission structure](submission.md)).  Data
 files are either in the submission directory or a sub-directories.  All files
 paths in ``submission.json`` are relative to the directory containing  ``submission.json``.
 
-See [``submission.json``](../examples/metadata/submission.json) for an example.
+See [``submission.json``](../metadata/submission.json) for an example.
 An empty template is also available: [``submission.json``](../templates/submission.json).
 
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
 * ``submission_id`` - submitter-define identifier, unique to that submitter and must be a valid Python-style identifier
+* ``description`` - description of submission
 * ``challange_id`` - one of the valid challenge identifiers. 
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
-* ``description`` - description of submission
 * ``technology`` - sequencing technology, one of ``PacBio`` or ``ONT``.
 * ``protocol`` - library preparation protocol, values will be defined later
 * ``samples`` - list of sample names
 * ``notes`` - notes (optional)
 * ``files`` - List of files descriptions for submitted files:
   * ``fname`` - name of file (without directory), compressed with required extensions.
-  * ``ftype`` - type of file: 
+  * ``ftype`` - type of file, one of:
     * ``modelGTF``- [Transcript model format](annotation-format.md)
     * ``readModelMap`` - [Read to transcript model map](reads_transcript_map_format.md)
     * ``expressionMatrix`` - [Transcript expression matrix format](expression_matrix_format.md)
@@ -56,8 +55,6 @@ An empty template is also available: [``submission.json``](../templates/submissi
   * ``version`` - version of software
   * ``url``  - URL to software repository
   * ``notes`` - notes about software or how it was used (optional)
-* ``submit_time`` - time submission was initial received (add by LRGASP submission).
-* ``update_time`` - time submission was last update (add by LRGASP submission).
   
 ## Open issues
 - separate expression and matrix submission 

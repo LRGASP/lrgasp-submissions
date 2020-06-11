@@ -26,8 +26,8 @@ The standard GTF fields have the following restrictions:
   * Other attributes are ignored
 
 All of the attributes specified above must be repeated on all exons of a
-transcript with the same value.  An example submission GTF file is at
-[../examples/example.gtf](../examples/example.gtf).
+transcript with the same value.  An example models submission GTF file is at
+[models.gtf](../examples/models.gtf).
 
 ## File naming
 Files must be named `xxx.gtf` (FIXME defend better) and maybe compressed with `gzip` and 
