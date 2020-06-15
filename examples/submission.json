@@ -3,7 +3,9 @@
     "submission_id": "best",
     "submission_type": "model",
     "description": "Our best transcript models",
-    "technology": "ONT",
+    "technologies": [
+        "ONT"
+    ],
     "protocol": "CapTrap",
     "samples": [
         "GM12878"

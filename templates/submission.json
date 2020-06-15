@@ -5,7 +5,9 @@
     "challange_id": "",
     "submission_type": "",
     "model_submission_id": "",
-    "technology": "",
+    "technologies": [
+        ""
+    ],
     "protocol": "",
     "samples": [
         ""

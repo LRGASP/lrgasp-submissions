@@ -36,7 +36,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
 * ``challange_id`` - one of the valid challenge identifiers. 
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
-* ``technology`` - sequencing technology, one of ``PacBio`` or ``ONT``.
+* ``technologies`` - sequencing technologies, one or more of``PacBio``, ``ONT``, ``Illumina``
 * ``protocol`` - library preparation protocol, values will be defined later
 * ``samples`` - list of sample names
 * ``notes`` - notes (optional)
