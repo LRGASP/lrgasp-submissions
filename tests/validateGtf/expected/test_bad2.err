@@ -1,0 +1,2 @@
+Error: parse of input/bad2.gtf failed
+    caused by: Integer column has NA values in column 3

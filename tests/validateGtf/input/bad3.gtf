@@ -1,0 +1,2 @@
+chr16	mylab	exon	3625051	3627533	0	-	.	gene_id "gene3"; transcript_id "trans_98"
+chr16	mylab	exon	3632840	3633180	0	-	.	gene_id "gene4" anscript_id "trans_98"

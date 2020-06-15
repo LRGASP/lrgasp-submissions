@@ -1,0 +1,1 @@
+Error: all exons in transcript trans_100 must have same value for reference_gene_id, found ['ENSG00000223972.5', 'foo']
