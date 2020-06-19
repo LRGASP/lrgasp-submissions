@@ -1,5 +1,5 @@
 # lrgasp-submissions
-Definition and validators for LRGASP submissions
+Definition and validators for testing LRGASP submissions
 
 ## Documentation
 - [Submission structure](docs/submission.md)
