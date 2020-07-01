@@ -33,7 +33,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
 * ``submission_id`` - submitter-define identifier, unique to that submitter and must be a valid Python-style identifier
 * ``description`` - description of submission
-* ``challange_id`` - one of the valid challenge identifiers. 
+* ``challenge_id`` - one of the valid challenge identifiers. 
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
 * ``technologies`` - sequencing technologies, one or more of``PacBio``, ``ONT``, ``Illumina``
