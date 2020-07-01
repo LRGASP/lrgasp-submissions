@@ -12,7 +12,7 @@ Definition and validators for testing LRGASP submissions
 - [Pilot data sets](docs/pilot-data.md)
 
 ## Submissions
-- [On Google Drive](https://drive.google.com/drive/u/0/folders/0AML19cSc1WYeUk9PVA)
+- [On Google Drive](https://drive.google.com/drive/u/0/folders/0AML19cSc1WYeUk9PVA). See Documentation above for the Submission formats and Submission structure.
 
 ## Contacts
 - [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu)
