@@ -27,7 +27,7 @@ in each submission directory (see [Submission structure](submission.md)).  Data
 files are either in the submission directory or a sub-directories.  All files
 paths in ``submission.json`` are relative to the directory containing  ``submission.json``.
 
-See [``submission.json``](../metadata/submission.json) for an example.
+See [``submission.json``](../examples/submission.json) for an example.
 An empty template is also available: [``submission.json``](../templates/submission.json).
 
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
