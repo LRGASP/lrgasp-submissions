@@ -1,7 +1,7 @@
 # Metadata format
 
 Metadata files are in [JSON](https://www.json.org/json-en.html) format.  JSON
-provides a good compromise between able to store structured data and easy of
+provides a good compromise between able to store structured data and ease of
 use.  Templates and a validator are provided.
 
 ## ``submitter.json``
