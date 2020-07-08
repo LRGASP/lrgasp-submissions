@@ -12,7 +12,7 @@ applies to all submissions by the group.  See
 empty template is also available:
 [``submitter.json``](../templates/submitter.json).
 
-* ``submitter_id`` - symbolic name for the submitter, assigned when the user registers for LRGASP.  This will be a valid Python-style identifier names.
+* ``submitter_id`` - symbolic name for the submitter, assigned when the user registers for LRGASP.  This will be a valid Python-style identifier.
 * ``group_name`` - name of the submitting lab
 * ``group_url`` - URL of the submitting lab page (optional)
 * ``notes`` - notes (optional)
