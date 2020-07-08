@@ -31,7 +31,7 @@ See [``submission.json``](../examples/submission.json) for an example.
 An empty template is also available: [``submission.json``](../templates/submission.json).
 
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
-* ``submission_id`` - submitter-define identifier, unique to that submitter and must be a valid Python-style identifier
+* ``submission_id`` - submitter-defined identifier, unique to that submitter and must be a valid Python-style identifier
 * ``description`` - description of submission
 * ``challenge_id`` - one of the valid challenge identifiers. 
 * ``submission_type`` - one of ``model`` or ``expression``.
