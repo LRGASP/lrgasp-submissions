@@ -12,7 +12,7 @@ applies to all submissions by the group.  See
 empty template is also available:
 [``submitter.json``](../templates/submitter.json).
 
-* ``submitter_id`` - symbolic name for the submitter, assigned when the user registers for LRGASP.  This will be a valid Python-style identifier.
+* ``submitter_id`` - [symbolic identifer](submission.md#symbolic-identifiers) for the submitter, assigned when the user registers for LRGASP.
 * ``group_name`` - name of the submitting lab
 * ``group_url`` - URL of the submitting lab page (optional)
 * ``notes`` - notes (optional)
@@ -31,9 +31,9 @@ See [``submission.json``](../examples/submission.json) for an example.
 An empty template is also available: [``submission.json``](../templates/submission.json).
 
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
-* ``submission_id`` - submitter-defined identifier, unique to that submitter and must be a valid Python-style identifier
+* ``submission_id`` - submitter-defined [symbolic identifer](submission.md#symbolic-identifiers), unique to that submitter.
 * ``description`` - description of submission
-* ``challenge_id`` - one of the valid challenge identifiers. 
+* ``challenge_id`` - one of the valid [challenge symbolic identifers](challanges.md).
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
 * ``technologies`` - sequencing technologies, one or more of``PacBio``, ``ONT``, ``Illumina``
@@ -61,6 +61,6 @@ An empty template is also available: [``submission.json``](../templates/submissi
   - replicate
 - updates: do we allow overwrite or keep all version
 - version 
-- target data set identifier ==
+- target data set identifier
 - add picture 
-** add read-to transcript file
+- add read-to transcript file

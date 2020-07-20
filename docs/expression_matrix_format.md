@@ -5,7 +5,7 @@ The format required for providing quantification results by the user should be a
 ### Key features
 
 * **Header**: First field must be `ID` and the rest of the column names should be the sample/replicates labels.
-* **ID column**: Transcripts should have the same IDs as ones provided in GTF.
+* **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](submission.md#feature-identifiers).
 * **Quantification values reported**: Any metric is acceptable as long as they correlate with RNA concentration. This can be evaluated using known concentration of SIRVs. `NA` values are allowed.
 
 Gene expression will be calculated summing up the expression values of all the transcripts coming from the same locus.
