@@ -9,7 +9,7 @@ subdirs = tests
 all:
 
 lint:
-	${FLAKE8} ${pyprogs}
+	${FLAKE8} ${pyprogs} lib
 
 test: ${subdirs:%=%_test}
 %_test:

@@ -1,0 +1,11 @@
+* gtf validation
+- validate chromosomes
+* metadata validator
+* expression matrix validator
+* reads/transcript map validator
+* data required:
+** list of challenges
+** genomes:
+- list of sequences and sizes
+** list of BAMs
+** annotations

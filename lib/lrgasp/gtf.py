@@ -1,0 +1,89 @@
+import numpy as np
+from collections import defaultdict
+from gtfparse import read_gtf, ParsingError
+
+class GtfErr(Exception):
+    pass
+
+def fixup_empty_attr(gtf_df, col_name):
+    """make empty None"""
+    gtf_df[col_name] = np.where(gtf_df[col_name] == '', None, gtf_df[col_name])
+
+def fixup_optional_attr(gtf_df, col_name):
+    """make an optional attribute None in empty or not specified"""
+    if col_name in gtf_df.columns:
+        fixup_empty_attr(gtf_df, col_name)
+    else:
+        gtf_df[col_name] = None
+
+def fixup_gtf_attrs(gtf_df):
+    if "transcript_id" not in gtf_df.columns:
+        raise GtfErr("GTF exons must have transcript_id attribute")
+    fixup_empty_attr(gtf_df, "transcript_id")
+    if "gene_id" not in gtf_df.columns:
+        raise GtfErr("GTF exons must have gene_id attribute")
+    fixup_empty_attr(gtf_df, "gene_id")
+    fixup_optional_attr(gtf_df, "reference_gene_id")
+    fixup_optional_attr(gtf_df, "reference_transcript_id")
+
+def load_exons(gtf_file):
+    """load GTF exons into a list of Series objects of exons"""
+    try:
+        gtf_df = read_gtf(gtf_file)
+    except ParsingError as ex:
+        raise GtfErr("parse of {} failed".format(gtf_file)) from ex
+    gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
+    if len(gtf_df) == 0:
+        raise GtfErr("no exon records found")
+    fixup_gtf_attrs(gtf_df)
+    return [gtf_df.iloc[i] for i in range(len(gtf_df))]
+
+def rec_desc(rec):
+    return "{} at {}:{}-{}".format(rec.feature, rec.seqname, rec.start, rec.end)
+
+def validate_rec(rec):
+    if rec.transcript_id is None:
+        raise GtfErr("must specify transcript_id attribute: " + rec_desc(rec))
+    if rec.gene_id is None:
+        raise GtfErr("must specify gene_id attribute: " + rec_desc(rec))
+    if rec.start > rec.end:
+        raise GtfErr("start must be <= end: " + rec_desc(rec))
+    if rec.strand not in ('+', '-', '.'):
+        raise GtfErr("strand must be '+', '-', or '.': " + rec_desc(rec))
+
+def group_transcript(gtf_records):
+    """group records into transcripts"""
+    transcripts = defaultdict(list)
+    for rec in gtf_records:
+        validate_rec(rec)
+        transcripts[rec.transcript_id].append(rec)
+    for trans in transcripts.values():
+        trans.sort(key=lambda e: (e.seqname, e.start, -e.end))
+    return transcripts
+
+def trans_desc(trans):
+    return trans[0].transcript_id
+
+def check_trans_field_same(trans, attr):
+    vals = set([e[attr] for e in trans])
+    if len(vals) > 1:
+        raise GtfErr("all exons in transcript {} must have same value for {}, found {}".format(trans_desc(trans), attr, list(sorted(vals))))
+
+def validate_transcript_attrs(trans):
+    check_trans_field_same(trans, "gene_id")
+    check_trans_field_same(trans, "reference_gene_id")
+    check_trans_field_same(trans, "reference_transcript_id")
+
+def validate_transcript(trans):
+    check_trans_field_same(trans, "seqname")
+    check_trans_field_same(trans, "strand")
+    validate_transcript_attrs(trans)
+
+def validate_transcripts(transcripts):
+    for trans in transcripts.values():
+        validate_transcript(trans)
+
+def validate(gtf_file):
+    gtf_recs = load_exons(gtf_file)
+    transcripts = group_transcript(gtf_recs)
+    validate_transcripts(transcripts)
