@@ -1,0 +1,2 @@
+Error: validation of input/bad_trans_chr_mismatch.gtf failed
+    caused by: all exons in transcript trans_100 must have same value for seqname, found ['chr1', 'chr4']

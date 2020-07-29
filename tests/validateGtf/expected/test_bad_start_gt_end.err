@@ -1,0 +1,2 @@
+Error: validation of input/bad_start_gt_end.gtf failed
+    caused by: start must be <= end: exon at chr1:12721-12613

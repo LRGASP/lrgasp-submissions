@@ -1,5 +1,8 @@
 * gtf validation
 - validate chromosomes
+- validate transcript in multiple genes
+"m54284U_191110" and "m54284U_191111". 
+- validate transcript in multiple chrosomes
 * metadata validator
 * expression matrix validator
 * reads/transcript map validator
