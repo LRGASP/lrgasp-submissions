@@ -1,2 +1,3 @@
+Error: must specify transcript_id attribute: exon at chr16:3632840-3633180
 Error: validation of input/bad_no-trans-id.gtf failed
-    caused by: must specify transcript_id attribute: exon at chr16:3632840-3633180
+    caused by: 1 error(s) encountered 

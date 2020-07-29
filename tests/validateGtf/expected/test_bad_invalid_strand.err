@@ -1,2 +1,3 @@
+Error: strand must be '+', '-', or '.': exon at chr1:12613-12721
 Error: validation of input/bad_invalid_strand.gtf failed
-    caused by: strand must be '+', '-', or '.': exon at chr1:12613-12721
+    caused by: 1 error(s) encountered 
