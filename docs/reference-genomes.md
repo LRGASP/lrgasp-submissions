@@ -16,7 +16,7 @@ https://www.ncbi.nlm.nih.gov/assembly/GCF_000243295.1/
 ## Transcriptome Reference
 
 ### Human
-[GENCODE v29](http://crick.bio.uci.edu/freese/lrgasp_data/gencode.v29/gencode.v29.SIRV.ERCC.annotation.gtf)
+[GENCODE v29](https://github.com/LRGASP/lrgasp-submissions/blob/master/docs/gencode.v29.SIRV.ERCC.annotation.gtf.tar.gz)
 Including modified SIRVs.
 
 ### Mouse
