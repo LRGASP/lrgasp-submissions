@@ -20,4 +20,5 @@ https://www.ncbi.nlm.nih.gov/assembly/GCF_000243295.1/
 Including modified SIRVs.
 
 ### Mouse
-GENCODE M21
+[GENCODE M21](http://crick.bio.uci.edu/freese/lrgasp_data/gencode.vM21/gencode.vM21.SIRV.ERCC.annotation.gtf.gz)
+Including modfied SIRVs.
