@@ -4,7 +4,7 @@
 ## Genome Reference
 
 ### Human 
-[GRCh38 (UCSC hg38)](http://crick.bio.uci.edu/freese/lrgasp_data/hg38/hg38_SIRV.fa), ENCODE version reference with SIRVs added
+[GRCh38 (UCSC hg38)](http://crick.bio.uci.edu/freese/lrgasp_data/hg38/hg38_SIRV.fa.gz) and corresponding [index](http://crick.bio.uci.edu/freese/lrgasp_data/hg38/hg38_SIRV.fa.fai), ENCODE version reference with SIRVs added
 
 ### Mouse
 
@@ -16,7 +16,7 @@ https://www.ncbi.nlm.nih.gov/assembly/GCF_000243295.1/
 ## Transcriptome Reference
 
 ### Human
-[GENCODE v29](https://github.com/LRGASP/lrgasp-submissions/blob/master/docs/gencode.v29.SIRV.ERCC.annotation.gtf.tar.gz)
+[GENCODE v29](http://crick.bio.uci.edu/freese/lrgasp_data/gencode.v29/gencode.v29.SIRV.ERCC.annotation.gtf.gz)
 Including modified SIRVs.
 
 ### Mouse
