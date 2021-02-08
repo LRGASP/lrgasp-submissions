@@ -1,4 +1,4 @@
-subdirs = validateGtf
+subdirs = gtf read_model_map
 
 test: ${subdirs:%=%_test}
 %_test:

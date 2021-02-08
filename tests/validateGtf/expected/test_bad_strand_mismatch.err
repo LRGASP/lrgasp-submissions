@@ -1,4 +1,0 @@
-Error: all exons in transcript trans_100 must have same value for strand, found ['+', '-']
-Error: all exons in transcript trans_200 must have same value for strand, found ['+', '-']
-Error: validation of input/bad_strand_mismatch.gtf failed
-    caused by: 2 error(s) encountered 

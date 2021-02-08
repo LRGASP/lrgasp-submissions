@@ -19,8 +19,8 @@ This diagram shows the general structure:
 
 ## Symbolic identifiers
 
-Various components of the submission system have symbolic identifiers.  These identifiers consist of [ASCII](https://www.wikiwand.com/en/ASCII) upper- and lower-case alphabetic characters, numbers, and underscores.  They must not begin with numbers.  In some cases, specific prefixes are required.
+Various components of the submission system have symbolic identifiers.  These identifiers consist of [ASCII](https://en.wikipedia.org/wiki/ASCII) upper- and lower-case alphabetic characters, numbers, and underscores.  They must not begin with numbers.  In some cases, specific prefixes are required.
 
-## Feature identifiers
+## Feature and read identifiers
 
-Feature identifiers (transcripts and genes) may contain any combination of printing, non-whitespace characters [ASCII](https://www.wikiwand.com/en/ASCII).  It is highly read.  This requirement is more restrictive than allowed by GFF3.
+Feature identifiers (transcripts and genes) and read identifiers may contain any combination of printing, non-whitespace characters [ASCII](https://en.wikipedia.org/wiki/ASCII).  This requirement is more restrictive than allowed by GTF.

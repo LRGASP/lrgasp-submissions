@@ -1,0 +1,2 @@
+Error: Parse of reads-to-models TSV failed: input/bad_diff_columns.tsv
+    caused by: empty or missing columns

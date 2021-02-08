@@ -1,2 +1,2 @@
-Error: parse of input/bad_int-none.gtf failed
+Error: Parse of GTF failed: input/bad_int-none.gtf
     caused by: Integer column has NA values in column 3

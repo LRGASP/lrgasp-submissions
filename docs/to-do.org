@@ -1,8 +1,10 @@
 * gtf validation
 - validate chromosomes
-- validate transcript in multiple genes
-"m54284U_191110" and "m54284U_191111". 
-- validate transcript in multiple chrosomes
+- validate transcript in multiple genes" "m54284U_191110" and "m54284U_191111". 
+- validate transcript in multiple chrom
+* read model validation
+- check read ids look sane
+- make names consistent reads_transcript_map_format.md
 * metadata validator
 * expression matrix validator
 * reads/transcript map validator

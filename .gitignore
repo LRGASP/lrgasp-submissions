@@ -127,3 +127,7 @@ dmypy.json
 .pyre/
 
 output/
+
+
+.emacs.bak/
+.DS_Store

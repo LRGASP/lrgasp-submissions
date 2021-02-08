@@ -1,4 +1,5 @@
 import sys
+import re
 
 def handle_prog_errors(ex):
     """Prints error messages without call stack and exit. For expected exceptions """
@@ -12,39 +13,12 @@ def handle_prog_errors(ex):
 class LrgaspException(Exception):
     pass
 
-class ErrorReporter:
-    """report and count errors"""
+def checkValidSymbolicIdent(ident, description, prefix=None):
+    if not ident.isidentifier():
+        raise LrgaspException(f"not a valid {description} identifier: '{ident}'")
+    if (prefix is not None) and (not ident.startwith(prefix)):
+        raise LrgaspException(f"{description} must start with {prefix}: '{ident}'")
 
-    MAX_ERRORS = 50
-
-    def __init__(self):
-        self.cnt = 0
-
-    def error(self, msg, filename=None, linenum=None):
-        "error and continue checking, if max not exceeded"
-        if filename is not None:
-            print(filename + ":", end="", file=sys.stderr)
-        if linenum is not None:
-            print(linenum + ":", end="", file=sys.stderr)
-        if (filename is not None) or (linenum is not None):
-            print(" ", end="", file=sys.stderr)
-        print("Error:", msg, file=sys.stderr)
-        self.cnt += 1
-        if self.cnt > self.MAX_ERRORS:
-            raise LrgaspException("maximum errors reached, {} error(s) found".format(self.cnt))
-
-    def fatal(self, msg, filename=None, linenum=None):
-        "error and stop"
-        self.error(msg, filename, linenum)
-        self.stop()
-
-    def stop(self):
-        "can't continue because it makes no sense to continue validating"
-        raise LrgaspException("{} error(s) encountered ".format(self.cnt))
-
-    def stopIfErrors(self):
-        if self.cnt > 0:
-            self.stop()
-
-def isValidSymbolicIdent(ident, description, prefix=None):
-    pass
+def checkValidFeatureIdent(ident, description):
+    if (not ident.isascii()) or (not ident.isprintable()) or re.search("\s", ident):
+        raise LrgaspException(f"not a valid {description} identifier, must be composed of ASCII, printable, non-white-space characters: '{ident}'")
