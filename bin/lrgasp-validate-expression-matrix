@@ -9,20 +9,20 @@ sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
 
 from lrgasp import handle_prog_errors
 from lrgasp import LrgaspException
-from lrgasp import gtf
+from lrgasp import expression_matrix
 
 def parse_args():
-    desc = """Validate that an LRGASP annotation GTF meets requirements.
+    desc = """Validate that an LRGASP expression matrix meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("gtf_file",
-                        help="GTF file to validate")
+    parser.add_argument("expr_mat_tsv",
+                        help="Expression matrix to validate")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        gtf.gtf_load(args.gtf_file)
+        expression_matrix.expr_mat_load(args.expr_mat_tsv)
     except LrgaspException as ex:
         handle_prog_errors(ex)
 

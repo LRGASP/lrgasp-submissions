@@ -12,7 +12,7 @@ from lrgasp import LrgaspException
 from lrgasp import read_model_map
 
 def parse_args():
-    desc = """Validate that a LRGASP read model map TSV meets requirements.
+    desc = """Validate that an LRGASP read model map TSV meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("read_model_map_tsv",

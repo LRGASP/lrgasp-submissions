@@ -1,0 +1,2 @@
+Error: Parse of expression matrix TSV failed: input/bad_values.tsv
+    caused by: Invalid value(s) in column 'pacbio_illumina_rep1_batch1', must be a number or NA, appears to contain strings

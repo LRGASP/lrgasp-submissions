@@ -1,2 +1,2 @@
 Error: Parse of reads-to-models TSV failed: input/bad_header.tsv
-    caused by: TSV must have column read_id
+    caused by: TSV must have column 'read_id'

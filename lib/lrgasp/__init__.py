@@ -1,5 +1,6 @@
 import sys
 import re
+import gzip
 
 def handle_prog_errors(ex):
     """Prints error messages without call stack and exit. For expected exceptions """
@@ -20,5 +21,12 @@ def checkValidSymbolicIdent(ident, description, prefix=None):
         raise LrgaspException(f"{description} must start with {prefix}: '{ident}'")
 
 def checkValidFeatureIdent(ident, description):
-    if (not ident.isascii()) or (not ident.isprintable()) or re.search("\s", ident):
+    if (not ident.isascii()) or (not ident.isprintable()) or re.search("\\s", ident):
         raise LrgaspException(f"not a valid {description} identifier, must be composed of ASCII, printable, non-white-space characters: '{ident}'")
+
+def gopen(path):
+    "open a file for reading, allowing compressed files"
+    if path.endswith(".gz"):
+        return gzip.open(path)
+    else:
+        return open(path)

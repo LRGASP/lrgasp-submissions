@@ -1,4 +1,4 @@
-# Read to model map format
+# Read to transcript model map format
 
 This describes the submission format for mapping the initial reads to the final transcript model,
 

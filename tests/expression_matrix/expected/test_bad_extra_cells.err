@@ -1,0 +1,2 @@
+Error: Parse of expression matrix TSV failed: input/bad_extra_cells.tsv
+    caused by: TSV has an inconsistent number of columns: min=11, max=12

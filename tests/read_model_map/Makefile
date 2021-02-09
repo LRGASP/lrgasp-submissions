@@ -1,6 +1,6 @@
 lrgasp_validate_read_model_map = ../../bin/lrgasp-validate-read-model-map
 
-bad_tsvs = $(wildcard input/bad*.tsv)
+bad_tsvs = $(wildcard input/bad_*.tsv)
 bad_tests = $(basename $(notdir ${bad_tsvs}))
 
 test: test_example bad_tests

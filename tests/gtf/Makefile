@@ -1,6 +1,6 @@
 lrgasp_validate_gtf = ../../bin/lrgasp-validate-gtf
 
-bad_gtfs = $(wildcard input/bad*.gtf)
+bad_gtfs = $(wildcard input/bad_*.gtf)
 bad_tests = $(basename $(notdir ${bad_gtfs}))
 
 test: test_example bad_tests
