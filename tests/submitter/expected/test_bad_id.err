@@ -1,0 +1,2 @@
+Error: validation of submitter metadata failed: input/bad_id.json
+    caused by: not a valid submitter.submitter_id identifier: '123-experts'

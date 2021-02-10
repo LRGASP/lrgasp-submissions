@@ -6,6 +6,7 @@ import json
 from email_validator import validate_email, EmailNotValidError
 import validators.url
 from lrgasp import LrgaspException
+from lrgasp.identifiers import symbolicIdentValidate
 from lrgasp.objDict import ObjDict
 
 fld_submitter_id = "submitter_id"
@@ -70,13 +71,27 @@ def submitter_validate(submitter):
     _check_non_empty_type(desc, submitter, str, (fld_submitter_id, fld_group_name, fld_group_url))
     _check_type(desc, submitter, str, (fld_notes,))
     _check_non_empty_type(desc, submitter, list, (fld_contacts,))
+    symbolicIdentValidate(submitter.submitter_id, "submitter.submitter_id")
     if (fld_group_url in submitter) and (validators.url(submitter.group_url) is not True):
         raise LrgaspException(f"{desc} field {fld_group_url} is not a valid URL: {submitter.group_url}")
     for contact in submitter.contacts:
         submitter_contact_validate(contact)
 
 def submitter_load(submitter_json):
-    """load and validate submitter object"""
+    """load and validate submitter metadata"""
+    try:
+        with open(submitter_json) as fh:
+            submitter = json.load(fh, object_pairs_hook=ObjDict)
+    except json.decoder.JSONDecodeError as ex:
+        raise LrgaspException(f"parse of submitter metadata failed: {submitter_json}") from ex
+    try:
+        submitter_validate(submitter)
+    except LrgaspException as ex:
+        raise LrgaspException(f"validation of submitter metadata failed: {submitter_json}") from ex
+    return submitter
+
+def submitter_load(submitter_json):
+    """load and validate submission metadata"""
     try:
         with open(submitter_json) as fh:
             submitter = json.load(fh, object_pairs_hook=ObjDict)
