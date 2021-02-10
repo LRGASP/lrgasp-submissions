@@ -33,7 +33,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
 * ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
 * ``submission_id`` - submitter-defined [symbolic identifer](submission.md#symbolic-identifiers), unique to that submitter.
 * ``description`` - description of submission
-* ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challange-identifiers).
+* ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
 * ``technologies`` - sequencing technologies, one or more of``PacBio``, ``ONT``, ``Illumina``
@@ -53,7 +53,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
   * ``name`` - name of software package
   * ``description`` - description of software (optional)
   * ``version`` - version of software
-  * ``url``  - URL to software repository
+  * ``url`` - URL to software repository
   * ``notes`` - notes about software or how it was used (optional)
   
 ## Open issues

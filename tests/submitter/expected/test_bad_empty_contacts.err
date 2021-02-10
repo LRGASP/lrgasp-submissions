@@ -1,0 +1,2 @@
+Error: validation of submitter metadata failed: input/bad_empty_contacts.json
+    caused by: submitter field contacts must be a non-empty list

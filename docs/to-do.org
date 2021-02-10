@@ -6,11 +6,14 @@
 - check read ids look sane
 - make names consistent reads_transcript_map_format.md
 * metadata validator
+* test for compressed data files
 * expression matrix validator
-* reads/transcript map validator
 * data required:
 ** list of challenges
 ** genomes:
 - list of sequences and sizes
 ** list of BAMs
 ** annotations
+* email and url validation
+https://validators.readthedocs.io/en/latest/
+should we test if they resolves?

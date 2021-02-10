@@ -1,0 +1,2 @@
+Error: validation of submitter metadata failed: input/bad_empty_group.json
+    caused by: submitter field group_name must be a non-empty str

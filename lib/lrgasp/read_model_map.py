@@ -4,7 +4,7 @@ read-to-model map parser/validator
 import csv
 import pandas as pd
 from lrgasp import LrgaspException
-from lrgasp import checkValidFeatureIdent
+from lrgasp.identifiers import featureIdentValidate
 
 required_columns = ("read_id", "transcript_id")
 
@@ -18,8 +18,8 @@ def validate_data(read_model_map):
         raise LrgaspException("TSV contains no data")
     if (read_model_map.isnull().values.any()):
         raise LrgaspException("empty or missing values in columns")
-    read_model_map.read_id.apply(lambda ident: checkValidFeatureIdent(ident, "read identifier"))
-    read_model_map.transcript_id.apply(lambda ident: checkValidFeatureIdent(ident, "transcript identifier"))
+    read_model_map.read_id.apply(lambda ident: featureIdentValidate(ident, "read identifier"))
+    read_model_map.transcript_id.apply(lambda ident: featureIdentValidate(ident, "transcript identifier"))
 
 def validate(read_model_map):
     validate_header(read_model_map)

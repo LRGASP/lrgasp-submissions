@@ -1,1 +1,3 @@
 gtfparse
+email-validator
+validators

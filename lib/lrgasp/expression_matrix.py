@@ -5,8 +5,8 @@ import csv
 import pandas as pd
 import numpy as np
 from lrgasp import LrgaspException
-from lrgasp import checkValidFeatureIdent
 from lrgasp import gopen
+from lrgasp.identifiers import featureIdentValidate
 
 def check_row_consistency(expr_mat_tsv):
     """Pandas just pads or ignores inconsistent number of columns,
@@ -43,7 +43,7 @@ def check_column_type(expr_mat, col):
 def validate_data(expr_mat):
     if expr_mat.size == 0:
         raise LrgaspException("TSV contains no data")
-    expr_mat.ID.apply(lambda ident: checkValidFeatureIdent(ident, "transcript identifier"))
+    expr_mat.ID.apply(lambda ident: featureIdentValidate(ident, "transcript identifier"))
     for col in sample_column_names(expr_mat):
         check_column_type(expr_mat, col)
 

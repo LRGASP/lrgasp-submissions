@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import sys
+from os import path as osp
+import argparse
+import logging
+
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
+
+from lrgasp import handle_prog_errors
+from lrgasp import LrgaspException
+from lrgasp import metadata
+
+def parse_args():
+    desc = """Validate that an LRGASP submitter meets requirements.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("submitter_json",
+                        help="submitter JSON")
+    return parser.parse_args()
+
+def main(args):
+    logging.getLogger().setLevel(logging.WARN)
+    try:
+        metadata.submitter_load(args.submitter_json)
+    except LrgaspException as ex:
+        handle_prog_errors(ex)
+
+main(parse_args())

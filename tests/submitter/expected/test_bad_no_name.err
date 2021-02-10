@@ -1,0 +1,2 @@
+Error: validation of submitter metadata failed: input/bad_no_name.json
+    caused by: submitter.contacts field name is required

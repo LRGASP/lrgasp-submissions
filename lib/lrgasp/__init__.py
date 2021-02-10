@@ -1,5 +1,4 @@
 import sys
-import re
 import gzip
 
 def handle_prog_errors(ex):
@@ -13,16 +12,6 @@ def handle_prog_errors(ex):
 
 class LrgaspException(Exception):
     pass
-
-def checkValidSymbolicIdent(ident, description, prefix=None):
-    if not ident.isidentifier():
-        raise LrgaspException(f"not a valid {description} identifier: '{ident}'")
-    if (prefix is not None) and (not ident.startwith(prefix)):
-        raise LrgaspException(f"{description} must start with {prefix}: '{ident}'")
-
-def checkValidFeatureIdent(ident, description):
-    if (not ident.isascii()) or (not ident.isprintable()) or re.search("\\s", ident):
-        raise LrgaspException(f"not a valid {description} identifier, must be composed of ASCII, printable, non-white-space characters: '{ident}'")
 
 def gopen(path):
     "open a file for reading, allowing compressed files"
