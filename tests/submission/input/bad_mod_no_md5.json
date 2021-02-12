@@ -18,8 +18,7 @@
         },
         {
             "fname": "read_model_map.tsv",
-            "ftype": "read_model_map",
-            "md5": "4c323e3d80cdb70ab5a03474bb50126a"
+            "ftype": "read_model_map"
         }
     ],
     "software": [

@@ -20,7 +20,7 @@ def _convert_type(desc, field, obj, val):
     try:
         setattr(obj, field.name, field.dtype(val))
     except ValueError as ex:
-        raise LrgaspException(f"{desc} field {field.name} is not a valid {field.dtype}: {val}") from ex
+        raise LrgaspException(f"{desc} field {field.name} is not a valid {field.dtype.__name__}: {val}") from ex
 
 def _validate_value(desc, field, obj, val):
     try:

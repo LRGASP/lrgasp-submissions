@@ -16,7 +16,7 @@
             "fname": "expression-matrix.tsv",
             "ftype": "expression_matrix",
             "md5": "8c86efed87c380a8097752f3651f26f6",
-            "units": "FPKM"
+            "units": "Barney"
         }
     ],
     "software": [

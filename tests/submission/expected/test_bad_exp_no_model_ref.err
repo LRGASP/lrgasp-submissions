@@ -1,0 +1,2 @@
+Error: validation of submission metadata failed: input/bad_exp_no_model_ref.json
+    caused by: submission must specify submission.model_submission_id for expression submissions

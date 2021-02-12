@@ -3,6 +3,7 @@
     "submission_id": "mod_try",
     "challenge_id": "iso_detect_finished",
     "submission_type": "model",
+    "model_submission_id": "mod_try",
     "description": "Our best transcript models",
     "notes": "this is really good",
     "data_files": [

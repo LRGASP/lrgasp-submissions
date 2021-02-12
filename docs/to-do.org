@@ -20,3 +20,6 @@ should we test if they resolves?
 * capturing command lines
 * require protocol description
 * add assembly
+* check for files not having directories
+* change catch structure to cover function, avoid passing desxription
+* change submission to experiment

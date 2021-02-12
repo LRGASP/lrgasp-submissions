@@ -8,8 +8,8 @@ from lrgasp.types import SubmissionType, ExpressionUnits, ResultFileType, valida
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url, validate_md5
 
 
-fld_submitter_id = Field("submitter_id")
-fld_submission_id = Field("submission_id")
+fld_submitter_id = Field("submitter_id", validator=validate_symbolic_ident)
+fld_submission_id = Field("submission_id", validator=validate_symbolic_ident)
 fld_description = Field("description")
 fld_challenge_id = Field("challenge_id", validator=validate_symbolic_ident)
 fld_submission_type = Field("submission_type", SubmissionType)

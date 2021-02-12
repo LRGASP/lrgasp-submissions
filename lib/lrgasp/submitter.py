@@ -10,7 +10,7 @@ from lrgasp.types import validate_symbolic_ident
 ##
 # top-level submitter struct (from JSON)
 ##
-fld_submitter_id = Field("submitter_id")
+fld_submitter_id = Field("submitter_id", validator=validate_symbolic_ident)
 fld_group_name = Field("group_name")
 fld_group_url = Field("group_url", optional=True, validator=validate_http_url)
 fld_notes = Field("notes", allow_empty=True, optional=True)

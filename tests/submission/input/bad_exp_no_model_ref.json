@@ -3,7 +3,6 @@
     "submission_id": "exp_try",
     "challenge_id": "iso_quant",
     "submission_type": "expression",
-    "model_submission_id": "mod_try",
     "description": "Expression results",
     "notes": "this is so-so good",
     "data_files": [
@@ -15,8 +14,7 @@
         {
             "fname": "expression-matrix.tsv",
             "ftype": "expression_matrix",
-            "md5": "8c86efed87c380a8097752f3651f26f6",
-            "units": "FPKM"
+            "md5": "8c86efed87c380a8097752f3651f26f6"
         }
     ],
     "software": [
