@@ -9,20 +9,20 @@ sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
 
 from lrgasp import handle_prog_errors
 from lrgasp import LrgaspException
-from lrgasp import submitter
+from lrgasp import submission
 
 def parse_args():
-    desc = """Validate that an LRGASP submitter meets requirements.
+    desc = """Validate that an LRGASP submission meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("submitter_json",
-                        help="submitter JSON")
+    parser.add_argument("submission_json",
+                        help="submission JSON")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        submitter.submitter_load(args.submitter_json)
+        submission.submission_load(args.submission_json)
     except LrgaspException as ex:
         handle_prog_errors(ex)
 

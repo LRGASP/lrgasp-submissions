@@ -1,2 +1,2 @@
 Error: validation of submitter metadata failed: input/bad_url.json
-    caused by: submitter field group_url is not a valid URL: httpfoo://LongReadsExpertLab.univeristy.edu
+    caused by: invalid URL: httpfoo://LongReadsExpertLab.univeristy.edu

@@ -36,17 +36,18 @@ An empty template is also available: [``submission.json``](../templates/submissi
 * ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).
 * ``submission_type`` - one of ``model`` or ``expression``.
 * ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
-* ``technologies`` - sequencing technologies, one or more of``PacBio``, ``ONT``, ``Illumina``
-* ``protocol`` - library preparation protocol, values will be defined later
-* ``samples`` - list of sample names
 * ``notes`` - notes (optional)
-* ``files`` - List of files descriptions for submitted files:
+* ```data_files`` - list of input data files supplied by the LRGASP
+  * ``acc`` - accession (ENCODE or LRGASP) for input data files (optional if URL supplied)
+  * ``url`` - URL to file; intended for non-LRGASP provided files (optional if acc supplied)
+  * ``notes`` - notes about the file (optional)
+* ``result_files`` - List of files descriptions for submitted files:
   * ``fname`` - name of file (without directory), compressed with required extensions.
   * ``ftype`` - type of file, one of:
-    * ``modelGTF``- [Transcript model format](model-format.md)
-    * ``readModelMap`` - [Read to transcript model map](read_model_map_format.md)
-    * ``expressionMatrix`` - [Transcript expression matrix format](expression_matrix_format.md)
-  * ``md5`` - md5 sum of file, as a hexadecimal string (standard output from ``md5sum`` command)
+    * ``model_GTF``- [Transcript model format](model-format.md)
+    * ``read_model_map`` - [Read to transcript model map](read_model_map_format.md)
+    * ``expression_matrix`` - [Transcript expression matrix format](expression_matrix_format.md)
+  * ``md5`` - md5 sum of file, as a hexadecimal string (output from ``md5sum`` command)
   * ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.
   * ``notes`` - notes about the file (optional)
 * ``software`` - list of software used by the pipeline:
@@ -54,6 +55,7 @@ An empty template is also available: [``submission.json``](../templates/submissi
   * ``description`` - description of software (optional)
   * ``version`` - version of software
   * ``url`` - URL to software repository
+  * ``config`` - command line and/or configuration options (optional)
   * ``notes`` - notes about software or how it was used (optional)
   
 ## Open issues

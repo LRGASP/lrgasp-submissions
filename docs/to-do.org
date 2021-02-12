@@ -17,3 +17,6 @@
 * email and url validation
 https://validators.readthedocs.io/en/latest/
 should we test if they resolves?
+* capturing command lines
+* require protocol description
+* add assembly

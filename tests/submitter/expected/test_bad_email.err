@@ -1,3 +1,2 @@
 Error: validation of submitter metadata failed: input/bad_email.json
-    caused by: submitter.contacts field email is valid email address: fred
-    caused by: The email address is not valid. It must have exactly one @-sign.
+    caused by: invalid email address: fred
