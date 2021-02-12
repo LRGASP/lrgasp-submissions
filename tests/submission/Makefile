@@ -6,10 +6,13 @@ bad_tests = $(basename $(notdir ${bad_jsons}))
 good_jsons = $(wildcard input/good_*.json)
 good_tests = $(basename $(notdir ${good_jsons}))
 
-test: test_example bad_tests good_tests
+test: test_mod_example test_exp_example bad_tests good_tests
 
-test_example:
-	${lrgasp_validate_submission-metadata} ../../examples/submission.json
+test_mod_example:
+	${lrgasp_validate_submission-metadata} ../../examples/experts/mod_try/submission.json
+
+test_exp_example:
+	${lrgasp_validate_submission-metadata} ../../examples/experts/exp_try/submission.json
 
 bad_tests: ${bad_tests:%=test_%}
 

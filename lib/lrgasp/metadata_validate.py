@@ -30,9 +30,10 @@ def _validate_value(desc, field, obj, val):
 
 def _check_field_present(desc, field, obj):
     val = getattr(obj, field.name)
-    if not isinstance(val, field.dtype):
-        raise LrgaspException(f"{desc} field {field.name} must be a {field.dtype.__name__}")
-    elif field.dtype not in (str, list):
+    if field.dtype in (str, list):
+        if not isinstance(val, field.dtype):
+            raise LrgaspException(f"{desc} field {field.name} must be a {field.dtype.__name__}")
+    else:
         _convert_type(desc, field, obj, val)
     if (not field.allow_empty) and (len(val) == 0):
         raise LrgaspException(f"{desc} field {field.name} must be a non-empty {field.dtype.__name__}")

@@ -6,7 +6,7 @@ bad_tests = $(basename $(notdir ${bad_gtfs}))
 test: test_example bad_tests
 
 test_example:
-	${lrgasp_validate_gtf} ../../examples/models.gtf 
+	${lrgasp_validate_gtf} ../../examples/experts/mod_try/models.gtf
 
 bad_tests: ${bad_tests:%=test_%}
 

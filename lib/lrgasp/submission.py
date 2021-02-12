@@ -97,10 +97,10 @@ def submission_validate(submission):
     desc = "submission"
     check_from_defs(desc, submission_fields, submission)
     if submission.submission_type is SubmissionType.expression:
-        if fld_model_submission_id.name not in fld_model_submission_id.name:
+        if fld_model_submission_id.name not in submission:
             raise LrgaspException(f"{desc} must specify submission.{fld_model_submission_id.name} for {submission.submission_type} submissions")
     else:
-        if fld_model_submission_id.name in fld_model_submission_id.name:
+        if fld_model_submission_id.name in submission:
             raise LrgaspException(f"{desc} must not specify submission.{fld_model_submission_id.name} for {submission.submission_type} submissions")
 
     for data_file in submission.data_files:

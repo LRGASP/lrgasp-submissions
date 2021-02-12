@@ -6,7 +6,7 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 test: test_example test_with_NA bad_tests
 
 test_example:
-	${lrgasp_validate_expression_matrix} ../../examples/expression-matrix.tsv
+	${lrgasp_validate_expression_matrix} ../../examples/experts/exp_try/expression-matrix.tsv
 
 test_with_NA:
 	${lrgasp_validate_expression_matrix} input/with_NA.tsv

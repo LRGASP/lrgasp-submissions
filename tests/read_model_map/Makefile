@@ -6,7 +6,7 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 test: test_example bad_tests
 
 test_example:
-	${lrgasp_validate_read_model_map} ../../examples/read_model_map.tsv
+	${lrgasp_validate_read_model_map} ../../examples/experts/mod_try/read_model_map.tsv
 
 bad_tests: ${bad_tests:%=test_%}
 

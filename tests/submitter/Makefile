@@ -9,7 +9,7 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_example bad_tests good_tests
 
 test_example:
-	${lrgasp_validate_submitter-metadata} ../../examples/submitter.json
+	${lrgasp_validate_submitter-metadata} ../../examples/expert/submitter.json
 
 bad_tests: ${bad_tests:%=test_%}
 
