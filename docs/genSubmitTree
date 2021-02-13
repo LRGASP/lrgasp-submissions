@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
 # generates directory tree example using graphviz
-import pygraphviz as pgv
 
+import sys
+import os.path as osp
+import pygraphviz as pgv
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
 from lrgasp.types import Challenge
 
