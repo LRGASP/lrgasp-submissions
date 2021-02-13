@@ -1,3 +1,6 @@
+testrootdir = .
+include ${testrootdir}/testing.mk
+
 subdirs = gtf read_model_map expression_matrix team experiment
 
 test: ${subdirs:%=%_test}

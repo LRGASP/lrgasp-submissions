@@ -1,3 +1,6 @@
+testrootdir = ..
+include ${testrootdir}/testing.mk
+
 lrgasp_validate_read_model_map = ../../bin/lrgasp-validate-read-model-map
 
 bad_tsvs = $(wildcard input/bad_*.tsv)

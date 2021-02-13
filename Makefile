@@ -16,6 +16,7 @@ test: ${subdirs:%=%_test}
 	cd $* && ${MAKE} test
 
 clean: ${subdirs:%=%_clean}
+	rm -rf build lib/lrgasp.egg-info
 %_clean:
 	cd $* && ${MAKE} clean
 

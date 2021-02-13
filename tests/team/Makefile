@@ -1,3 +1,6 @@
+testrootdir = ..
+include ${testrootdir}/testing.mk
+
 lrgasp_validate_team-metadata = ../../bin/lrgasp-validate-team-metadata
 
 bad_jsons = $(wildcard input/bad_*.json)

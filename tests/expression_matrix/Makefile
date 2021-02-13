@@ -1,3 +1,6 @@
+testrootdir = ..
+include ${testrootdir}/testing.mk
+
 lrgasp_validate_expression_matrix = ../../bin/lrgasp-validate-expression-matrix
 
 bad_tsvs = $(wildcard input/bad_*.tsv)

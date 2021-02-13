@@ -1,3 +1,6 @@
+testrootdir = ..
+include ${testrootdir}/testing.mk
+
 lrgasp_validate_gtf = ../../bin/lrgasp-validate-gtf
 
 bad_gtfs = $(wildcard input/bad_*.gtf)
