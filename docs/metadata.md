@@ -4,15 +4,15 @@ Metadata files are in [JSON](https://www.json.org/json-en.html) format.  JSON
 provides a good compromise between able to store structured data and ease of
 use.  Templates and a validator are provided.
 
-## ``submitter.json``
-This file contains information about the submitting group.  This is at the top
-of the submitter's tree (see [Submission structure](submission.md)) and
-applies to all submissions by the group.  See
-[``submitter.json``](../examples/submitter.json) for an example.  An
+## ``team.json``
+This file contains information about the submitting team.  This is at the top
+of the team's tree (see [Experiment structure](experiment.md)) and
+applies to all experiments by the group.  See
+[``team.json``](../examples/experts/team.json) for an example.  An
 empty template is also available:
-[``submitter.json``](../templates/submitter.json).
+[``team.json``](../templates/team.json).
 
-* ``submitter_id`` - [symbolic identifer](submission.md#symbolic-identifiers) for the submitter, assigned when the user registers for LRGASP.
+* ``team_id`` - [symbolic identifer](experiment.md#symbolic-identifiers) for the team, assigned when the user registers for LRGASP.
 * ``group_name`` - name of the submitting lab
 * ``group_url`` - URL of the submitting lab page (optional)
 * ``notes`` - notes (optional)
@@ -21,21 +21,21 @@ empty template is also available:
   * ``email`` - e-mail of the contact, which can be an e-mail list
   * ``notes`` - notes about the contact (optional)
 
-## ``submission.json``
-This file describes the submission, specifying all data files.  One is created
-in each submission directory (see [Submission structure](submission.md)).  Data
-files are either in the submission directory or a sub-directories.  All files
-paths in ``submission.json`` are relative to the directory containing  ``submission.json``.
+## ``experiment.json``
+This file describes the experiment, specifying all data files.  One is created
+in each experiment directory (see [Experiment structure](experiment.md)).  Data
+files are either in the experiment directory or a sub-directories.  All files
+paths in ``experiment.json`` are relative to the directory containing  ``experiment.json``.
 
-See [``submission.json``](../examples/submission.json) for an example.
-An empty template is also available: [``submission.json``](../templates/submission.json).
+See [``experiment.json``](../examples/experts/mod_try/experiment.json) for an example.
+An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
-* ``submitter_id`` - must match the ``submitter_id`` in ``submitter.json``.
-* ``submission_id`` - submitter-defined [symbolic identifer](submission.md#symbolic-identifiers), unique to that submitter.
-* ``description`` - description of submission
+* ``team_id`` - must match the ``team_id`` in ``team.json``.
+* ``experiment_id`` - team-defined [symbolic identifer](experiment.md#symbolic-identifiers), unique to that team.
+* ``description`` - description of experiment
 * ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).
-* ``submission_type`` - one of ``model`` or ``expression``.
-* ``model_submission_id`` - if an ``expression`` submission, the model ``submission_id`` for which the expressions were computed.
+* ``experiment_type`` - one of ``model`` or ``expression``.
+* ``model_experiment_id`` - if an ``expression`` experiment, the model ``experiment_id`` for which the expressions were computed.
 * ``notes`` - notes (optional)
 * ```data_files`` - list of input data files supplied by the LRGASP
   * ``acc`` - accession (ENCODE or LRGASP) for input data files (optional if URL supplied)
@@ -58,11 +58,3 @@ An empty template is also available: [``submission.json``](../templates/submissi
   * ``config`` - command line and/or configuration options (optional)
   * ``notes`` - notes about software or how it was used (optional)
   
-## Open issues
-- separate expression and matrix submission 
-  - replicate
-- updates: do we allow overwrite or keep all version
-- version 
-- target data set identifier
-- add picture 
-- add read-to transcript file

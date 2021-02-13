@@ -1,0 +1,14 @@
+{
+    "team_id": "123-experts",
+    "group_name": "Long-reads Expert Lab",
+    "contacts": [
+        {
+            "name": "LongReadsExpertLab",
+            "email": "LongReadsExpertLab@university.edu"
+        },
+        {
+            "name": "Dr. Long Read",
+            "email": "long.read@university.edu"
+        }
+    ]
+}

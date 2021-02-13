@@ -11,17 +11,17 @@ class Challenge(SymEnum):
     iso_quant = auto()
     iso_detect_draft = auto()
 
-class SubmissionType(SymEnum):
-    "type of a submission, assumed from Challenge type"
+class ExperimentType(SymEnum):
+    "type of a experiment, assumed from Challenge type"
     model = auto()
     expression = auto()
 
-def challengeToSubmissionType(challenge):
+def challengeToExperimentType(challenge):
     assert isinstance(challenge, Challenge)
     if challenge is Challenge.iso_quant:
-        return SubmissionType.expression
+        return ExperimentType.expression
     else:
-        return SubmissionType.model
+        return ExperimentType.model
 
 class ResultFileType(SymEnum):
     "type of a submitted data file"

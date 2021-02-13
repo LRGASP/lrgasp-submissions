@@ -34,4 +34,4 @@ m54284U_191110_105540/60/ccs    ENST00000247655.3
 
 There is not any limitation about reporting one single read linked to several transcript models, and vice versa. However, it is still unclear how this might be evaluated (or even if it should be evaluated).
 
-Additionally, participants may want to submit a BED12-like format in which they map the initial sequences to the reference genome. To provide or not this information is up to the submitters, because this might be a bit complicated with some pipelines.
+Additionally, participants may want to submit a BED12 format in which they map the initial sequences to the reference genome. To provide or not this information is up to the submitters, because this might be a bit complicated with some pipelines.

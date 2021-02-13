@@ -1,18 +1,29 @@
 # Submission structure
 
-Submissions to LRGASP target a particular challenge, with two types of
-submissions: model and expression. Model submissions are genomic transcript
-model predictions, and expression submissions are transcript expression
-estimates of a set of submitted models.
+Submissions to LRGASP consist of experiments targeting a particular challenge
+by a team.  With two types of experiment: model and expression.  Model
+experiments are genomic transcript model predictions, and expression
+experiments are transcript expression estimates of a set of submitted models.
 
-A participant may submit two model submissions per challenge and up to two expression submissions per model submission.  The purpose of this limit is to prevent the evaluation process from being overwhelmed by submissions with minor variations. If you need to exceed this limit, please contact [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu).
+A participant may submit two model experiments per challenge and up to two
+expression experiments per model submission.  The purpose of this limit is to
+prevent the evaluation process from being overwhelmed by experiments with
+minor variations. If you need to exceed this limit, please contact
+[lrgasp-support](mailto:lrgasp-support-group@ucsc.edu).
 
-When a submitter registers for LRGASP, they are assigned a [symbolic identifier](#symbolic-identifiers), called the ``submitter_id``.  Other symbolic submission identifiers assigned by the submitter and must be valid [symbolic identifier](#symbolic-identifiers), as described below.  Model submission identifiers must start with ``mod_`` and expression ones with ``exp_``.
+When a team registers for LRGASP, they are assigned a [symbolic
+identifier](#symbolic-identifiers), called the ``team_id``.  Other symbolic
+experiment identifiers assigned by the team and must be valid [symbolic
+identifier](#symbolic-identifiers), as described below.  Model experiment
+identifiers must start with ``mod_`` and expression ones with ``exp_``.
 
-Each submitter is given a file area to upload their results (a mechanism to be determined).  The top-level directory name in that area is the *submitter_id*. Below that are directories for each submission.  Submissions are updated by replacing files, and submissions retracted simply by removing the directory.
+Each team is given a file area to upload their results (a mechanism to be
+determined).  The top-level directory name in that area is the
+*team_id*. Below that are directories for each submission.  Experiments are
+updated by replacing files, and experiments retracted simply by removing the
+directory.
 
 This diagram shows the general structure:
-
 
 ![Submission file hierarchy diagram](submit_tree.png)
 

@@ -1,2 +1,0 @@
-Error: validation of submission metadata failed: input/bad_exp_no_units.json
-    caused by: submission.result_files expression_matrix must specify units

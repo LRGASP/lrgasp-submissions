@@ -1,2 +1,0 @@
-Error: validation of submission metadata failed: input/bad_mod_invalid_md5.json
-    caused by: MD5 must be a 128-bit hexadecimal number: Wilmae3d80cdb70ab5a03474bb50126a

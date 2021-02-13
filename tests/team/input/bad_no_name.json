@@ -1,0 +1,17 @@
+{
+    "team_id": "experts",
+    "group_name": "Long-reads Expert Lab",
+    "group_url": "https://LongReadsExpertLab.univeristy.edu",
+    "notes": "we have good stuff",
+    "contacts": [
+        {
+            "name": "LongReadsExpertLab",
+            "email": "LongReadsExpertLab@university.edu",
+            "notes": "our mailing list"
+        },
+        {
+            "email": "long.read@university.edu",
+            "notes": "the PI"
+        }
+    ]
+}

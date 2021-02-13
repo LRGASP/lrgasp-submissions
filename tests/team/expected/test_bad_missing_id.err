@@ -1,0 +1,2 @@
+Error: validation of team metadata failed: input/bad_missing_id.json
+    caused by: team field team_id is required

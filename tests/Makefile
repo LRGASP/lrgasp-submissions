@@ -1,4 +1,4 @@
-subdirs = gtf read_model_map expression_matrix
+subdirs = gtf read_model_map expression_matrix team experiment
 
 test: ${subdirs:%=%_test}
 %_test:

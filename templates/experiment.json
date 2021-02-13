@@ -1,0 +1,35 @@
+{
+    "team_id": "",
+    "experiment_id": "",
+    "description": "",
+    "challenge_id": "",
+    "experiment_type": "",
+    "model_experiment_id": "",
+    "notes": "",
+    "data_files": [
+        {
+            "acc": "",
+            "url": "",
+            "notes": "",
+        }
+    ],
+    "result_files": [
+        {
+            "fname": "",
+            "ftype": "",
+            "md5": "",
+            "units": "",
+            "notes": ""
+        }
+    ],
+    "software": [
+        {
+            "name": "",
+            "description": "",
+            "version": "",
+            "url": "",
+            "config": "",
+            "notes": ""
+        }
+    ]
+}

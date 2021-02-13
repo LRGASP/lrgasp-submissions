@@ -1,2 +1,0 @@
-Error: validation of submitter metadata failed: input/bad_email.json
-    caused by: invalid email address: fred

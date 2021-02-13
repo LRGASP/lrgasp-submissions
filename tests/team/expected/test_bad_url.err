@@ -1,0 +1,2 @@
+Error: validation of team metadata failed: input/bad_url.json
+    caused by: invalid URL: httpfoo://LongReadsExpertLab.univeristy.edu

@@ -1,3 +1,0 @@
-Error: validation of submission metadata failed: input/bad_exp_bad_units.json
-    caused by: submission.result_files field units is not a valid ExpressionUnits: Barney
-    caused by: 'Barney' is not a member, external name, or alias of ExpressionUnits
