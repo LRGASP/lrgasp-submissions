@@ -30,8 +30,8 @@ transcript with the same value.  An example models submission GTF file is at
 [models.gtf](../examples/experts/mod_try/models.gtf).
 
 ## File naming
-Files must be named `xxx.gtf` (FIXME defend better) and maybe compressed with `gzip` and 
-then have a name in the form `xxx.gtf.gz`.
+Files must be named `xxx.gtf` and maybe compressed with `gzip` and then have a
+name in the form `xxx.gtf.gz`.
 
 ## Validation
 

@@ -25,7 +25,7 @@ def challengeToExperimentType(challenge):
 
 class ResultFileType(SymEnum):
     "type of a submitted data file"
-    model_GTF = auto()
+    model_gtf = auto()
     read_model_map = auto()
     expression_matrix = auto()
 

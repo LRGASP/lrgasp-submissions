@@ -13,7 +13,7 @@
     "result_files": [
         {
             "fname": "models.gtf",
-            "ftype": "model_GTF",
+            "ftype": "model_gtf",
             "md5": "656c04d3a34d2f539e3699c2568d4ed1"
         },
         {

@@ -44,7 +44,7 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``result_files`` - List of files descriptions for submitted files:
   * ``fname`` - name of file (without directory), compressed with required extensions.
   * ``ftype`` - type of file, one of:
-    * ``model_GTF``- [Transcript model format](model-format.md)
+    * ``model_gtf``- [Transcript model format](model-format.md)
     * ``read_model_map`` - [Read to transcript model map](read_model_map_format.md)
     * ``expression_matrix`` - [Transcript expression matrix format](expression_matrix_format.md)
   * ``md5`` - md5 sum of file, as a hexadecimal string (output from ``md5sum`` command)
