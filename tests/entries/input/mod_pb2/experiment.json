@@ -1,0 +1,34 @@
+{
+    "team_id": "darwin",
+    "experiment_id": "mod_pb2",
+    "experiment_type": "model",
+    "description": "Transcript models for Human NA12878 PacBio CCS RNA sequenceing, more sensitive and less specific models",
+    "challenge_id": "transcirpt_models",
+    "data_files": [
+        {
+            "acc": "ENF12345"
+        }
+    ],
+    "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
+    "result_files": [
+        {
+            "fname": "transcript_models.gtf",
+            "ftype": "model_gtf",
+            "md5": "51b60c7279aaa1f9c5b0b0ad10adeebc"
+        },
+        {
+            "fname": "reads_transcript_map.tsv",
+            "ftype": "read_model_map",
+            "md5": "b9a3b0f743ca72472a37e4586ae8e8a3"
+        }
+    ],
+    "software": [
+        {
+            "name": "IsoQuant",
+            "description": "IsoQuant is a tool for reference-based analysis of long RNA reads. It assigns reads to known isoforms, detects inconsistencies and construncts novel transcript models.",
+            "version": "1.0.0",
+            "url": "https://github.com/ablab/IsoQuant",
+            "notes": "IsoQuant was launched with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
+        }
+    ]
+}
