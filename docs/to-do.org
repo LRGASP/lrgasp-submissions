@@ -1,10 +1,3 @@
-* gtf validation
-- validate chromosomes
-- validate transcript in multiple genes" "m54284U_191110" and "m54284U_191111". 
-- validate transcript in multiple chrom
-* read model validation
-- check read ids look sane
-- make names consistent reads_transcript_map_format.md
 * metadata validator
 * test for compressed data files
 * expression matrix validator
@@ -14,13 +7,10 @@
 - list of sequences and sizes
 ** list of BAMs
 ** annotations
-* email and url validation
-https://validators.readthedocs.io/en/latest/
-should we test if they resolves?
 * capturing command lines
 * require protocol description
 * add assembly
-* check for files not having directories
-* change catch structure to cover function, avoid passing desxription
-* change submission to experiment
-* update templates
+* doc that file paths are relative
+* add additional file types
+* how to tie together experiments to be evaluated
+- called an *entry*

@@ -1,0 +1,34 @@
+{
+    "team_id": "darwin",
+    "experiment_id": "mod_ont_drna2",
+    "experiment_type": "model",
+    "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing, more sensitive and less specific models",
+    "challenge_id": "transcirpt_models",
+    "data_files": [
+        {
+            "acc": "ENF12345"
+        }
+    ],
+    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "result_files": [
+        {
+            "fname": "transcript_models.gtf",
+            "ftype": "model_gtf",
+            "md5": "f03c65b918ad8c1f15591edff2394365"
+        },
+        {
+            "fname": "reads_transcript_map.tsv",
+            "ftype": "read_model_map",
+            "md5": "f15e16611d173546044316832682ddd8"
+        }
+    ],
+    "software": [
+        {
+            "name": "IsoQuant",
+            "description": "IsoQuant is a tool for reference-based analysis of long RNA reads. It assigns reads to known isoforms, detects inconsistencies and construncts novel transcript models.",
+            "version": "1.0.0",
+            "url": "https://github.com/ablab/IsoQuant",
+            "notes": "IsoQuant was launched with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
+        }
+    ]
+}

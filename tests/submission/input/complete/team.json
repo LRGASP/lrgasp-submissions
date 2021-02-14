@@ -1,0 +1,11 @@
+{
+    "team_id": "darwin",
+    "group_name": "Center for Evolutionary Biology, University of Cambridge",
+    "group_url": "https://darwinlab.cam.ac.uk",
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "darwin@www.cam.ac.uk"
+        }
+    ]
+}
