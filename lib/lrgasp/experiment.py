@@ -2,7 +2,7 @@
 Experiment metadata parsing and validation.
 """
 import json
-from lrgasp import LrgaspException
+from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.types import ExperimentType, ExpressionUnits, ResultFileType, validate_symbolic_ident
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url, validate_md5
@@ -111,10 +111,10 @@ def experiment_validate(experiment):
 def experiment_load(experiment_json):
     """load and validate experiment metadata"""
     try:
-        with open(experiment_json) as fh:
+        with gopen(experiment_json) as fh:
             experiment = json.load(fh, object_pairs_hook=ObjDict)
     except json.decoder.JSONDecodeError as ex:
-        raise LrgaspException(f"parse of experiment metadata failed: {experiment_json}") from ex
+        raise LrgaspException(f"parse of experiment metadata (JSON) failed: {experiment_json}") from ex
     try:
         experiment_validate(experiment)
     except LrgaspException as ex:

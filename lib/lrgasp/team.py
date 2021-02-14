@@ -2,7 +2,7 @@
 Team metadata parsing and validation.
 """
 import json
-from lrgasp import LrgaspException
+from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email, validate_http_url
 from lrgasp.types import validate_symbolic_ident
@@ -53,10 +53,10 @@ def team_validate(team):
 def team_load(team_json):
     """load and validate team metadata"""
     try:
-        with open(team_json) as fh:
+        with gopen(team_json) as fh:
             team = json.load(fh, object_pairs_hook=ObjDict)
     except json.decoder.JSONDecodeError as ex:
-        raise LrgaspException(f"parse of team metadata failed: {team_json}") from ex
+        raise LrgaspException(f"parse of team metadata (JSON) failed: {team_json}") from ex
     try:
         team_validate(team)
     except LrgaspException as ex:
