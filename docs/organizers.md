@@ -1,14 +1,29 @@
 # Documentation for LRGASP organizers
 
 
+## Development
 
-## build pip installable packages
+Running test set PYTHONPATH and don't require a virtualenv
+```
+make test
+```
+
+## Build pip installable packages
 
 To build and test package
 ```
-python3 setup.py build
-python3 -m virtualenv env
-source env/bin/activate
-python3 setup.py install
-make test -j 8
+make test-pip
+make release-test
+make test-release-pip
 ```
+
+## release to pypi
+```
+bumpversion major|minor|patch
+commit to master
+git push origin --tags
+git push
+make release
+```
+
+Test release install!!

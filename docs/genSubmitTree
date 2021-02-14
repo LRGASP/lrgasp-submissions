@@ -70,6 +70,7 @@ def build_tree(g):
     add_dir(g, Challenge.iso_detect_finished, MOD_TWO)
     add_file(g, MOD_TWO, EXPERIMENT_MD)
     add_file(g, MOD_TWO, MOD_TWO_MODELS)
+    add_file(g, MOD_TWO, MOD_ONE_READS_TRANS_MAP)
 
 def mk_graph():
     g = pgv.AGraph()
