@@ -1,8 +1,6 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-lrgasp_validate_expression_matrix = ../../bin/lrgasp-validate-expression-matrix
-
 bad_tsvs = $(wildcard input/bad_*.tsv)
 bad_tests = $(basename $(notdir ${bad_tsvs}))
 
@@ -10,6 +8,13 @@ test: test_example test_with_NA bad_tests
 
 test_example:
 	${lrgasp_validate_expression_matrix} ../../examples/experts/exp_try/expression-matrix.tsv
+
+test_example_gz: output/expression-matrix.tsv.gz
+	${lrgasp_validate_expression_matrix} $<
+
+output/expression-matrix.tsv.gz: ../../examples/experts/exp_try/expression-matrix.tsv
+	@mkdir -p output	
+	gzip -c $< >$@
 
 test_with_NA:
 	${lrgasp_validate_expression_matrix} input/with_NA.tsv

@@ -1,15 +1,20 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-lrgasp_validate_gtf = ../../bin/lrgasp-validate-gtf
-
 bad_gtfs = $(wildcard input/bad_*.gtf)
 bad_tests = $(basename $(notdir ${bad_gtfs}))
 
-test: test_example bad_tests
+test: test_example test_example_gz bad_tests
 
 test_example:
 	${lrgasp_validate_gtf} ../../examples/experts/mod_try/models.gtf
+
+test_example_gz: output/models.gtf.gz
+	${lrgasp_validate_gtf} $<
+
+output/models.gtf.gz: ../../examples/experts/mod_try/models.gtf
+	@mkdir -p output	
+	gzip -c $< >$@
 
 bad_tests: ${bad_tests:%=test_%}
 

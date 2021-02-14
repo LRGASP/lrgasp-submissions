@@ -16,6 +16,6 @@ class LrgaspException(Exception):
 def gopen(path):
     "open a file for reading, allowing compressed files"
     if path.endswith(".gz"):
-        return gzip.open(path)
+        return gzip.open(path, "rt")
     else:
         return open(path)

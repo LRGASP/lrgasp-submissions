@@ -13,4 +13,5 @@
 * doc that file paths are relative
 * add additional file types
 * how to tie together experiments to be evaluated
-- called an *entry*
+- call an *entry*
+* should expression matrix have transcript_id instead of ID

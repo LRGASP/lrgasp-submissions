@@ -37,8 +37,8 @@ def validate_header(expr_mat):
 
 def check_column_type(expr_mat, col):
     "validate column type is correct"
-    if expr_mat.dtypes[col] != np.float64:
-        raise LrgaspException(f"Invalid value(s) in column '{col}', must be a number or NA, appears to contain strings")
+    if expr_mat.dtypes[col] not in (np.float64, np.int64):
+        raise LrgaspException(f"Invalid value(s) in column '{col}', must be a number or NA, appears to contain other types, induced type is ({expr_mat.dtypes[col]})")
 
 def validate_data(expr_mat):
     if expr_mat.size == 0:
@@ -54,10 +54,11 @@ def validate(expr_mat):
 def expr_mat_load(expr_mat_tsv):
     try:
         check_row_consistency(expr_mat_tsv)
-        expr_mat = pd.read_csv(expr_mat_tsv,
-                               dialect=csv.excel_tab,
-                               header=0,
-                               converters={"ID": str})
+        with gopen(expr_mat_tsv) as fh:
+            expr_mat = pd.read_csv(fh,
+                                   dialect=csv.excel_tab,
+                                   header=0,
+                                   converters={"ID": str})
         validate(expr_mat)
         return expr_mat
     except (LrgaspException, pd.errors.ParserError, pd.errors.EmptyDataError) as ex:

@@ -1,8 +1,6 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-lrgasp_validate_team-metadata = ../../bin/lrgasp-validate-team-metadata
-
 bad_jsons = $(wildcard input/bad_*.json)
 bad_tests = $(basename $(notdir ${bad_jsons}))
 
@@ -12,19 +10,19 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_example bad_tests good_tests
 
 test_example:
-	${lrgasp_validate_team-metadata} ../../examples/experts/team.json
+	${lrgasp_validate_team_metadata} ../../examples/experts/team.json
 
 bad_tests: ${bad_tests:%=test_%}
 
 test_bad%: mkout
-	@echo ${lrgasp_validate_team-metadata} input/bad$*.json  "(should fail)"
-	@if ! ${lrgasp_validate_team-metadata} input/bad$*.json 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@echo ${lrgasp_validate_team_metadata} input/bad$*.json  "(should fail)"
+	@if ! ${lrgasp_validate_team_metadata} input/bad$*.json 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 good_tests: ${good_tests:%=test_%}
 
 test_good%: mkout
-	${lrgasp_validate_team-metadata} input/good$*.json
+	${lrgasp_validate_team_metadata} input/good$*.json
 
 clean:
 	rm -rf output

@@ -1,33 +1,31 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-lrgasp_validate_experiment-metadata = ../../bin/lrgasp-validate-experiment-metadata
+team_meta = input/team.json
+mods = mod_ont_drna1 mod_ont_drna2 mod_pb1 mod_pb2
+exps = exp_ont_drna1 exp_ont_drna2 exp_pb1 exp_pb2
+exprs = ${mod} ${exps}
 
-bad_jsons = $(wildcard input/bad_*.json)
-bad_tests = $(basename $(notdir ${bad_jsons}))
+test: test_team \
+	${exprs:%=test_expr_meta_%} \
+	${mods:%=test_gtf_%} \
+	${mods:%=test_map_%} \
+	${exprs:%=test_expression_%} \
 
-good_jsons = $(wildcard input/good_*.json)
-good_tests = $(basename $(notdir ${good_jsons}))
+test_team: input/team.json
+	${lrgasp_validate_team_metadata} $<
 
-test: test_mod_example test_exp_example bad_tests good_tests
+test_expr_meta_%:
+	${lrgasp_validate_experiment_metadata} input/$*/experiment.json
 
-test_mod_example:
-	${lrgasp_validate_experiment-metadata} ../../examples/experts/mod_try/experiment.json
+test_gtf_%:
+	${lrgasp_validate_gtf} input/$*/transcript_models.gtf
 
-test_exp_example:
-	${lrgasp_validate_experiment-metadata} ../../examples/experts/exp_try/experiment.json
+test_map_%:
+	${lrgasp_validate_read_model_map} input/$*/reads_transcript_map.tsv
 
-bad_tests: ${bad_tests:%=test_%}
-
-test_bad%: mkout
-	@echo ${lrgasp_validate_experiment-metadata} input/bad$*.json  "(should fail)"
-	@if ! ${lrgasp_validate_experiment-metadata} input/bad$*.json 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
-	diff expected/$@.err output/$@.err
-
-good_tests: ${good_tests:%=test_%}
-
-test_good%: mkout
-	${lrgasp_validate_experiment-metadata} input/good$*.json
+test_expression_%:
+	${lrgasp_validate_expression_matrix} input/$*/expression.tsv
 
 clean:
 	rm -rf output

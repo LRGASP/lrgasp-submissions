@@ -1,15 +1,21 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-lrgasp_validate_read_model_map = ../../bin/lrgasp-validate-read-model-map
-
 bad_tsvs = $(wildcard input/bad_*.tsv)
 bad_tests = $(basename $(notdir ${bad_tsvs}))
 
-test: test_example bad_tests
+test: test_example test_example_gz bad_tests
 
 test_example:
 	${lrgasp_validate_read_model_map} ../../examples/experts/mod_try/read_model_map.tsv
+
+test_example_gz: output/read_model_map.tsv.gz
+	${lrgasp_validate_read_model_map} $<
+
+output/read_model_map.tsv.gz: ../../examples/experts/mod_try/read_model_map.tsv
+	@mkdir -p output	
+	gzip -c $< >$@
+
 
 bad_tests: ${bad_tests:%=test_%}
 
