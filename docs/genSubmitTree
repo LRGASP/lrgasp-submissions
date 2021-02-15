@@ -35,9 +35,13 @@ EXPERIMENT_COLOR = "mediumspringgreen"
 DATA_FILE_COLOR = "lightskyblue"
 METADATA_COLOR = "powderblue"
 
-def add_dir(g, parent, label, color):
-    name = parent + '/' + label
-    g.add_node(name, shape='folder', label=label, style="filled", fillcolor=color)
+def add_dir(g, parent, label, color, width=None):
+    if parent is not None:
+        name = parent + '/' + label
+    else:
+        name = label
+    g.add_node(name, shape='folder', label=label, style="filled", fillcolor=color,
+               width=width)
     if parent is not None:
         g.add_edge(parent, name)
     return name
@@ -48,14 +52,13 @@ def add_file(g, parent, label, color):
     g.add_edge(parent, name)
 
 def add_entry(g, name):
-    g.add_node(name, shape='folder', style="filled", fillcolor=ENTRY_COLOR,
-               width=1.8)
+    add_dir(g, None, name, ENTRY_COLOR, width=1.8)
     add_file(g, name, ENTRY_MD, METADATA_COLOR)
     return name
 
 def add_experiment(g, parent, label, data_files):
     name = parent + '/' + label
-    node = add_dir(g, parent, label, EXPERIMENT_COLOR)
+    node = add_dir(g, parent, label, EXPERIMENT_COLOR, width=1.0)
     add_file(g, node, EXPERIMENT_MD, METADATA_COLOR)
     for data_file in data_files:
         add_file(g, node, data_file, DATA_FILE_COLOR)
