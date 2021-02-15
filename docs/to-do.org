@@ -22,4 +22,7 @@ validate
 * removed 
 examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",
 
-* rename exp to quant ? or express,
+* problem: {exp}ression and {expr}iment are easily confused
+- rename exp to quant ? or express,
+- experiment -> analysis  (consistent with ENA)
+- want to distinguish model from expression
