@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_id.json
+    caused by: not a valid Synapse identifier: '123-experts'

@@ -1,12 +1,13 @@
 {
-    "team_id": "experts",
-    "group_name": "Long-reads Expert Lab",
-    "group_url": "https://LongReadsExpertLab.univeristy.edu",
+    "entry_id": "our_entry",
+    "challenge_id": "iso_detect_finished",
+    "team_id": "syn12345678",
+    "team_name": "",
     "notes": "we have good stuff",
     "contacts": [
         {
             "name": "LongReadsExpertLab",
-            "email": "fred",
+            "email": "LongReadsExpertLab@university.edu",
             "notes": "our mailing list"
         },
         {

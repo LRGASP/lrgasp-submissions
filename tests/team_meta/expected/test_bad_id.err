@@ -1,2 +1,0 @@
-Error: validation of team metadata failed: input/bad_id.json
-    caused by: not a valid symbolic identifier: '123-experts'

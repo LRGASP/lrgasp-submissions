@@ -4,17 +4,16 @@ Metadata files are in [JSON](https://www.json.org/json-en.html) format.  JSON
 provides a good compromise between able to store structured data and ease of
 use.  Templates and a validator are provided.
 
-## ``team.json``
-This file contains information about the submitting team.  This is at the top
-of the team's tree (see [Experiment structure](experiment.md)) and
-applies to all experiments by the group.  See
-[``team.json``](../examples/experts/team.json) for an example.  An
-empty template is also available:
-[``team.json``](../templates/team.json).
+## ``entry.json``
+This file contains information about the *entry* and team that is submitting
+it.  This is at the top of an entry tree (see [Submission structure](submission.md)).
+See [``entry.json``](../examples/experts/team.json) for an example.  An empty
+template is also available: [``entry.json``](../templates/entry.json).
 
-* ``team_id`` - [symbolic identifer](experiment.md#symbolic-identifiers) for the team, assigned when the user registers for LRGASP.
-* ``group_name`` - name of the submitting lab
-* ``group_url`` - URL of the submitting lab page (optional)
+* ``entry_id`` - submitter-assigned [symbolic identifer](experiment.md#symbolic-identifiers) for this entry.
+* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers) for valid values.
+* ``team_id`` - the Synapse *team* identifier.
+* ``team_name`` - name of the submitting lab
 * ``notes`` - notes (optional)
 * ``contacts`` - array of contacts, with the first entry considered the primary contact
   * ``name`` - name of the contact
@@ -30,7 +29,7 @@ paths in ``experiment.json`` are relative to the directory containing  ``experim
 See [``experiment.json``](../examples/experts/mod_try/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
-* ``team_id`` - must match the ``team_id`` in ``team.json``.
+* ``team_id`` - Synapse ``team_id`` matching ``entry.json``.
 * ``experiment_id`` - team-defined [symbolic identifer](experiment.md#symbolic-identifiers), unique to that team.
 * ``description`` - description of experiment
 * ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).

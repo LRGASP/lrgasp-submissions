@@ -7,12 +7,12 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 test: test_example test_with_NA bad_tests
 
 test_example:
-	${lrgasp_validate_expression_matrix} ../../examples/experts/exp_try/expression-matrix.tsv
+	${lrgasp_validate_expression_matrix} ${exampledir}/our_entry/exp_try/expression-matrix.tsv
 
 test_example_gz: output/expression-matrix.tsv.gz
 	${lrgasp_validate_expression_matrix} $<
 
-output/expression-matrix.tsv.gz: ../../examples/experts/exp_try/expression-matrix.tsv
+output/expression-matrix.tsv.gz: ${exampledir}/our_entry/exp_try/expression-matrix.tsv
 	@mkdir -p output	
 	gzip -c $< >$@
 

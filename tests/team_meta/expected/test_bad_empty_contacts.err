@@ -1,2 +1,0 @@
-Error: validation of team metadata failed: input/bad_empty_contacts.json
-    caused by: team field contacts must be a non-empty list

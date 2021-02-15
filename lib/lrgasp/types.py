@@ -44,3 +44,7 @@ def validate_symbolic_ident(ident):
 def validate_feature_ident(ident):
     if (not ident.isascii()) or (not ident.isprintable()) or re.search("\\s", ident):
         raise LrgaspException(f"invalid feature identifier, must be composed of ASCII, printable, non-white-space characters: '{ident}'")
+
+def validate_synapse_ident(ident):
+    if not re.match("^syn[0-9]{4,30}$", ident):
+        raise LrgaspException(f"not a valid Synapse identifier: '{ident}'")

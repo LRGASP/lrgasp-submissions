@@ -10,10 +10,10 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_mod_example test_exp_example bad_tests good_tests
 
 test_mod_example:
-	${lrgasp_validate_experiment_metadata} ../../examples/experts/mod_try/experiment.json
+	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/mod_try/experiment.json
 
 test_exp_example:
-	${lrgasp_validate_experiment_metadata} ../../examples/experts/exp_try/experiment.json
+	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/exp_try/experiment.json
 
 bad_tests: ${bad_tests:%=test_%}
 

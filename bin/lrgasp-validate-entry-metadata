@@ -4,20 +4,20 @@ import argparse
 import logging
 from lrgasp import handle_prog_errors
 from lrgasp import LrgaspException
-from lrgasp import team
+from lrgasp import entry
 
 def parse_args():
-    desc = """Validate that an LRGASP team meets requirements.
+    desc = """Validate that an LRGASP entry metadata meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("team_json",
-                        help="team JSON")
+    parser.add_argument("entry_json",
+                        help="entry JSON")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        team.team_load(args.team_json)
+        entry.entry_load(args.entry_json)
     except LrgaspException as ex:
         handle_prog_errors(ex)
 

@@ -1,2 +1,0 @@
-Error: validation of team metadata failed: input/bad_no_name.json
-    caused by: team.contacts field name is required

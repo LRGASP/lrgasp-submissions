@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_missing_id.json
+    caused by: entry field entry_id is required

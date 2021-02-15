@@ -7,12 +7,12 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 test: test_example test_example_gz bad_tests
 
 test_example:
-	${lrgasp_validate_read_model_map} ../../examples/experts/mod_try/read_model_map.tsv
+	${lrgasp_validate_read_model_map} ${exampledir}/our_entry/mod_try/read_model_map.tsv
 
 test_example_gz: output/read_model_map.tsv.gz
 	${lrgasp_validate_read_model_map} $<
 
-output/read_model_map.tsv.gz: ../../examples/experts/mod_try/read_model_map.tsv
+output/read_model_map.tsv.gz: ${exampledir}/our_entry/mod_try/read_model_map.tsv
 	@mkdir -p output	
 	gzip -c $< >$@
 

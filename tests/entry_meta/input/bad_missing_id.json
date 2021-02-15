@@ -1,7 +1,5 @@
 {
-    "team_id": "experts",
-    "group_name": "Long-reads Expert Lab",
-    "group_url": "https://LongReadsExpertLab.univeristy.edu",
+    "team_name": "Long-reads Expert Lab",
     "notes": "we have good stuff",
     "contacts": [
         {

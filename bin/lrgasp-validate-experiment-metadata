@@ -7,7 +7,7 @@ from lrgasp import LrgaspException
 from lrgasp import experiment
 
 def parse_args():
-    desc = """Validate that an LRGASP experiment meets requirements.
+    desc = """Validate that an LRGASP experiment metadata meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("experiment_json",

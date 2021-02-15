@@ -19,8 +19,8 @@ limit is to prevent the evaluation process from being overwhelmed by
 experiments with minor variations.  An *entry* maybe updated or deleted
 up to the submission deadline.
 
-When a team registers for LRGASP, they are assigned a [symbolic
-identifier](#symbolic-identifiers), called the ``team_id``.  Other symbolic
+When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
+identifier](#synapse-identifiers), called the ``team_id``.  Other symbolic
 experiment identifiers assigned by the team and must be valid [symbolic
 identifier](#symbolic-identifiers), as described below.  Model experiment
 identifiers must start with ``mod_`` and expression ones with ``exp_``.
@@ -43,3 +43,6 @@ Various components of the submission system have symbolic identifiers.  These id
 ## Feature and read identifiers
 
 Feature identifiers (transcripts and genes) and read identifiers may contain any combination of printing, non-whitespace characters [ASCII](https://en.wikipedia.org/wiki/ASCII).  This requirement is more restrictive than allowed by GTF.
+
+## Synapse identifiers
+Identifiers assigned by Synapse are in the form ```sny123456``. 

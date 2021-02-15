@@ -14,4 +14,10 @@
 * add additional file types
 * how to tie together experiments to be evaluated
 - call an *entry*
-* should expression matrix have transcript_id instead of ID
+* should expression matrix have transcript_id instead of ID?
+* expression matrix:
+https://github.com/LRGASP/lrgasp-submissions/issues/11
+allow '*'
+validate
+* removed 
+examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",

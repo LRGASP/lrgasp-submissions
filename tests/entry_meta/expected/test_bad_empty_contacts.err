@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_empty_contacts.json
+    caused by: entry field contacts must be a non-empty list

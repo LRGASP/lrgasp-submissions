@@ -1,0 +1,12 @@
+{
+    "entry_id": "ont-drna",
+    "challenge_id": "iso_detect_finished",
+    "team_id": "sra123321",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

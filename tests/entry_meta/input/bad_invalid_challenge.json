@@ -1,0 +1,16 @@
+{
+    "entry_id": "our_entry",
+    "challenge_id": "iso_fred_finished",
+    "team_id": "syn12345678",
+    "team_name": "Long-reads Expert Lab",
+    "contacts": [
+        {
+            "name": "LongReadsExpertLab",
+            "email": "LongReadsExpertLab@university.edu"
+        },
+        {
+            "name": "Dr. Long Read",
+            "email": "long.read@university.edu"
+        }
+    ]
+}
