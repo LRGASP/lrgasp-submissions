@@ -9,68 +9,81 @@ from lrgasp.types import Challenge
 
 # directory names are both name and label, files are labels, with unique
 # names generate from parent
-TEAM_ID = 'my_team_id'
 
-TEAM_MD = "team.json"
+ENTRY_MD = "entry.json"
 EXPERIMENT_MD = "experiment.json"
 
-MOD_ONE = "mod_one"
-MOD_ONE_MODELS =  "models.gtf.gz"
-MOD_ONE_READS_TRANS_MAP =  "reads_transcripts.tsv.gz"
+ENTRY_A = "entry_A\n(" + str(Challenge.iso_detect_finished) + ")"
+ENTRY_B = "entry_B\n(" + str(Challenge.iso_quant) + ")"
 
-EXP_ONE_A = "exp_one_A"
-EXP_ONE_A_MATRIX = "express.tsv.gz"
+MOD_HS = "mod_hs"
+MOD_HS_MODELS =  "models.gtf.gz"
+MOD_HS_READ_MODEL_MAP =  "read_model_map.tsv.gz"
 
-EXP_ONE_B = "exp_one_B"
-EXP_ONE_B_MATRIX = "express.tsv.gz"
+MOD_MM = "mod_mm"
+MOD_MM_MODELS = "models.gtf.gz"
+MOD_MM_READ_MODEL_MAP =  "read_model_map.tsv.gz"
 
-MOD_TWO = "mod_two"
-MOD_TWO_MODELS = "models.gtf.gz"
+EXP_HS = "exp_hs"
+EXP_HS_MATRIX = "expression.tsv.gz"
 
-def add_challenge(g, parent, name):
-    g.add_node(name, shape='folder')
-    if parent is not None:
-        g.add_edge(parent, name)
+EXP_MM = "exp_mm"
+EXP_MM_MATRIX = "expression.tsv.gz"
 
-def add_dir(g, parent, name):
-    g.add_node(name, shape='folder')
-    if parent is not None:
-        g.add_edge(parent, name)
+ENTRY_COLOR = "orange"
+EXPERIMENT_COLOR = "mediumspringgreen"
+DATA_FILE_COLOR = "lightskyblue"
+METADATA_COLOR = "powderblue"
 
-def add_file(g, parent, label):
+def add_dir(g, parent, label, color):
     name = parent + '/' + label
-    g.add_node(name, shape='rect', label=label)
+    g.add_node(name, shape='folder', label=label, style="filled", fillcolor=color)
+    if parent is not None:
+        g.add_edge(parent, name)
+    return name
+
+def add_file(g, parent, label, color):
+    name = parent + '/' + label
+    g.add_node(name, shape='rect', label=label, style="filled", fillcolor=color)
     g.add_edge(parent, name)
+
+def add_entry(g, name):
+    g.add_node(name, shape='folder', style="filled", fillcolor=ENTRY_COLOR,
+               width=1.8)
+    add_file(g, name, ENTRY_MD, METADATA_COLOR)
+    return name
+
+def add_experiment(g, parent, label, data_files):
+    name = parent + '/' + label
+    node = add_dir(g, parent, label, EXPERIMENT_COLOR)
+    add_file(g, node, EXPERIMENT_MD, METADATA_COLOR)
+    for data_file in data_files:
+        add_file(g, node, data_file, DATA_FILE_COLOR)
+    return name
 
 def add_model_link(g, expr, mod):
     pass
 
+def build_entry_a(g):
+    add_entry(g, ENTRY_A)
+    add_experiment(g, ENTRY_A, MOD_HS,
+                   (MOD_HS_MODELS, MOD_HS_READ_MODEL_MAP))
+    add_experiment(g, ENTRY_A, MOD_MM,
+                   (MOD_MM_MODELS, MOD_MM_READ_MODEL_MAP))
+
+def build_entry_b(g):
+    add_entry(g, ENTRY_B)
+    n = add_experiment(g, ENTRY_B, EXP_HS,
+                       (EXP_HS_MATRIX,))
+    add_model_link(g, n, MOD_HS)
+    n = add_experiment(g, ENTRY_B, EXP_MM,
+                       (EXP_MM_MATRIX,))
+    add_model_link(g, n, MOD_MM)
+
 def build_tree(g):
-    add_dir(g, None, TEAM_ID)
-    add_file(g, TEAM_ID, TEAM_MD)
+    build_entry_b(g)
+    build_entry_a(g)
 
-    add_challenge(g, TEAM_ID, Challenge.iso_detect_finished)
-    add_dir(g, Challenge.iso_detect_finished, MOD_ONE)
-    add_file(g, MOD_ONE, EXPERIMENT_MD)
-    add_file(g, MOD_ONE, MOD_ONE_MODELS)
-    add_file(g, MOD_ONE, MOD_ONE_READS_TRANS_MAP)
-
-    add_challenge(g, TEAM_ID, Challenge.iso_quant)
-    add_dir(g, Challenge.iso_quant, EXP_ONE_A)
-    add_file(g, EXP_ONE_A, EXPERIMENT_MD)
-    add_model_link(g, EXP_ONE_A, MOD_ONE)
-    add_file(g, EXP_ONE_A, EXP_ONE_A_MATRIX)
-
-    add_dir(g, Challenge.iso_quant, EXP_ONE_B)
-    add_file(g, EXP_ONE_B, EXPERIMENT_MD)
-    add_model_link(g, EXP_ONE_B, MOD_ONE)
-    add_file(g, EXP_ONE_B, EXP_ONE_B_MATRIX)
-
-    add_challenge(g, TEAM_ID, Challenge.iso_detect_finished)
-    add_dir(g, Challenge.iso_detect_finished, MOD_TWO)
-    add_file(g, MOD_TWO, EXPERIMENT_MD)
-    add_file(g, MOD_TWO, MOD_TWO_MODELS)
-    add_file(g, MOD_TWO, MOD_ONE_READS_TRANS_MAP)
 
 def mk_graph():
     g = pgv.AGraph()

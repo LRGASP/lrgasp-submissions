@@ -1,15 +1,23 @@
 # Submission structure
 
 Submissions to LRGASP consist of experiments targeting a particular challenge
-by a team.  With two types of experiment: model and expression.  Model
-experiments are genomic transcript model predictions, and expression
-experiments are transcript expression estimates of a set of submitted models.
+submitted by a *team*.  With two types of experiment: *model* and
+*expression*.  Model experiments are genomic transcript model predictions, and
+expression experiments are transcript expression quantification of a set of
+submitted models.
 
-A participant may submit two model experiments per challenge and up to two
-expression experiments per model submission.  The purpose of this limit is to
-prevent the evaluation process from being overwhelmed by experiments with
-minor variations. If you need to exceed this limit, please contact
-[lrgasp-support](mailto:lrgasp-support-group@ucsc.edu).
+A given challenge may combine results from multiple, distinct experiments.
+For instance, the high-quality genome isoform annotation challenge may 
+include both human and mouse experiments. To accommodate this, *experiments*
+are grouped into *entries* against a particular challenge.  An *entry* is
+the unit of both submission and evaluation.  The *experiments* in an *entry*
+should uses as similar a set of parameters and data as possible to allow
+for meaningful combination of the results.
+
+A team may submit two *entries* per challenge.  The purpose of this
+limit is to prevent the evaluation process from being overwhelmed by
+experiments with minor variations.  An *entry* maybe updated or deleted
+up to the submission deadline.
 
 When a team registers for LRGASP, they are assigned a [symbolic
 identifier](#symbolic-identifiers), called the ``team_id``.  Other symbolic
