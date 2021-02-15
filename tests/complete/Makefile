@@ -1,31 +1,59 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-team_meta = input/team.json
-mods = mod_ont_drna1 mod_ont_drna2 mod_pb1 mod_pb2
-exps = exp_ont_drna1 exp_ont_drna2 exp_pb1 exp_pb2
-exprs = ${mod} ${exps}
+entries = ont_drna_model_finished ont_drna_expression pb_model_draft pb_expression
+test: test_entries
 
-test: test_team \
-	${exprs:%=test_expr_meta_%} \
-	${mods:%=test_gtf_%} \
-	${mods:%=test_map_%} \
-	${exprs:%=test_expression_%} \
+##
+# check metadata files
+##
+test_entries: ${entries:%=test_entries_%}
 
-test_team: input/team.json
-	${lrgasp_validate_team_metadata} $<
+test_entries_%:
+	${MAKE} test_entry entry=$*
 
-test_expr_meta_%:
-	${lrgasp_validate_experiment_metadata} input/$*/experiment.json
+# recursive target: entry=
+test_entry: test_entry_${entry} \
+	test_models \
+	test_exps
 
-test_gtf_%:
-	${lrgasp_validate_gtf} input/$*/transcript_models.gtf
+test_entry_%:
+	${lrgasp_validate_entry_metadata} input/$*/entry.json
 
-test_map_%:
-	${lrgasp_validate_read_model_map} input/$*/reads_transcript_map.tsv
+# recurse over models
+mod_exprs = $(notdir $(wildcard input/${entry}/mod_*))
+test_models: ${mod_exprs:%=test_models_%}
 
-test_expression_%:
-	${lrgasp_validate_expression_matrix} input/$*/expression.tsv
+test_models_%:
+	${MAKE} test_model entry=${entry} model=$*
+
+# recursive target: entry= model=
+test_model: test_model_meta test_gtf test_model_map
+
+test_model_meta:
+	${lrgasp_validate_experiment_metadata} input/${entry}/${model}/experiment.json
+
+test_gtf:
+	${lrgasp_validate_gtf} input/${entry}/${model}/transcript_models.gtf
+
+test_model_map:
+	${lrgasp_validate_read_model_map} input/${entry}/${model}/reads_transcript_map.tsv
+
+# recurse over expression
+exp_exprs = $(notdir $(wildcard input/${entry}/exp_*))
+test_exps: ${exp_exprs:%=test_exps_%}
+
+test_exps_%:
+	${MAKE} test_exp entry=${entry} exp=$*
+
+# recursive target: entry= exp=
+test_exp: test_exp_meta test_express_matrix
+
+test_exp_meta:
+	${lrgasp_validate_experiment_metadata} input/${entry}/${exp}/experiment.json
+
+test_express_matrix:
+	${lrgasp_validate_expression_matrix} input/${entry}/${exp}/expression.tsv
 
 clean:
 	rm -rf output

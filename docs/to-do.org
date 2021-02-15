@@ -21,3 +21,5 @@ allow '*'
 validate
 * removed 
 examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",
+
+* rename exp to quant ? or express,
