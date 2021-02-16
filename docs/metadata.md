@@ -26,7 +26,7 @@ in each experiment directory (see [Experiment structure](experiment.md)).  Data
 files are either in the experiment directory or a sub-directories.  All files
 paths in ``experiment.json`` are relative to the directory containing  ``experiment.json``.
 
-See [``experiment.json``](../examples/experts/mod_try/experiment.json) for an example.
+See [``experiment.json``](../examples/experts/model_try/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``team_id`` - Synapse ``team_id`` matching ``entry.json``.

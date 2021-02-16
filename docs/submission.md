@@ -22,8 +22,7 @@ up to the submission deadline.
 When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
 identifier](#synapse-identifiers), called the ``team_id``.  Other symbolic
 experiment identifiers assigned by the team and must be valid [symbolic
-identifier](#symbolic-identifiers), as described below.  Model experiment
-identifiers must start with ``mod_`` and expression ones with ``exp_``.
+identifier](#symbolic-identifiers), as described below.
 
 Each team is given a file area to upload their results (a mechanism to be
 determined).  The top-level directory name in that area is the

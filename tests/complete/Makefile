@@ -15,14 +15,14 @@ test_entries_%:
 # recursive target: entry=
 test_entry: test_entry_${entry} \
 	test_models \
-	test_exps
+	test_quants
 
 test_entry_%:
 	${lrgasp_validate_entry_metadata} input/$*/entry.json
 
 # recurse over models
-mod_exprs = $(notdir $(wildcard input/${entry}/mod_*))
-test_models: ${mod_exprs:%=test_models_%}
+model_exprs = $(notdir $(wildcard input/${entry}/model_*))
+test_models: ${model_exprs:%=test_models_%}
 
 test_models_%:
 	${MAKE} test_model entry=${entry} model=$*
@@ -40,16 +40,16 @@ test_model_map:
 	${lrgasp_validate_read_model_map} input/${entry}/${model}/reads_transcript_map.tsv
 
 # recurse over expression
-exp_exprs = $(notdir $(wildcard input/${entry}/exp_*))
-test_exps: ${exp_exprs:%=test_exps_%}
+quant_exprs = $(notdir $(wildcard input/${entry}/quant_*))
+test_quants: ${quant_exprs:%=test_quants_%}
 
-test_exps_%:
-	${MAKE} test_exp entry=${entry} exp=$*
+test_quants_%:
+	${MAKE} test_quant entry=${entry} exp=$*
 
 # recursive target: entry= exp=
-test_exp: test_exp_meta test_express_matrix
+test_quant: test_quant_meta test_express_matrix
 
-test_exp_meta:
+test_quant_meta:
 	${lrgasp_validate_experiment_metadata} input/${entry}/${exp}/experiment.json
 
 test_express_matrix:

@@ -25,4 +25,9 @@ examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",
 * problem: {exp}ression and {expr}iment are easily confused
 - rename exp to quant ? or express,
 - experiment -> analysis  (consistent with ENA)
+  exr -> express, quant
+  mod -> model
 - want to distinguish model from expression
+  model_
+  quant_
+- validate experiment ids, allow `-'

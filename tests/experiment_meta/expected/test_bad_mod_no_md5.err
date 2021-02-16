@@ -1,2 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_mod_no_md5.json
-    caused by: experiment.result_files field md5 is required

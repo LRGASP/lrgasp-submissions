@@ -1,2 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_exp_no_units.json
-    caused by: experiment.result_files expression_matrix must specify units

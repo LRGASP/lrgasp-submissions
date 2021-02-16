@@ -7,13 +7,13 @@ bad_tests = $(basename $(notdir ${bad_jsons}))
 good_jsons = $(wildcard input/good_*.json)
 good_tests = $(basename $(notdir ${good_jsons}))
 
-test: test_mod_example test_exp_example bad_tests good_tests
+test: test_model_example test_quant_example bad_tests good_tests
 
-test_mod_example:
-	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/mod_try/experiment.json
+test_model_example:
+	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/model_try/experiment.json
 
-test_exp_example:
-	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/exp_try/experiment.json
+test_quant_example:
+	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/quant_try/experiment.json
 
 bad_tests: ${bad_tests:%=test_%}
 
