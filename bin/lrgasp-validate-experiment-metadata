@@ -4,7 +4,7 @@ import argparse
 import logging
 from lrgasp import handle_prog_errors
 from lrgasp import LrgaspException
-from lrgasp import experiment
+from lrgasp import experiment_metadata
 
 def parse_args():
     desc = """Validate that an LRGASP experiment metadata meets requirements.
@@ -17,7 +17,7 @@ def parse_args():
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        experiment.experiment_load(args.experiment_json)
+        experiment_metadata.experiment_load(args.experiment_json)
     except LrgaspException as ex:
         handle_prog_errors(ex)
 
