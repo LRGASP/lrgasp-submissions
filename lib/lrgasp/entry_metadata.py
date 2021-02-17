@@ -4,7 +4,7 @@ Entry metadata parsing and validation.
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.metadata_validate import Field, check_from_defs, validate_email, validate_http_url
+from lrgasp.metadata_validate import Field, check_from_defs, validate_email
 from lrgasp.types import Challenge, validate_symbolic_ident, validate_synapse_ident
 
 ##
