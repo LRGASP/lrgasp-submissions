@@ -3,6 +3,9 @@
     "challenge_id": "iso_detect_ref",
     "team_id": "syn12345678",
     "team_name": "",
+    "experiment_ids": [
+        "model_try"
+    ],
     "notes": "we have good stuff",
     "contacts": [
         {

@@ -14,6 +14,7 @@ fld_entry_id = Field("entry_id", validator=validate_symbolic_ident)
 fld_challenge_id = Field("challenge_id", Challenge)
 fld_team_id = Field("team_id", validator=validate_synapse_ident)
 fld_team_name = Field("team_name")
+fld_experiment_ids = Field("experiment_ids", list, element_dtype=str, validator=validate_symbolic_ident)
 fld_notes = Field("notes", allow_empty=True, optional=True)
 fld_contacts = Field("contacts", list, element_dtype=dict)
 
@@ -22,6 +23,7 @@ entry_fields = (
     fld_challenge_id,
     fld_team_id,
     fld_team_name,
+    fld_experiment_ids,
     fld_notes,
     fld_contacts
 )

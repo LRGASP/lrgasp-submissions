@@ -20,9 +20,9 @@ experiments with minor variations.  An *entry* maybe updated or deleted
 up to the submission deadline.
 
 When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
-identifier](#synapse-identifiers), called the ``team_id``.  Other symbolic
+identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
 experiment identifiers assigned by the team and must be valid [symbolic
-identifier](#symbolic-identifiers), as described below.
+identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
 Each team is given a file area to upload their results (a mechanism to be
 determined).  The top-level directory name in that area is the
@@ -35,13 +35,9 @@ This diagram shows the general structure:
 ![Submission file hierarchy diagram](submit_tree.png)
 
 
-## Symbolic identifiers
-
-Various components of the submission system have symbolic identifiers.  These identifiers consist of [ASCII](https://en.wikipedia.org/wiki/ASCII) upper- and lower-case alphabetic characters, numbers, and underscores.  They must not begin with numbers.  In some cases, specific prefixes are required.
-
-## Feature and read identifiers
-
-Feature identifiers (transcripts and genes) and read identifiers may contain any combination of printing, non-whitespace characters [ASCII](https://en.wikipedia.org/wiki/ASCII).  This requirement is more restrictive than allowed by GTF.
-
-## Synapse identifiers
-Identifiers assigned by Synapse are in the form ```sny123456``. 
+## Detailed specifications:
+  - [Metadata](metadata.md)
+  - [Reference genomes and transcripts](reference-genomes.md)
+  - [Transcript model format](model-format.md)
+  - [Read to model map format](reads_transcript_map_format.md)
+  - [Transcript expression matrix format](expression_matrix_format.md)

@@ -2,6 +2,9 @@
     "entry_id": "our_entry",
     "challenge_id": "iso_detect_ref",
     "team_id": "syn12345678",
+    "experiment_ids": [
+        "model_try"
+    ],
     "team_name": "Long-reads Expert Lab",
     "notes": "we have good stuff",
     "contacts": [

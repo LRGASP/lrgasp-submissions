@@ -3,6 +3,10 @@
     "challenge_id": "iso_detect_de_novo",
     "team_id": "syn123321",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "experiment_ids": [
+        "model_pb1",
+        "model_pb2"
+    ],
     "contacts": [
         {
             "name": "Charles Darwin",

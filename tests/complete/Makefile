@@ -1,7 +1,7 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-entries = ont_drna_model_finished ont_drna_expression pb_model_draft pb_expression
+entries = ont_drna_model_ref ont_drna_expression pb_model_de_novo pb_expression
 test: test_entries
 
 ##

@@ -30,13 +30,6 @@ def challengeToExperimentType(challenge):
     else:
         return ExperimentType.model
 
-class Sample(SymEnum):
-    """Sample identifiers"""
-    WTC11_Hs = auto()
-    H1_DE_Hs = auto()
-    ES_Mm = auto()
-    Manatee = auto()
-
 class ResultFileType(SymEnum):
     "type of a submitted data file"
     model_gtf = auto()

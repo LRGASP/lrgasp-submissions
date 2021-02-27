@@ -19,8 +19,10 @@ help:
 	@echo "release - package and upload a release"
 
 
-lint:
+lint: lint_code lint_doc
+lint_code:
 	${FLAKE8} ${pyprogs} lib
+lint_doc:
 
 test:
 	cd tests && ${MAKE} test

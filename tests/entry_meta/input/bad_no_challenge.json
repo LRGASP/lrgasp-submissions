@@ -2,6 +2,9 @@
     "entry_id": "our_entry",
     "team_id": "syn12345678",
     "team_name": "Long-reads Expert Lab",
+    "experiment_ids": [
+        "model_try"
+    ],
     "contacts": [
         {
             "name": "LongReadsExpertLab",

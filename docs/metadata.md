@@ -10,10 +10,12 @@ it.  This is at the top of an entry tree (see [Submission structure](submission.
 See [``entry.json``](../examples/experts/team.json) for an example.  An empty
 template is also available: [``entry.json``](../templates/entry.json).
 
-* ``entry_id`` - submitter-assigned [symbolic identifer](experiment.md#symbolic-identifiers) for this entry.
+* ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers) for valid values.
 * ``team_id`` - the Synapse *team* identifier.
 * ``team_name`` - name of the submitting lab
+* ``experiment_ids`` - Experiment ids, which is also the directory name containing the
+  experiment.  It is [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``notes`` - notes (optional)
 * ``contacts`` - array of contacts, with the first entry considered the primary contact
   * ``name`` - name of the contact
@@ -30,7 +32,7 @@ See [``experiment.json``](../examples/experts/model_try/experiment.json) for an 
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``team_id`` - Synapse ``team_id`` matching ``entry.json``.
-* ``experiment_id`` - team-defined [symbolic identifer](experiment.md#symbolic-identifiers), unique to that team.
+* ``experiment_id`` - team-defined [symbolic identifer](metadata-identifiers.md#symbolic-identifiers), unique to that team.
 * ``description`` - description of experiment
 * ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).
 * ``experiment_type`` - one of ``model`` or ``expression``.

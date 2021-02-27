@@ -1,5 +1,8 @@
 {
     "team_name": "Long-reads Expert Lab",
+    "experiment_ids": [
+        "model_try"
+    ],
     "notes": "we have good stuff",
     "contacts": [
         {
