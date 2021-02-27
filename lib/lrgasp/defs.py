@@ -1,5 +1,5 @@
 """
-Declarations of metadata identifiers, types, and functions to operate on them.
+Definitions of metadata identifiers, types, and functions to operate on them.
 """
 import re
 from lrgasp import LrgaspException
@@ -7,9 +7,16 @@ from lrgasp.symEnum import SymEnum, auto
 
 class Challenge(SymEnum):
     """Challenge identifiers"""
-    iso_detect_finished = auto()
+    iso_detect_ref = auto()
     iso_quant = auto()
-    iso_detect_draft = auto()
+    iso_detect_de_novo = auto()
+
+class Sample(SymEnum):
+    """LRGAPS sample identifierd"""
+    WTC11_Hs = auto()
+    H1_DE_Hs = auto()
+    ES_Mm = auto()
+    Manatee = auto()
 
 class ExperimentType(SymEnum):
     "type of a experiment, assumed from Challenge type"
@@ -22,6 +29,13 @@ def challengeToExperimentType(challenge):
         return ExperimentType.expression
     else:
         return ExperimentType.model
+
+class Sample(SymEnum):
+    """Sample identifiers"""
+    WTC11_Hs = auto()
+    H1_DE_Hs = auto()
+    ES_Mm = auto()
+    Manatee = auto()
 
 class ResultFileType(SymEnum):
     "type of a submitted data file"

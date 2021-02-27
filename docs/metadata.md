@@ -36,6 +36,7 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``experiment_type`` - one of ``model`` or ``expression``.
 * ``model_experiment_id`` - if an ``expression`` experiment, the model ``experiment_id`` for which the expressions were computed.
 * ``notes`` - notes (optional)
+* ``samples`` - list of LRGASP [sample identifiers](metadata-identifiers.md#Sample-identifiers) used in the experiment.
 * ```data_files`` - list of input data files supplied by the LRGASP
   * ``acc`` - accession (ENCODE or LRGASP) for input data files (optional if URL supplied)
   * ``url`` - URL to file; intended for non-LRGASP provided files (optional if acc supplied)

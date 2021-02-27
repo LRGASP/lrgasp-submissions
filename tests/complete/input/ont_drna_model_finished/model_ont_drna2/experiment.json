@@ -4,6 +4,9 @@
     "experiment_type": "model",
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing, more sensitive and less specific models",
     "challenge_id": "transcirpt_models",
+    "samples": [
+        "WTC11_Hs"
+    ],
     "data_files": [
         {
             "acc": "ENF12345"

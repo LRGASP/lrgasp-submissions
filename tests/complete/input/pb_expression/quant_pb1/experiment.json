@@ -5,6 +5,9 @@
     "model_experiment_id": "model_pb1",
     "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
     "challenge_id": "iso_quant",
+    "samples": [
+        "WTC11_Hs"
+    ],
     "data_files": [
         {
             "acc": "ENF12345"

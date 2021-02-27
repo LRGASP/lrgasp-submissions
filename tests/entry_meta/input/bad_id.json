@@ -1,6 +1,6 @@
 {
     "entry_id": "our_entry",
-    "challenge_id": "iso_detect_finished",
+    "challenge_id": "iso_detect_ref",
     "team_id": "123-experts",
     "team_name": "Long-reads Expert Lab",
     "contacts": [

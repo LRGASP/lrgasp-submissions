@@ -4,7 +4,7 @@ Experiment metadata parsing and validation.
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.types import ExperimentType, ExpressionUnits, ResultFileType, validate_symbolic_ident
+from lrgasp.defs import ExperimentType, Sample, ExpressionUnits, ResultFileType, validate_symbolic_ident
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url, validate_md5
 
 
@@ -14,9 +14,10 @@ fld_description = Field("description")
 fld_challenge_id = Field("challenge_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
 fld_model_experiment_id = Field("model_experiment_id", optional=True, validator=validate_symbolic_ident)
-fld_data_files = Field("data_files", list)
-fld_result_files = Field("result_files", list)
-fld_software = Field("software", list)
+fld_samples = Field("samples", list, element_dtype=Sample)
+fld_data_files = Field("data_files", list, element_dtype=dict)
+fld_result_files = Field("result_files", list, element_dtype=dict)
+fld_software = Field("software", list, element_dtype=dict)
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
 experiment_fields = (
@@ -26,6 +27,7 @@ experiment_fields = (
     fld_challenge_id,
     fld_experiment_type,
     fld_model_experiment_id,
+    fld_samples,
     fld_data_files,
     fld_result_files,
     fld_software,

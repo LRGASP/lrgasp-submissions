@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from lrgasp import LrgaspException
 from lrgasp import gopen
-from lrgasp.types import validate_feature_ident
+from lrgasp.defs import validate_feature_ident
 
 def check_row_consistency(expr_mat_tsv):
     """Pandas just pads or ignores inconsistent number of columns,

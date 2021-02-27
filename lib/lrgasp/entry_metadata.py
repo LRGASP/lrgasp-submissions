@@ -5,7 +5,7 @@ import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
-from lrgasp.types import Challenge, validate_symbolic_ident, validate_synapse_ident
+from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident
 
 ##
 # top-level entry struct (from JSON)
@@ -15,7 +15,7 @@ fld_challenge_id = Field("challenge_id", Challenge)
 fld_team_id = Field("team_id", validator=validate_synapse_ident)
 fld_team_name = Field("team_name")
 fld_notes = Field("notes", allow_empty=True, optional=True)
-fld_contacts = Field("contacts", list)
+fld_contacts = Field("contacts", list, element_dtype=dict)
 
 entry_fields = (
     fld_entry_id,

@@ -4,7 +4,7 @@ read-to-model map parser/validator
 import csv
 import pandas as pd
 from lrgasp import LrgaspException
-from lrgasp.types import validate_feature_ident
+from lrgasp.defs import validate_feature_ident
 
 required_columns = ("read_id", "transcript_id")
 
