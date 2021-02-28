@@ -8,11 +8,9 @@ from lrgasp.defs import ExperimentType, Sample, ExpressionUnits, ResultFileType,
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url, validate_md5
 
 
-fld_team_id = Field("team_id", validator=validate_symbolic_ident)
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
-fld_description = Field("description")
-fld_challenge_id = Field("challenge_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
+fld_description = Field("description")
 fld_model_experiment_id = Field("model_experiment_id", optional=True, validator=validate_symbolic_ident)
 fld_samples = Field("samples", list, element_dtype=Sample)
 fld_data_files = Field("data_files", list, element_dtype=dict)
@@ -21,11 +19,9 @@ fld_software = Field("software", list, element_dtype=dict)
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
 experiment_fields = (
-    fld_team_id,
     fld_experiment_id,
-    fld_description,
-    fld_challenge_id,
     fld_experiment_type,
+    fld_description,
     fld_model_experiment_id,
     fld_samples,
     fld_data_files,

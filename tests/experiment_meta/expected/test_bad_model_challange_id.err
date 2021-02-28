@@ -1,2 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_model_challange_id.json
-    caused by: not a valid symbolic identifier: '1234'

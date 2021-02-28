@@ -1,5 +1,5 @@
 """
-Validation of model entries
+Load and validate a model entry
 """
 
 

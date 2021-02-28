@@ -1,7 +1,5 @@
 {
-    "team_id": "experts",
     "experiment_id": "quant_try",
-    "challenge_id": "iso_quant",
     "experiment_type": "expression",
     "description": "Expression results",
     "notes": "this is so-so good",

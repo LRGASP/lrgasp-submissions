@@ -22,7 +22,9 @@ help:
 lint: lint_code lint_doc
 lint_code:
 	${FLAKE8} ${pyprogs} lib
+# equires https://github.com/markdownlint/markdownlint
 lint_doc:
+	mdl --style=mdl-style.rb docs/
 
 test:
 	cd tests && ${MAKE} test

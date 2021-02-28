@@ -5,6 +5,7 @@ provides a good compromise between able to store structured data and ease of
 use.  Templates and a validator are provided.
 
 ## ``entry.json``
+
 This file contains information about the *entry* and team that is submitting
 it.  This is at the top of an entry tree (see [Submission structure](submission.md)).
 See [``entry.json``](../examples/experts/team.json) for an example.  An empty
@@ -23,19 +24,18 @@ template is also available: [``entry.json``](../templates/entry.json).
   * ``notes`` - notes about the contact (optional)
 
 ## ``experiment.json``
+
 This file describes the experiment, specifying all data files.  One is created
-in each experiment directory (see [Experiment structure](experiment.md)).  Data
-files are either in the experiment directory or a sub-directories.  All files
-paths in ``experiment.json`` are relative to the directory containing  ``experiment.json``.
+in each experiment directory (see [Experiment structure](submission.md#experiment-structure)).
+Data files are either in the experiment directory or a sub-directories.  All files paths in
+``experiment.json`` are relative to the directory containing ``experiment.json``.
 
 See [``experiment.json``](../examples/experts/model_try/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
-* ``team_id`` - Synapse ``team_id`` matching ``entry.json``.
-* ``experiment_id`` - team-defined [symbolic identifer](metadata-identifiers.md#symbolic-identifiers), unique to that team.
-* ``description`` - description of experiment
-* ``challenge_id`` - one of the valid [challenge symbolic identifers](metadata-identifiers.md#LRGASP-Challenge-identifiers).
+* ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``experiment_type`` - one of ``model`` or ``expression``.
+* ``description`` - description of experiment
 * ``model_experiment_id`` - if an ``expression`` experiment, the model ``experiment_id`` for which the expressions were computed.
 * ``notes`` - notes (optional)
 * ``samples`` - list of LRGASP [sample identifiers](metadata-identifiers.md#Sample-identifiers) used in the experiment.
@@ -59,4 +59,4 @@ An empty template is also available: [``experiment.json``](../templates/experime
   * ``url`` - URL to software repository
   * ``config`` - command line and/or configuration options (optional)
   * ``notes`` - notes about software or how it was used (optional)
-  
+

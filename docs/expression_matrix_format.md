@@ -2,7 +2,7 @@
 
 The format required for providing quantification results by the user should be a **tab-separated** matrix in which long read-defined transcripts will be the rows and samples/replicates will be columns.
 
-### Key features
+## Key features
 
 * **Header**: First field must be `ID` and the rest of the column names should be the sample/replicates labels.
 * **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](metadata-identifiers.md#feature-identifiers).
@@ -10,7 +10,7 @@ The format required for providing quantification results by the user should be a
 
 Gene expression will be calculated summing up the expression values of all the transcripts coming from the same locus.
 
-### Expression matrix example:
+## Expression matrix example
 
 ```
 ID	sample1	sample2	sample3	 sample4

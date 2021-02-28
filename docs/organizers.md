@@ -1,9 +1,9 @@
 # Documentation for LRGASP organizers
 
-
 ## Development
 
 Running test set PYTHONPATH and don't require a virtualenv
+
 ```
 make test
 ```
@@ -11,13 +11,15 @@ make test
 ## Build pip installable packages
 
 To build and test package
+
 ```
 make test-pip
 make release-test
 make test-release-pip
 ```
 
-## release to pypi
+## Release to pypi
+
 ```
 bumpversion major|minor|patch
 commit to master

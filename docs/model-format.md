@@ -1,6 +1,7 @@
 # Transcript model format
 
 ## GTF format
+
 Genome transcript annotation submissions are in GTF format
 (see [GTF2.2](https://mblab.wustl.edu/GTF22.html)
 and [Ensembl GFF/GTF File Format](https://www.ensembl.org/info/website/upload/gff.html)).
@@ -10,6 +11,7 @@ to be introns.  Smaller gaps are closed, combining the exon features.  The evalu
 that are provided, however, they will still be validated for syntax and consistency.
 
 The standard GTF fields have the following restrictions:
+
 * seqname - Must be one of the sequence identifiers in the LRGAPS [reference genomes](reference-genomes.md).
 * source - Ignored.
 * feature - Only `exon` is used. Other types of records are ignored.
@@ -30,6 +32,7 @@ transcript with the same value.  An example models submission GTF file is at
 [models.gtf](../examples/experts/model_try/models.gtf).
 
 ## File naming
+
 Files must be named `xxx.gtf` and maybe compressed with `gzip` and then have a
 name in the form `xxx.gtf.gz`.
 

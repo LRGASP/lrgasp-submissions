@@ -1,13 +1,4 @@
-* metadata validator
-* test for compressed data files
-* expression matrix validator
-* data required:
-** list of challenges
-** genomes:
-- list of sequences and sizes
-** list of BAMs
-** annotations
-* capturing command lines
+* https://docs.google.com/presentation/d/1RxmZPd8UgWgm3F-0BquP7NmhxE3zYB5lJ_u6XKgbFME/edit#slide=id.p
 * require protocol description
 * add assembly
 * doc that file paths are relative
@@ -25,4 +16,7 @@ examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",
 * example mixes quant and model experirements
 * validate same type of experiments
 * drop model_/quant_ prefix requirements
-* fix the data file names
+* require specific the data file names
+* require included model_gtf in quant.
+* experiment_type is deduced from challange id
+challange_id can be obtained from entry_id (add to experiment)

@@ -86,6 +86,15 @@ def _check_field(desc, field, obj):
     else:
         _check_missing_field(desc, field, obj)
 
+def _check_for_unknown_fields(desc, fields, obj):
+    fieldNames = frozenset([f.name for f in fields])
+    bad = []
+    for fld in obj.keys():
+        if fld not in fieldNames:
+            bad.append(fld)
+    if len(bad) > 0:
+        raise LrgaspException("{} unknown field name(s): {}".format(desc, ", ".join(bad)))
+
 def validate_email(val):
     if validators.email(val) is not True:
         raise LrgaspException(f"invalid email address: {val}")
@@ -106,5 +115,6 @@ def validate_md5(val):
 
 def check_from_defs(desc, fields, obj):
     """basic check of fields given a definition table"""
+    _check_for_unknown_fields(desc, fields, obj)
     for field in fields:
         _check_field(desc, field, obj)

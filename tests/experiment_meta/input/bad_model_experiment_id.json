@@ -1,7 +1,5 @@
 {
-    "team_id": "experts",
     "experiment_id": "123model_try",
-    "challenge_id": "iso_detect_ref",
     "experiment_type": "model",
     "description": "Our best transcript models",
     "notes": "this is really good",

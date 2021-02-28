@@ -1,9 +1,7 @@
 {
-    "team_id": "darwin",
     "experiment_id": "model_ont_drna1",
     "experiment_type": "model",
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
-    "challenge_id": "transcirpt_models",
     "samples": [
         "WTC11_Hs"
     ],

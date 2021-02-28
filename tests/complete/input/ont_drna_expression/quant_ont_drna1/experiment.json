@@ -1,10 +1,8 @@
 {
-    "team_id": "darwin",
     "experiment_id": "quant_ont_drna1",
     "experiment_type": "expression",
     "model_experiment_id": "model_ont_drna1",
     "description": "Expression matrix for Human NA12878 ONT direct RNA sequenceing",
-    "challenge_id": "iso_quant",
     "samples": [
         "WTC11_Hs"
     ],

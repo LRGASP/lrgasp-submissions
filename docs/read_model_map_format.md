@@ -3,12 +3,14 @@
 This describes the submission format for mapping the initial reads to the final transcript model,
 
 In order to understand better how each pipeline deals differently with the same initial input, it will be asked to the participants to submit a **.tsv file** that relates the starting point (the reads provided by LRGASP) to their final transcript models. This file will have two columns:
+
 * ``read_id`` It will contain the ID of the "raw" sequence and it must be as it is in the initial FASTQ file.
-* ``transcript_id`` It will show the ID of the transcript model built using the read in the previous column. The transcript ID must be as it is in the GTF submitted by the participant. 
+* ``transcript_id`` It will show the ID of the transcript model built using the read in the previous column. The transcript ID must be as it is in the GTF submitted by the participant.
 
 If a read is not used at all to generate any transcript model, it may be show in its second column a `*`. However, we should check if all the read IDs present in the initial FASTQ file are included or not in this *read-model* file.
 
-##### Example
+## Example
+
 Here the first column are the IDs of the reads in the [FASTQ rep1](https://www.encodeproject.org/files/ENCFF450VAU/@@download/ENCFF450VAU.fastq.gz) of ENCODE pilot data set. It is just an example, the relations between ccs read and transcript models are "made up".
 
 ```
