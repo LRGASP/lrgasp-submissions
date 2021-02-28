@@ -3,6 +3,9 @@
     "challenge_id": "",
     "team_id": "",
     "team_name": "",
+    "experiment_ids": [
+        ""
+    ]
     "notes": "",
     "contacts": [
         {

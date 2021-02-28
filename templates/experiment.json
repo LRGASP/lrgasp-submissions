@@ -1,9 +1,7 @@
 {
-    "team_id": "",
     "experiment_id": "",
-    "description": "",
-    "challenge_id": "",
     "experiment_type": "",
+    "description": "",
     "model_experiment_id": "",
     "notes": "",
     "data_files": [

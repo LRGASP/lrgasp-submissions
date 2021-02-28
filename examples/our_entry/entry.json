@@ -1,22 +1,15 @@
 {
-    "entry_id": "our_entry",
-    "challenge_id": "iso_detect_ref",
-    "team_id": "syn12345678",
-    "team_name": "Long-reads Expert Lab",
+    "entry_id": "ont_drna",
+    "challenge_id": "iso_quant",
+    "team_id": "syn123321",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "experiment_ids": [
-        "model_try"
+        "quant_pb1",
     ],
-    "notes": "we have good stuff",
     "contacts": [
         {
-            "name": "LongReadsExpertLab",
-            "email": "LongReadsExpertLab@university.edu",
-            "notes": "our mailing list"
-        },
-        {
-            "name": "Dr. Long Read",
-            "email": "long.read@university.edu",
-            "notes": "the PI"
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
         }
     ]
 }
