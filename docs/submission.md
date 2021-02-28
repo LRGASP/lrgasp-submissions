@@ -53,5 +53,5 @@ Quantification experiments must contain the following files:
 - [Metadata](metadata.md)
 - [Reference genomes and transcripts](reference-genomes.md)
 - [Transcript model format](model-format.md)
-- [Read to model map format](reads_transcript_map_format.md)
+- [Read to model map format](read_model_map_format.md)
 - [Transcript expression matrix format](expression_matrix_format.md)

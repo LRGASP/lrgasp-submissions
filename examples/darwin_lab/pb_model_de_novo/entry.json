@@ -1,11 +1,11 @@
 {
     "entry_id": "ont_drna",
-    "challenge_id": "iso_quant",
-    "team_id": "syn123321",
+    "challenge_id": "iso_detect_de_novo",
+    "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "experiment_ids": [
-        "quant_ont_drna1",
-        "quant_ont_drna2"
+        "model_pb1",
+        "model_pb2"
     ],
     "contacts": [
         {

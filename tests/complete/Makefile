@@ -18,10 +18,10 @@ test_entry: test_entry_${entry} \
 	test_quants
 
 test_entry_%:
-	${lrgasp_validate_entry_metadata} input/$*/entry.json
+	${lrgasp_validate_entry_metadata} ${darwindir}/$*/entry.json
 
 # recurse over models
-model_exprs = $(notdir $(wildcard input/${entry}/model_*))
+model_exprs = $(notdir $(wildcard ${darwindir}/${entry}/model_*))
 test_models: ${model_exprs:%=test_models_%}
 
 test_models_%:
@@ -31,16 +31,16 @@ test_models_%:
 test_model: test_model_meta test_gtf test_model_map
 
 test_model_meta:
-	${lrgasp_validate_experiment_metadata} input/${entry}/${model}/experiment.json
+	${lrgasp_validate_experiment_metadata} ${darwindir}/${entry}/${model}/experiment.json
 
 test_gtf:
-	${lrgasp_validate_gtf} input/${entry}/${model}/transcript_models.gtf
+	${lrgasp_validate_gtf} ${darwindir}/${entry}/${model}/models.gtf
 
 test_model_map:
-	${lrgasp_validate_read_model_map} input/${entry}/${model}/reads_transcript_map.tsv
+	${lrgasp_validate_read_model_map} ${darwindir}/${entry}/${model}/read_model_map.tsv
 
 # recurse over expression
-quant_exprs = $(notdir $(wildcard input/${entry}/quant_*))
+quant_exprs = $(notdir $(wildcard ${darwindir}/${entry}/quant_*))
 test_quants: ${quant_exprs:%=test_quants_%}
 
 test_quants_%:
@@ -50,10 +50,10 @@ test_quants_%:
 test_quant: test_quant_meta test_express_matrix
 
 test_quant_meta:
-	${lrgasp_validate_experiment_metadata} input/${entry}/${exp}/experiment.json
+	${lrgasp_validate_experiment_metadata} ${darwindir}/${entry}/${exp}/experiment.json
 
 test_express_matrix:
-	${lrgasp_validate_expression_matrix} input/${entry}/${exp}/expression.tsv
+	${lrgasp_validate_expression_matrix} ${darwindir}/${entry}/${exp}/expression.tsv
 
 clean:
 	rm -rf output

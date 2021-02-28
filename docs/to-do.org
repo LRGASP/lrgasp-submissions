@@ -10,9 +10,6 @@
 https://github.com/LRGASP/lrgasp-submissions/issues/11
 allow '*'
 validate
-* removed 
-examples/our_entry/exp_try/experiment.json:2:    "team_id": "experts",
-
 * example mixes quant and model experirements
 * validate same type of experiments
 * drop model_/quant_ prefix requirements

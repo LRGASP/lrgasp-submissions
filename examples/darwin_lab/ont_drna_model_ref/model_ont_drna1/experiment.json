@@ -13,12 +13,12 @@
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
     "result_files": [
         {
-            "fname": "transcript_models.gtf",
+            "fname": "models.gtf",
             "ftype": "model_gtf",
             "md5": "46fdf234f99e090e796690e6ce9af002"
         },
         {
-            "fname": "reads_transcript_map.tsv.gz",
+            "fname": "read_model_map.tsv.gz",
             "ftype": "read_model_map",
             "md5": "68b9cc389bac6b82f84c15969f64eea8"
         }

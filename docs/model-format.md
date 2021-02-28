@@ -29,7 +29,7 @@ The standard GTF fields have the following restrictions:
 
 All of the attributes specified above must be repeated on all exons of a
 transcript with the same value.  An example models submission GTF file is at
-[models.gtf](../examples/experts/model_try/models.gtf).
+[models.gtf](../examples/ont_drna_model_ref/model_ont_drna1/models.gtf).
 
 ## File naming
 

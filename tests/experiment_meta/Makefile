@@ -10,10 +10,10 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_model_example test_quant_example bad_tests good_tests
 
 test_model_example:
-	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/model_try/experiment.json
+	${lrgasp_validate_experiment_metadata} ${darwindir}/ont_drna_model_ref/model_ont_drna1//experiment.json
 
 test_quant_example:
-	${lrgasp_validate_experiment_metadata} ${exampledir}/our_entry/quant_try/experiment.json
+	${lrgasp_validate_experiment_metadata} ${darwindir}/ont_drna_expression/quant_ont_drna1/experiment.json
 
 bad_tests: ${bad_tests:%=test_%}
 

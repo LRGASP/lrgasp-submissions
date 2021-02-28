@@ -18,7 +18,7 @@ def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
         entry_metadata.entry_load(args.entry_json)
-    except LrgaspException as ex:
+    except (LrgaspException, FileNotFoundError) as ex:
         handle_prog_errors(ex)
 
 main(parse_args())

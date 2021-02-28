@@ -10,7 +10,7 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_example bad_tests good_tests
 
 test_example:
-	${lrgasp_validate_entry_metadata} ${exampledir}/our_entry/entry.json
+	${lrgasp_validate_entry_metadata} ${darwindir}/ont_drna_model_ref/entry.json
 
 bad_tests: ${bad_tests:%=test_%}
 

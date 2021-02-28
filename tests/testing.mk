@@ -7,6 +7,7 @@ libdir=${rootdir}/lib
 bindir=${rootdir}/bin
 
 exampledir = ${rootdir}/examples
+darwindir = ${exampledir}/darwin_lab
 
 ifeq (${VIRTUAL_ENV},)
   export PYTHONPATH=${libdir}

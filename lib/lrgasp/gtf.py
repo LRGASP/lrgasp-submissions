@@ -89,5 +89,5 @@ def gtf_load(gtf_file):
         transcripts = group_transcripts(exons)
         validate_transcripts(transcripts)
         return transcripts
-    except (LrgaspException, ParsingError) as ex:
+    except (LrgaspException, ParsingError, ValueError) as ex:
         raise GtfException("Parse of GTF failed: {}".format(gtf_file)) from ex
