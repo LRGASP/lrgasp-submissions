@@ -8,7 +8,7 @@ pypitest_url = https://test.pypi.org/simple/
 testenv = testenv
 
 # mdl is an uncommon program to verify markdown
-have_mdl = $(shell (which -s mdl && echo yes) || echo no)
+have_mdl = $(shell which -s mdl && echo yes || echo no)
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
@@ -30,7 +30,7 @@ lint_doc:
 ifeq (${have_mdl},yes)
 	mdl --style=mdl-style.rb docs/
 else
-	@echo "Note: mdl not installed, not linting metadata'
+	@echo "Note: mdl not installed, not linting metadata"
 endif
 
 test:
