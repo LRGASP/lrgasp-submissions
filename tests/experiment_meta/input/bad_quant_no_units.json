@@ -1,7 +1,6 @@
 {
     "experiment_id": "quant_try",
     "experiment_type": "expression",
-    "model_experiment_id": "model_try",
     "description": "Expression results",
     "notes": "this is so-so good",
     "samples": [

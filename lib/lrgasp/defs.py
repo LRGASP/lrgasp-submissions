@@ -5,6 +5,13 @@ import re
 from lrgasp import LrgaspException
 from lrgasp.symEnum import SymEnum, auto
 
+# fixed file names, without .gz
+ENTRY_JSON = "entry.json"
+EXPERIMENT_JSON = "experiment.json"
+MODELS_GTF = "models.gtf"
+READ_MODEL_MAP_TSV = "read_model_map.tsv"
+EXPRESSION_TSV = "expression.tsv"
+
 class Challenge(SymEnum):
     """Challenge identifiers"""
     iso_detect_ref = auto()

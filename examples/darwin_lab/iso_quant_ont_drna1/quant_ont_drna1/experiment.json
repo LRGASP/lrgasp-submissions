@@ -1,7 +1,6 @@
 {
-    "experiment_id": "quant_ont_drna2",
+    "experiment_id": "quant_ont_drna1",
     "experiment_type": "expression",
-    "model_experiment_id": "model_ont_drna2",
     "description": "Expression matrix for Human NA12878 ONT direct RNA sequenceing",
     "samples": [
         "WTC11_Hs"
@@ -19,7 +18,7 @@
             "description": "IsoQuant is a tool for reference-based analysis of long RNA reads. It assigns reads to known isoforms, detects inconsistencies and construncts novel transcript models.",
             "version": "1.0.0",
             "url": "https://github.com/ablab/IsoQuant",
-            "notes": "IsoQuant was launched  with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
+            "notes": "IsoQuant was launched with default parameters; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
         }
     ]
 }

@@ -7,12 +7,12 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 test: test_example test_with_NA bad_tests
 
 test_example:
-	${lrgasp_validate_expression_matrix} ${darwindir}/ont_drna_expression/quant_ont_drna1/expression.tsv
+	${lrgasp_validate_expression_matrix} ${darwindir}/iso_quant_ont_drna1/quant_ont_drna1/expression.tsv
 
 test_example_gz: output/expression-matrix.tsv.gz
 	${lrgasp_validate_expression_matrix} $<
 
-output/expression-matrix.tsv.gz: ${darwindir}/ont_drna_expression/quant_ont_drna1/expression.tsv
+output/expression-matrix.tsv.gz: ${darwindir}/iso_quant_ont_drna1/quant_ont_drna1/expression.tsv
 	@mkdir -p output	
 	gzip -c $< >$@
 

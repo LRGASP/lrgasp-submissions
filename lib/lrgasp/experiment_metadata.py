@@ -5,13 +5,12 @@ import os.path as osp
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import ExperimentType, Sample, ExpressionUnits, validate_symbolic_ident
+from lrgasp.defs import ExperimentType, Sample, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
 fld_description = Field("description")
-fld_model_experiment_id = Field("model_experiment_id", optional=True, validator=validate_symbolic_ident)
 fld_samples = Field("samples", list, element_dtype=Sample)
 fld_data_files = Field("data_files", list, element_dtype=dict)
 fld_units = Field("units", ExpressionUnits, optional=True)
@@ -22,7 +21,6 @@ experiment_fields = (
     fld_experiment_id,
     fld_experiment_type,
     fld_description,
-    fld_model_experiment_id,
     fld_samples,
     fld_data_files,
     fld_units,
@@ -61,12 +59,6 @@ def data_file_validate(data_file):
 def experiment_validate(experiment):
     desc = "experiment"
     check_from_defs(desc, experiment_fields, experiment)
-    if experiment.experiment_type is ExperimentType.expression:
-        if fld_model_experiment_id.name not in experiment:
-            raise LrgaspException(f"{desc} must specify experiment.{fld_model_experiment_id.name} for {experiment.experiment_type} experiments")
-    else:
-        if fld_model_experiment_id.name in experiment:
-            raise LrgaspException(f"{desc} must not specify experiment.{fld_model_experiment_id.name} for {experiment.experiment_type} experiments")
 
     for data_file in experiment.data_files:
         data_file_validate(data_file)
@@ -95,7 +87,7 @@ def experiment_load_from_entry(entry, entry_dir, experiment_id):
     """load and validation experiment metadata given a entry,
     add experiment_dir to metadata"""
     experiment_dir = osp.join(entry_dir, experiment_id)
-    experiment_json = osp.join(experiment_dir, "experiment.json")
+    experiment_json = osp.join(experiment_dir, EXPERIMENT_JSON)
     try:
         experiment = experiment_json(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:

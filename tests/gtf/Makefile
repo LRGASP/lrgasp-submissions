@@ -7,12 +7,12 @@ bad_tests = $(basename $(notdir ${bad_gtfs}))
 test: test_example test_example_gz bad_tests
 
 test_example:
-	${lrgasp_validate_gtf} ${darwindir}/ont_drna_model_ref/model_ont_drna1/models.gtf
+	${lrgasp_validate_gtf} ${darwindir}/iso_detect_ref_ont_drna/model_ont_drna1/models.gtf
 
 test_example_gz: output/models.gtf.gz
 	${lrgasp_validate_gtf} $<
 
-output/models.gtf.gz: ${darwindir}/ont_drna_model_ref/model_ont_drna1/models.gtf
+output/models.gtf.gz: ${darwindir}/iso_detect_ref_ont_drna/model_ont_drna1/models.gtf
 	@mkdir -p output	
 	gzip -c $< >$@
 

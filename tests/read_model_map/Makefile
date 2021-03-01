@@ -10,12 +10,12 @@ good_tests = $(basename $(notdir ${good_tsvs}))
 test: test_example test_example_gz bad_tests good_tests
 
 test_example:
-	${lrgasp_validate_read_model_map} ${darwindir}/ont_drna_model_ref/model_ont_drna1/read_model_map.tsv
+	${lrgasp_validate_read_model_map} ${darwindir}/iso_detect_ref_ont_drna/model_ont_drna1/read_model_map.tsv
 
 test_example_gz: output/read_model_map.tsv.gz
 	${lrgasp_validate_read_model_map} $<
 
-output/read_model_map.tsv.gz: ${darwindir}/ont_drna_model_ref/model_ont_drna1/read_model_map.tsv
+output/read_model_map.tsv.gz: ${darwindir}/iso_detect_ref_ont_drna/model_ont_drna1/read_model_map.tsv
 	@mkdir -p output	
 	gzip -c $< >$@
 

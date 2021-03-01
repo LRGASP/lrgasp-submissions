@@ -1,7 +1,7 @@
 # Submission structure
 
-Submissions to LRGASP consist of experiments targeting a particular challenge
-submitted by a *team*.  With two types of experiment: *model* and
+Submissions to LRGASP consist of a set of experiments targeting a particular
+challenge submitted by a *team*.  With two types of experiment: *model* and
 *expression*.  Model experiments are genomic transcript model predictions, and
 expression experiments are transcript expression quantification of a set of
 submitted models.
@@ -25,10 +25,15 @@ experiment identifiers assigned by the team and must be valid [symbolic
 identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
 Each team is given a file area to upload their results (a mechanism to be
-determined).  The top-level directory name in that area is the
-*team_id*. Below that are directories for each submission.  Experiments are
-updated by replacing files, and experiments retracted simply by removing the
-directory.
+determined).  Below that are directories for each ``entry`` being submitted
+for each challenge, named the same as the ```entry_id```.  The entry ids must
+prefixed with the [LRGASP Challenge identifier](metadata-identifiers.md#lrgasp-challenge-identifiers) followed by
+a ```_`` and a unique team-defined name.  For instance:
+
+- ```iso_detect_ref_ont_drna``
+- ```iso_quant_ont_drna1```
+- ```iso_detect_de_novo_pb1```
+
 
 This diagram shows the general structure:
 
@@ -45,7 +50,7 @@ Model experiments must contain the following files:
 Quantification experiments must contain the following files:
 
 - ```experiment.json``` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- ```expression-matrix.tsv.gz``` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
+- ```expression.tsv.gz``` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
 - ```models.gtf.gz``` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
 
 ## Detailed specifications

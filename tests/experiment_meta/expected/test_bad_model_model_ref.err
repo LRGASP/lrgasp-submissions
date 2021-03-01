@@ -1,2 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_model_model_ref.json
-    caused by: experiment must not specify experiment.model_experiment_id for model experiments
