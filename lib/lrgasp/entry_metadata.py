@@ -6,12 +6,12 @@ import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
-from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident, ENTRY_JSON
+from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident, validate_entry_ident, ENTRY_JSON
 
 ##
 # top-level entry struct (from JSON)
 ##
-fld_entry_id = Field("entry_id", validator=validate_symbolic_ident)
+fld_entry_id = Field("entry_id", validator=validate_entry_ident)
 fld_challenge_id = Field("challenge_id", Challenge)
 fld_team_id = Field("team_id", validator=validate_synapse_ident)
 fld_team_name = Field("team_name")

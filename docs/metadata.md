@@ -30,7 +30,7 @@ in each experiment directory (see [Experiment structure](submission.md#experimen
 Data files are either in the experiment directory or a sub-directories.  All files paths in
 ``experiment.json`` are relative to the directory containing ``experiment.json``.
 
-See [``experiment.json``](../examples/darwin-lab/iso_detect_ref_ont_drna/model_ont_drna1/experiment.json) for an example.
+See [``experiment.json``](../examples/darwin-lab/iso_detect_ref_ont_drna/drnaA/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.

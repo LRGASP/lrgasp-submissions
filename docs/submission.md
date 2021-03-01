@@ -34,7 +34,6 @@ a ```_`` and a unique team-defined name.  For instance:
 - ```iso_quant_ont_drna1```
 - ```iso_detect_de_novo_pb1```
 
-
 This diagram shows the general structure:
 
 ![Submission file hierarchy diagram](submit_tree.png)

@@ -56,3 +56,12 @@ def validate_feature_ident(ident):
 def validate_synapse_ident(ident):
     if not re.match("^syn[0-9]{4,30}$", ident):
         raise LrgaspException(f"not a valid Synapse identifier: '{ident}'")
+
+def validate_entry_ident(entry_id):
+    """check that an entry is prefix with one of the challenge ids, return the Challenge identifier that
+    matches"""
+    for ch in Challenge:
+        if entry_id.startswith(str(ch) + '_'):
+            return ch
+    valid_pre = ", ".join([str(ch) + '_*' for ch in Challenge])
+    raise LrgaspException("entry_id {} must be prefixed with a challenge id ({})".format(entry_id, valid_pre))
