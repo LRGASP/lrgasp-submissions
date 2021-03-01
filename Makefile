@@ -7,6 +7,9 @@ pypi_url = https://upload.pypi.org/simple/
 pypitest_url = https://test.pypi.org/simple/
 testenv = testenv
 
+# mdl is an uncommon program to verify markdown
+have_mdl = $(shell (which -s mdl && echo yes) || echo no)
+
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "lint - check style with flake8"
@@ -22,9 +25,13 @@ help:
 lint: lint_code lint_doc
 lint_code:
 	${FLAKE8} ${pyprogs} lib
-# equires https://github.com/markdownlint/markdownlint
+# requires https://github.com/markdownlint/markdownlint
 lint_doc:
+ifeq (${have_mdl},yes)
 	mdl --style=mdl-style.rb docs/
+else
+	@echo "Note: mdl not installed, not linting metadata'
+endif
 
 test:
 	cd tests && ${MAKE} test
