@@ -43,15 +43,7 @@ An empty template is also available: [``experiment.json``](../templates/experime
   * ``acc`` - accession (ENCODE or LRGASP) for input data files (optional if URL supplied)
   * ``url`` - URL to file; intended for non-LRGASP provided files (optional if acc supplied)
   * ``notes`` - notes about the file (optional)
-* ``result_files`` - List of files descriptions for submitted files:
-  * ``fname`` - name of file (without directory), compressed with required extensions.
-  * ``ftype`` - type of file, one of:
-    * ``model_gtf``- [Transcript model format](model-format.md)
-    * ``read_model_map`` - [Read to transcript model map](read_model_map_format.md)
-    * ``expression_matrix`` - [Transcript expression matrix format](expression_matrix_format.md)
-  * ``md5`` - md5 sum of file, as a hexadecimal string (output from ``md5sum`` command)
-  * ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.
-  * ``notes`` - notes about the file (optional)
+* ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.
 * ``software`` - list of software used by the pipeline:
   * ``name`` - name of software package
   * ``description`` - description of software (optional)

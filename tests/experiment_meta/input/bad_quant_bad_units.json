@@ -12,14 +12,7 @@
             "acc": "ENF012A54"
         }
     ],
-    "result_files": [
-        {
-            "fname": "expression-matrix.tsv",
-            "ftype": "expression_matrix",
-            "md5": "8c86efed87c380a8097752f3651f26f6",
-            "units": "Barney"
-        }
-    ],
+    "units": "Barney",
     "software": [
         {
             "name": "SETM",

@@ -2,6 +2,8 @@
 
 The format required for providing quantification results by the user should be a **tab-separated** matrix in which long read-defined transcripts will be the rows and samples/replicates will be columns.
 
+Expression matrix files must be gzip compressed and named ```expression.tsv.gz```.
+
 ## Key features
 
 * **Header**: First field must be `ID` and the rest of the column names should be the sample/replicates labels.

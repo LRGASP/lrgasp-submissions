@@ -1,3 +1,3 @@
 Error: validation of experiment metadata failed: input/bad_quant_bad_units.json
-    caused by: experiment.result_files field units is not a valid ExpressionUnits: Barney
+    caused by: experiment field units is not a valid ExpressionUnits: Barney
     caused by: 'Barney' is not a member, external name, or alias of ExpressionUnits

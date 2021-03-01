@@ -1,6 +1,7 @@
 """
 Entry metadata parsing and validation.
 """
+import os.path as osp
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
@@ -65,4 +66,15 @@ def entry_load(entry_json):
         entry_validate(entry)
     except LrgaspException as ex:
         raise LrgaspException(f"validation of entry metadata failed: {entry_json}") from ex
+    return entry
+
+def entry_load_fs(entry_json):
+    """load entry metadata, verifying that the file system directory matches
+    the entry_id.  Save entry_dir in metadata """
+    entry = entry_load(entry_json)
+    entry_dir = osp.dirname(osp.abspath(entry_json))
+    entry_base_dir = osp.basename(entry_dir)
+    if entry_base_dir != entry.entry_id:
+        raise LrgaspException(f"entry {entry.entry_id} must be in an directory {entry.entry_id}, not {entry_base_dir}")
+    entry.entry_dir = entry_dir
     return entry

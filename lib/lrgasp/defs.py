@@ -30,12 +30,6 @@ def challengeToExperimentType(challenge):
     else:
         return ExperimentType.model
 
-class ResultFileType(SymEnum):
-    "type of a submitted data file"
-    model_gtf = auto()
-    read_model_map = auto()
-    expression_matrix = auto()
-
 class ExpressionUnits(SymEnum):
     "Units used in expression matrix"
     RPM = auto()

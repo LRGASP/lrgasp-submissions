@@ -12,14 +12,7 @@
         }
     ],
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "result_files": [
-        {
-            "fname": "expression.tsv",
-            "ftype": "expression_matrix",
-            "md5": "cf0d608a550a350087bb0a2f885e119e",
-            "units": "counts"
-        }
-    ],
+    "units": "counts",
     "software": [
         {
             "name": "IsoQuant",

@@ -11,18 +11,6 @@
         }
     ],
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "result_files": [
-        {
-            "fname": "models.gtf",
-            "ftype": "model_gtf",
-            "md5": "51b60c7279aaa1f9c5b0b0ad10adeebc"
-        },
-        {
-            "fname": "read_model_map.tsv",
-            "ftype": "read_model_map",
-            "md5": "b9a3b0f743ca72472a37e4586ae8e8a3"
-        }
-    ],
     "software": [
         {
             "name": "IsoQuant",

@@ -12,14 +12,7 @@
         }
     ],
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
-    "result_files": [
-        {
-            "fname": "expression.tsv",
-            "ftype": "expression_matrix",
-            "md5": "b3e1cdf9916fb6a6edf55c710d9e318d",
-            "units": "counts"
-        }
-    ],
+    "units": "counts",
     "software": [
         {
             "name": "IsoQuant",

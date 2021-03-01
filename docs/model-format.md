@@ -6,6 +6,8 @@ Genome transcript annotation submissions are in GTF format
 (see [GTF2.2](https://mblab.wustl.edu/GTF22.html)
 and [Ensembl GFF/GTF File Format](https://www.ensembl.org/info/website/upload/gff.html)).
 
+Model files must be gzip compressed and named ```models.gtf.gz```.
+
 Only `exon` features are used, and exons of a given transcript are linked together by the `transcript_id` attribute.  Gaps of at least XX bases between exons are assumed
 to be introns.  Smaller gaps are closed, combining the exon features.  The evaluation ignores other features
 that are provided, however, they will still be validated for syntax and consistency.
@@ -30,12 +32,3 @@ The standard GTF fields have the following restrictions:
 All of the attributes specified above must be repeated on all exons of a
 transcript with the same value.  An example models submission GTF file is at
 [models.gtf](../examples/ont_drna_model_ref/model_ont_drna1/models.gtf).
-
-## File naming
-
-Files must be named `xxx.gtf` and maybe compressed with `gzip` and then have a
-name in the form `xxx.gtf.gz`.
-
-## Validation
-
-A validation program is provide dfor the annotation GTFs, and the submitter must run this before submitting the file.

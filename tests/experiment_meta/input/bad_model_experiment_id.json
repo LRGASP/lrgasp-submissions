@@ -11,18 +11,6 @@
             "acc": "ENF012A54"
         }
     ],
-    "result_files": [
-        {
-            "fname": "models.gtf",
-            "ftype": "model_gtf",
-            "md5": "656c04d3a34d2f539e3699c2568d4ed1"
-        },
-        {
-            "fname": "read_model_map.tsv",
-            "ftype": "read_model_map",
-            "md5": "4c323e3d80cdb70ab5a03474bb50126a"
-        }
-    ],
     "software": [
         {
             "name": "SETM",

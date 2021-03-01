@@ -1,6 +1,7 @@
 # Read to transcript model map format
 
 This describes the submission format for mapping the initial reads to the final transcript model,
+This file is included in the experiment directory and must be named ```read_model_map.tsv.gz```.
 
 In order to understand better how each pipeline deals differently with the same initial input, it will be asked to the participants to submit a **.tsv file** that relates the starting point (the reads provided by LRGASP) to their final transcript models. This file will have two columns:
 
