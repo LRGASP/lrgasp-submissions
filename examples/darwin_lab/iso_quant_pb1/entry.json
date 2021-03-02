@@ -4,8 +4,8 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "experiment_ids": [
-        "quant_pb1",
-        "quant_pb2"
+        "pbA",
+        "pbB"
     ],
     "contacts": [
         {

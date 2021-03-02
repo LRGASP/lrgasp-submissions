@@ -2,8 +2,7 @@
 
 import argparse
 import logging
-from lrgasp import handle_prog_errors
-from lrgasp import LrgaspException
+from lrgasp import handle_prog_errors, prog_error_excepts
 from lrgasp import read_model_map
 
 def parse_args():
@@ -18,7 +17,7 @@ def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
         read_model_map.read_model_map_load(args.read_model_map_tsv)
-    except (LrgaspException, FileNotFoundError) as ex:
+    except prog_error_excepts as ex:
         handle_prog_errors(ex)
 
 main(parse_args())

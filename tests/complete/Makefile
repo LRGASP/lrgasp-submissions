@@ -2,22 +2,23 @@ testrootdir = ..
 include ${testrootdir}/testing.mk
 
 entries = iso_detect_ref_ont_drna iso_quant_ont_drna1 iso_detect_de_novo_pb1 iso_quant_pb1
-test: test_entries
+test: test_entry_meta test_entries
 
 ##
 # check metadata files
 ##
-test_entries: ${entries:%=test_entries_%}
+test_entry_meta: ${entries:%=test_entry_meta}
 
-test_entries_%:
-	${MAKE} test_entry entry=$*
+test_entry_meta_%:
+	${MAKE} test_entry_meta entry=$*
 
+ifneq (${entry},)
 # recursive target: entry=
-test_entry: test_entry_${entry} \
+test_entry_meta: test_entry_meta_${entry} \
 	test_models \
 	test_quants
 
-test_entry_%:
+test_entry_meta_%:
 	${lrgasp_validate_entry_metadata} ${darwindir}/$*/entry.json
 
 # recurse over models
@@ -27,6 +28,7 @@ test_models: ${model_exprs:%=test_models_%}
 test_models_%:
 	${MAKE} test_model entry=${entry} model=$*
 
+ifeq (${model},)
 # recursive target: entry= model=
 test_model: test_model_meta test_gtf test_model_map
 
@@ -54,6 +56,17 @@ test_quant_meta:
 
 test_express_matrix:
 	${lrgasp_validate_expression_matrix} ${darwindir}/${entry}/${exp}/expression.tsv
+endif
+endif
+
+##
+# full validation of each entry
+##
+test_entries: ${entries:%=test_%_entry}
+
+test_%_entry:
+	${lrgasp_validate_entry} ${darwindir}/$*
+
 
 clean:
 	rm -rf output

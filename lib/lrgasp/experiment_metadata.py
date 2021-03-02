@@ -83,13 +83,13 @@ def experiment_load(experiment_json):
         raise LrgaspException(f"validation of experiment metadata failed: {experiment_json}") from ex
     return experiment
 
-def experiment_load_from_entry(entry, entry_dir, experiment_id):
+def experiment_load_from_entry(entry, experiment_id):
     """load and validation experiment metadata given a entry,
     add experiment_dir to metadata"""
-    experiment_dir = osp.join(entry_dir, experiment_id)
+    experiment_dir = osp.join(entry.entry_dir, experiment_id)
     experiment_json = osp.join(experiment_dir, EXPERIMENT_JSON)
     try:
-        experiment = experiment_json(experiment_json)
+        experiment = experiment_load(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:
         raise LrgaspException(f"error parse metadata for entry {entry.entry_id}, experiment {experiment_id}: {experiment_json}") from ex
     experiment.experiment_dir = experiment_dir

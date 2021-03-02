@@ -51,7 +51,11 @@ def entry_validate(entry):
     try:
         validate_symbolic_ident(entry.entry_id)
     except LrgaspException as ex:
-        raise LrgaspException(f"invalid {desc}.{fld_entry_id.name}") from ex
+        raise LrgaspException(f"invalid {desc} {fld_entry_id.name}") from ex
+
+    challenge_id = validate_entry_ident(entry.entry_id)
+    if entry.challenge_id != challenge_id:
+        raise LrgaspException(f"invalid {desc} {fld_entry_id.name} entry_id {entry.entry-id} prefix does not match challenge_id {entry.challenge_id}")
     for contact in entry.contacts:
         entry_contact_validate(contact)
 

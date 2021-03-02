@@ -3,20 +3,20 @@
 import argparse
 import logging
 from lrgasp import handle_prog_errors, prog_error_excepts
-from lrgasp import gtf
+from lrgasp import entry_validate
 
 def parse_args():
-    desc = """Validate that an LRGASP annotation GTF meets requirements.
+    desc = """Validate that an LRGASP entry metadata and data
     """
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("gtf_file",
-                        help="GTF file to validate")
+    parser.add_argument("entry_dir",
+                        help="entry directory")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        gtf.gtf_load(args.gtf_file)
+        entry_validate.entry_data_validate(args.entry_dir)
     except prog_error_excepts as ex:
         handle_prog_errors(ex)
 

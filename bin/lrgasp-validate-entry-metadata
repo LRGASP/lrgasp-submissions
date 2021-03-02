@@ -2,8 +2,7 @@
 
 import argparse
 import logging
-from lrgasp import handle_prog_errors
-from lrgasp import LrgaspException
+from lrgasp import handle_prog_errors, prog_error_excepts
 from lrgasp import entry_metadata
 
 def parse_args():
@@ -18,7 +17,7 @@ def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
         entry_metadata.entry_load(args.entry_json)
-    except (LrgaspException, FileNotFoundError) as ex:
+    except prog_error_excepts as ex:
         handle_prog_errors(ex)
 
 main(parse_args())

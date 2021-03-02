@@ -6,6 +6,10 @@ rootdir=${testrootdir}/..
 libdir=${rootdir}/lib
 bindir=${rootdir}/bin
 
+# disable builtin stuff
+MAKEFLAGS += --no-builtin-rules
+MAKEFLAGS += --no-builtin-variables
+
 exampledir = ${rootdir}/examples
 darwindir = ${exampledir}/darwin_lab
 
@@ -21,3 +25,4 @@ lrgasp_validate_read_model_map = ${binpre}lrgasp-validate-read-model-map
 lrgasp_validate_expression_matrix = ${binpre}lrgasp-validate-expression-matrix
 lrgasp_validate_entry_metadata = ${binpre}lrgasp-validate-entry-metadata
 lrgasp_validate_experiment_metadata = ${binpre}lrgasp-validate-experiment-metadata
+lrgasp_validate_entry = ${binpre}lrgasp-validate-entry
