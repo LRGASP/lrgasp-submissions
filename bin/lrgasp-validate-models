@@ -6,7 +6,7 @@ from lrgasp import handle_prog_errors, prog_error_excepts
 from lrgasp import gtf
 
 def parse_args():
-    desc = """Validate that an LRGASP annotation GTF meets requirements.
+    desc = """Validate that an LRGASP model GTF meets requirements.
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("gtf_file",

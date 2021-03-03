@@ -2,9 +2,33 @@
 Simplified GTF parser/validator
 """
 import numpy as np
-from collections import defaultdict
 from gtfparse import read_gtf, ParsingError
 from lrgasp import LrgaspException
+
+class Transcript:
+    def __init__(self, transcript_id):
+        self.transcript_id = transcript_id
+        self.exons = []
+
+    def sort(self):
+        self.exons.sort(key=lambda e: (e.seqname, e.start, -e.end))
+
+class Models(list):
+    def __init__(self):
+        self.by_transcript_id = {}
+
+    def _obtain_transcript(self, transcript_id):
+        trans = self.by_transcript_id.get(transcript_id)
+        if trans is None:
+            trans = self.by_transcript_id[transcript_id] = Transcript(transcript_id)
+        return trans
+
+    def add_exon(self, exon):
+        self._obtain_transcript(exon.transcript_id).exons.append(exon)
+
+    def sort(self):
+        for trans in self.by_transcript_id.values():
+            trans.sort()
 
 class GtfException(LrgaspException):
     pass
@@ -41,15 +65,6 @@ def rec_desc(rec):
 def get_trans_id(trans):
     return trans[0].transcript_id
 
-def group_transcripts(gtf_records):
-    """group records into transcripts"""
-    transcripts = defaultdict(list)
-    for rec in gtf_records:
-        transcripts[rec.transcript_id].append(rec)
-    for trans in transcripts.values():
-        trans.sort(key=lambda e: (e.seqname, e.start, -e.end))
-    return transcripts
-
 def validate_exon(exon):
     if exon.transcript_id is None:
         raise GtfException("must specify transcript_id attribute: " + rec_desc(exon))
@@ -66,10 +81,16 @@ def validate_exons(exons):
     for exon in exons:
         validate_exon(exon)
 
+def build_transcripts(exons):
+    models = Models()
+    for exon in exons:
+        models.add_exon(exon)
+    return models
+
 def check_trans_field_same(trans, attr):
-    vals = set([e[attr] for e in trans])
+    vals = set([e[attr] for e in trans.exons])
     if len(vals) > 1:
-        raise GtfException("all exons in transcript {} must have same value for {}, found {}".format(get_trans_id(trans), attr, list(sorted(vals))))
+        raise GtfException("all exons in transcript {} must have same value for {}, found {}".format(trans.transcript_id, attr, list(sorted(vals))))
 
 def validate_transcript(trans):
     # do gene_id first, as it can explain other problems
@@ -79,10 +100,10 @@ def validate_transcript(trans):
     check_trans_field_same(trans, "reference_gene_id")
     check_trans_field_same(trans, "reference_transcript_id")
 
-def validate_transcripts(transcripts):
-    if len(transcripts) == 0:
+def validate_transcripts(models):
+    if len(models.by_transcript_id) == 0:
         raise LrgaspException("no transcripts found in GTF file")
-    for trans in transcripts.values():
+    for trans in models.by_transcript_id.values():
         validate_transcript(trans)
 
 def gtf_load(gtf_file):
@@ -90,9 +111,8 @@ def gtf_load(gtf_file):
     try:
         exons = load_exons(gtf_file)
         validate_exons(exons)
-
-        transcripts = group_transcripts(exons)
-        validate_transcripts(transcripts)
-        return transcripts
+        models = build_transcripts(exons)
+        validate_transcripts(models)
+        return models
     except (LrgaspException, ParsingError, ValueError) as ex:
         raise GtfException("Parse of GTF failed: {}".format(gtf_file)) from ex

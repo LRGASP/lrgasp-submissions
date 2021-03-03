@@ -20,7 +20,7 @@ else
   binpre = 
 endif
 
-lrgasp_validate_gtf = ${binpre}lrgasp-validate-gtf
+lrgasp_validate_models = ${binpre}lrgasp-validate-models
 lrgasp_validate_read_model_map = ${binpre}lrgasp-validate-read-model-map
 lrgasp_validate_expression_matrix = ${binpre}lrgasp-validate-expression-matrix
 lrgasp_validate_entry_metadata = ${binpre}lrgasp-validate-entry-metadata

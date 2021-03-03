@@ -7,10 +7,10 @@ bad_tests = $(basename $(notdir ${bad_gtfs}))
 test: test_example test_example_gz bad_tests
 
 test_example:
-	${lrgasp_validate_gtf} ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
+	${lrgasp_validate_models} ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
 
 test_example_gz: output/models.gtf.gz
-	${lrgasp_validate_gtf} $<
+	${lrgasp_validate_models} $<
 
 output/models.gtf.gz: ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
 	@mkdir -p output	
@@ -19,8 +19,8 @@ output/models.gtf.gz: ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
 bad_tests: ${bad_tests:%=test_%}
 
 test_bad%: mkout
-	@echo ${lrgasp_validate_gtf} input/bad$*.gtf  "(should fail)"
-	@if ! ${lrgasp_validate_gtf} input/bad$*.gtf 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@echo ${lrgasp_validate_models} input/bad$*.gtf  "(should fail)"
+	@if ! ${lrgasp_validate_models} input/bad$*.gtf 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 clean:
