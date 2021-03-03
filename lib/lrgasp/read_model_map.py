@@ -1,37 +1,83 @@
 """
 read-to-model map parser/validator
 """
+import sys
 import csv
-import pandas as pd
-from lrgasp import LrgaspException
+from collections import defaultdict, namedtuple
+from lrgasp import LrgaspException, gopen
 from lrgasp.defs import validate_feature_ident
 
-required_columns = ("read_id", "transcript_id")
+csv.field_size_limit(sys.maxsize)
 
-def validate_header(read_model_map):
-    for col in required_columns:
-        if col not in read_model_map.columns:
-            raise LrgaspException(f"TSV must have column '{col}'")
+# note: pandas was a bad fit for this due to multi-indexing
 
-def validate_data(read_model_map):
-    if read_model_map.size == 0:
-        raise LrgaspException("TSV contains no data")
-    if (read_model_map.isnull().values.any()):
-        raise LrgaspException("empty or missing values in columns")
-    read_model_map.read_id.apply(validate_feature_ident)
-    read_model_map.transcript_id.apply(validate_feature_ident)
+READ_ID = "read_id"
+TRANSCRIPT_ID = "transcript_id"
 
-def validate(read_model_map):
-    validate_header(read_model_map)
-    validate_data(read_model_map)
+class ReadModelPair(namedtuple("ReadModelPair", ("read_id", "transcript_id"))):
+    """a read mapped to a model or None"""
+    pass
+
+class ReadModelMap:
+    """read to model map container, adding lazy multiple indexes"""
+    def __init__(self, data):
+        self.data = data
+        self._read_id_idx = None
+        self._transcript_id_idx = None
+
+    def _build_idx(self, col_name):
+        idx = defaultdict(list)
+        for rec in self.data:
+            idx[getattr(rec, col_name)] = rec
+        idx.default_factory = None
+        return idx
+
+    def get_by_read_id(self, read_id):
+        if self._read_id_idx is None:
+            self._read_id_idx = self._build_idx("read_id")
+        return self._read_id_idx.get(read_id)
+
+    def get_by_transcript_id(self, transcript_id):
+        if self._transcript_id_idx is None:
+            self._transcript_id_idx = self._build_idx("transcript_id")
+        return self._transcript_id_idx.get(transcript_id)
+
+def _parse_header(reader):
+    header = next(reader, None)
+    if header is None:
+        raise LrgaspException("Empty TSV file, requires a header line")
+    try:
+        read_id_col = header.index(READ_ID)
+    except ValueError:
+        raise LrgaspException(READ_ID + " column required")
+    try:
+        trans_id_col = header.index(TRANSCRIPT_ID)
+    except ValueError:
+        raise LrgaspException(TRANSCRIPT_ID + " column required")
+    return read_id_col, trans_id_col, len(header)
+
+def _parse_row(read_id, transcript_id):
+    validate_feature_ident(read_id)
+    validate_feature_ident(transcript_id)
+    if transcript_id == '*':
+        transcript_id = None
+    return ReadModelPair(read_id, transcript_id)
+
+def _tsv_reader(fh):
+    # allows for extra columns, but all rows must have the same
+    reader = csv.reader(fh, dialect=csv.excel_tab)
+    read_id_col, trans_id_col, width = _parse_header(reader)
+    for row in reader:
+        if len(row) != width:
+            raise LrgaspException(f"TSV row requires {width} columns: {row}")
+        yield _parse_row(row[read_id_col], row[trans_id_col])
 
 def read_model_map_load(model_map_tsv):
     try:
-        read_model_map = pd.read_csv(model_map_tsv,
-                                     dialect=csv.excel_tab,
-                                     header=0,
-                                     dtype=str)
-        validate(read_model_map)
-        return read_model_map
-    except (LrgaspException, pd.errors.ParserError, pd.errors.EmptyDataError) as ex:
+        with gopen(model_map_tsv) as fh:
+            data = [r for r in _tsv_reader(fh)]
+        if len(data) == 0:
+            raise LrgaspException("TSV contains no data")
+        ReadModelMap(data)
+    except (LrgaspException, FileNotFoundError, csv.Error) as ex:
         raise LrgaspException("Parse of reads-to-models TSV failed: {}".format(model_map_tsv)) from ex

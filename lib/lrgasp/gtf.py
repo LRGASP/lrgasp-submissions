@@ -61,6 +61,8 @@ def validate_exon(exon):
         raise GtfException("strand must be '+', '-', or '.': " + rec_desc(exon))
 
 def validate_exons(exons):
+    if len(exons) == 0:
+        raise LrgaspException("no exons found in GTF file")
     for exon in exons:
         validate_exon(exon)
 
@@ -78,6 +80,8 @@ def validate_transcript(trans):
     check_trans_field_same(trans, "reference_transcript_id")
 
 def validate_transcripts(transcripts):
+    if len(transcripts) == 0:
+        raise LrgaspException("no transcripts found in GTF file")
     for trans in transcripts.values():
         validate_transcript(trans)
 
@@ -86,6 +90,7 @@ def gtf_load(gtf_file):
     try:
         exons = load_exons(gtf_file)
         validate_exons(exons)
+
         transcripts = group_transcripts(exons)
         validate_transcripts(transcripts)
         return transcripts

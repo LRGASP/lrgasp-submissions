@@ -1,2 +1,2 @@
 Error: Parse of reads-to-models TSV failed: input/bad_diff_columns1.tsv
-    caused by: empty or missing values in columns
+    caused by: TSV row requires 2 columns: ['09cc8bf9-197e-4e88-a1cb-d349d944be3f']
