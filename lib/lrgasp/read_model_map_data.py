@@ -18,17 +18,21 @@ class ReadModelPair(namedtuple("ReadModelPair", ("read_id", "transcript_id"))):
     """a read mapped to a model or None"""
     pass
 
-class ReadModelMap:
+class ReadModelMap(list):
     """read to model map container, adding lazy multiple indexes"""
-    def __init__(self, data):
-        self.data = data
+    def __init__(self):
         self._read_id_idx = None
         self._transcript_id_idx = None
 
+    def add(self, pair):
+        self.append(pair)
+
     def _build_idx(self, col_name):
         idx = defaultdict(list)
-        for rec in self.data:
-            idx[getattr(rec, col_name)] = rec
+        for rec in self:
+            val = getattr(rec, col_name)
+            if val is not None:
+                idx[val] = rec
         idx.default_factory = None
         return idx
 
@@ -69,15 +73,17 @@ def _tsv_reader(fh):
     read_id_col, trans_id_col, width = _parse_header(reader)
     for row in reader:
         if len(row) != width:
-            raise LrgaspException(f"TSV row requires {width} columns: {row}")
+            raise LrgaspException(f"TSV row requires {width} columns found {len(row)}: {row}")
         yield _parse_row(row[read_id_col], row[trans_id_col])
 
-def read_model_map_load(model_map_tsv):
+def load(model_map_tsv):
+    read_model_map = ReadModelMap()
     try:
         with gopen(model_map_tsv) as fh:
-            data = [r for r in _tsv_reader(fh)]
-        if len(data) == 0:
+            for pair in _tsv_reader(fh):
+                read_model_map.add(pair)
+        if len(read_model_map) == 0:
             raise LrgaspException("TSV contains no data")
-        ReadModelMap(data)
+        return read_model_map
     except (LrgaspException, FileNotFoundError, csv.Error) as ex:
         raise LrgaspException("Parse of reads-to-models TSV failed: {}".format(model_map_tsv)) from ex

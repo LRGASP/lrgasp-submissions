@@ -1,3 +1,3 @@
 Error: validation of entry metadata failed: input/bad_invalid_challenge.json
-    caused by: entry field challenge_id is not a valid Challenge: iso_fred_finished
-    caused by: 'iso_fred_finished' is not a member, external name, or alias of Challenge
+caused by: entry field challenge_id is not a valid Challenge: iso_fred_finished
+caused by: 'iso_fred_finished' is not a member, external name, or alias of Challenge

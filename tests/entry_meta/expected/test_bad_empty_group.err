@@ -1,2 +1,2 @@
 Error: validation of entry metadata failed: input/bad_empty_group.json
-    caused by: entry field team_name must be a non-empty str
+caused by: entry field team_name must be a non-empty str

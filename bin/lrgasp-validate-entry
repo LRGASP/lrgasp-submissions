@@ -9,6 +9,8 @@ def parse_args():
     desc = """Validate that an LRGASP entry metadata and data
     """
     parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("--debug", action='store_true',
+                        help="print stack on any error")
     parser.add_argument("entry_dir",
                         help="entry directory")
     return parser.parse_args()
@@ -18,6 +20,6 @@ def main(args):
     try:
         entry_validate.entry_data_validate(args.entry_dir)
     except prog_error_excepts as ex:
-        handle_prog_errors(ex)
+        handle_prog_errors(ex, args.debug)
 
 main(parse_args())

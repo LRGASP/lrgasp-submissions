@@ -59,7 +59,7 @@ def entry_validate(entry):
     for contact in entry.contacts:
         entry_contact_validate(contact)
 
-def entry_load(entry_json):
+def load(entry_json):
     """load and validate entry metadata"""
     try:
         with gopen(entry_json) as fh:
@@ -72,11 +72,11 @@ def entry_load(entry_json):
         raise LrgaspException(f"validation of entry metadata failed: {entry_json}") from ex
     return entry
 
-def entry_load_dir(entry_dir):
+def load_dir(entry_dir):
     """load entry metadata, verifying that the file system directory matches
     the entry_id.  Save entry_dir in metadata """
     entry_json = osp.join(entry_dir, ENTRY_JSON)
-    entry = entry_load(entry_json)
+    entry = load(entry_json)
     entry_base_dir = osp.basename(entry_dir)
     if entry_base_dir != entry.entry_id:
         raise LrgaspException(f"entry {entry.entry_id} must be in an directory {entry.entry_id}, not {entry_base_dir}")

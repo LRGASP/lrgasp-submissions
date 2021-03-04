@@ -1,2 +1,2 @@
 Error: validation of entry metadata failed: input/bad_no_challenge.json
-    caused by: entry field challenge_id is required
+caused by: entry field challenge_id is required

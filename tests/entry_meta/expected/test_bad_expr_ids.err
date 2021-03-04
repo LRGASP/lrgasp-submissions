@@ -1,2 +1,2 @@
 Error: validation of entry metadata failed: input/bad_expr_ids.json
-    caused by: not a valid symbolic identifier: '1fred'
+caused by: not a valid symbolic identifier: '1fred'

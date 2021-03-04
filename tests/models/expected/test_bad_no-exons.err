@@ -1,2 +1,2 @@
 Error: Parse of GTF failed: input/bad_no-exons.gtf
-    caused by: no exon records found
+caused by: no exon records found

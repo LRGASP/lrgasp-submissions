@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
 import setuptools
+
 requirements = [
     "gtfparse>=1.2.1",
     "validators>=0.18.2"
@@ -17,11 +16,12 @@ setuptools.setup(
     author_email = 'markd@ucsc.edu',
     url = 'https://github.com/LRGASP/lrgasp-submissions',
     scripts=[
+        'bin/lrgasp-validate-entry',
+        'bin/lrgasp-validate-entry-metadata',
         'bin/lrgasp-validate-experiment-metadata',
         'bin/lrgasp-validate-expression-matrix',
-        'bin/lrgasp-validate-gtf',
+        'bin/lrgasp-validate-models',
         'bin/lrgasp-validate-read-model-map',
-        'bin/lrgasp-validate-team-metadata',
     ],
     packages = [
         'lrgasp',

@@ -1,0 +1,2 @@
+Error: Parse of expression matrix TSV failed: input/bad_dup_values.tsv
+caused by: Index has duplicate keys: Index(['00000f84-64f2-4aef-a027-a86468e48da2;16'], dtype='object', name='ID')

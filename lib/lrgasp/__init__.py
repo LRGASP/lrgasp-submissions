@@ -1,6 +1,7 @@
 import os.path as osp
 import sys
 import gzip
+import traceback
 
 __version__ = "0.5.0"
 
@@ -10,12 +11,17 @@ class LrgaspException(Exception):
 # exceptions that should result in a call to handle_prog_errors
 prog_error_excepts = (LrgaspException, FileNotFoundError)
 
-def handle_prog_errors(ex):
+def handle_prog_errors(ex, debug):
     """Prints error messages without call stack and exit. For expected exceptions """
+
     print("Error: " + str(ex), file=sys.stderr)
+    if debug:
+        traceback.print_tb(ex.__traceback__, file=sys.stderr)
     exc = ex.__cause__
     while exc is not None:
-        print("    caused by: " + str(exc), file=sys.stderr)
+        print("caused by: " + str(exc), file=sys.stderr)
+        if debug:
+            traceback.print_tb(exc.__traceback__, file=sys.stderr)
         exc = exc.__cause__
     exit(1)
 

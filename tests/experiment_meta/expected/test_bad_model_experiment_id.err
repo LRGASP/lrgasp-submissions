@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_model_experiment_id.json
-    caused by: not a valid symbolic identifier: '123model_try'
+caused by: not a valid symbolic identifier: '123model_try'

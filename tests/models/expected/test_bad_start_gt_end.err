@@ -1,2 +1,2 @@
 Error: Parse of GTF failed: input/bad_start_gt_end.gtf
-    caused by: start must be <= end: exon at chr1:12721-12613
+caused by: start must be <= end: exon at chr1:12721-12613

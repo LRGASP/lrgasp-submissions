@@ -1,2 +1,2 @@
 Error: Parse of expression matrix TSV failed: input/bad_missing_cells.tsv
-    caused by: TSV has an inconsistent number of columns: min=9, max=11
+caused by: TSV has an inconsistent number of columns: min=9, max=11

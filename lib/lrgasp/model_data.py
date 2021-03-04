@@ -21,6 +21,7 @@ class Models(list):
         trans = self.by_transcript_id.get(transcript_id)
         if trans is None:
             trans = self.by_transcript_id[transcript_id] = Transcript(transcript_id)
+            self.append(trans)
         return trans
 
     def add_exon(self, exon):
@@ -61,9 +62,6 @@ def load_exons(gtf_file):
 
 def rec_desc(rec):
     return "{} at {}:{}-{}".format(rec.feature, rec.seqname, rec.start, rec.end)
-
-def get_trans_id(trans):
-    return trans[0].transcript_id
 
 def validate_exon(exon):
     if exon.transcript_id is None:
@@ -106,7 +104,7 @@ def validate_transcripts(models):
     for trans in models.by_transcript_id.values():
         validate_transcript(trans)
 
-def gtf_load(gtf_file):
+def load(gtf_file):
     """Validate GTF,returns exons grouped into transcripts"""
     try:
         exons = load_exons(gtf_file)

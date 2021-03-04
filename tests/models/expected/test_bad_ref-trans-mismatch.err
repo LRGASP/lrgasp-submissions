@@ -1,2 +1,2 @@
 Error: Parse of GTF failed: input/bad_ref-trans-mismatch.gtf
-    caused by: all exons in transcript trans_100 must have same value for reference_transcript_id, found ['ENST00000456328.2', 'fred']
+caused by: all exons in transcript trans_100 must have same value for reference_transcript_id, found ['ENST00000456328.2', 'fred']
