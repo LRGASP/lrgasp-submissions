@@ -73,32 +73,37 @@ define envsetup
 endef
 envact = source ${testenv}/bin/activate
 
+dist_tar = dist/lrgasp-tools-${version}.tar.gz
+dist_whl = dist/lrgasp_tools-${version}-py3-none-any.whl
+pkgver_spec = lrgasp-tools==${version}
+
 dist: clean
 	${PYTHON} setup.py sdist
 	${PYTHON} setup.py bdist_wheel
-	ls -l dist
+	@ls -l ${dist_tar}
+	@ls -l ${dist_whl}
 
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && pip install --no-cache-dir dist/lrgasp-tools-${version}.tar.gz
+	${envact} && pip install --no-cache-dir ${dist_tar}
 	${envact} && ${MAKE} test
 
 # test release to testpypi
 release-testpypi: dist
-	${TWINE} upload --repository=testpypi dist/lrgasp_tools-${version}.whl dist/lrgasp-tools-${version}.tar.gz
+	${TWINE} upload --repository=testpypi ${dist_whl} ${dist_tar}
 
 # test release install from testpypi, testpypi doesn't have requeiments, so install them first
 test-release-testpypi:
 	${envsetup}
-	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} --extra-index-url=https://pypi.org/simple 'lrgasp-tools==${version}'
+	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} --extra-index-url=https://pypi.org/simple ${pkgver_spec}
 	${envact} && ${MAKE} test
 
 release: dist
-	${TWINE} upload --repository=pypi dist/lrgasp_tools-${version}.whl dist/lrgasp-tools-${version}.tar.gz
+	${TWINE} upload --repository=pypi ${dist_whl} ${dist_tar}
 
 release-test:
 	${envsetup}
-	${envact} && pip install --no-cache-dir 'lrgasp-tools==${version}'
+	${envact} && pip install --no-cache-dir ${pkgver_spec}
 	${envact} && ${MAKE} test
 
