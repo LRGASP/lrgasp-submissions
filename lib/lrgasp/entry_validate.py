@@ -3,7 +3,7 @@ Load and validate model and expression entries
 """
 import os.path as osp
 from lrgasp import LrgaspException
-from lrgasp.defs import Challenge, ExperimentType, challengeToExperimentType, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import ExperimentType, challengeToExperimentType, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
 from lrgasp import entry_metadata
 from lrgasp import experiment_metadata
 from lrgasp import model_data

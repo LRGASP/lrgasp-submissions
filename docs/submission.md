@@ -24,33 +24,44 @@ identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``
 experiment identifiers assigned by the team and must be valid [symbolic
 identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
-Each team is given a file area to upload their results (a mechanism to be
-determined).  Below that are directories for each ``entry`` being submitted
-for each challenge, named the same as the ```entry_id```.  The entry ids must
-prefixed with the [LRGASP Challenge identifier](metadata-identifiers.md#lrgasp-challenge-identifiers) followed by
-a ```_`` and a unique team-defined name.  For instance:
+## Entry overview
 
-- ```iso_detect_ref_ont_drna``
-- ```iso_quant_ont_drna1```
-- ```iso_detect_de_novo_pb1```
-
-This diagram shows the general structure:
+This diagram shows the general structure of LRGASP entries:
 
 ![Submission file hierarchy diagram](submit_tree.png)
+
+## Entry structure
+
+Each ``entry`` must conform to fix, straight-forward file hierarchy.
+Each entry to a challenge is in a directory with the same name as the `entry_id`.
+The entry ids mustprefixed with the [LRGASP Challenge identifier](metadata-identifiers.md#lrgasp-challenge-identifiers) followed by
+a `_` and a unique team-defined name.  For instance:
+
+- `iso_detect_ref_ont_drna``
+- `iso_quant_ont_drna1`
+- `iso_detect_de_novo_pb1`
+
+The entry directory contains and `entry.json` [entry
+metadata](metadata.md#entry.json) describing the entry.  Within the entry directory,
+there is a directory per experiment, with each directory named the same as the
+submitter-defined ``experiment_id`.
+
+All entries MUST be validated by the provided [submission
+tools](submission-tools) before uploading.
 
 ## Experiment structure
 
 Model experiments must contain the following files:
 
-- ```experiment.json``` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- ```models.gtf.gz``` - [GTF file](model-format.md} with model annotations, compressed with gzip.
-- ```read_model_map.tsv.gz``` [Read to model map file](read_model_map_format.md) that associates every transcript model with a least one read.
+- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `models.gtf.gz` - [GTF file](model-format.md} with model annotations, compressed with gzip.
+- `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model with a least one read.
 
 Quantification experiments must contain the following files:
 
-- ```experiment.json``` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- ```expression.tsv.gz``` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
-- ```models.gtf.gz``` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
+- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
+- `models.gtf.gz` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
 
 ## Detailed specifications
 
@@ -59,3 +70,4 @@ Quantification experiments must contain the following files:
 - [Transcript model format](model-format.md)
 - [Read to model map format](read_model_map_format.md)
 - [Transcript expression matrix format](expression_matrix_format.md)
+- [Submission tools](submission-tools)
