@@ -12,11 +12,11 @@ from lrgasp import expression_data
 
 def _validate_trans_and_read_mapping(trans, read_model_map):
     if read_model_map.get_by_transcript_id(trans.transcript_id) is None:
-        raise LrgaspException(f"transcript in models {trans.transcript_id} not in read-model map")
+        raise LrgaspException(f"transcript in models {trans.transcript_id} not in read-model_map")
 
 def _validate_read_mapping_trans(transcript_id, models):
     if models.by_transcript_id.get(transcript_id) is None:
-        raise LrgaspException(f"transcript in read-model map {transcript_id} not models")
+        raise LrgaspException(f"transcript in read_model_map {transcript_id} not in models")
 
 def _validate_model_and_read_mapping(models, read_model_map):
     # all model mapping must be in models

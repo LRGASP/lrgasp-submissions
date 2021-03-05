@@ -80,10 +80,23 @@ bad_quant_tests = $(basename $(notdir $(wildcard input/bad_quant_*.sh)))
 test_bad_isoforms: ${bad_isoform_tests:%=test_%}
 
 test_bad_isoform%: mkout
+	rm -rf output/$@
 	mkdir output/$@
-	cat input/iso_detect_ref_ont_drna.files | (cd ../../examples/darwin_lab | cpio -pduml ../tests/complete/output/$@/)
-	bash input/bad_isoform$*.sh output/$@
+	cat input/iso_detect_ref_ont_drna.files | (cd ../../examples/darwin_lab && cpio -pduml ../../tests/complete/output/$@/)
+	bash -e input/bad_isoform$*.sh output/$@
 	@echo ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna "(should fail)"
+	@if ! ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	diff expected/$@.err output/$@.err
+
+test_bad_quants: ${bad_quant_tests:%=test_%}
+
+test_bad_quant%: mkout
+	rm -rf output/$@
+	mkdir output/$@
+	cat input/iso_quant_ont_drna1.files | (cd ../../examples/darwin_lab && cpio -pduml ../../tests/complete/output/$@/)
+	bash -e input/bad_quant$*.sh output/$@
+	@echo ${lrgasp_validate_entry} output/$@/iso_quant_ont_drna1 "(should fail)"
+	@if ! ${lrgasp_validate_entry} output/$@/iso_quant_ont_drna1 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 

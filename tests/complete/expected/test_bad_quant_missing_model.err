@@ -1,0 +1,2 @@
+Error: entry iso_quant_ont_drna1 experiment quant_ont_drna2 validation failed on output/test_bad_quant_missing_model/iso_quant_ont_drna1/drnaB/models.gtf and output/test_bad_quant_missing_model/iso_quant_ont_drna1/drnaB/expression.tsv
+caused by: expression matrix ID transcript_113.nnic not found in models

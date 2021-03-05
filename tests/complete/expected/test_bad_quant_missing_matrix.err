@@ -1,0 +1,2 @@
+Error: entry iso_quant_ont_drna1 experiment quant_ont_drna2 validation failed on output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/models.gtf and output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/expression.tsv
+caused by: [Errno 2] No such file or directory: 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/expression.tsv'
