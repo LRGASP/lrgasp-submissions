@@ -7,9 +7,9 @@ bad_tests = $(basename $(notdir ${bad_jsons}))
 good_jsons = $(wildcard input/good_*.json)
 good_tests = $(basename $(notdir ${good_jsons}))
 
-test: test_example bad_tests good_tests
+test: example_test bad_tests good_tests
 
-test_example:
+example_test:
 	${lrgasp_validate_entry_metadata} ${darwindir}/iso_detect_ref_ont_drna/entry.json
 
 bad_tests: ${bad_tests:%=test_%}

@@ -14,6 +14,12 @@ To build and test package
 
 ```
 make test-pip
+```
+
+### pypitest
+
+```
+bumpversion --allow-dirty --no-commit --no-tag major|minor|patch
 make release-test
 make test-release-pip
 ```
@@ -22,7 +28,6 @@ make test-release-pip
 
 ```
 bumpversion major|minor|patch
-commit to master
 git push origin --tags
 git push
 make release

@@ -1,10 +1,10 @@
 PYTHON = python3
 FLAKE8 = python3 -m flake8
-
+TWINE = ${PYTHON} -m twine
 
 pyprogs = $(shell file -F $$'\t' bin/* | awk '/Python script/{print $$1}')
 pypi_url = https://upload.pypi.org/simple/
-pypitest_url = https://test.pypi.org/simple/
+testpypi_url = https://test.pypi.org/simple/
 testenv = testenv
 
 # mdl is an uncommon program to verify markdown
@@ -17,8 +17,8 @@ help:
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
 	@echo "test-pip - test install the package using pip"
-	@echo "release-test - test upload to pypitest"
-	@echo "test-release-pip - install from pypitest"
+	@echo "release-test - test upload to testpypi"
+	@echo "test-release-pip - install from testpypi"
 	@echo "release - package and upload a release"
 
 
@@ -37,7 +37,7 @@ test:
 	cd tests && ${MAKE} test
 
 clean: test_clean
-	rm -rf build/ dist/ ${testenv}/ lib/lrgasp.egg-info/ lib/lrgasp/__pycache__/
+	rm -rf build/ dist/ ${testenv}/ lib/lrgasp_tools.egg-info/ lib/lrgasp/__pycache__/
 
 test_clean:
 	cd tests && ${MAKE} clean
@@ -57,19 +57,20 @@ dist: clean
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && pip install --no-cache-dir dist/lrgasp-*.tar.gz
+	${envact} && pip install --no-cache-dir dist/lrgasp-tools-*.tar.gz
 	${envact} && ${MAKE} test
 
-# test release to pypitest
+# test release to testpypi
 release-test: dist
-	${twine} upload --repository=testpypi dist/lrgasp-*.whl dist/lrgasp-*.tar.gz
+	${TWINE} upload --repository=testpypi dist/lrgasp_tools-*.whl dist/lrgasp-tools-*.tar.gz
 
-# test release install from pypitest
+# test release install from testpypi, testpypi doesn't have requeiments, so install them first
 test-release-pip:
 	${envsetup}
-	${envact} && pip install --no-cache-dir --index-url=${pypitest_url} lrgasp
+	${envact} && pip install -r lib/lrgasp_tools.egg-info/requires.txt 
+	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} lrgasp-tools
 	${envact} && ${MAKE} test
 
 release: dist
-	${twine} upload --repository=pypi dist/lrgasp-*.whl dist/lrgasp-*.tar.gz
+	${TWINE} upload --repository=pypi dist/lrgasp_tools-*.whl dist/lrgasp-tools-*.tar.gz
 
