@@ -26,15 +26,19 @@ make test-pip
 ### pypitest
 
 ```
-bumpversion --allow-dirty --no-commit --no-tag major|minor|patch
+bumpversion --allow-dirty --no-commit --no-tag (major|minor|patch)
 make release-testpypi
 make test-release-testpypi
+git reset --hard
 ```
+
+Note: might have to wait for test-release-testpypi, it seems there might be 
+a slight deal in index update.
 
 ## Release to pypi
 
 ```
-bumpversion major|minor|patch
+bumpversion (major|minor|patch)
 git push origin --tags
 git push
 make release
