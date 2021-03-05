@@ -2,11 +2,18 @@
 
 ## Development
 
-Running test set PYTHONPATH and don't require a virtualenv
+Running test tests set PYTHONPATH and don't require a virtualenv
 
 ```
 make test
 ```
+
+## lint
+
+Markdown doc can be linted if the following packages are installed:
+
+* markdownlint (mdl) - Ruby package
+* markdown-link-check -   npm install -g markdown-link-check
 
 ## Build pip installable packages
 

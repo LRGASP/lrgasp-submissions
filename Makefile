@@ -11,10 +11,13 @@ version = $(shell PYTHONPATH=lib ${PYTHON} -c "import lrgasp; print(lrgasp.__ver
 
 # mdl is an uncommon program to verify markdown
 have_mdl = $(shell which -s mdl && echo yes || echo no)
+have_mdlinkcheck = $(shell which -s markdown-link-check && echo yes || echo no)
+
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "lint - check style with flake8"
+	@echo "lint-doc - check documentation"
 	@echo "test - run tests quickly with the default Python"
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
@@ -25,15 +28,33 @@ help:
 	@echo "test-release - test final release"
 
 
-lint: lint_code lint_doc
-lint_code:
+lint:
 	${FLAKE8} ${pyprogs} lib
-# requires https://github.com/markdownlint/markdownlint
-lint_doc:
+
+# requires the NPM packages:
+#   remark-cli remark-lint remark-preset-lint-recommended markdown-link-check
+
+
+lint-doc:  check-doc-format check-doc-links
+
 ifeq (${have_mdl},yes)
-	mdl --style=mdl-style.rb docs/
+check-doc-format:
+	mdl --style=mdl-style.rb README.md docs/
 else
-	@echo "Note: mdl not installed, not linting metadata"
+check-doc-format:
+	@echo "Note: mdl not installed, not linting markdown" >&2
+endif
+
+ifeq (${have_mdlinkcheck},yes)
+mdfiles = $(wildcard README.md docs/*.md)
+check-doc-links: ${mdfiles:%=check-doc-links_%}
+check-doc-links_%:
+	markdown-link-check --config=markdown-link-check.json $*
+check-doc-links_docs/%:
+	markdown-link-check --config=markdown-link-check.json docs/$*
+else
+check-doc-links:
+	@echo "Note: markdown-link-check not installed, not checking markdown links" >&2
 endif
 
 test:

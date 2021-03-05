@@ -70,4 +70,4 @@ Quantification experiments must contain the following files:
 - [Transcript model format](model-format.md)
 - [Read to model map format](read_model_map_format.md)
 - [Transcript expression matrix format](expression_matrix_format.md)
-- [Submission tools](submission-tools)
+- [Submission tools](submission-tools.md)

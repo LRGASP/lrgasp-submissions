@@ -8,7 +8,7 @@ use.  Templates and a validator are provided.
 
 This file contains information about the *entry* and team that is submitting
 it.  This is at the top of an entry tree (see [Submission structure](submission.md)).
-See [``entry.json``](../examples/darwin-lab/iso_detect_ref_ont_drna/entry.json) for an example.  An empty
+See [``entry.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/entry.json) for an example.  An empty
 template is also available: [``entry.json``](../templates/entry.json).
 
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
@@ -30,7 +30,7 @@ in each experiment directory (see [Experiment structure](submission.md#experimen
 Data files are either in the experiment directory or a sub-directories.  All files paths in
 ``experiment.json`` are relative to the directory containing ``experiment.json``.
 
-See [``experiment.json``](../examples/darwin-lab/iso_detect_ref_ont_drna/drnaA/experiment.json) for an example.
+See [``experiment.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/drnaA/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
