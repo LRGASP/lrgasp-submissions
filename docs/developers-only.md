@@ -20,8 +20,8 @@ make test-pip
 
 ```
 bumpversion --allow-dirty --no-commit --no-tag major|minor|patch
-make release-test
-make test-release-pip
+make release-testpypi
+make test-release-testpypi
 ```
 
 ## Release to pypi
@@ -31,6 +31,7 @@ bumpversion major|minor|patch
 git push origin --tags
 git push
 make release
+make release-test
 ```
 
-Test release install!!
+

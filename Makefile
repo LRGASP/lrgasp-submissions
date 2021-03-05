@@ -7,6 +7,8 @@ pypi_url = https://upload.pypi.org/simple/
 testpypi_url = https://test.pypi.org/simple/
 testenv = testenv
 
+version = $(shell PYTHONPATH=lib ${PYTHON} -c "import lrgasp; print(lrgasp.__version__)")
+
 # mdl is an uncommon program to verify markdown
 have_mdl = $(shell which -s mdl && echo yes || echo no)
 
@@ -17,9 +19,10 @@ help:
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
 	@echo "test-pip - test install the package using pip"
-	@echo "release-test - test upload to testpypi"
-	@echo "test-release-pip - install from testpypi"
+	@echo "release-testpypi - test upload to testpypi"
+	@echo "test-release-testpypi - install from testpypi"
 	@echo "release - package and upload a release"
+	@echo "test-release - test final release"
 
 
 lint: lint_code lint_doc
@@ -57,20 +60,24 @@ dist: clean
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && pip install --no-cache-dir dist/lrgasp-tools-*.tar.gz
+	${envact} && pip install --no-cache-dir dist/lrgasp-tools-${version}.tar.gz
 	${envact} && ${MAKE} test
 
 # test release to testpypi
-release-test: dist
-	${TWINE} upload --repository=testpypi dist/lrgasp_tools-*.whl dist/lrgasp-tools-*.tar.gz
+release-testpypi: dist
+	${TWINE} upload --repository=testpypi dist/lrgasp_tools-${version}.whl dist/lrgasp-tools-${version}.tar.gz
 
 # test release install from testpypi, testpypi doesn't have requeiments, so install them first
-test-release-pip:
+test-release-testpypi:
 	${envsetup}
-	${envact} && pip install -r lib/lrgasp_tools.egg-info/requires.txt 
-	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} lrgasp-tools
+	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} --extra-index-url=https://pypi.org/simple 'lrgasp-tools==${version}'
 	${envact} && ${MAKE} test
 
 release: dist
-	${TWINE} upload --repository=pypi dist/lrgasp_tools-*.whl dist/lrgasp-tools-*.tar.gz
+	${TWINE} upload --repository=pypi dist/lrgasp_tools-${version}.whl dist/lrgasp-tools-${version}.tar.gz
+
+release-test:
+	${envsetup}
+	${envact} && pip install --no-cache-dir 'lrgasp-tools==${version}'
+	${envact} && ${MAKE} test
 
