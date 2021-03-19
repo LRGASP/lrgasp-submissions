@@ -3,22 +3,28 @@
 import argparse
 import logging
 from lrgasp import handle_prog_errors, prog_error_excepts
-from lrgasp import read_model_map_data
+from lrgasp import read_model_map_data, model_data, entry_validate
 
 def parse_args():
-    desc = """Validate that an LRGASP read model map TSV meets requirements.
+    desc = """Validate that an LRGASP read model map TSV meets requirements
+    and optionally check that it is consistent with a model file.
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--debug", action='store_true',
                         help="print stack on any error")
     parser.add_argument("read_model_map_tsv",
                         help="TSV for read_model_map")
+    parser.add_argument("model_gtf", nargs='?',
+                        help="optional GTF model file")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        read_model_map_data.load(args.read_model_map_tsv)
+        read_model_map = read_model_map_data.load(args.read_model_map_tsv)
+        if args.model_gtf is not None:
+            models = model_data.load(args.model_gtf)
+            entry_validate.validate_model_and_read_mapping(models, read_model_map)
     except prog_error_excepts as ex:
         handle_prog_errors(ex, args.debug)
 

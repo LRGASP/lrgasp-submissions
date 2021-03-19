@@ -7,26 +7,22 @@ expression experiments are transcript expression quantification of a set of
 submitted models.
 
 A given challenge may combine results from multiple, distinct experiments.
-For instance, the high-quality genome isoform annotation challenge may
+For instance, the high-quality genome isoform annotation challenge will
 include both human and mouse experiments. To accommodate this, *experiments*
 are grouped into *entries* against a particular challenge.  An *entry* is
 the unit of both submission and evaluation.  The *experiments* in an *entry*
 should uses as similar a set of parameters and data as possible to allow
 for meaningful combination of the results.
 
-A team may submit two *entries* per challenge.  The purpose of this
-limit is to prevent the evaluation process from being overwhelmed by
-experiments with minor variations.  An *entry* maybe updated or deleted
-up to the submission deadline.
-
 When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
 identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
 experiment identifiers assigned by the team and must be valid [symbolic
 identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
-## Entry overview
+## Submission overview
 
-This diagram shows the general structure of LRGASP entries:
+This diagram shows the general logical and directory structure of LRGASP entries,
+which are explain below.
 
 ![Submission file hierarchy diagram](submit_tree.png)
 

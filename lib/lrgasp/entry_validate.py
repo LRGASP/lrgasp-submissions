@@ -18,39 +18,41 @@ def _validate_read_mapping_trans(transcript_id, models):
     if models.by_transcript_id.get(transcript_id) is None:
         raise LrgaspException(f"transcript in read_model_map {transcript_id} not in models")
 
-def _validate_model_and_read_mapping(models, read_model_map):
+def validate_model_and_read_mapping(models, read_model_map):
     # all model mapping must be in models
     for transcript_id in set([p.transcript_id for p in read_model_map]):
-        _validate_read_mapping_trans(transcript_id, models)
+        # transcript might be None if specified as `*'
+        if transcript_id is not None:
+            _validate_read_mapping_trans(transcript_id, models)
     # all transcripts must be in model map
     for trans in models:
         _validate_trans_and_read_mapping(trans, read_model_map)
 
 def _validate_model_experiment(entry, experiment):
-    gtf_file = osp.join(experiment.experiment_dir, MODELS_GTF)
+    model_gtf = osp.join(experiment.experiment_dir, MODELS_GTF)
     map_file = osp.join(experiment.experiment_dir, READ_MODEL_MAP_TSV)
     try:
-        models = model_data.load(gtf_file)
+        models = model_data.load(model_gtf)
         read_model_map = read_model_map_data.load(map_file)
-        _validate_model_and_read_mapping(models, read_model_map)
+        validate_model_and_read_mapping(models, read_model_map)
     except Exception as ex:
-        raise LrgaspException(f"entry {entry.entry_id} experiment {experiment.experiment_id} validation failed on {gtf_file} and {map_file}") from ex
+        raise LrgaspException(f"entry {entry.entry_id} experiment {experiment.experiment_id} validation failed on {model_gtf} and {map_file}") from ex
 
-def _validate_expression_and_model(models, expression):
+def validate_expression_and_model(models, expression):
     # all expression matrix ids must be in models
     for row in expression.iterrows():
         if row[1].ID not in models.by_transcript_id:
             raise LrgaspException(f"expression matrix ID {row[1].ID} not found in models")
 
 def _validate_expression_experiment(entry, experiment):
-    gtf_file = osp.join(experiment.experiment_dir, MODELS_GTF)
+    model_gtf = osp.join(experiment.experiment_dir, MODELS_GTF)
     expression_tsv = osp.join(experiment.experiment_dir, EXPRESSION_TSV)
     try:
-        models = model_data.load(gtf_file)
+        models = model_data.load(model_gtf)
         expression = expression_data.load(expression_tsv)
-        _validate_expression_and_model(models, expression)
+        validate_expression_and_model(models, expression)
     except Exception as ex:
-        raise LrgaspException(f"entry {entry.entry_id} experiment {experiment.experiment_id} validation failed on {gtf_file} and {expression_tsv}") from ex
+        raise LrgaspException(f"entry {entry.entry_id} experiment {experiment.experiment_id} validation failed on {model_gtf} and {expression_tsv}") from ex
 
 def _validate_experiment(entry, experiment_id):
     experiment = experiment_metadata.load_from_entry(entry, experiment_id)
@@ -64,7 +66,7 @@ def _validate_experiment(entry, experiment_id):
 
 def entry_data_validate(entry_dir, restrict_experiment_id=None):
     """load and validate all metadata and data files for an entry, ensuring
-    consistency.  Optionally restricted to one experiment to speed"""
+    consistency.  Optionally restricted to one experiment for speed"""
     entry = entry_metadata.load_dir(entry_dir)
 
     if restrict_experiment_id is not None:

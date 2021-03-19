@@ -19,23 +19,27 @@ class Challenge(SymEnum):
     iso_detect_de_novo = auto()
 
 class Sample(SymEnum):
-    """LRGAPS sample identifierd"""
+    """LRGASP sample identifierd"""
     WTC11_Hs = auto()
     H1_DE_Hs = auto()
     ES_Mm = auto()
     Manatee = auto()
 
+class LibraryPrep(SymEnum):
+    """LRGASP library preperation methods"""
+    Illumina_cDNA = auto()
+    Pacbio_cDNA = auto()
+    Pacbio_CapTrap = auto()
+    ONT_cDNA = auto()
+    ONT_CapTrap = auto()
+    ONT_R2C2 = auto()
+    ONT_dRNA = auto()
+    Kitchen_Sink = auto()
+
 class ExperimentType(SymEnum):
     "type of a experiment, assumed from Challenge type"
     model = auto()
     expression = auto()
-
-def challengeToExperimentType(challenge):
-    assert isinstance(challenge, Challenge)
-    if challenge is Challenge.iso_quant:
-        return ExperimentType.expression
-    else:
-        return ExperimentType.model
 
 class ExpressionUnits(SymEnum):
     "Units used in expression matrix"
@@ -65,3 +69,10 @@ def validate_entry_ident(entry_id):
             return ch
     valid_pre = ", ".join([str(ch) + '_*' for ch in Challenge])
     raise LrgaspException("entry_id {} must be prefixed with a challenge id ({})".format(entry_id, valid_pre))
+
+def challengeToExperimentType(challenge):
+    assert isinstance(challenge, Challenge)
+    if challenge is Challenge.iso_quant:
+        return ExperimentType.expression
+    else:
+        return ExperimentType.model

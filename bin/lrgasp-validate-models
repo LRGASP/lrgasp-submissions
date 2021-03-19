@@ -11,14 +11,14 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--debug", action='store_true',
                         help="print stack on any error")
-    parser.add_argument("gtf_file",
-                        help="GTF file to validate")
+    parser.add_argument("model_gtf",
+                        help="GTF model file to validate")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        model_data.load(args.gtf_file)
+        model_data.load(args.model_gtf)
     except prog_error_excepts as ex:
         handle_prog_errors(ex, args.debug)
 

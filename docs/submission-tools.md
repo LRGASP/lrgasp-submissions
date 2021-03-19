@@ -28,8 +28,8 @@ validation during development.  Another tool does full checking of the an entry,
 including file syntax validation as well as relationships between files.
 
 - `lrgasp-validate-models` - validate a ``models.gtf.gz`` file
-- `lrgasp-validate-read-model-map` - validate a `read_model_map.tsv.gz` file
-- `lrgasp-validate-expression-matrix` - validate an `expression.tsv.gz` file
+- `lrgasp-validate-read-model-map` - validate a `read_model_map.tsv.gz` file, optionally checking against a model GTF
+- `lrgasp-validate-expression-matrix` - validate an `expression.tsv.gz` file, optionally checking against a model GTF
 - `lrgasp-validate-experiment-metadata` - validate an `experiment.json` metadata file
 - `lrgasp-validate-entry-metadata`- validate an `entry.json` metadata file
 - `lrgasp-validate-entry` - validate a full entry given a populated entry directory.

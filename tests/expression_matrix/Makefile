@@ -6,8 +6,9 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 
 test: test_example test_with_NA bad_tests
 
+example_dir = ${darwindir}/iso_quant_ont_drna1/drnaA
 test_example:
-	${lrgasp_validate_expression_matrix} ${darwindir}/iso_quant_ont_drna1/drnaA/expression.tsv
+	${lrgasp_validate_expression_matrix} ${example_dir}/expression.tsv ${example_dir}/models.gtf
 
 test_example_gz: output/expression-matrix.tsv.gz
 	${lrgasp_validate_expression_matrix} $<

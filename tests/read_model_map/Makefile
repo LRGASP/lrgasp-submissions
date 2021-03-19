@@ -9,8 +9,9 @@ good_tests = $(basename $(notdir ${good_tsvs}))
 
 test: test_example test_example_gz bad_tests good_tests
 
+example_dir = ${darwindir}/iso_detect_ref_ont_drna/drnaA
 test_example:
-	${lrgasp_validate_read_model_map} ${darwindir}/iso_detect_ref_ont_drna/drnaA/read_model_map.tsv
+	${lrgasp_validate_read_model_map} ${example_dir}/read_model_map.tsv ${example_dir}/models.gtf
 
 test_example_gz: output/read_model_map.tsv.gz
 	${lrgasp_validate_read_model_map} $<
@@ -30,7 +31,7 @@ test_bad%: mkout
 good_tests: ${good_tests:%=test_%}
 
 test_good%: mkout
-	${lrgasp_validate_read_model_map} input/good$*.tsv
+	${lrgasp_validate_read_model_map} input/good$*.tsv input/good$*.gtf
 
 clean:
 	rm -rf output

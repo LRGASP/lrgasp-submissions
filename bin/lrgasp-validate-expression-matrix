@@ -3,22 +3,28 @@
 import argparse
 import logging
 from lrgasp import handle_prog_errors, prog_error_excepts
-from lrgasp import expression_data
+from lrgasp import expression_data, model_data, entry_validate
 
 def parse_args():
-    desc = """Validate that an LRGASP expression matrix meets requirements.
+    desc = """Validate that an LRGASP expression matrix meets requirements
+    and optionally check that it is consistent with a model file.
     """
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--debug", action='store_true',
                         help="print stack on any error")
-    parser.add_argument("expr_mat_tsv",
+    parser.add_argument("expression_tsv",
                         help="Expression matrix to validate")
+    parser.add_argument("model_gtf", nargs='?',
+                        help="optional GTF model file")
     return parser.parse_args()
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
-        expression_data.load(args.expr_mat_tsv)
+        expression = expression_data.load(args.expression_tsv)
+        if args.model_gtf is not None:
+            models = model_data.load(args.model_gtf)
+            entry_validate.validate_expression_and_model(models, expression)
     except prog_error_excepts as ex:
         handle_prog_errors(ex, args.debug)
 

@@ -51,9 +51,9 @@ def fixup_gtf_attrs(gtf_df):
     fixup_attr(gtf_df, "reference_gene_id")
     fixup_attr(gtf_df, "reference_transcript_id")
 
-def load_exons(gtf_file):
+def load_exons(model_gtf):
     """load GTF exons into a list of Series objects of exons"""
-    gtf_df = read_gtf(gtf_file)
+    gtf_df = read_gtf(model_gtf)
     gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
     if len(gtf_df) == 0:
         raise GtfException("no exon records found")
@@ -104,13 +104,13 @@ def validate_transcripts(models):
     for trans in models.by_transcript_id.values():
         validate_transcript(trans)
 
-def load(gtf_file):
+def load(model_gtf):
     """Validate GTF,returns exons grouped into transcripts"""
     try:
-        exons = load_exons(gtf_file)
+        exons = load_exons(model_gtf)
         validate_exons(exons)
         models = build_transcripts(exons)
         validate_transcripts(models)
         return models
     except (LrgaspException, ParsingError, ValueError) as ex:
-        raise GtfException("Parse of GTF failed: {}".format(gtf_file)) from ex
+        raise GtfException("Parse of GTF failed: {}".format(model_gtf)) from ex

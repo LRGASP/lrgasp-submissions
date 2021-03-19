@@ -2,7 +2,7 @@
 
 ## Development
 
-Running test tests set PYTHONPATH and don't require a virtualenv
+Running tests set PYTHONPATH and don't require a virtualenv
 
 ```
 make test
@@ -13,7 +13,7 @@ make test
 Markdown doc can be linted if the following packages are installed:
 
 * markdownlint (mdl) - Ruby package
-* markdown-link-check -   npm install -g markdown-link-check
+* markdown-link-check - npm install -g markdown-link-check
 
 ## Build pip installable packages
 
@@ -25,6 +25,7 @@ make test-pip
 
 ### pypitest
 
+WARNING: commit any changes first
 ```
 bumpversion --allow-dirty --no-commit --no-tag (major|minor|patch)
 make release-testpypi

@@ -3,7 +3,7 @@
 Definition and validators for testing LRGASP submissions
 
 ## Documentation
-
+- [Challenges](docs/challenges.md)
 - [Submission structure](docs/submission.md)
 - Submission formats:
   - [Metadata](docs/metadata.md)

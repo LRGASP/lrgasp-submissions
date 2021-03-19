@@ -1,0 +1,2 @@
+ERCC-00002	IsoQuant	exon	1	1045	.	+	.	gene_id "gSpikein_ERCC-00002"; transcript_id "transcript_1.known"; reference_gene_id "gSpikein_ERCC-00002"; reference_transcript_id "tSpikein_ERCC-00002"
+ERCC-00096	IsoQuant	exon	1	1091	.	+	.	gene_id "gSpikein_ERCC-00096"; transcript_id "transcript_16.known"; reference_gene_id "gSpikein_ERCC-00096"; reference_transcript_id "tSpikein_ERCC-00096"
