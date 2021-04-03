@@ -1,16 +1,10 @@
+* validate libraries, extra_libraries, is_kitchen_sink, etc, are valid and consistent
 * https://docs.google.com/presentation/d/1RxmZPd8UgWgm3F-0BquP7NmhxE3zYB5lJ_u6XKgbFME/edit#slide=id.p
-* require protocol description
+* require protocol description??
 * add assembly
 * doc that file paths are relative
 * add additional file types
-* how to tie together experiments to be evaluated
-- call an *entry*
 * should expression matrix have transcript_id instead of ID?
-* expression matrix:
-https://github.com/LRGASP/lrgasp-submissions/issues/11
-allow '*'
-validate
-* example mixes quant and model experirements
 * validate same type of experiments
 * drop model_/quant_ prefix requirements
 * require specific the data file names

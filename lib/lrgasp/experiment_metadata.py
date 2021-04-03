@@ -5,12 +5,13 @@ import os.path as osp
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, ExperimentType, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, ExperimentType, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
 fld_description = Field("description")
+fld_species = Field("species", Species)
 fld_libraries = Field("libraries", list, element_dtype=str, validator=validate_symbolic_ident)
 fld_extra_libraries = Field("extra_libraries", list, element_dtype=dict)
 fld_units = Field("units", ExpressionUnits, optional=True)
@@ -20,6 +21,7 @@ fld_notes = Field("notes", allow_empty=True, optional=True)
 experiment_fields = (
     fld_experiment_id,
     fld_experiment_type,
+    fld_species,
     fld_description,
     fld_libraries,
     fld_extra_libraries,

@@ -18,6 +18,12 @@ class Challenge(SymEnum):
     iso_quant = auto()
     iso_detect_de_novo = auto()
 
+class Species(SymEnum):
+    """Species identifiers"""
+    hs = auto()
+    mm = auto()
+    manatee = auto()
+
 class Sample(SymEnum):
     """LRGASP sample identifierd"""
     WTC11_Hs = auto()

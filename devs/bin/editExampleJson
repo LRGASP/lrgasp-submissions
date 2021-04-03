@@ -7,18 +7,13 @@ import argparse
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
+from lrgasp.defs import Species
 
 def edit_json(md):
     "customize this for each edit case"
 
-    if 'samples' in md:
-        md.libraries = md.samples
-        del md.samples
-    if 'data_files' in md:
-        md.extra_libraries = md.data_files
-        del md.data_files
-        for el in md.extra_libraries:
-            el.repository = "ENC"
+    if 'species' not in md:
+        md.species = str(Species.hs)
 
 def parse_args():
     desc = """ad-hoc edits of metadata JSON examples

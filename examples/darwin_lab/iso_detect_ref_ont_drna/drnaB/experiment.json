@@ -20,5 +20,6 @@
             "acc": "ENF12345",
             "repository": "ENC"
         }
-    ]
+    ],
+    "species": "hs"
 }
