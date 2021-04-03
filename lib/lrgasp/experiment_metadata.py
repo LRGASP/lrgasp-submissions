@@ -5,14 +5,14 @@ import os.path as osp
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import ExperimentType, Sample, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, ExperimentType, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
 fld_description = Field("description")
-fld_samples = Field("samples", list, element_dtype=Sample)
-fld_data_files = Field("data_files", list, element_dtype=dict)
+fld_libraries = Field("libraries", list, element_dtype=str, validator=validate_symbolic_ident)
+fld_extra_libraries = Field("extra_libraries", list, element_dtype=dict)
 fld_units = Field("units", ExpressionUnits, optional=True)
 fld_software = Field("software", list, element_dtype=dict)
 fld_notes = Field("notes", allow_empty=True, optional=True)
@@ -21,19 +21,19 @@ experiment_fields = (
     fld_experiment_id,
     fld_experiment_type,
     fld_description,
-    fld_samples,
-    fld_data_files,
+    fld_libraries,
+    fld_extra_libraries,
     fld_units,
     fld_software,
     fld_notes,
 )
 
-fld_acc = Field("acc", optional=True)
-fld_url = Field("url", optional=True, validator=validate_url)
+fld_acc = Field("acc")
+fld_repository = Field("repository", Repository)
 
-data_file_fields = (
+extra_library_fields = (
     fld_acc,
-    fld_url,
+    fld_repository,
     fld_notes,
 )
 
@@ -50,18 +50,16 @@ experiment_software_fields = (
     fld_notes,
 )
 
-def data_file_validate(data_file):
-    desc = "experiment.data_files"
-    check_from_defs(desc, data_file_fields, data_file)
-    if (fld_acc.name not in data_file) and (fld_url not in data_file):
-        raise LrgaspException(f"{desc} must specify at least one of {fld_acc.name} or {fld_url.name}")
+def extra_library_validate(extra_library):
+    desc = "experiment.extra_libraries"
+    check_from_defs(desc, extra_library_fields, extra_library)
 
 def experiment_validate(experiment):
     desc = "experiment"
     check_from_defs(desc, experiment_fields, experiment)
 
-    for data_file in experiment.data_files:
-        data_file_validate(data_file)
+    for extra_library in experiment.extra_libraries:
+        extra_library_validate(extra_library)
 
     if experiment.experiment_type is ExperimentType.model:
         if fld_units.name in experiment:

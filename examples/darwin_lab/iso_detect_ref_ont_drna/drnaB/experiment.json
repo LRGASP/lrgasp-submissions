@@ -2,14 +2,6 @@
     "experiment_id": "model_ont_drna2",
     "experiment_type": "model",
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing, more sensitive and less specific models",
-    "samples": [
-        "WTC11_Hs"
-    ],
-    "data_files": [
-        {
-            "acc": "ENF12345"
-        }
-    ],
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
     "software": [
         {
@@ -18,6 +10,15 @@
             "version": "1.0.0",
             "url": "https://github.com/ablab/IsoQuant",
             "notes": "IsoQuant was launched with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
+        }
+    ],
+    "libraries": [
+        "WTC11_Hs"
+    ],
+    "extra_libraries": [
+        {
+            "acc": "ENF12345",
+            "repository": "ENC"
         }
     ]
 }

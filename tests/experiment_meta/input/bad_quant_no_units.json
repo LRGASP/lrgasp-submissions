@@ -3,14 +3,6 @@
     "experiment_type": "expression",
     "description": "Expression results",
     "notes": "this is so-so good",
-    "samples": [
-        "WTC11_Hs"
-    ],
-    "data_files": [
-        {
-            "acc": "ENF012A54"
-        }
-    ],
     "software": [
         {
             "name": "SETM",
@@ -18,6 +10,15 @@
             "version": "1.5",
             "url": "https://github.com/LongReadsExpertLab/SETM",
             "notes": "ran with default options"
+        }
+    ],
+    "libraries": [
+        "WTC11_Hs"
+    ],
+    "extra_libraries": [
+        {
+            "acc": "ENF012A54",
+            "repository": "ENC"
         }
     ]
 }

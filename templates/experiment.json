@@ -3,11 +3,12 @@
     "experiment_type": "",
     "description": "",
     "notes": "",
-    "data_files": [
+    "libraries": [],
+    "extra_libraries": [
         {
+            "repository": "",
             "acc": "",
-            "url": "",
-            "notes": "",
+            "notes": ""
         }
     ],
     "units": "",

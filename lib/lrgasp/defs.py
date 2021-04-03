@@ -36,6 +36,13 @@ class LibraryPrep(SymEnum):
     ONT_dRNA = auto()
     Kitchen_Sink = auto()
 
+class Repository(SymEnum):
+    """Public data repositories"""
+    SRA = auto()
+    ENA = auto()
+    INSDC = auto()
+    ENC = auto()
+
 class ExperimentType(SymEnum):
     "type of a experiment, assumed from Challenge type"
     model = auto()
