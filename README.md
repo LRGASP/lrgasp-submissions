@@ -3,12 +3,13 @@
 Definition and validators for testing LRGASP submissions
 
 ## Documentation
+
 - [Challenges](docs/challenges.md)
-- [Samples and libraries](docs/samples-libraries.md)
+- LRGASP data
+  - [Reference genomes and transcripts](docs/reference-genomes.md)
 - [Submission structure](docs/submission.md)
 - Submission formats:
   - [Metadata](docs/metadata.md)
-  - [Reference genomes and transcripts](docs/reference-genomes.md)
   - [Transcript model format](docs/model-format.md)
   - [Read to model map format](docs/read_model_map_format.md)
   - [Transcript expression matrix format](docs/expression_matrix_format.md)
@@ -19,7 +20,7 @@ FIXME: fill this in Synapse information
 
 ## Bug and feature requests
 
-If you have questions or problems with this software, please create an issue in the 
+If you have questions or problems with this software, please create an issue in the
 [LRGASP submissions github tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
 
 ## Contacts
