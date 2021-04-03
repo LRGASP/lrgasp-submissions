@@ -33,14 +33,17 @@ Data files are either in the experiment directory or a sub-directories.  All fil
 See [``experiment.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/drnaA/experiment.json) for an example.
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
-* ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
+* ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry, defined by the submitter.
 * ``experiment_type`` - one of ``model`` or ``expression``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
-* ``samples`` - list of LRGASP [sample identifiers](metadata-identifiers.md#Sample-identifiers) used in the experiment.
-* ```data_files`` - list of input data files supplied by the LRGASP
-  * ``acc`` - accession (ENCODE or LRGASP) for input data files (optional if URL supplied)
-  * ``url`` - URL to file; intended for non-LRGASP provided files (optional if acc supplied)
+* ``is_kitchen_sink`` - If ``true`` (JSON boolean) if this is a kitchen sink experiment, otherwise ``false`` or omitted.
+* ``libraries`` - list of LRGASP library accessions used in the experiment,  For non-kitchen sink, only one or two replicates of the same sample and library preparation method maybe specified.  For kitchen sink experiments, any combination of LRGASP libraries maybe specified.
+* ```extra_libraries`` - list of non-LRGASP libraries that were used.  For other than kitchen sink experiments, only short RNA_Seq 
+  maybe added
+  * ``repository`` - Public repository were data was obtained; one of the values in
+    [Public repository identifiers](metadata-identifiers.md#public repository_identifiers)
+  * ``acc`` - accession in a public repository for input data file
   * ``notes`` - notes about the file (optional)
 * ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.
 * ``software`` - list of software used by the pipeline:
@@ -48,6 +51,6 @@ An empty template is also available: [``experiment.json``](../templates/experime
   * ``description`` - description of software (optional)
   * ``version`` - version of software
   * ``url`` - URL to software repository
-  * ``config`` - command line and/or configuration options (optional)
+  * ``config`` - command line and/or configuration options
   * ``notes`` - notes about software or how it was used (optional)
 

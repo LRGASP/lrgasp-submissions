@@ -4,6 +4,7 @@ Definition and validators for testing LRGASP submissions
 
 ## Documentation
 - [Challenges](docs/challenges.md)
+- [Samples and libraries](docs/samples-libraries.md)
 - [Submission structure](docs/submission.md)
 - Submission formats:
   - [Metadata](docs/metadata.md)
@@ -11,11 +12,15 @@ Definition and validators for testing LRGASP submissions
   - [Transcript model format](docs/model-format.md)
   - [Read to model map format](docs/read_model_map_format.md)
   - [Transcript expression matrix format](docs/expression_matrix_format.md)
-- [Pilot data sets](docs/pilot-data.md)
 
 ## Submissions
 
-- [On Google Drive](https://drive.google.com/drive/u/0/folders/0AML19cSc1WYeUk9PVA). See Documentation above for the Submission formats and Submission structure.
+FIXME: fill this in Synapse information
+
+## Bug and feature requests
+
+If you have questions or problems with this software, please create an issue in the 
+[LRGASP submissions github tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
 
 ## Contacts
 

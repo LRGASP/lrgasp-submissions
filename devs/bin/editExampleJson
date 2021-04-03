@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+import sys
+import os
+import os.path as osp
+import json
+import argparse
+
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
+from lrgasp.objDict import ObjDict
+
+def edit_json(md):
+    "customize this for each edit case"
+
+    if 'samples' in md:
+        md.libraries = md.samples
+        del md.samples
+    if 'data_files' in md:
+        md.extra_libraries = md.data_files
+        del md.data_files
+        for el in md.extra_libraries:
+            el.repository = "ENC"
+
+def parse_args():
+    desc = """ad-hoc edits of metadata JSON examples
+    as schema changes. Code must be modified to implement changes
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("--inplace", action="store_true",
+                        help="""overwrite the files, otherwise output as thefile.edit.json""")
+    parser.add_argument("json_files", nargs='+')
+    args = parser.parse_args()
+    for f in args.json_files:
+        if not f.endswith(".json"):
+            parser.error("Files must end with .json: " + f)
+    return args
+
+def get_edited_name(mdfile):
+    return osp.splitext(mdfile)[0] + ".edit.json"
+
+def modify_json(mdfile):
+    with open(mdfile) as fh:
+        md = json.load(fh, object_pairs_hook=ObjDict)
+    edit_json(md)
+    with open(get_edited_name(mdfile), "w") as fh:
+        json.dump(md, fh, indent=4)
+
+def install_json(mdfile):
+    os.rename(get_edited_name(mdfile), mdfile)
+
+def main(args):
+    for f in args.json_files:
+        modify_json(f)
+    if args.inplace:
+        # only install if all edits succeeded
+        for f in args.json_files:
+            install_json(f)
+
+main(parse_args())

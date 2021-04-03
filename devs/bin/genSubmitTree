@@ -14,8 +14,8 @@ ENTRY_MD = "entry.json"
 EXPERIMENT_MD = "experiment.json"
 
 # data files
-MODEL_GTF =  "models.gtf.gz"
-MODEL_READ_MODEL_MAP =  "read_model_map.tsv.gz"
+MODEL_GTF = "models.gtf.gz"
+MODEL_READ_MODEL_MAP = "read_model_map.tsv.gz"
 QUANT_MATRIX = "expression.tsv.gz"
 
 # directories
@@ -76,10 +76,10 @@ def build_entry_model(g):
 
 def build_entry_quant(g):
     add_entry(g, ENTRY_QUANT)
-    n = add_experiment(g, ENTRY_QUANT, QUANT_HS,
-                       (QUANT_MATRIX,))
-    n = add_experiment(g, ENTRY_QUANT, QUANT_MM,
-                       (QUANT_MATRIX,))
+    add_experiment(g, ENTRY_QUANT, QUANT_HS,
+                   (QUANT_MATRIX,))
+    add_experiment(g, ENTRY_QUANT, QUANT_MM,
+                   (QUANT_MATRIX,))
 
 def build_submission_tree(g):
     build_entry_model(g)
@@ -92,13 +92,13 @@ def build_quant_experiment(g):
     pass
 
 def build_experiment_tree(g):
-     build_model_experiment(g)
-     build_quant_experiment(g)
+    build_model_experiment(g)
+    build_quant_experiment(g)
 
 def mk_graph():
     g = pgv.AGraph()
     build_submission_tree(g)
-    g.draw("submit_tree.png", prog="dot", args="-Grankdir=LR")
-    # g.draw("submit_tree.pdf", prog="dot", args="-Grankdir=LR")
+    fmt = "png"
+    g.draw(f"submit_tree.{fmt}", prog="dot", args="-Grankdir=LR")
 
 mk_graph()

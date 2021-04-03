@@ -31,7 +31,7 @@ class ObjDict(dict):
 class DefaultObjDict(defaultdict):
     """defaultdict-based object where keys are field names.
     This is useful for JSON by doing:
-       json.load(fh, object_pairs_hook=ObjDict):
+       json.load(fh, object_pairs_hook=DefaultObjDict):
     """
     __slots__ = ()
 

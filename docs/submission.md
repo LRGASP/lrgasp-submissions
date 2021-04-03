@@ -30,10 +30,10 @@ which are explain below.
 
 Each ``entry`` must conform to fix, straight-forward file hierarchy.
 Each entry to a challenge is in a directory with the same name as the `entry_id`.
-The entry ids mustprefixed with the [LRGASP Challenge identifier](metadata-identifiers.md#lrgasp-challenge-identifiers) followed by
+The entry ids must be prefixed with the [LRGASP Challenge identifier](metadata-identifiers.md#lrgasp-challenge-identifiers) followed by
 a `_` and a unique team-defined name.  For instance:
 
-- `iso_detect_ref_ont_drna``
+- `iso_detect_ref_ont_drna`
 - `iso_quant_ont_drna1`
 - `iso_detect_de_novo_pb1`
 
