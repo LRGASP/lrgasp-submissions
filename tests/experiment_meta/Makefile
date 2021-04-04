@@ -12,7 +12,7 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_model_example test_quant_example bad_tests good_tests
 
 test_model_example:
-	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_detect_ref_ont_drna/drnaA//experiment.json
+	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_detect_ref_ont_drna/drnaA/experiment.json
 
 test_quant_example:
 	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_quant_ont_drna1/drnaA/experiment.json

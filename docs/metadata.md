@@ -12,7 +12,7 @@ See [``entry.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/entry.json) 
 template is also available: [``entry.json``](../templates/entry.json).
 
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
-* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers) for valid values.
+* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers)
 * ``team_id`` - the Synapse *team* identifier.
 * ``team_name`` - name of the submitting lab
 * ``experiment_ids`` - Experiment ids, which is also the directory name containing the
@@ -37,15 +37,15 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``experiment_type`` - one of ``model`` or ``expression``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
-* ``species`` - one of ``hs``, ``mm``, or ``manatee``.
-* ``is_kitchen_sink`` - If ``true`` (JSON boolean) if this is a kitchen sink experiment, otherwise ``false`` or omitted.
+* ``species`` - one of ``hs``, ``mm``, or ``manatee``, see [Species identifiers](metadata-identifiers.md#species_identifiers).
+* ``data_category`` - one of ``long_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#Experiment_data_categories).
 * ``libraries`` - list of LRGASP library accessions used in the experiment,  For non-kitchen sink, only one or two replicates of the same sample and library preparation method maybe specified.  For kitchen sink experiments, any combination of LRGASP libraries maybe specified.
 * ``extra_libraries`` - list of non-LRGASP libraries that were used.  Should be empty or omitted for non-kitchen sink experiments.
   * ``repository`` - Public repository were data was obtained; one of the values in
     [Public repository identifiers](metadata-identifiers.md#public repository_identifiers)
   * ``acc`` - accession in a public repository for input data file
   * ``notes`` - notes about the file (optional)
-* ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.
+* ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.  See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
 * ``software`` - list of software used by the pipeline:
   * ``name`` - name of software package
   * ``description`` - description of software (optional)

@@ -1,0 +1,3 @@
+Error: validation of experiment metadata failed: input/bad_data_cat_wrong.json
+caused by: experiment field data_category is not a valid DataCategory: junk_only
+caused by: 'junk_only' is not a member, external name, or alias of DataCategory

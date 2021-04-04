@@ -3,6 +3,17 @@
     "experiment_type": "model",
     "description": "Our best transcript models",
     "notes": "this is really good",
+    "species": "hs",
+    "data_category": "long_only",
+    "libraries": [
+        "ENCLB366GPZ"
+    ],
+    "extra_libraries": [
+        {
+            "repository": "ENC",
+            "acc": "ENF012A54"
+        }
+    ],
     "software": [
         {
             "name": "SETM",
@@ -12,15 +23,5 @@
             "config": "-q -d",
             "notes": "very slow"
         }
-    ],
-    "libraries": [
-        "ENCLB366GPZ"
-    ],
-    "extra_libraries": [
-        {
-            "acc": "ENF012A54",
-            "repository": "ENC"
-        }
-    ],
-    "species": "hs"
+    ]
 }

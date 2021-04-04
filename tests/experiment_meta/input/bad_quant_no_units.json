@@ -3,6 +3,17 @@
     "experiment_type": "expression",
     "description": "Expression results",
     "notes": "this is so-so good",
+    "species": "hs",
+    "data_category": "long_only",
+    "libraries": [
+        "ENCLB366GPZ"
+    ],
+    "extra_libraries": [
+        {
+            "repository": "ENC",
+            "acc": "ENF012A54"
+        }
+    ],
     "software": [
         {
             "name": "SETM",
@@ -11,15 +22,5 @@
             "url": "https://github.com/LongReadsExpertLab/SETM",
             "notes": "ran with default options"
         }
-    ],
-    "libraries": [
-        "ENCLB366GPZ"
-    ],
-    "extra_libraries": [
-        {
-            "acc": "ENF012A54",
-            "repository": "ENC"
-        }
-    ],
-    "species": "hs"
+    ]
 }

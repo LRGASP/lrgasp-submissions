@@ -1,20 +1,11 @@
 {
-    "experiment_id": "quant_ont_drna1",
-    "experiment_type": "expression",
-    "description": "Expression matrix for Human NA12878 ONT direct RNA sequenceing",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "experiment_id": "model_ont_drna1",
+    "experiment_type": "model",
+    "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
     "species": "hs",
-    "data_category": "long_only",
     "libraries": [
         "ENCLB366GPZ"
     ],
-    "extra_libraries": [
-        {
-            "repository": "ENC",
-            "acc": "ENF12345"
-        }
-    ],
-    "units": "counts",
     "software": [
         {
             "name": "IsoQuant",

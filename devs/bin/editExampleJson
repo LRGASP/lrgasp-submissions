@@ -7,13 +7,17 @@ import argparse
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
+from lrgasp import LrgaspException
+from lrgasp.defs import DataCategory
 
 def edit_json(md):
     "customize this for each edit case"
 
-    for i in range(len(md.libraries)):
-        if md.libraries[i] == "WTC11_Hs":
-            md.libraries[i] = "ENCLB366GPZ"
+    if "is_kitchen_sink" in md:
+        del md["is_kitchen_sink"]
+    if "data_category" not in md:
+        md["data_category"] = str(DataCategory.long_only)
+    fix_experiment_order(md)
 
 def parse_args():
     desc = """ad-hoc edits of metadata JSON examples
@@ -22,6 +26,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--inplace", action="store_true",
                         help="""overwrite the files, otherwise output as thefile.edit.json""")
+    parser.add_argument("--diff", action="store_true",
+                        help="""display a diff""")
     parser.add_argument("json_files", nargs='+')
     args = parser.parse_args()
     for f in args.json_files:
@@ -32,22 +38,63 @@ def parse_args():
 def get_edited_name(mdfile):
     return osp.splitext(mdfile)[0] + ".json-edit"
 
-def modify_json(mdfile):
+def order_edit(md, order):
+    "in place reordering"
+    # make sure none are dropped"
+    stray = set(md.keys()) - set(order)
+    if len(stray) > 0:
+        raise LrgaspException(f"fields not in order list: {stray}")
+
+    # create order
+    omd = {}
+    for fld in order:
+        if fld in md:
+            omd[fld] = md[fld]
+
+    # update
+    md.clear()
+    for fld in order:
+        if fld in omd:
+            md[fld] = omd[fld]
+
+def order_edit_list(md, field, order):
+    for submd in md.get(field, ()):
+        order_edit(submd, order)
+
+def fix_experiment_order(md):
+    "keep experiment examples in same order as doc and template to keep them clear"
+    order = ("experiment_id", "experiment_type", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "units", "software",)
+    order_edit(md, order)
+
+    extra_lib_order = ("repository", "acc", "notes")
+    order_edit_list(md, "extra_libraries", extra_lib_order)
+
+    software_order = ("name", "description", "version", "url", "config", "notes",)
+    order_edit_list(md, "software", software_order)
+
+
+def modify_json(mdfile, diff):
     try:
         with open(mdfile) as fh:
             md = json.load(fh, object_pairs_hook=ObjDict)
+
         edit_json(md)
-        with open(get_edited_name(mdfile), "w") as fh:
+
+        mdfile_edit = get_edited_name(mdfile)
+        with open(mdfile_edit, "w") as fh:
             json.dump(md, fh, indent=4)
+            fh.write('\n')
+        if diff:
+            os.system(f"diff {mdfile} {mdfile_edit}")
     except Exception as ex:
-        raise Exception("Error editing: " + mdfile) from ex
+        raise LrgaspException("Error editing: " + mdfile) from ex
 
 def install_json(mdfile):
     os.rename(get_edited_name(mdfile), mdfile)
 
 def main(args):
     for f in args.json_files:
-        modify_json(f)
+        modify_json(f, args.diff)
     if args.inplace:
         # only install if all edits succeeded
         for f in args.json_files:

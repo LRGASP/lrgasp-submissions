@@ -3,6 +3,17 @@
     "experiment_type": "expression",
     "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
+    "species": "hs",
+    "data_category": "long_only",
+    "libraries": [
+        "ENCLB366GPZ"
+    ],
+    "extra_libraries": [
+        {
+            "repository": "ENC",
+            "acc": "ENF12345"
+        }
+    ],
     "units": "counts",
     "software": [
         {
@@ -12,15 +23,5 @@
             "url": "https://github.com/ablab/IsoQuant",
             "notes": "IsoQuant was launched  with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 15 -C5 --junc-bed <annotation BED> --junc-bonus=5  "
         }
-    ],
-    "libraries": [
-        "ENCLB366GPZ"
-    ],
-    "extra_libraries": [
-        {
-            "acc": "ENF12345",
-            "repository": "ENC"
-        }
-    ],
-    "species": "hs"
+    ]
 }

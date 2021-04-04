@@ -1,3 +1,4 @@
+? doc symbols in line in metadata.md rather than a separate doc
 * change is_kitchen_sink to be a category 
 * make extra_libraries optional
 * is ES really the right library name for mm??

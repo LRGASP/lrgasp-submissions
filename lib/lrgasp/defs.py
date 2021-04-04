@@ -18,6 +18,12 @@ class Challenge(SymEnum):
     iso_quant = auto()
     iso_detect_de_novo = auto()
 
+class DataCategory(SymEnum):
+    """categories of experiments based on data accepted"""
+    long_only = auto()
+    long_short = auto()
+    kitchen_sink = auto()
+
 class Species(SymEnum):
     """Species identifiers"""
     hs = auto()
@@ -30,7 +36,6 @@ class Sample(SymEnum):
     H1_mix = auto()
     ES = auto()
     Manatee = auto()
-
 
 class LibraryPrep(SymEnum):
     """LRGASP library preperation methods"""
