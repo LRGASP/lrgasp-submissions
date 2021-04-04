@@ -1,20 +1,20 @@
 {
-    "experiment_id": "quant_pb1",
-    "experiment_type": "expression",
-    "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
+    "experiment_id": "model_pb2",
+    "experiment_type": "model",
+    "description": "Transcript models for Human NA12878 PacBio CCS RNA sequenceing, more sensitive and less specific models",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "units": "counts",
     "software": [
         {
             "name": "IsoQuant",
             "description": "IsoQuant is a tool for reference-based analysis of long RNA reads. It assigns reads to known isoforms, detects inconsistencies and construncts novel transcript models.",
             "version": "1.0.0",
             "url": "https://github.com/ablab/IsoQuant",
-            "notes": "IsoQuant was launched with default parameters; minimap2 was launched with the following options -ax splice -Y -k 15 -C5 --junc-bed <annotation BED> --junc-bonus=5  "
+            "notes": "IsoQuant was launched with the following parameters: min_novel_fsm_supporting_reads = 3, min_novel_supporting_reads = 5, min_reads_supporting_tsts = 3, report_intron_retention = True; minimap2 was launched with the following options -ax splice -Y -k 14 -C5 --junc-bed <annotation BED> --junc-bonus=5 -uf "
         }
     ],
     "libraries": [
-        "ENCLB366GPZ"
+        "ENCLB377SXJ",
+        "ENCLB708YRF"
     ],
     "extra_libraries": [
         {

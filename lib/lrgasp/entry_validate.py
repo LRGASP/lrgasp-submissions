@@ -3,7 +3,7 @@ Load and validate model and expression entries
 """
 import os.path as osp
 from lrgasp import LrgaspException
-from lrgasp.defs import ExperimentType, challengeToExperimentType, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import ExperimentType, challenge_to_experiment_type, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
 from lrgasp import entry_metadata
 from lrgasp import experiment_metadata
 from lrgasp import model_data
@@ -56,7 +56,7 @@ def _validate_expression_experiment(entry, experiment):
 
 def _validate_experiment(entry, experiment_id):
     experiment = experiment_metadata.load_from_entry(entry, experiment_id)
-    experiment_type = challengeToExperimentType(entry.challenge_id)
+    experiment_type = challenge_to_experiment_type(entry.challenge_id)
     if experiment.experiment_type is not experiment_type:
         raise LrgaspException(f"entry {entry.entry_id} challenge {entry.challenge_id} does not consistent with experiment {experiment_id} type {experiment_type}")
     if experiment_type == ExperimentType.model:

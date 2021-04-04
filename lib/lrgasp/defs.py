@@ -25,11 +25,12 @@ class Species(SymEnum):
     manatee = auto()
 
 class Sample(SymEnum):
-    """LRGASP sample identifierd"""
-    WTC11_Hs = auto()
-    H1_DE_Hs = auto()
-    ES_Mm = auto()
+    """LRGASP sample identifier"""
+    WTC11 = auto()
+    H1_mix = auto()
+    ES = auto()
     Manatee = auto()
+
 
 class LibraryPrep(SymEnum):
     """LRGASP library preperation methods"""
@@ -48,6 +49,16 @@ class Repository(SymEnum):
     ENA = auto()
     INSDC = auto()
     ENC = auto()
+
+class RefGenome(SymEnum):
+    """LRGASP reference genomes"""
+    GRCh38 = auto()
+    GRCm39 = auto()
+
+class Gencode(SymEnum):
+    """LRGASP GENCODE version"""
+    GENCODE_V38 = auto()
+    GENCODE_VM27 = auto()
 
 class ExperimentType(SymEnum):
     "type of a experiment, assumed from Challenge type"
@@ -83,9 +94,19 @@ def validate_entry_ident(entry_id):
     valid_pre = ", ".join([str(ch) + '_*' for ch in Challenge])
     raise LrgaspException("entry_id {} must be prefixed with a challenge id ({})".format(entry_id, valid_pre))
 
-def challengeToExperimentType(challenge):
+def challenge_to_experiment_type(challenge):
     assert isinstance(challenge, Challenge)
     if challenge is Challenge.iso_quant:
         return ExperimentType.expression
     else:
         return ExperimentType.model
+
+def sample_to_species(sample):
+    if sample in (Sample.WTC11, Sample.H1_mix):
+        return Species.hs
+    elif sample == Sample.ES:
+        return Species.mm
+    elif sample == Sample.Manatee:
+        return Species.manatee
+    else:
+        raise LrgaspException(f"bug mapping sample to species: {sample}")

@@ -1,6 +1,8 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
+debug = --debug
+
 bad_jsons = $(wildcard input/bad_*.json)
 bad_tests = $(basename $(notdir ${bad_jsons}))
 
@@ -10,10 +12,10 @@ good_tests = $(basename $(notdir ${good_jsons}))
 test: test_model_example test_quant_example bad_tests good_tests
 
 test_model_example:
-	${lrgasp_validate_experiment_metadata} ${darwindir}/iso_detect_ref_ont_drna/drnaA//experiment.json
+	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_detect_ref_ont_drna/drnaA//experiment.json
 
 test_quant_example:
-	${lrgasp_validate_experiment_metadata} ${darwindir}/iso_quant_ont_drna1/drnaA/experiment.json
+	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_quant_ont_drna1/drnaA/experiment.json
 
 bad_tests: ${bad_tests:%=test_%}
 
@@ -25,7 +27,7 @@ test_bad%: mkout
 good_tests: ${good_tests:%=test_%}
 
 test_good%: mkout
-	${lrgasp_validate_experiment_metadata} input/good$*.json
+	${lrgasp_validate_experiment_metadata} ${debug} input/good$*.json
 
 clean:
 	rm -rf output

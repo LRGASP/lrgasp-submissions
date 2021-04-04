@@ -20,9 +20,9 @@ Identifiers assigned by Synapse are in the form ```sny123456``.
 
 ## Sample identifiers
 
-* WTC11_Hs - human IPS cell line
-* H1_DE_Hs - human H1 and DE cell lines
-* ES_Mm - mouse ES cells
+* WTC11 - human IPS cell line
+* H1_mix - human H1 and DE cell lines
+* ES - mouse ES cells
 * Manatee - manatee
 
 ## Public repository identifiers

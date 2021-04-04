@@ -13,7 +13,8 @@
         }
     ],
     "libraries": [
-        "WTC11_Hs"
+        "SYN1231",
+        "SYN1232"
     ],
     "extra_libraries": [
         {
@@ -21,5 +22,5 @@
             "repository": "ENC"
         }
     ],
-    "species": "hs"
+    "species": "manatee"
 }

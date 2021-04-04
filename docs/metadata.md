@@ -40,8 +40,7 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``species`` - one of ``hs``, ``mm``, or ``manatee``.
 * ``is_kitchen_sink`` - If ``true`` (JSON boolean) if this is a kitchen sink experiment, otherwise ``false`` or omitted.
 * ``libraries`` - list of LRGASP library accessions used in the experiment,  For non-kitchen sink, only one or two replicates of the same sample and library preparation method maybe specified.  For kitchen sink experiments, any combination of LRGASP libraries maybe specified.
-* ```extra_libraries`` - list of non-LRGASP libraries that were used.  For other than kitchen sink experiments, only short RNA_Seq
-  maybe added
+* ``extra_libraries`` - list of non-LRGASP libraries that were used.  Should be empty or omitted for non-kitchen sink experiments.
   * ``repository`` - Public repository were data was obtained; one of the values in
     [Public repository identifiers](metadata-identifiers.md#public repository_identifiers)
   * ``acc`` - accession in a public repository for input data file

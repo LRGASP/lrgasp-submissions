@@ -1,3 +1,6 @@
+* change is_kitchen_sink to be a category 
+* make extra_libraries optional
+* is ES really the right library name for mm??
 * validate libraries, extra_libraries, is_kitchen_sink, etc, are valid and consistent
 * https://docs.google.com/presentation/d/1RxmZPd8UgWgm3F-0BquP7NmhxE3zYB5lJ_u6XKgbFME/edit#slide=id.p
 * require protocol description??
@@ -5,9 +8,8 @@
 * doc that file paths are relative
 * add additional file types
 * should expression matrix have transcript_id instead of ID?
-* validate same type of experiments
-* drop model_/quant_ prefix requirements
-* require specific the data file names
 * require included model_gtf in quant.
-* experiment_type is deduced from challange id
+* check experiment_type is deduced from challange id
 challange_id can be obtained from entry_id (add to experiment)
+** validate same type of experiments
+* update refgenomes doc
