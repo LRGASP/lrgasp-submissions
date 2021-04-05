@@ -6,13 +6,7 @@
     "species": "hs",
     "data_category": "long_only",
     "libraries": [
-        "ENCLB366GPZ"
-    ],
-    "extra_libraries": [
-        {
-            "repository": "ENC",
-            "acc": "ENF012A54"
-        }
+        "ENCLB377SXJ"
     ],
     "software": [
         {

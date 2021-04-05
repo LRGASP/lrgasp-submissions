@@ -60,8 +60,6 @@ def _check_list(desc, field, vals):
     for i in range(len(vals)):
         ival = _check_list_element(desc, field, i, vals[i])
         if ival in new_vals:
-            print("@1", ival)
-            print("@2", new_vals)
             raise LrgaspException(f"{desc} [{i}] field {field.name} duplicate value {ival}")
         new_vals.append(ival)
     return new_vals

@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_no_libraries.json
+caused by: experiment field libraries must be a non-empty list

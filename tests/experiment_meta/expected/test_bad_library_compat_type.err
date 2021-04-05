@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_library_compat_type.json
-caused by: all LRGASP libraries must be of the same type: ENCLB377SXJ,ENCLB708YRF are Pacbio_cDNA,Pacbio_CapTrap
+caused by: long_only experiments must contain one long-read libraries prep: Pacbio_cDNA,Pacbio_CapTrap

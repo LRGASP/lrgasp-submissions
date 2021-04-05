@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_library_compat_species.json
-caused by: LRGASP RNA Seq library SYN1231 is for species manatee while experiment model_pb2 specifies species as hs
+caused by: LRGASP RNA Seq library syn1231 is for species manatee while experiment model_pb2 specifies species as hs

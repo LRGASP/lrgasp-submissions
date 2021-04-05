@@ -1,12 +1,28 @@
 {
-    "experiment_id": "model_ont_drna2",
+    "experiment_id": "model_ont_drnaKitchen",
     "experiment_type": "model",
-    "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing, more sensitive and less specific models",
+    "description": "dRNA kitchen sink",
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
     "species": "hs",
-    "data_category": "long_only",
+    "data_category": "kitchen_sink",
     "libraries": [
-        "ENCLB377SXJ"
+        "ENCLB366GPZ",
+        "ENCLB122OCH",
+        "ENCLB979NPE"
+    ],
+    "extra_libraries": [
+        {
+            "repository": "ENC",
+            "acc": "ENF12345"
+        },
+        {
+            "repository": "SRA",
+            "acc": "SRA01234"
+        },
+        {
+            "repository": "ENC",
+            "acc": "ENF12345"
+        }
     ],
     "software": [
         {

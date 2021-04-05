@@ -6,14 +6,8 @@
     "species": "manatee",
     "data_category": "long_only",
     "libraries": [
-        "SYN1231",
-        "SYN1232"
-    ],
-    "extra_libraries": [
-        {
-            "repository": "ENC",
-            "acc": "ENF12345"
-        }
+        "syn1231",
+        "syn1232"
     ],
     "software": [
         {

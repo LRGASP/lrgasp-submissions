@@ -6,8 +6,8 @@
     "species": "hs",
     "data_category": "long_only",
     "libraries": [
-        "SYN1231",
-        "SYN1232"
+        "syn1231",
+        "syn1232"
     ],
     "extra_libraries": [
         {

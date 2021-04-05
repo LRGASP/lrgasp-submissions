@@ -1,5 +1,5 @@
-? doc symbols in line in metadata.md rather than a separate doc
-* change is_kitchen_sink to be a category 
+* have lrgasp-validate-entry print each entry being validated
+* fix software descriptions to be better
 * make extra_libraries optional
 * is ES really the right library name for mm??
 * validate libraries, extra_libraries, is_kitchen_sink, etc, are valid and consistent

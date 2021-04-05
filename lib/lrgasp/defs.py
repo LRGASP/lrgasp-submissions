@@ -21,6 +21,7 @@ class Challenge(SymEnum):
 class DataCategory(SymEnum):
     """categories of experiments based on data accepted"""
     long_only = auto()
+    short_only = auto()
     long_short = auto()
     kitchen_sink = auto()
 
@@ -46,7 +47,6 @@ class LibraryPrep(SymEnum):
     ONT_CapTrap = auto()
     ONT_R2C2 = auto()
     ONT_dRNA = auto()
-    Kitchen_Sink = auto()
 
 class Repository(SymEnum):
     """Public data repositories"""

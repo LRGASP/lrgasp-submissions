@@ -2,9 +2,6 @@
     "ignorePatterns": [
         {
             "pattern": "^https://www.encodeproject.org/"
-        },
-        {
-            "pattern": "^http://crick.bio.uci.edu/freese/"
         }
     ]
 }
