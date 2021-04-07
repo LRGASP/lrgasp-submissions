@@ -18,6 +18,7 @@ help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "lint - check style with flake8"
 	@echo "lint-doc - check documentation"
+	@echo "lint-all - lint plus lint-doc"
 	@echo "test - run tests quickly with the default Python"
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
@@ -36,6 +37,8 @@ lint:
 
 
 lint-doc:  check-doc-format check-doc-links
+
+lint-all: lint lint-doc
 
 ifeq (${have_mdl},yes)
 check-doc-format:

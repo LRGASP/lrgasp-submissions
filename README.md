@@ -10,6 +10,7 @@ Definition and validators for testing LRGASP submissions
 - [Submission structure](docs/submission.md)
 - Submission formats:
   - [Metadata](docs/metadata.md)
+  - [Metadata identifiers](docs/metadata-identifiers.md)
   - [Transcript model format](docs/model-format.md)
   - [Read to model map format](docs/read_model_map_format.md)
   - [Transcript expression matrix format](docs/expression_matrix_format.md)

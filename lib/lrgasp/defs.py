@@ -13,10 +13,15 @@ READ_MODEL_MAP_TSV = "read_model_map.tsv"
 EXPRESSION_TSV = "expression.tsv"
 
 class Challenge(SymEnum):
-    """Challenge identifiers"""
-    iso_detect_ref = auto()
-    iso_quant = auto()
-    iso_detect_de_novo = auto()
+    """Challenge identifiers, value matches challenge number"""
+    iso_detect_ref = 1
+    iso_quant = 2
+    iso_detect_de_novo = 3
+
+class ExperimentType(SymEnum):
+    "type of a experiment, assumed from Challenge type"
+    model = auto()
+    expression = auto()
 
 class DataCategory(SymEnum):
     """categories of experiments based on data accepted"""
@@ -25,11 +30,15 @@ class DataCategory(SymEnum):
     long_short = auto()
     kitchen_sink = auto()
 
-class Species(SymEnum):
-    """Species identifiers"""
-    hs = auto()
-    mm = auto()
-    manatee = auto()
+class LibraryCategory(SymEnum):
+    """LRGASP library category"""
+    Illumina_cDNA = auto()
+    Pacbio_cDNA = auto()
+    Pacbio_CapTrap = auto()
+    ONT_cDNA = auto()
+    ONT_CapTrap = auto()
+    ONT_R2C2 = auto()
+    ONT_dRNA = auto()
 
 class Sample(SymEnum):
     """LRGASP sample identifier"""
@@ -38,15 +47,11 @@ class Sample(SymEnum):
     ES = auto()
     Manatee = auto()
 
-class LibraryPrep(SymEnum):
-    """LRGASP library preperation methods"""
-    Illumina_cDNA = auto()
-    Pacbio_cDNA = auto()
-    Pacbio_CapTrap = auto()
-    ONT_cDNA = auto()
-    ONT_CapTrap = auto()
-    ONT_R2C2 = auto()
-    ONT_dRNA = auto()
+class Species(SymEnum):
+    """Species identifiers"""
+    hs = auto()
+    mm = auto()
+    manatee = auto()
 
 class Repository(SymEnum):
     """Public data repositories"""
@@ -64,11 +69,6 @@ class Gencode(SymEnum):
     """LRGASP GENCODE version"""
     GENCODE_V38 = auto()
     GENCODE_VM27 = auto()
-
-class ExperimentType(SymEnum):
-    "type of a experiment, assumed from Challenge type"
-    model = auto()
-    expression = auto()
 
 class ExpressionUnits(SymEnum):
     "Units used in expression matrix"

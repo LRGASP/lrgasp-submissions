@@ -1,4 +1,6 @@
-# Types of identifiers
+# Metadata identifiers
+
+This page describes various identifiers used in the metadata.
 
 ## Symbolic identifiers
 
@@ -12,25 +14,8 @@ Feature identifiers (transcripts and genes) and read identifiers may contain any
 
 Identifiers assigned by Synapse are in the form ```syn123456``.
 
-## LRGASP challenge identifiers
-
-* ``iso_detect_ref`` - challenge 1: transcript isoform detection with a high-quality reference genome
-* ``iso_quant`` - challenge 2: transcript isoform quantification
-* ``iso_detect_de_novo`` - challenge 3: de-novo transcript isoform detection without a reference genome.
-
-## Species identifiers
-* ``hs`` - human
-* ``mm`` - mouse
-* ``manatee`` - manatee
-
-## Experiment data categories
-* ``long_only`` - long read only, allowing for two replicates from same sample and library preparation method.
-* ``long_short`` - long read as with ``long_only`` with the addition of LRGASP Illumina cDNA of the same sample.
-* ``kitchen_sink`` - any combination of data, both LRGASP libraries and external, public data.
-
 ## Sample identifiers
 
-* ``WTC11`` - human IPS cell line
 * ``H1_mix`` - human H1 and DE cell lines
 * ``ES`` - mouse ES cells
 * ``Manatee`` - manatee
@@ -48,9 +33,9 @@ If another public archive is needed, please create an  issue in the
 * ``INSDC`` - One of the [INSDC](http://www.insdc.org/) database (DBDB, EMBL-EBI/ENA, or NCBI).  These  share an accession name space and are synchronized daily.
 * ``ENC`` - [ENCODE DCC](https://www.encodeproject.org/).
 
-
 ## Expression unit identifiers
-Various expression units accepted by LRGAPS.  See 
+
+Various expression units accepted by LRGAPS.  See
 [Renesh Bedre's blog](https://www.reneshbedre.com/blog/expression_units.html)
 for a good overview of expression units.
 
