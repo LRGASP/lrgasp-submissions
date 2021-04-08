@@ -1,3 +1,6 @@
+* remove reference-genomes.md
+* read-model map says: Additionally, participants may want to submit a BED12 format to map the initial sequences to the reference genome. To provide or not this information is up to the submitters because this might be a bit complicated with some pipelines.
+
 * have lrgasp-validate-entry print each entry being validated
 * fix software descriptions to be better
 * make extra_libraries optional

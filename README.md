@@ -1,6 +1,7 @@
 # lrgasp-submissions
 
-Definition and validators for testing LRGASP submissions
+Documentation and software for submitting to the
+Long Read Genome Annotation Assessment Project (LRGASP).
 
 ## Documentation
 
@@ -21,12 +22,12 @@ FIXME: fill this in Synapse information
 
 ## Bug and feature requests
 
-If you have questions or problems with this software, please create an issue in the
-[LRGASP submissions github tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
+If there are questions or problems with this software, please create an issue in the
+[LRGASP submissions GitHub tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
 
 ## Contacts
 
-- [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu) Support list for lrgasp participants. Messages will not be shared publicly
-- [lrgasp-announce](mailto:lrgasp-announce-group@ucsc.edu) Announcement list for the Long Read Genome Annotation Assessment Project (LRGASP)
+- [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu) Support list for LRGASP participants. Messages will not be shared publicly
+- [lrgasp-announce](mailto:lrgasp-announce-group@ucsc.edu) Announcement list for the LRGASP.
 
 

@@ -2,15 +2,15 @@
 
 The format required for providing quantification results by the user should be a **tab-separated** matrix in which long read-defined transcripts will be the rows and samples/replicates will be columns.
 
-Expression matrix files must be gzip compressed and named ```expression.tsv.gz```.
+Expression matrix files must be gzip-compressed and named ```expression.tsv.gz```.
 
 ## Key features
 
-* **Header**: First field must be `ID` and the rest of the column names should be the sample/replicates labels.
+* **Header**: The first field must be `ID`, and the rest of the column names should be the sample/replicates labels.
 * **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](metadata-identifiers.md#feature-identifiers).
-* **Quantification values reported**: Any metric is acceptable as long as they correlate with RNA concentration. This can be evaluated using known concentration of SIRVs. `NA` values are allowed.
+* **Quantification values reported**: Any metric is acceptable as long as they correlate with RNA concentration. This can be evaluated using known concentrationa of SIRVs. `NA` values are allowed.
 
-Gene expression will be calculated summing up the expression values of all the transcripts coming from the same locus.
+Gene expression will be calculated  by summing up all the transcripts' expression values coming from the same locus.
 
 ## Expression matrix example
 

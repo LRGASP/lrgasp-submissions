@@ -14,11 +14,11 @@ template is also available: [``entry.json``](../templates/entry.json).
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers)
 * ``team_id`` - the Synapse *team* identifier.
-* ``team_name`` - name of the submitting lab
+* ``team_name`` - the name of the submitting lab
 * ``experiment_ids`` - Experiment ids, which is also the directory name containing the
   experiment.  It is [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``notes`` - notes (optional)
-* ``contacts`` - array of contacts, with the first entry considered the primary contact
+* ``contacts`` - an array of contacts, with the first entry considered the primary contact
   * ``name`` - name of the contact
   * ``email`` - e-mail of the contact, which can be an e-mail list
   * ``notes`` - notes about the contact (optional)
@@ -27,7 +27,7 @@ template is also available: [``entry.json``](../templates/entry.json).
 
 This file describes the experiment, specifying all data files.  One is created
 in each experiment directory (see [Experiment structure](submission.md#experiment-structure)).
-Data files are either in the experiment directory or a sub-directories.  All files paths in
+Data files are either in the experiment directory or sub-directories.  All files paths in
 ``experiment.json`` are relative to the directory containing ``experiment.json``.
 
 See [``experiment.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/drnaA/experiment.json) for an example.
@@ -39,18 +39,18 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``notes`` - notes (optional)
 * ``species`` - one of ``hs``, ``mm``, or ``manatee``, see [Species identifiers](metadata-identifiers.md#species_identifiers).
 * ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#Experiment_data_categories).
-* ``libraries`` - list of LRGASP library accessions used in the experiment,  For non-kitchen sink, only replicates of the same sample and library preparation method maybe specified.  For kitchen sink experiments, any combination of LRGASP libraries maybe specified.
-* ``extra_libraries`` - list of non-LRGASP libraries that were used.  Optional, should be empty or omitted for non-kitchen sink experiments.
-  * ``repository`` - Public repository were data was obtained; one of the values in
+* ``libraries`` - list of LRGASP library accessions used in the experiment. For non-kitchen sink experiments, only replicates of the same sample and library preparation method may be specified.  For kitchen sink experiments, any combination of LRGASP libraries may be specified.
+* ``extra_libraries`` - list of non-LRGASP libraries that were used.  Optional. Should be empty or omitted for non-kitchen sink experiments.
+  * ``repository`` - Public repository where data was obtained; one of the values in
     [Public repository identifiers](metadata-identifiers.md#public repository_identifiers)
   * ``acc`` - accession in a public repository for input data file
   * ``notes`` - notes about the file (optional)
 * ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.  See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
 * ``software`` - list of software used by the pipeline:
-  * ``name`` - name of software package
+  * ``name`` - the name of the software package
   * ``description`` - description of software (optional)
-  * ``version`` - version of software
-  * ``url`` - URL to software repository
+  * ``version`` - version of the software
+  * ``url`` - URL to the software repository
   * ``config`` - command line and/or configuration options
-  * ``notes`` - notes about software or how it was used (optional)
+  * ``notes`` - notes about the software or how it was used (optional)
 

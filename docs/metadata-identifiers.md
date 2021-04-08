@@ -26,21 +26,21 @@ The following public data repositories symbols are used to specify where non-LRG
 data used in experiments has been obtained, as specified in the experiment
 [experiment JSON ``extra_libraries`` field](metadata.md#experiment_json).
 If another public archive is needed, please create an  issue in the
-[LRGASP submissions github tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
+[LRGASP submissions GitHub tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
 
-* ``SRA`` - [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra/), the SRA and ENA share an accession name space and are periodically synchronized.  Please use the repository from which you obtained the data.
-* ``ENA`` - [EMBL-EBI ENA](https://www.ebi.ac.uk/ena/), the ENA and SRA share an accession name space and are periodically synchronized.  Please use the repository from which you obtained the data.
-* ``INSDC`` - One of the [INSDC](http://www.insdc.org/) database (DBDB, EMBL-EBI/ENA, or NCBI).  These  share an accession name space and are synchronized daily.
+* ``SRA`` - [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra/), the SRA and ENA share an accession namespace and are periodically synchronized.  Please use the repository from which you obtained the data.
+* ``ENA`` - [EMBL-EBI ENA](https://www.ebi.ac.uk/ena/), the ENA and SRA share an accession namespace and are periodically synchronized.  Please use the repository from which you obtained the data.
+* ``INSDC`` - One of the [INSDC](http://www.insdc.org/) database (DBDB, EMBL-EBI/ENA, or NCBI).  These share an accession namespace and are synchronized daily.
 * ``ENC`` - [ENCODE DCC](https://www.encodeproject.org/).
 
 ## Expression unit identifiers
 
-Various expression units accepted by LRGAPS.  See
+LRGAPS accepts various expression units.  See
 [Renesh Bedre's blog](https://www.reneshbedre.com/blog/expression_units.html)
 for a good overview of expression units.
 
 *``RPM`` - reads per million mapped reads
-*``RPKM`` - reads per kilo base per million mapped reads
-*``FPKM`` - fragments per kilo base per million mapped read
+*``RPKM`` - reads per kilobase per million mapped reads
+*``FPKM`` - fragments per kilobase per million mapped read
 *``TPM`` - transcripts per million
 *``counts`` - raw counts

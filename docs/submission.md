@@ -1,7 +1,7 @@
 # Submission structure
 
 Submissions to LRGASP consist of a set of experiments targeting a particular
-challenge submitted by a *team*.  With two types of experiment: *model* and
+challenge submitted by a *team*.  With two types of experiments: *model* and
 *expression*.  Model experiments are genomic transcript model predictions, and
 expression experiments are transcript expression quantification of a set of
 submitted models.
@@ -11,8 +11,8 @@ For instance, the high-quality genome isoform annotation challenge will
 include both human and mouse experiments. To accommodate this, *experiments*
 are grouped into *entries* against a particular challenge.  An *entry* is
 the unit of both submission and evaluation.  The *experiments* in an *entry*
-should uses as similar a set of parameters and data as possible to allow
-for meaningful combination of the results.
+should uses as similar a set of parameters and data to allow
+for the meaningful combination of the results.
 
 When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
 identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
@@ -37,9 +37,8 @@ a `_` and a unique team-defined name.  For instance:
 - `iso_quant_ont_drna1`
 - `iso_detect_de_novo_pb1`
 
-The entry directory contains and `entry.json` [entry
-metadata](metadata.md#entry.json) describing the entry.  Within the entry directory,
-there is a directory per experiment, with each directory named the same as the
+The entry directory contains an `entry.json` [entry
+metadata](metadata.md#entry.json) describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the
 submitter-defined ``experiment_id`.
 
 All entries MUST be validated with the provided [submission
