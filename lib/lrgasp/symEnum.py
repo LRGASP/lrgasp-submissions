@@ -2,6 +2,7 @@
 
 from enum import Enum, EnumMeta
 from functools import total_ordering
+import json
 
 # FIXME: should really be built like other IntEnum, etc
 
@@ -10,6 +11,13 @@ from enum import auto
 
 SymEnum = None  # class defined after use
 
+class SymEnumJsonEncoder(json.JSONEncoder):
+    "convert SymEnum objects to string in JSON"
+    def default(self, val):
+        if isinstance(val, SymEnum):
+            return str(val)
+        else:
+            return super().default(val)
 
 class SymEnumValue(object):
     "Class used to define SymEnum member that have additional attributes."

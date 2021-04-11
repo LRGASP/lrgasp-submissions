@@ -1,3 +1,7 @@
+* encode download cmd is
+xargs -L 1 curl -O -J -L < files.txt
+* need to make reference genome that includes the SIRVs
+https://www.encodeproject.org/references/ENCSR089MWE/
 * remove reference-genomes.md
 * read-model map says: Additionally, participants may want to submit a BED12 format to map the initial sequences to the reference genome. To provide or not this information is up to the submitters because this might be a bit complicated with some pipelines.
 

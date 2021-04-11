@@ -16,8 +16,9 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 
 ## Sample identifiers
 
-* ``H1_mix`` - human H1 and DE cell lines
-* ``ES`` - mouse ES cells
+* ``WTC11`` - human WTC11
+* ``H1_mix`` - human H1 and endodermal cell
+* ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cells
 * ``Manatee`` - manatee
 
 ## Public repository identifiers

@@ -1,9 +1,37 @@
-"""Class to Load data matrix TSVs.  All results are cached"""
+"""Class to load pre-built data set information from JSON files in source .  All results are cached"""
 import os.path as osp
 import csv
+# import json
 from lrgasp import LrgaspException
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Species, RefGenome, Gencode, Sample, LibraryPrep
+from lrgasp.defs import Species, RefGenome, Gencode, Sample, LibraryCategory
+
+class LrgaspRun(ObjDict):
+    """Used to create an LRGASP run object for sequencing data"""
+    def __init__(self, *, sample, run_acc, description, library_prep, platform):
+        self.sample = sample
+        self.run_acc = run_acc
+        self.description = description
+        self.library_prep = library_prep
+        self.platform = platform
+        self.replicates = None
+
+class LrgaspReplicate(ObjDict):
+    """collection of files for a replicate"""
+    def __init__(self, replicate_number):
+        self.replicate_number = replicate_number
+        self.files = []
+
+class LrgaspRnaSeqFile(ObjDict):
+    """One data file from an RNA-Seq run, uses to build JSON in a consistency way"""
+    def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, biological_replicate_number):
+        self.file_acc = file_acc
+        self.file_type = file_type
+        self.url = url
+        self.s3_uri = s3_uri
+        self.file_size = file_size
+        self.md5sum = md5sum
+        self.biological_replicate_number = biological_replicate_number
 
 def _load_tsv(tsv_basefile, fieldTypeMap):
     """load TSV into an ObjDict; if not None,fieldTypeMap is used to covert fields
@@ -76,6 +104,6 @@ def get_lrgasp_rna_seq():
     if LrgaspRnaSeq.cache is None:
         fieldTypeMap = {"species": Species,
                         "sample": lambda val: field_or_none(val, Sample),
-                        "library": LibraryPrep}
+                        "library_category": LibraryCategory}
         LrgaspRnaSeq.cache = LrgaspRnaSeq(_load_tsv('rna-seq-bams.tsv', fieldTypeMap))
     return LrgaspRnaSeq.cache

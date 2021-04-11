@@ -30,6 +30,19 @@ class DataCategory(SymEnum):
     long_short = auto()
     kitchen_sink = auto()
 
+class Platform(SymEnum):
+    """Simplified sequencing platform, mostly used if figuring out LibraryCategory"""
+    Illumina = auto()
+    PacBio = auto()
+    ONT = auto()
+
+class LibraryPrep(SymEnum):
+    """Type of library prep"""
+    CapTrap = auto()
+    directRNA = auto()
+    R2C2 = auto()
+    cDNA = auto()
+
 class LibraryCategory(SymEnum):
     """LRGASP library category"""
     Illumina_cDNA = auto()

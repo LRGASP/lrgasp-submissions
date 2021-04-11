@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+import sys
+import os.path as osp
+import json
+import argparse
+from collections import defaultdict
+
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
+from lrgasp.objDict import ObjDict
+from lrgasp import LrgaspException
+from lrgasp.defs import Platform, LibraryPrep, Sample
+from lrgasp.symEnum import SymEnumJsonEncoder
+from lrgasp.data_sets import LrgaspRun, LrgaspRnaSeqFile
+
+ENCODE_URL = "https://www.encodeproject.org"
+
+def parse_args():
+    desc = """Convert JSON dumps of the ENCODE metadata to a subset for use in validating
+    submissions.  This allows for faster parsing and making non-ENCODE libraries consistent"""
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("--dataset_json", default="/dev/stdout",
+                        help="combined metadata JSON, see src/lrgasp/data_matrix.py")
+    parser.add_argument("encode_jsons", nargs="*",
+                        help="per-run dumps of encode metadata")
+    return parser.parse_args()
+
+def determine_sample(encode_md):
+    "map to LRGASP samples"
+    biosample = encode_md.biosample_summary
+    if biosample == "Castaneus X S129/SvJae F121-9":
+        return Sample.ES
+    elif biosample == "H1 and endodermal cell":
+        return Sample.H1_mix
+    elif biosample == "WTC11":
+        return Sample.WTC11
+    else:
+        raise LrgaspException(f"unable to determine sample from biosample_summary: {biosample}")
+
+def guess_library_prep_from_desc(encode_md):
+    if encode_md.description.startswith("Direct RNA-seq"):
+        return LibraryPrep.directRNA
+    elif encode_md.description.startswith("LRGASP CapTrap"):
+        return LibraryPrep.CapTrap
+    else:
+        return None
+
+def guess_library_prep_from_construction_method(encode_md):
+    methods = set()
+    for rep in encode_md.replicates:
+        cm = rep.get("construction_method")
+        if cm is not None:
+            methods.add(cm)
+    if len(methods) > 1:
+        raise LrgaspException("expected to parse zero one construction_method, got {methods}")
+    elif len(methods) == 0:
+        return None
+    cm = list(methods)[0]
+    if cm == "CapTrap":
+        return LibraryPrep.CapTrap
+    elif cm == "Nanopore Direct RNA Kit":
+        return LibraryPrep.directRNA
+    else:
+        raise LrgaspException(f"Unknown construction_method: {cm}")
+
+def determine_library_prep(encode_md):
+    "probe metadata to determine construction method"
+    desc_meth = guess_library_prep_from_desc(encode_md)
+    cons_meth = guess_library_prep_from_construction_method(encode_md)
+    if (desc_meth is None) and (cons_meth is None):
+        return LibraryPrep.cDNA
+    if cons_meth is None:
+        return desc_meth
+    if desc_meth is None:
+        return cons_meth
+    if desc_meth != cons_meth:
+        raise LrgaspException(f"Conflicting library construction methods guessed: {desc_meth} and {cons_meth}")
+    return desc_meth
+
+def determine_platform(encode_md):
+    platforms = set()
+    for file_md in encode_md.files:
+        platforms.add(file_md.platform.term_name)
+    if len(platforms) != 1:
+        raise LrgaspException("expected to parse one platform name, got {platform}")
+    pt = list(platforms)[0]
+    if pt == 'Oxford Nanopore MinION':
+        return Platform.ONT
+    elif pt == 'Pacific Biosciences Sequel II':
+        return Platform.PacBio
+    elif pt == 'Illumina HiSeq 2500':
+        return Platform.Illumina
+    else:
+        raise LrgaspException(f"can't convert platform {pt}")
+
+def get_replicate(file_md):
+    rep = file_md.replicate
+    if rep.technical_replicate_number != 1:
+        raise LrgaspException(f"expecting only one technical_replicate_number, got {rep.technical_replicate_number}")
+    return rep.biological_replicate_number
+
+def build_file(file_md):
+    file_acc = file_md.accession
+    if not file_acc.startswith("ENCFF"):
+        raise LrgaspException(f"accession should start with ENCFF, got {file_acc}")
+
+    return LrgaspRnaSeqFile(file_acc=file_acc,
+                            file_type=file_md.file_type,
+                            url=ENCODE_URL + file_md.href,
+                            s3_uri=file_md.s3_uri,
+                            file_size=file_md.file_size,
+                            md5sum=file_md.md5sum,
+                            biological_replicate_number=get_replicate(file_md))
+
+def build_replicates(encode_md):
+    """replicates are a group of files"""
+    # split files in replicates, don't make assumptions about numbers
+    replicates = defaultdict(list)
+    for file_md in encode_md.files:
+        frec = build_file(file_md)
+        replicates[frec.biological_replicate_number].append(frec)
+    return [replicates[i] for i in sorted(replicates.keys())]
+
+def build_run(encode_md):
+    run_acc = encode_md.accession
+    if not run_acc.startswith("ENCSR"):
+        raise LrgaspException(f"accession should start with ENCSR, got {run_acc}")
+    sample = determine_sample(encode_md)
+    platform = determine_platform(encode_md)
+    library_prep = determine_library_prep(encode_md)
+    run = LrgaspRun(sample=sample, run_acc=run_acc,
+                    description=encode_md.description, library_prep=library_prep,
+                    platform=platform)
+    run.replicates = build_replicates(encode_md)
+    return run
+
+def process_encode_run(encode_json):
+    try:
+        with open(encode_json) as fh:
+            encode_md = json.load(fh, object_pairs_hook=ObjDict)
+        return build_run(encode_md)
+    except Exception as ex:
+        raise LrgaspException(f"failed to parse and convert: {encode_json}") from ex
+
+
+def main(args):
+    runs = []
+    for encode_json in args.encode_jsons:
+        runs.append(process_encode_run(encode_json))
+
+    with open(args.dataset_json, "w") as fh:
+        json.dump(runs, fh, cls=SymEnumJsonEncoder, indent=4)
+
+main(parse_args())

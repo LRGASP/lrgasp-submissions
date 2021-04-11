@@ -6,9 +6,9 @@ import json
 from collections import defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, ExperimentType, DataCategory, LibraryPrep, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, ExperimentType, DataCategory, LibraryPrep, LibraryCategory, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
-from lrgasp.data_matrix import get_lrgasp_rna_seq
+from lrgasp.data_sets import get_lrgasp_rna_seq
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
@@ -74,12 +74,12 @@ def library_validate(experiment, lrgasp_rna_seq, library):
     if rna_seq.species != experiment.species:
         raise LrgaspException(f"LRGASP RNA Seq library {rna_seq.accession} is for species {rna_seq.species} while experiment {experiment.experiment_id} specifies species as {experiment.species}")
 
-def group_libs_by_prep(lrgasp_rna_seq, libraries):
-    libs_by_prep = defaultdict(list)
+def group_libs_by_cat(lrgasp_rna_seq, libraries):
+    libs_by_cat = defaultdict(list)
     for lib in libraries:
-        libs_by_prep[lrgasp_rna_seq.get_by_acc(lib).library] = lib
-    libs_by_prep.default_factory = None
-    return libs_by_prep
+        libs_by_cat[lrgasp_rna_seq.get_by_acc(lib).library_category] = lib
+    libs_by_cat.default_factory = None
+    return libs_by_cat
 
 def to_strlist(values):
     "make into comma-separate lists"
@@ -88,24 +88,24 @@ def to_strlist(values):
 def libraries_validate_compat(experiment, lrgasp_rna_seq, libraries):
     """compatibility between libraries and with experiment data category"""
     # FIXME: this needs cleaned up
-    libs_by_prep = group_libs_by_prep(lrgasp_rna_seq, libraries)
-    preps = frozenset(libs_by_prep.keys())
-    long_preps = preps - set([LibraryPrep.Illumina_cDNA])
+    libs_by_cat = group_libs_by_cat(lrgasp_rna_seq, libraries)
+    cats = frozenset(libs_by_cat.keys())
+    long_cats = cats - set([LibraryCategory.Illumina_cDNA])
     if experiment.data_category == DataCategory.short_only:
-        if len(long_preps) > 0:
-            raise LrgaspException(f"{experiment.data_category} experiments can't use long-read libraries: " + to_strlist(preps))
-        if LibraryPrep.Illumina_cDNA not in preps:
-            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryPrep.Illumina_cDNA}: " + to_strlist(preps))
+        if len(long_cats) > 0:
+            raise LrgaspException(f"{experiment.data_category} experiments can't use long-read libraries: " + to_strlist(cats))
+        if LibraryCategory.Illumina_cDNA not in cats:
+            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
     elif experiment.data_category == DataCategory.long_only:
-        if len(long_preps) != 1:
-            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(preps))
-        if LibraryPrep.Illumina_cDNA in preps:
-            raise LrgaspException(f"{experiment.data_category} experiments must not include {LibraryPrep.Illumina_cDNA}: " + to_strlist(preps))
+        if len(long_cats) != 1:
+            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(cats))
+        if LibraryCategory.Illumina_cDNA in cats:
+            raise LrgaspException(f"{experiment.data_category} experiments must not include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
     elif experiment.data_category == DataCategory.long_short:
-        if len(long_preps) != 1:
-            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(preps))
-        if LibraryPrep.Illumina_cDNA not in preps:
-            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryPrep.Illumina_cDNA}: " + to_strlist(preps))
+        if len(long_cats) != 1:
+            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(cats))
+        if LibraryCategory.Illumina_cDNA not in cats:
+            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
     elif experiment.data_category == DataCategory.kitchen_sink:
         # FIXME: check if should be om other category
         pass
