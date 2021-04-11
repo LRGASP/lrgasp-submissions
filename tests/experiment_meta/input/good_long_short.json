@@ -3,7 +3,7 @@
     "experiment_type": "model",
     "description": "long/short mis",
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
-    "species": "hs",
+    "species": "human",
     "data_category": "long_short",
     "libraries": [
         "ENCLB366GPZ",

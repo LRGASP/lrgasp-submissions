@@ -37,7 +37,7 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``experiment_type`` - one of ``model`` or ``expression``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
-* ``species`` - one of ``hs``, ``mm``, or ``manatee``, see [Species identifiers](metadata-identifiers.md#species_identifiers).
+* ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species_identifiers).
 * ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#Experiment_data_categories).
 * ``libraries`` - list of LRGASP library accessions used in the experiment. For non-kitchen sink experiments, only replicates of the same sample and library preparation method may be specified.  For kitchen sink experiments, any combination of LRGASP libraries may be specified.
 * ``extra_libraries`` - list of non-LRGASP libraries that were used.  Optional. Should be empty or omitted for non-kitchen sink experiments.

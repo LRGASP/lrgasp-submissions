@@ -3,7 +3,7 @@
     "experiment_type": "expression",
     "description": "Expression results",
     "notes": "this is so-so good",
-    "species": "hs",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
         "ENCLB377SXJ"

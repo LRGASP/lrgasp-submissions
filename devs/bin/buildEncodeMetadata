@@ -8,7 +8,7 @@ from collections import defaultdict
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
-from lrgasp.defs import Platform, LibraryPrep, Sample
+from lrgasp.defs import Platform, LibraryPrep, Sample, Species
 from lrgasp.symEnum import SymEnumJsonEncoder
 from lrgasp.data_sets import LrgaspRun, LrgaspRnaSeqFile
 
@@ -23,6 +23,25 @@ def parse_args():
     parser.add_argument("encode_jsons", nargs="*",
                         help="per-run dumps of encode metadata")
     return parser.parse_args()
+
+
+def determine_species(encode_md, sample):
+    """figure out the species"""
+    species = set()
+    for rep in encode_md.replicates:
+        if "biosample" in rep.library:
+            biosample = rep.library.biosample
+            if "organism" in biosample.donor:
+                species.add(biosample.donor.organism.name)
+    if len(species) == 0:
+        if sample == Sample.H1_mix:
+            return Species.human
+        else:
+            raise LrgaspException("Unable to determine species")
+    elif len(species) > 1:
+        raise LrgaspException(f"expecting only one species, got {species}")
+    else:
+        return Species(list(species)[0])
 
 def determine_sample(encode_md):
     "map to LRGASP samples"
@@ -127,7 +146,8 @@ def build_run(encode_md):
     sample = determine_sample(encode_md)
     platform = determine_platform(encode_md)
     library_prep = determine_library_prep(encode_md)
-    run = LrgaspRun(sample=sample, run_acc=run_acc,
+    species = determine_species(encode_md, sample)
+    run = LrgaspRun(species=species, sample=sample, run_acc=run_acc,
                     description=encode_md.description, library_prep=library_prep,
                     platform=platform)
     run.replicates = build_replicates(encode_md)

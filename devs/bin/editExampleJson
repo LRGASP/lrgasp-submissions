@@ -12,11 +12,10 @@ from lrgasp.defs import DataCategory
 
 def edit_json(md):
     "customize this for each edit case"
-
-    if "is_kitchen_sink" in md:
-        del md["is_kitchen_sink"]
-    if "data_category" not in md:
-        md["data_category"] = str(DataCategory.long_only)
+    if md.species == "hs":
+        md.species = "human"
+    elif md.species == "mm":
+        md.species = "mouse"
     fix_experiment_order(md)
 
 def parse_args():

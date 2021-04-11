@@ -3,7 +3,7 @@
     "experiment_type": "expression",
     "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "species": "hs",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
         "ENCLB377SXJ"

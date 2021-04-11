@@ -3,7 +3,7 @@
     "experiment_type": "model",
     "description": "Our best transcript models",
     "notes": "this is really good",
-    "species": "hs",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
         "ENCLB377SXJ"

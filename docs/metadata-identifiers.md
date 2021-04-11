@@ -14,6 +14,13 @@ Feature identifiers (transcripts and genes) and read identifiers may contain any
 
 Identifiers assigned by Synapse are in the form ```syn123456``.
 
+## Species identifiers
+
+* ``human`` - taxon 9606
+* ``mouse`` - taxon 10090
+* ``manatee`` - taxon 127582
+* ``synthetic`` - generated synthetic reads
+
 ## Sample identifiers
 
 * ``WTC11`` - human WTC11

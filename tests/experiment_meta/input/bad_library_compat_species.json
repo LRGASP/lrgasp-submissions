@@ -3,7 +3,7 @@
     "experiment_type": "model",
     "description": "Transcript models for Human NA12878 PacBio CCS RNA sequenceing, more sensitive and less specific models",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "species": "hs",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
         "syn1231",

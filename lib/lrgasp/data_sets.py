@@ -8,7 +8,8 @@ from lrgasp.defs import Species, RefGenome, Gencode, Sample, LibraryCategory
 
 class LrgaspRun(ObjDict):
     """Used to create an LRGASP run object for sequencing data"""
-    def __init__(self, *, sample, run_acc, description, library_prep, platform):
+    def __init__(self, *, species, sample, run_acc, description, library_prep, platform):
+        self.species = species
         self.sample = sample
         self.run_acc = run_acc
         self.description = description

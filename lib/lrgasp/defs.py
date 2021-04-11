@@ -62,9 +62,10 @@ class Sample(SymEnum):
 
 class Species(SymEnum):
     """Species identifiers"""
-    hs = auto()
-    mm = auto()
+    human = auto()
+    mouse = auto()
     manatee = auto()
+    simulated = auto()
 
 class Repository(SymEnum):
     """Public data repositories"""
@@ -121,9 +122,9 @@ def challenge_to_experiment_type(challenge):
 
 def sample_to_species(sample):
     if sample in (Sample.WTC11, Sample.H1_mix):
-        return Species.hs
+        return Species.human
     elif sample == Sample.ES:
-        return Species.mm
+        return Species.model
     elif sample == Sample.Manatee:
         return Species.manatee
     else:
