@@ -3,7 +3,7 @@
         "species": "manatee",
         "sample": "Manatee",
         "run_acc": "manatee1",
-        "description": "LRGASP Manatee PacBio cDNA ",
+        "description": "FAKE FOR TESTING LRGASP Manatee PacBio cDNA ",
         "library_prep": "cDNA",
         "platform": "PacBio",
         "replicates": [
