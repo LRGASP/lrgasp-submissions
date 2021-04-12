@@ -43,16 +43,6 @@ class LibraryPrep(SymEnum):
     R2C2 = auto()
     cDNA = auto()
 
-class LibraryCategory(SymEnum):
-    """LRGASP library category"""
-    Illumina_cDNA = auto()
-    Pacbio_cDNA = auto()
-    Pacbio_CapTrap = auto()
-    ONT_cDNA = auto()
-    ONT_CapTrap = auto()
-    ONT_R2C2 = auto()
-    ONT_dRNA = auto()
-
 class Sample(SymEnum):
     """LRGASP sample identifier"""
     WTC11 = auto()
