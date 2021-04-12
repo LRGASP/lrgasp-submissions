@@ -6,7 +6,8 @@
     "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCLB377SXJ"
+        "ENCFF073YYF",
+        "ENCFF509GUL"
     ],
     "units": "counts",
     "software": [

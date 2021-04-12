@@ -5,10 +5,13 @@
     "species": "mouse",
     "data_category": "long_short",
     "libraries": [
+        "ENCFF765AEC",
+        "ENCFF464USM",
         "ENCFF521IDK",
         "ENCFF006WNS",
         "ENCFF914YPT",
-        "ENCFF089PFT"
+        "ENCFF089PFT",
+        "ENCFF714ZJR"
     ],
     "software": [
         {

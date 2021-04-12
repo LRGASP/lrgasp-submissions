@@ -10,7 +10,7 @@ from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
 from lrgasp.defs import Platform, LibraryPrep, Sample, Species
 from lrgasp.symEnum import SymEnumJsonEncoder
-from lrgasp.data_sets import LrgaspRun, LrgaspRnaSeqFile
+from lrgasp.data_sets import LrgaspRun, LrgaspReplicate, LrgaspRnaSeqFile
 
 ENCODE_URL = "https://www.encodeproject.org"
 
@@ -57,7 +57,7 @@ def determine_sample(encode_md):
 
 def guess_library_prep_from_desc(encode_md):
     if encode_md.description.startswith("Direct RNA-seq"):
-        return LibraryPrep.directRNA
+        return LibraryPrep.dRNA
     elif encode_md.description.startswith("LRGASP CapTrap"):
         return LibraryPrep.CapTrap
     else:
@@ -77,7 +77,7 @@ def guess_library_prep_from_construction_method(encode_md):
     if cm == "CapTrap":
         return LibraryPrep.CapTrap
     elif cm == "Nanopore Direct RNA Kit":
-        return LibraryPrep.directRNA
+        return LibraryPrep.dRNA
     else:
         raise LrgaspException(f"Unknown construction_method: {cm}")
 
@@ -117,7 +117,7 @@ def get_replicate(file_md):
         raise LrgaspException(f"expecting only one technical_replicate_number, got {rep.technical_replicate_number}")
     return rep.biological_replicate_number
 
-def build_file(file_md):
+def build_file(run, file_md):
     file_acc = file_md.accession
     if not file_acc.startswith("ENCFF"):
         raise LrgaspException(f"accession should start with ENCFF, got {file_acc}")
@@ -128,15 +128,24 @@ def build_file(file_md):
                             s3_uri=file_md.s3_uri,
                             file_size=file_md.file_size,
                             md5sum=file_md.md5sum,
+                            run_acc=run.run_acc,
                             biological_replicate_number=get_replicate(file_md))
 
-def build_replicates(encode_md):
+def build_replicates(encode_md, run):
     """replicates are a group of files"""
     # split files in replicates, don't make assumptions about numbers
     replicates = defaultdict(list)
+
+    def _obtain_rep(frec):
+        rep = replicates.get(frec.biological_replicate_number)
+        if rep is None:
+            rep = replicates[frec.biological_replicate_number] = LrgaspReplicate(frec.biological_replicate_number)
+        return rep
+
     for file_md in encode_md.files:
-        frec = build_file(file_md)
-        replicates[frec.biological_replicate_number].append(frec)
+        frec = build_file(run, file_md)
+        rep = _obtain_rep(frec)
+        rep.files.append(frec)
     return [replicates[i] for i in sorted(replicates.keys())]
 
 def build_run(encode_md):
@@ -150,7 +159,7 @@ def build_run(encode_md):
     run = LrgaspRun(species=species, sample=sample, run_acc=run_acc,
                     description=encode_md.description, library_prep=library_prep,
                     platform=platform)
-    run.replicates = build_replicates(encode_md)
+    run.replicates = build_replicates(encode_md, run)
     return run
 
 def process_encode_run(encode_json):
@@ -161,13 +170,21 @@ def process_encode_run(encode_json):
     except Exception as ex:
         raise LrgaspException(f"failed to parse and convert: {encode_json}") from ex
 
+def load_encode_run(runs, encode_json):
+    try:
+        run = process_encode_run(encode_json)
+        if run.run_acc in runs:
+            raise LrgaspException("duplicate run: " + run.run_acc)
+        runs[run.run_acc] = run
+    except Exception:
+        raise LrgaspException("error processing: " + encode_json)
 
 def main(args):
-    runs = []
+    runs = {}
     for encode_json in args.encode_jsons:
-        runs.append(process_encode_run(encode_json))
+        load_encode_run(runs, encode_json)
 
     with open(args.dataset_json, "w") as fh:
-        json.dump(runs, fh, cls=SymEnumJsonEncoder, indent=4)
+        json.dump(list(runs.values()), fh, cls=SymEnumJsonEncoder, indent=4)
 
 main(parse_args())

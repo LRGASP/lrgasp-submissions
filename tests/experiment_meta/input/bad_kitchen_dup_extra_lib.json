@@ -6,9 +6,13 @@
     "species": "human",
     "data_category": "kitchen_sink",
     "libraries": [
-        "ENCLB366GPZ",
-        "ENCLB122OCH",
-        "ENCLB979NPE"
+        "ENCFF155CFF",
+        "ENCFF600LIU",
+        "ENCFF854BEI",
+        "ENCFF804BPC",
+        "ENCFF557WRQ",
+        "ENCFF028FCL",
+        "ENCFF003QZT"
     ],
     "extra_libraries": [
         {

@@ -39,7 +39,7 @@ class Platform(SymEnum):
 class LibraryPrep(SymEnum):
     """Type of library prep"""
     CapTrap = auto()
-    directRNA = auto()
+    dRNA = auto()
     R2C2 = auto()
     cDNA = auto()
 

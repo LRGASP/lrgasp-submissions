@@ -1,13 +1,19 @@
 """Class to load pre-built data set information from JSON files in source .  All results are cached"""
 import os.path as osp
-import csv
-# import json
+import json
 from lrgasp import LrgaspException
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Species, RefGenome, Gencode, Sample, LibraryCategory
+from lrgasp.defs import Species, Sample, LibraryPrep, Platform
+
+##
+# LRGASP run metadata files in lib/lrgasp/data/
+##
+lrgasp_run_metadata_files = ("encode-metadata.json", "manatee-metadata.json")
+
 
 class LrgaspRun(ObjDict):
-    """Used to create an LRGASP run object for sequencing data"""
+    """Used to create an LRGASP run object for sequencing data. Class is only uses
+    to serialized, ObjDict used to access when deserialized."""
     def __init__(self, *, species, sample, run_acc, description, library_prep, platform):
         self.species = species
         self.sample = sample
@@ -18,93 +24,87 @@ class LrgaspRun(ObjDict):
         self.replicates = None
 
 class LrgaspReplicate(ObjDict):
-    """collection of files for a replicate"""
+    """collection of files for a replicate. Class is only uses
+    to serialized, ObjDict used to access when deserialized."""
     def __init__(self, replicate_number):
         self.replicate_number = replicate_number
         self.files = []
 
 class LrgaspRnaSeqFile(ObjDict):
-    """One data file from an RNA-Seq run, uses to build JSON in a consistency way"""
-    def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, biological_replicate_number):
+    """One data file from an RNA-Seq run, uses to build JSON in a consistency way
+    Class is only uses to serialized, ObjDict used to access when
+    deserialized."""
+    def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number):
         self.file_acc = file_acc
         self.file_type = file_type
         self.url = url
         self.s3_uri = s3_uri
         self.file_size = file_size
         self.md5sum = md5sum
+        self.run_acc = run_acc
         self.biological_replicate_number = biological_replicate_number
 
-def _load_tsv(tsv_basefile, fieldTypeMap):
-    """load TSV into an ObjDict; if not None,fieldTypeMap is used to covert fields
-    from string to types"""
-    recs = []
-    with open(osp.join(osp.dirname(__file__), "data", tsv_basefile), newline='') as fh:
-        for csv_rec in csv.DictReader(fh, dialect=csv.excel_tab):
-            rec = ObjDict(csv_rec)
-            recs.append(rec)
-            if fieldTypeMap is not None:
-                for field in fieldTypeMap.keys():
-                    rec[field] = fieldTypeMap[field](rec[field])
-    return recs
-
-def field_or_none(val, cls):
-    """return value as a SymEnum or None"""
-    if val == "":
-        return None
-    else:
-        return cls(val)
-
-class LrgaspGenomeAnnotations(list):
-    """genome annotation sources from data matrix TSV"""
+class LrgaspRnaSeqMetaData:
+    """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
     cache = None
 
-def get_lrgasp_genome_anotations():
-    if LrgaspGenomeAnnotations.cache is None:
-        fieldTypeMap = {"species": Species,
-                        "name": RefGenome}
-        LrgaspGenomeAnnotations.cache = LrgaspGenomeAnnotations(_load_tsv('genome-annotations.tsv',
-                                                                          fieldTypeMap))
-    return LrgaspGenomeAnnotations.cache
+    def __init__(self):
+        self.runs = []
+        self.by_file_acc = {}
+        self.by_run_acc = {}
 
-class LrgaspGenomeAssemblies(list):
-    """genome assemblies from data matrix TSV"""
-    cache = None
+    def _edit_run_types(self, run):
+        "conversion to SymEnum"
+        run.species = Species(run.species)
+        run.sample = Sample(run.sample)
+        run.library_prep = LibraryPrep(run.library_prep)
+        run.platform = Platform(run.platform)
 
-def get_lrgasp_genome_assemblies():
-    if LrgaspGenomeAssemblies.cache is None:
-        fieldTypeMap = {"species": Species,
-                        "name": Gencode}
-        LrgaspGenomeAssemblies.cache = LrgaspGenomeAnnotations(_load_tsv('genome-annotations.tsv',
-                                                                         fieldTypeMap))
-    return LrgaspGenomeAssemblies.cache
+    def _add_files(self, files):
+        for fil in files:
+            if fil.file_acc in self.by_file_acc:
+                raise LrgaspException("duplicate file accession: " + fil.file_acc)
+            self.by_file_acc[fil.file_acc] = fil
 
-class LrgaspRnaSeq(list):
-    """genome assemblies from data matrix TSV"""
-    cache = None
+    def add(self, run):
+        self._edit_run_types(run)
+        if run.run_acc in self.by_run_acc:
+            raise LrgaspException("duplicate run id: " + run.run_acc)
+        self.runs.append(run)
+        self.by_run_acc[run.run_acc] = run
+        for replicate in run.replicates:
+            self._add_files(replicate.files)
 
-    def __init__(self, recs):
-        self.by_acc = {}
-        for rec in recs:
-            self.add(rec)
-
-    def add(self, rec):
-        self.append(rec)
-        if rec.accession != "":  # not yet complete
-            if rec.accession in self.by_acc:
-                raise LrgaspException("duplicate RNA-Seq BAM accession: " + rec.accession)
-            self.by_acc[rec.accession] = rec
-
-    def get_by_acc(self, acc):
-        "error if not an LRGASP accession"
+    def get_by_file_acc(self, file_acc):
         try:
-            return self.by_acc[acc]
+            return self.by_file_acc[file_acc]
         except KeyError:
-            raise LrgaspException(f"LRGASP RNA-Seq accession {acc} is unknown")
+            raise LrgaspException(f"unknown LRGASP file accession {file_acc}")
 
-def get_lrgasp_rna_seq():
-    if LrgaspRnaSeq.cache is None:
-        fieldTypeMap = {"species": Species,
-                        "sample": lambda val: field_or_none(val, Sample),
-                        "library_category": LibraryCategory}
-        LrgaspRnaSeq.cache = LrgaspRnaSeq(_load_tsv('rna-seq-bams.tsv', fieldTypeMap))
-    return LrgaspRnaSeq.cache
+    def get_by_run_acc(self, run_acc):
+        try:
+            return self.by_run_acc[run_acc]
+        except KeyError:
+            raise LrgaspException(f"unknown LRGASP run accession {run_acc}")
+
+def _load_lrgasp_rna_seq_metadata_file(md, metadata_json):
+    with open(metadata_json) as fh:
+        for run in json.load(fh, object_pairs_hook=ObjDict):
+            md.add(run)
+
+def _load_lrgasp_rna_seq_metadata_files():
+    "load of all metadata files when not cached"
+    md = LrgaspRnaSeqMetaData()
+    for json_file in lrgasp_run_metadata_files:
+        json_path = osp.join(osp.dirname(__file__), "data", json_file)
+        try:
+            _load_lrgasp_rna_seq_metadata_file(md, json_path)
+        except Exception as ex:
+            raise LrgaspException(f"failed to load {json_path}") from ex
+    return md
+
+def get_lrgasp_rna_seq_metadata():
+    """get LRGASP metadata, possible cached"""
+    if LrgaspRnaSeqMetaData.cache is None:
+        LrgaspRnaSeqMetaData.cache = _load_lrgasp_rna_seq_metadata_files()
+    return LrgaspRnaSeqMetaData.cache

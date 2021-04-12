@@ -1,3 +1,14 @@
+* DIRECT RNA NOT RIGHT IN ENCODE METADATA
+
+* pair ends
+        "description": "LRGASP_mouse ES",
+        "library_prep": "cDNA",
+        "platform": "Illumina",
+* download metadata
+* fix example files software to match experiment types
+* why does run ENCSR507JOF have multiple bams in same replicate
+* what are the tar files in ENCSR392BGY?
+* need to check for duplicate files from same replicate
 * encode download cmd is
 xargs -L 1 curl -O -J -L < files.txt
 * need to make reference genome that includes the SIRVs

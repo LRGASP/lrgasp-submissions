@@ -8,14 +8,41 @@ import argparse
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
-from lrgasp.defs import DataCategory
+from lrgasp.defs import DataCategory  # noqa: F401
 
 def edit_json(md):
     "customize this for each edit case"
-    if md.species == "hs":
-        md.species = "human"
-    elif md.species == "mm":
-        md.species = "mouse"
+
+    is_drna = (md.experiment_id.find("drna") > 0)
+    is_pb = (md.experiment_id.find("pb") > 0)
+    is_drna = True
+
+    if is_drna:
+        id_map = {
+            "ENCLB377SXJ": ("ENCFF155CFF", "ENCFF600LIU"),
+            "ENCLB122OCH": ("ENCFF854BEI", "ENCFF804BPC", "ENCFF557WRQ"),
+            "ENCLB979NPE": ("ENCFF155CFF", "ENCFF600LIU", "ENCFF854BEI", "ENCFF804BPC", "ENCFF557WRQ", "ENCFF028FCL", "ENCFF003QZT"),
+        }
+    elif is_pb:
+        id_map = {
+            "ENCLB377SXJ": ("ENCFF073YYF", "ENCFF509GUL"),
+            "ENCLB122OCH": None,
+            "ENCLB979NPE": None,
+        }
+    else:
+        id_map = {}
+
+    newlibs = []
+    for lib in md.libraries:
+        nls = id_map.get(lib)
+        if nls is not None:
+            for nl in nls:
+                if nl not in newlibs:
+                    newlibs.append(nl)
+        else:
+            newlibs.append(lib)
+
+    md.libraries = newlibs
     fix_experiment_order(md)
 
 def parse_args():

@@ -4,7 +4,8 @@
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
     "species": "human",
     "libraries": [
-        "ENCLB377SXJ"
+        "ENCFF155CFF",
+        "ENCFF600LIU"
     ],
     "software": [
         {

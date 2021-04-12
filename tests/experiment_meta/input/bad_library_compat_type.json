@@ -6,14 +6,9 @@
     "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCLB377SXJ",
-        "ENCLB708YRF"
-    ],
-    "extra_libraries": [
-        {
-            "repository": "ENC",
-            "acc": "ENF12345"
-        }
+        "ENCFF073YYF",
+        "ENCFF509GUL",
+        "ENCFF854BEI"
     ],
     "software": [
         {

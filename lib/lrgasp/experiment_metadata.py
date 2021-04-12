@@ -3,12 +3,11 @@ Experiment metadata parsing and validation.
 """
 import os.path as osp
 import json
-from collections import defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, ExperimentType, DataCategory, LibraryPrep, LibraryCategory, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, ExperimentType, DataCategory, LibraryPrep, Platform, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
-from lrgasp.data_sets import get_lrgasp_rna_seq
+from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
 fld_experiment_type = Field("experiment_type", ExperimentType)
@@ -69,48 +68,69 @@ def find_dups(lst):
         found.add(v)
     return sorted(dups)
 
-def library_validate(experiment, lrgasp_rna_seq, library):
-    rna_seq = lrgasp_rna_seq.get_by_acc(library)  # exception if unknown acc
-    if rna_seq.species != experiment.species:
-        raise LrgaspException(f"LRGASP RNA Seq library {rna_seq.accession} is for species {rna_seq.species} while experiment {experiment.experiment_id} specifies species as {experiment.species}")
+def library_validate(experiment, rna_seq_md, library):
+    file_md = rna_seq_md.get_by_file_acc(library)  # exception if unknown acc
+    run_md = rna_seq_md.get_by_run_acc(file_md.run_acc)
+    if run_md.species != experiment.species:
+        raise LrgaspException(f"LRGASP RNA Seq library {run_md.run_acc} file {file_md.file_acc} is for species {run_md.species} while experiment {experiment.experiment_id} specifies species as {experiment.species}")
 
-def group_libs_by_cat(lrgasp_rna_seq, libraries):
-    libs_by_cat = defaultdict(list)
-    for lib in libraries:
-        libs_by_cat[lrgasp_rna_seq.get_by_acc(lib).library_category] = lib
-    libs_by_cat.default_factory = None
-    return libs_by_cat
+class RunFiles:
+    """grouping of a run with the files that were provided"""
+    def __init__(self, run_md):
+        self.run_md = run_md
+        self.file_mds = []
 
-def to_strlist(values):
-    "make into comma-separate lists"
-    return ",".join([str(v) for v in values])
+def _group_into_run_files(rna_seq_md, libraries):
+    by_run_acc = {}
 
-def libraries_validate_compat(experiment, lrgasp_rna_seq, libraries):
-    """compatibility between libraries and with experiment data category"""
-    # FIXME: this needs cleaned up
-    libs_by_cat = group_libs_by_cat(lrgasp_rna_seq, libraries)
-    cats = frozenset(libs_by_cat.keys())
-    long_cats = cats - set([LibraryCategory.Illumina_cDNA])
-    if experiment.data_category == DataCategory.short_only:
-        if len(long_cats) > 0:
-            raise LrgaspException(f"{experiment.data_category} experiments can't use long-read libraries: " + to_strlist(cats))
-        if LibraryCategory.Illumina_cDNA not in cats:
-            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
-    elif experiment.data_category == DataCategory.long_only:
-        if len(long_cats) != 1:
-            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(cats))
-        if LibraryCategory.Illumina_cDNA in cats:
-            raise LrgaspException(f"{experiment.data_category} experiments must not include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
-    elif experiment.data_category == DataCategory.long_short:
-        if len(long_cats) != 1:
-            raise LrgaspException(f"{experiment.data_category} experiments must contain one long-read libraries prep: " + to_strlist(cats))
-        if LibraryCategory.Illumina_cDNA not in cats:
-            raise LrgaspException(f"{experiment.data_category} experiments must include {LibraryCategory.Illumina_cDNA}: " + to_strlist(cats))
-    elif experiment.data_category == DataCategory.kitchen_sink:
-        # FIXME: check if should be om other category
-        pass
+    def _obtain_run_files(run_acc):
+        run_files = by_run_acc.get(run_acc)
+        if run_files is None:
+            run_files = by_run_acc[run_acc] = RunFiles(rna_seq_md.get_by_run_acc(run_acc))
+        return run_files
+
+    for file_acc in libraries:
+        file_md = rna_seq_md.get_by_file_acc(file_acc)
+        run_files = _obtain_run_files(file_md.run_acc)
+        run_files.file_mds.append(file_md)
+    return [rf for rf in by_run_acc.values()]
+
+def _fmt_prep_plats(prep_plats):
+    "make set of (prep, platform) pretty"
+    return ", ".join([str(pp[0]) + '/' + str(pp[1]) for pp in prep_plats])
+
+def _validate_data_category_compat(data_category, run_files):
+    "check that data category and libraries provided makes sense"
+    the_short_prep_plat = (LibraryPrep.cDNA, Platform.Illumina)
+    prep_plats = frozenset([(r.run_md.library_prep, r.run_md.platform) for r in run_files])
+    long_prep_plats = prep_plats - frozenset(the_short_prep_plat)
+    short_prep_plats = prep_plats & frozenset(the_short_prep_plat)
+
+    if data_category == DataCategory.short_only:
+        if len(long_prep_plats) > 0:
+            raise LrgaspException(f"{data_category} experiments must not use long-read platforms: " + _fmt_prep_plats(prep_plats))
+        if len(short_prep_plats) != 1:
+            raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform: " + _fmt_prep_plats(prep_plats))
+    elif data_category == DataCategory.long_only:
+        if len(long_prep_plats) != 1:
+            raise LrgaspException(f"{data_category} experiments must use one and only one long-read library/platform: " + _fmt_prep_plats(prep_plats))
+        if len(short_prep_plats) != 0:
+            raise LrgaspException(f"{data_category} experiments must not use short read platforms: " + _fmt_prep_plats(prep_plats))
+    elif data_category == DataCategory.long_short:
+        if len(long_prep_plats) != 1:
+            raise LrgaspException(f"{data_category} experiments must use one and only one long-read library/platform: " + _fmt_prep_plats(prep_plats))
+        if len(short_prep_plats) == 1:
+            raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform: " + _fmt_prep_plats(prep_plats))
+    elif data_category == DataCategory.kitchen_sink:
+        if (len(long_prep_plats) + len(short_prep_plats)) == 0:
+            raise LrgaspException(f"{data_category} experiments must some LRGASP libraries: " + _fmt_prep_plats(prep_plats))
     else:
         raise LrgaspException("bug")
+
+def libraries_validate_compat(experiment, rna_seq_md):
+    """compatibility between libraries and experiment for all but kitchen_sink;"""
+    run_files = _group_into_run_files(rna_seq_md, experiment.libraries)
+    _validate_data_category_compat(experiment.data_category, run_files)
 
 def libraries_validate(experiment):
     dups = find_dups(experiment.libraries)
@@ -118,10 +138,10 @@ def libraries_validate(experiment):
         raise LrgaspException(f"duplicate accession in libraries: {dups}")
 
     # make sure all are known
-    lrgasp_rna_seq = get_lrgasp_rna_seq()
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
     for library in experiment.libraries:
-        library_validate(experiment, lrgasp_rna_seq, library)
-    libraries_validate_compat(experiment, lrgasp_rna_seq, experiment.libraries)
+        library_validate(experiment, rna_seq_md, library)
+    libraries_validate_compat(experiment, rna_seq_md)
 
 def extra_library_validate(extra_library):
     desc = "experiment.extra_libraries"
