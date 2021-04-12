@@ -8,6 +8,7 @@ Long Read Genome Annotation Assessment Project (LRGASP).
 - [Challenges](docs/challenges.md)
 - LRGASP data
   - [Reference genomes and transcripts](docs/reference-genomes.md)
+  - [RNA-Seq data](docs/rnaseq-data-matrix.md)
 - [Submission structure](docs/submission.md)
 - Submission formats:
   - [Metadata](docs/metadata.md)

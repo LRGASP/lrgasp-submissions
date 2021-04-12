@@ -358,7 +358,9 @@
                         "file_size": 3987430344,
                         "md5sum": "dcc12ab2d1fe5ed4f8de43f9361d909a",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF006WNS"
                     },
                     {
                         "file_acc": "ENCFF006WNS",
@@ -368,7 +370,9 @@
                         "file_size": 4071226890,
                         "md5sum": "d3451a5041ff190abbb2461ea2f456bc",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF521IDK"
                     }
                 ]
             },
@@ -383,7 +387,9 @@
                         "file_size": 3943987410,
                         "md5sum": "6a7efc28f35536340df02653d46a9853",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF089PFT"
                     },
                     {
                         "file_acc": "ENCFF089PFT",
@@ -393,7 +399,9 @@
                         "file_size": 3804394245,
                         "md5sum": "d266e99140131a6eeeb4a6658d323c77",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF914YPT"
                     }
                 ]
             },
@@ -408,7 +416,9 @@
                         "file_size": 3925637446,
                         "md5sum": "2910331bd716e250bfc2c48ca981c2c0",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF751FTE"
                     },
                     {
                         "file_acc": "ENCFF751FTE",
@@ -418,7 +428,9 @@
                         "file_size": 4037429061,
                         "md5sum": "c9c60017e57f222300391a49b5bde040",
                         "run_acc": "ENCSR982PLD",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF696TCH"
                     }
                 ]
             }
@@ -443,7 +455,9 @@
                         "file_size": 4229664646,
                         "md5sum": "36fe6f1fa3a3423688c3e7ca1c25cb37",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF591ISP"
                     },
                     {
                         "file_acc": "ENCFF591ISP",
@@ -453,7 +467,9 @@
                         "file_size": 4351583182,
                         "md5sum": "9c4e0e16507462349e002732be173894",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF201EVI"
                     }
                 ]
             },
@@ -468,7 +484,9 @@
                         "file_size": 3469093195,
                         "md5sum": "7a768b43e63ec17c187bb06af6a58ce6",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF223VFL"
                     },
                     {
                         "file_acc": "ENCFF223VFL",
@@ -478,7 +496,9 @@
                         "file_size": 3590422649,
                         "md5sum": "e3726fbc4775643db7cfe6fe285f65e6",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF221SLD"
                     }
                 ]
             },
@@ -493,7 +513,9 @@
                         "file_size": 443777793,
                         "md5sum": "23acffcb600bec4ea38e09f00460ca74",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF597GZT"
                     },
                     {
                         "file_acc": "ENCFF701OIK",
@@ -503,7 +525,9 @@
                         "file_size": 2005750574,
                         "md5sum": "883b83b63e24a08252592280b554269f",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF139HIY"
                     },
                     {
                         "file_acc": "ENCFF597GZT",
@@ -513,7 +537,9 @@
                         "file_size": 2011364441,
                         "md5sum": "f0fc09747bc844167eec32ac3fddd828",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF145IIO"
                     },
                     {
                         "file_acc": "ENCFF139HIY",
@@ -523,7 +549,9 @@
                         "file_size": 2076306258,
                         "md5sum": "d1f77c618fef6e7d78a5f34d3031120f",
                         "run_acc": "ENCSR154RVC",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF701OIK"
                     }
                 ]
             }
@@ -548,7 +576,9 @@
                         "file_size": 3717732625,
                         "md5sum": "c760bf4ffda2741cb8d73b1c226f9311",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF644AQW"
                     },
                     {
                         "file_acc": "ENCFF644AQW",
@@ -558,7 +588,9 @@
                         "file_size": 3847141685,
                         "md5sum": "cb37aae593f2ac743c0f44bb37b9f667",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF766OAK"
                     }
                 ]
             },
@@ -573,7 +605,9 @@
                         "file_size": 3924906443,
                         "md5sum": "c33171125bc12a4a04f251653567073d",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF620HBM"
                     },
                     {
                         "file_acc": "ENCFF620HBM",
@@ -583,7 +617,9 @@
                         "file_size": 4025269621,
                         "md5sum": "d24c49c3a0f5202a71046c268ac8f506",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF198RQU"
                     }
                 ]
             },
@@ -598,7 +634,9 @@
                         "file_size": 3951634137,
                         "md5sum": "091f4990a0102c037c8364a77e8e6056",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "1",
+                        "paired_with": "ENCFF785SWH"
                     },
                     {
                         "file_acc": "ENCFF785SWH",
@@ -608,7 +646,9 @@
                         "file_size": 4070231831,
                         "md5sum": "305cb92db66e50e911fd035b9ebec040",
                         "run_acc": "ENCSR673UKZ",
-                        "biological_replicate_number": 3
+                        "biological_replicate_number": 3,
+                        "paired_end": "2",
+                        "paired_with": "ENCFF247XJT"
                     }
                 ]
             }

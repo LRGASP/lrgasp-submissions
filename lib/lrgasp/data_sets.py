@@ -34,7 +34,8 @@ class LrgaspRnaSeqFile(ObjDict):
     """One data file from an RNA-Seq run, uses to build JSON in a consistency way
     Class is only uses to serialized, ObjDict used to access when
     deserialized."""
-    def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number):
+    def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number,
+                 paired_end=None, paired_with=None):
         self.file_acc = file_acc
         self.file_type = file_type
         self.url = url
@@ -43,6 +44,9 @@ class LrgaspRnaSeqFile(ObjDict):
         self.md5sum = md5sum
         self.run_acc = run_acc
         self.biological_replicate_number = biological_replicate_number
+        if paired_end is not None:
+            self.paired_end = paired_end
+            self.paired_with = paired_with
 
 class LrgaspRnaSeqMetaData:
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""

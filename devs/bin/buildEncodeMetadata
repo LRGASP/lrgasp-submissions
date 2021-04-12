@@ -117,10 +117,18 @@ def get_replicate(file_md):
         raise LrgaspException(f"expecting only one technical_replicate_number, got {rep.technical_replicate_number}")
     return rep.biological_replicate_number
 
+def parse_paired_end(file_md):
+    # "paired_with" : "/files/ENCFF644AQW/",
+    return (file_md.paired_end, file_md.paired_with.split('/')[2])
+
 def build_file(run, file_md):
     file_acc = file_md.accession
     if not file_acc.startswith("ENCFF"):
         raise LrgaspException(f"accession should start with ENCFF, got {file_acc}")
+
+    paired_end = paired_with = None
+    if "paired_end" in file_md:
+        paired_end, paired_with = parse_paired_end(file_md)
 
     return LrgaspRnaSeqFile(file_acc=file_acc,
                             file_type=file_md.file_type,
@@ -129,7 +137,8 @@ def build_file(run, file_md):
                             file_size=file_md.file_size,
                             md5sum=file_md.md5sum,
                             run_acc=run.run_acc,
-                            biological_replicate_number=get_replicate(file_md))
+                            biological_replicate_number=get_replicate(file_md),
+                            paired_end=paired_end, paired_with=paired_with)
 
 def build_replicates(encode_md, run):
     """replicates are a group of files"""
