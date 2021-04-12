@@ -23,4 +23,3 @@
 | ES      | cDNA         | Illumina | ENCSR982PLD | 3         | fastq     | ENCFF006WNS,ENCFF089PFT,ENCFF521IDK,ENCFF696TCH,ENCFF751FTE,ENCFF914YPT                                     |
 | ES      | cDNA         | PacBio   | ENCSR172GXL | 3         | bam       | ENCFF094NZA,ENCFF280DWZ,ENCFF493CBP,ENCFF564NGV,ENCFF714ZJR,ENCFF993JVA                                     |
 |         |              |          |             |           | fastq     | ENCFF313VYZ,ENCFF667VXS,ENCFF874VSI                                                                         |
-| Manatee | cDNA         | PacBio   | manatee1    | 2         | bam       | syn1231,syn1232                                                                                             |
