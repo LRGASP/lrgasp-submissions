@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_file_type.json
+caused by: File ENCFF120DLZ of type 'tar' not support for LRGASP, valid types are bam, fastq; please contact LRGASP project if this type of file is needed

@@ -20,7 +20,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--dataset_json", default="/dev/stdout",
                         help="combined metadata JSON, see src/lrgasp/data_matrix.py")
-    parser.add_argument("encode_jsons", nargs="*",
+    parser.add_argument("encode_jsons", nargs="+",
                         help="per-run dumps of encode metadata")
     return parser.parse_args()
 
@@ -138,6 +138,7 @@ def build_file(run, file_md):
                             md5sum=file_md.md5sum,
                             run_acc=run.run_acc,
                             biological_replicate_number=get_replicate(file_md),
+                            output_type=file_md.output_type,
                             paired_end=paired_end, paired_with=paired_with)
 
 def build_replicates(encode_md, run):

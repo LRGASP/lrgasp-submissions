@@ -35,7 +35,7 @@ class LrgaspRnaSeqFile(ObjDict):
     Class is only uses to serialized, ObjDict used to access when
     deserialized."""
     def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number,
-                 paired_end=None, paired_with=None):
+                 output_type, paired_end=None, paired_with=None):
         self.file_acc = file_acc
         self.file_type = file_type
         self.url = url
@@ -44,16 +44,16 @@ class LrgaspRnaSeqFile(ObjDict):
         self.md5sum = md5sum
         self.run_acc = run_acc
         self.biological_replicate_number = biological_replicate_number
+        self.output_type = output_type
         if paired_end is not None:
             self.paired_end = paired_end
             self.paired_with = paired_with
 
-class LrgaspRnaSeqMetaData:
+class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
     cache = None
 
     def __init__(self):
-        self.runs = []
         self.by_file_acc = {}
         self.by_run_acc = {}
 
@@ -74,7 +74,7 @@ class LrgaspRnaSeqMetaData:
         self._edit_run_types(run)
         if run.run_acc in self.by_run_acc:
             raise LrgaspException("duplicate run id: " + run.run_acc)
-        self.runs.append(run)
+        self.append(run)
         self.by_run_acc[run.run_acc] = run
         for replicate in run.replicates:
             self._add_files(replicate.files)

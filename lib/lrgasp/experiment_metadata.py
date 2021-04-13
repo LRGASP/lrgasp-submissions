@@ -55,6 +55,8 @@ experiment_software_fields = (
     fld_notes,
 )
 
+valid_file_types = frozenset(["bam", "fastq"])
+
 def get_extra_libraries(experiment):
     """get the extra libraries field, or empty if not specified"""
     return experiment.get("extra_libraries", ())
@@ -99,8 +101,10 @@ def _fmt_prep_plats(prep_plats):
     "make set of (prep, platform) pretty"
     return ", ".join([str(pp[0]) + '/' + str(pp[1]) for pp in prep_plats])
 
-def _validate_data_category_compat(data_category, run_files):
-    "check that data category and libraries provided makes sense"
+def libraries_validate_compat(experiment, rna_seq_md):
+    """compatibility between libraries and experiments;"""
+    data_category = experiment.data_category
+    run_files = _group_into_run_files(rna_seq_md, experiment.libraries)
     the_short_prep_plat = (LibraryPrep.cDNA, Platform.Illumina)
     prep_plats = frozenset([(r.run_md.library_prep, r.run_md.platform) for r in run_files])
     long_prep_plats = prep_plats - frozenset(the_short_prep_plat)
@@ -127,10 +131,16 @@ def _validate_data_category_compat(data_category, run_files):
     else:
         raise LrgaspException("bug")
 
-def libraries_validate_compat(experiment, rna_seq_md):
-    """compatibility between libraries and experiment for all but kitchen_sink;"""
-    run_files = _group_into_run_files(rna_seq_md, experiment.libraries)
-    _validate_data_category_compat(experiment.data_category, run_files)
+def _check_file_type(file_md):
+    if file_md.file_type not in valid_file_types:
+        raise LrgaspException(f"File {file_md.file_acc} of type '{file_md.file_type}' not support for LRGASP, "
+                              "valid types are {}; please contact LRGASP project if this type of file is needed".format(", ".join(sorted(valid_file_types))))
+
+def libraries_validate_file_types(rna_seq_md):
+    for run_md in rna_seq_md:
+        for rep_md in run_md.replicates:
+            for file_md in rep_md.files:
+                _check_file_type(file_md)
 
 def libraries_validate(experiment):
     dups = find_dups(experiment.libraries)
@@ -141,6 +151,7 @@ def libraries_validate(experiment):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
     for library in experiment.libraries:
         library_validate(experiment, rna_seq_md, library)
+    libraries_validate_file_types(rna_seq_md)
     libraries_validate_compat(experiment, rna_seq_md)
 
 def extra_library_validate(extra_library):
