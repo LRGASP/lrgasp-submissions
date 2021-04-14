@@ -4,7 +4,9 @@ what about SIRVS
 
 ## Genome References
 
-* human lrgasp_grch38_sirvs.fasta.gz
+* GRCh38-bases human reference genome: [lrgasp_grch38_sirvs.fasta.gz](syn25536103)
+  * excludes alt-locus sequences and includes SIRVs
+  * compressed with bgzip for indexing with samtools
   * composed of:
     * GRCh38 without alts: [ENCSR425FOI GRCh38_no_alt_analysis_set_GCA_000001405](https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz)
     * spike-ins 1: [ENCFF001RTP](https://www.encodeproject.org/files/ENCFF001RTP/@@download/ENCFF001RTP.fasta.gz)
