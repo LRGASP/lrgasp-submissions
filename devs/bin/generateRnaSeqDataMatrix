@@ -33,7 +33,7 @@ def generate_run_rows(run, paired_done):
         "subreads": 2,
         "nanopore_signal": 3
     }
-    cols1 = [str(c) for c in (run.sample, run.library_prep, run.platform, run.run_acc)]
+    cols1 = [str(c) for c in (run.species, run.sample, run.library_prep, run.platform, run.run_acc)]
     for rep in run.replicates:
         cols2 = [str(rep.replicate_number)]
         for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
@@ -43,7 +43,7 @@ def generate_run_rows(run, paired_done):
 
 def generate_rows(rna_seq_md):
     paired_done = set()
-    for run in sorted(rna_seq_md, key=lambda r: (r.sample, r.library_prep, r.platform)):
+    for run in sorted(rna_seq_md, key=lambda r: (r.species, r.sample, r.library_prep, r.platform)):
         yield from generate_run_rows(run, paired_done)
 
 def get_col_sizes(header, body):
@@ -62,7 +62,7 @@ def dedup_row(prev, row):
     """make more readable by removing select duplicate information from
     previous row"""
     nrow = list(row)
-    if (prev is None) or not should_dedup(prev, row, 3):
+    if (prev is None) or not should_dedup(prev, row, 4):
         return nrow
     for i in range(len(nrow)):
         if nrow[i] == prev[i]:
@@ -75,7 +75,7 @@ def fmt_row(row, col_sizes):
     return "| " + " | ".join([str(row[i]).ljust(col_sizes[i]) for i in range(len(col_sizes))]) + " |"
 
 def write_markdown_rows(rna_seq_md, fh):
-    header = ["sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
+    header = ["species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
     body = list(generate_rows(rna_seq_md))
     col_sizes = get_col_sizes(header, body)
     header2 = [c * '-' for c in col_sizes]

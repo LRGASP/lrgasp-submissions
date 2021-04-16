@@ -64,9 +64,10 @@ def _guess_library_prep_from_one_desc(desc):
         return None
 
 def guess_library_prep_from_desc(encode_md):
-    prep = _guess_library_prep_from_one_desc(encode_md.description)
-    if prep is not None:
-        return prep
+    if "description" in encode_md:
+        prep = _guess_library_prep_from_one_desc(encode_md.description)
+        if prep is not None:
+            return prep
     for file_md in encode_md.files:
         desc = file_md.replicate.get("description")
         if desc is not None:
@@ -90,6 +91,10 @@ def library_prep_from_construction_method(encode_md):
         return LibraryPrep.CapTrap
     elif cm == "Nanopore Direct RNA Kit":
         return LibraryPrep.dRNA
+    elif cm == "Nanopore PCR-cDNA Kit":
+        return LibraryPrep.cDNA
+    elif cm == "R2C2":
+        return LibraryPrep.R2C2
     else:
         raise LrgaspException(f"Unknown construction_method: {cm}")
 
@@ -100,9 +105,7 @@ def determine_library_prep(encode_md):
     if desc_meth != cons_meth:
         # FIXME: make exception
         print(f"WARNING: {encode_md.accession}: library construction method '{cons_meth}' does match description guess '{desc_meth}'", file=sys.stderr)
-        return desc_meth
-    else:
-        return cons_meth
+    return cons_meth
 
 def determine_platform(encode_md):
     platforms = set()
@@ -175,8 +178,10 @@ def build_run(encode_md):
     platform = determine_platform(encode_md)
     library_prep = determine_library_prep(encode_md)
     species = determine_species(encode_md, sample)
+    # FIXME: tmp until R2C2 is fixed
+    description = encode_md.get("description", encode_md.accession)
     run = LrgaspRun(species=species, sample=sample, run_acc=run_acc,
-                    description=encode_md.description, library_prep=library_prep,
+                    description=description, library_prep=library_prep,
                     platform=platform)
     run.replicates = build_replicates(encode_md, run)
     return run
