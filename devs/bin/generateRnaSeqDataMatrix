@@ -18,7 +18,7 @@ def fmt_set(s):
 
 def make_file_cols(fl, paired_done):
     if fl.paired_with is not None:
-        if fl.paired_with in paired_done:
+        if fl.file_acc in paired_done:
             return None
         paired_with = fl.paired_with
         paired_done.add(paired_with)
