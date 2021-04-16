@@ -23,7 +23,7 @@ one or more *experiments*.  Each *entry* must meet the following requirements:
   a given challenge. Human and mouse samples will have biological replicates that should be used for the entry.
 * The data used for a given *experiment* must fit in one of the following categories:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
-  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample, library preparation method. This is to compare with long-read  approaches
+  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used. 
   * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).
 
@@ -41,10 +41,10 @@ Each team can only submit one entry per category.
   * ONT dRNA - *long-only* or *long and short*
 
 ### Requirements for Challenge 3
-* At least one *experiment* must be supplied for each *sample* available for
-  a given challenge. Mouse samples will have biological replicates that should be used for the entry.
+* At least one *experiment* must be supplied for each *sample* available for the challenge. Mouse samples will have biological replicates that should be used for the entry.
 * The data used for a given *experiment* must fit in one of the following categories:
-  * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
-  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample, library preparation method. This is to compare with long-read  approaches
-  * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used. 
+  * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform. No genome reference can be used.
+  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches. No genome reference can be used.
+  * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. No genome reference can be used.
+  * *long and genome* - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A genome reference sequence can be used.
   * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).
