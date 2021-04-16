@@ -38,7 +38,7 @@ def generate_run_rows(run, paired_done):
 
 def generate_rows(rna_seq_md):
     paired_done = set()
-    for run in rna_seq_md:
+    for run in sorted(rna_seq_md, key=lambda r: (r.sample, r.library_prep, r.platform)):
         yield from generate_run_rows(run, paired_done)
 
 def get_col_sizes(header, body):
@@ -49,17 +49,22 @@ def get_col_sizes(header, body):
             col_sizes[i] = max(col_sizes[i], len(str(row[i])))
     return col_sizes
 
+def should_dedup(prev, row, num_cols):
+    """only dedup if the first num_cols are the same"""
+    return prev[0:num_cols] == row[0:num_cols]
+
 def dedup_row(prev, row):
+    """make more readable by removing select duplicate information from
+    previous row"""
     nrow = list(row)
-    if prev is None:
+    if (prev is None) or not should_dedup(prev, row, 3):
         return nrow
-    else:
-        for i in range(len(nrow)):
-            if nrow[i] == prev[i]:
-                nrow[i] = ""
-            else:
-                break
-        return nrow
+    for i in range(len(nrow)):
+        if nrow[i] == prev[i]:
+            nrow[i] = ""
+        else:
+            break
+    return nrow
 
 def fmt_row(row, col_sizes):
     return "| " + " | ".join([str(row[i]).ljust(col_sizes[i]) for i in range(len(col_sizes))]) + " |"
