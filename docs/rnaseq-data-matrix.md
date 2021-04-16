@@ -8,10 +8,10 @@
 |        |              |          |             |           | subreads        | bam       | ENCFF950ANU |             |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF003QZT |             |
 |        |              |          |             |           | subreads        | bam       | ENCFF508XUP |             |
-| WTC11  | dRNA         | ONT      | ENCSR392BGY | 1         | nanopore_signal | tar       | ENCFF146MTW |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF155CFF |             |
-|        |              |          |             | 3         | nanopore_signal | tar       | ENCFF591QYR |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF600LIU |             |
+| WTC11  | dRNA         | ONT      | ENCSR392BGY | 1         | reads           | fastq     | ENCFF155CFF |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF146MTW |             |
+|        |              |          |             | 3         | reads           | fastq     | ENCFF600LIU |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF591QYR |             |
 | WTC11  | cDNA         | Illumina | ENCSR673UKZ | 1         | reads           | fastq     | ENCFF644AQW | ENCFF766OAK |
 |        |              |          |             | 2         | reads           | fastq     | ENCFF198RQU | ENCFF620HBM |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF247XJT | ENCFF785SWH |
@@ -33,12 +33,12 @@
 |        |              |          |             |           | subreads        | bam       | ENCFF509GUL |             |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF822IZD |             |
 |        |              |          |             |           | subreads        | bam       | ENCFF499AVA |             |
-| H1_mix | dRNA         | ONT      | ENCSR967FTZ | 1         | nanopore_signal | tar       | ENCFF120DLZ |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF854BEI |             |
-|        |              |          |             | 2         | nanopore_signal | tar       | ENCFF336WGD |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF804BPC |             |
-|        |              |          |             | 3         | nanopore_signal | tar       | ENCFF316TNM |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF557WRQ |             |
+| H1_mix | dRNA         | ONT      | ENCSR967FTZ | 1         | reads           | fastq     | ENCFF854BEI |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF120DLZ |             |
+|        |              |          |             | 2         | reads           | fastq     | ENCFF804BPC |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF336WGD |             |
+|        |              |          |             | 3         | reads           | fastq     | ENCFF557WRQ |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF316TNM |             |
 | H1_mix | cDNA         | Illumina | ENCSR154RVC | 1         | reads           | fastq     | ENCFF201EVI | ENCFF591ISP |
 |        |              |          |             | 2         | reads           | fastq     | ENCFF221SLD | ENCFF223VFL |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF139HIY | ENCFF701OIK |
@@ -58,10 +58,10 @@
 |        |              |          |             |           | subreads        | bam       | ENCFF062QXB |             |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF654JHQ |             |
 |        |              |          |             |           | subreads        | bam       | ENCFF110VBJ |             |
-| ES     | dRNA         | ONT      | ENCSR369OLY | 1         | nanopore_signal | tar       | ENCFF914OBQ |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF765AEC |             |
-|        |              |          |             | 3         | nanopore_signal | tar       | ENCFF464USM |             |
-|        |              |          |             |           | reads           | fastq     | ENCFF412NKJ |             |
+| ES     | dRNA         | ONT      | ENCSR369OLY | 1         | reads           | fastq     | ENCFF765AEC |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF914OBQ |             |
+|        |              |          |             | 3         | reads           | fastq     | ENCFF412NKJ |             |
+|        |              |          |             |           | nanopore_signal | tar       | ENCFF464USM |             |
 | ES     | cDNA         | Illumina | ENCSR982PLD | 1         | reads           | fastq     | ENCFF006WNS | ENCFF521IDK |
 |        |              |          |             | 2         | reads           | fastq     | ENCFF089PFT | ENCFF914YPT |
 |        |              |          |             | 3         | reads           | fastq     | ENCFF696TCH | ENCFF751FTE |

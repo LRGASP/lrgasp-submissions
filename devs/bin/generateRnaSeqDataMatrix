@@ -28,10 +28,15 @@ def make_file_cols(fl, paired_done):
     return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
 
 def generate_run_rows(run, paired_done):
+    output_type_order = {
+        "reads": 1,
+        "subreads": 2,
+        "nanopore_signal": 3
+    }
     cols1 = [str(c) for c in (run.sample, run.library_prep, run.platform, run.run_acc)]
     for rep in run.replicates:
         cols2 = [str(rep.replicate_number)]
-        for fl in sorted(rep.files, key=lambda f: (f.output_type, f.file_type, f.file_acc)):
+        for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
             file_cols = make_file_cols(fl, paired_done)
             if file_cols is not None:
                 yield cols1 + cols2 + file_cols
