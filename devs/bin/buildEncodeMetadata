@@ -147,7 +147,7 @@ def build_file(run, file_md):
                             md5sum=file_md.md5sum,
                             run_acc=run.run_acc,
                             biological_replicate_number=get_replicate(file_md),
-                            output_type=file_md.output_type,
+                            output_type=file_md.output_type.replace(' ', '_'),
                             paired_end=paired_end, paired_with=paired_with)
 
 def build_replicates(encode_md, run):

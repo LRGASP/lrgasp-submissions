@@ -10,8 +10,8 @@ testenv = testenv
 version = $(shell PYTHONPATH=lib ${PYTHON} -c "import lrgasp; print(lrgasp.__version__)")
 
 # mdl is an uncommon program to verify markdown
-have_mdl = $(shell which -s mdl && echo yes || echo no)
-have_mdlinkcheck = $(shell which -s markdown-link-check && echo yes || echo no)
+have_mdl = $(shell which mdl >&/dev/null && echo yes || echo no)
+have_mdlinkcheck = $(shell which markdown-link-check >&/dev/null && echo yes || echo no)
 
 
 help:

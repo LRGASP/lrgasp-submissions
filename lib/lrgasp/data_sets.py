@@ -8,7 +8,7 @@ from lrgasp.defs import Species, Sample, LibraryPrep, Platform
 ##
 # LRGASP run metadata files in lib/lrgasp/data/
 ##
-lrgasp_run_metadata_files = ("encode-metadata.json", "manatee-metadata.json")
+lrgasp_run_metadata_files = ("encode-metadata.json", )
 
 
 class LrgaspRun(ObjDict):
@@ -45,9 +45,8 @@ class LrgaspRnaSeqFile(ObjDict):
         self.run_acc = run_acc
         self.biological_replicate_number = biological_replicate_number
         self.output_type = output_type
-        if paired_end is not None:
-            self.paired_end = paired_end
-            self.paired_with = paired_with
+        self.paired_end = paired_end
+        self.paired_with = paired_with
 
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""

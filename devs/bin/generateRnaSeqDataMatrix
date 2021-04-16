@@ -16,70 +16,30 @@ def parse_args():
 def fmt_set(s):
     return ",".join(sorted(s))
 
-class FileGrp:
-    def __init__(self, file_type):
-        self.file_type = file_type
-        self.file_accs = set()
+def make_file_cols(fl, paired_done):
+    if fl.paired_with is not None:
+        if fl.paired_with in paired_done:
+            return None
+        paired_with = fl.paired_with
+        paired_done.add(paired_with)
+    else:
+        paired_with = ""
 
-class Group:
-    def __init__(self, sample, library_prep, platform, run_acc):
-        self.sample = sample
-        self.library_prep = library_prep
-        self.platform = platform
-        self.run_acc = run_acc
-        self.replicates = set()
-        self.file_groups = {}
+    return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
 
-    def key(self):
-        return self.sample, self.library_prep, self.platform, self.run_acc
+def generate_run_rows(run, paired_done):
+    cols1 = [str(c) for c in (run.sample, run.library_prep, run.platform, run.run_acc)]
+    for rep in run.replicates:
+        cols2 = [str(rep.replicate_number)]
+        for fl in sorted(rep.files, key=lambda f: (f.output_type, f.file_type, f.file_acc)):
+            file_cols = make_file_cols(fl, paired_done)
+            if file_cols is not None:
+                yield cols1 + cols2 + file_cols
 
-    def _obtain(self, file_type):
-        file_grp = self.file_groups.get(file_type)
-        if file_grp is None:
-            file_grp = self.file_groups[file_type] = FileGrp(file_type)
-        return file_grp
-
-    def add_file(self, file_type, file_acc):
-        self._obtain(file_type).file_accs.add(file_acc)
-
-    def to_rows(self):
-        lcols = [str(c)
-                 for c in (self.sample, self.library_prep, self.platform, self.run_acc, len(self.replicates))]
-        lcols2 = len(lcols) * [""]
-        rrows = [[file_type, fmt_set(self.file_groups[file_type].file_accs)]
-                 for file_type in sorted(self.file_groups.keys())]
-        rows = [lcols + rrows[0]]
-        for rrow in rrows[1:]:
-            rows.append(lcols2 + rrow)
-        return rows
-
-class Groups(dict):
-    def __init__(self, rna_seq_md):
-        for run in rna_seq_md.runs:
-            self.add_run(run)
-
-    def _obtain(self, sample, library_prep, platform, run_acc):
-        key = sample, library_prep, platform, run_acc
-        grp = self.get(key)
-        if key not in self:
-            grp = self[key] = Group(sample, library_prep, platform, run_acc)
-        return grp
-
-    def add_file(self, grp, rfile):
-        grp.add_file(rfile.file_type, rfile.file_acc)
-
-    def add_run(self, run):
-        grp = self._obtain(run.sample, run.library_prep, run.platform, run.run_acc)
-        for rep in run.replicates:
-            grp.replicates.add(rep.replicate_number)
-            for rfile in rep.files:
-                self.add_file(grp, rfile)
-
-    def to_rows(self):
-        rows = []
-        for key in sorted(self.keys()):
-            rows.extend(self[key].to_rows())
-        return rows
+def generate_rows(rna_seq_md):
+    paired_done = set()
+    for run in rna_seq_md:
+        yield from generate_run_rows(run, paired_done)
 
 def get_col_sizes(header, body):
     assert len(header) == len(body[0]), "{} != {}".format(len(header), len(body[0]))
@@ -89,30 +49,41 @@ def get_col_sizes(header, body):
             col_sizes[i] = max(col_sizes[i], len(str(row[i])))
     return col_sizes
 
+def dedup_row(prev, row):
+    nrow = list(row)
+    if prev is None:
+        return nrow
+    else:
+        for i in range(len(nrow)):
+            if nrow[i] == prev[i]:
+                nrow[i] = ""
+            else:
+                break
+        return nrow
+
 def fmt_row(row, col_sizes):
     return "| " + " | ".join([str(row[i]).ljust(col_sizes[i]) for i in range(len(col_sizes))]) + " |"
 
-def write_markdown_rows(groups, fh):
-    header = ["sample", "library_prep", "platform", "run_acc", "replicate", "file_type", "file_accs"]
-    body = groups.to_rows()
+def write_markdown_rows(rna_seq_md, fh):
+    header = ["sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
+    body = list(generate_rows(rna_seq_md))
     col_sizes = get_col_sizes(header, body)
     header2 = [c * '-' for c in col_sizes]
 
     print(fmt_row(header, col_sizes), file=fh)
     print(fmt_row(header2, col_sizes), file=fh)
+    prev = None
     for row in body:
-        print(fmt_row(row, col_sizes), file=fh)
+        print(fmt_row(dedup_row(prev, row), col_sizes), file=fh)
+        prev = row
 
-
-def write_markdown(groups, fh):
+def write_markdown(rna_seq_md, fh):
     print("# LRGASP RNA-Seq Data Matrix", file=fh)
     print(file=fh)
-    write_markdown_rows(groups, fh)
+    write_markdown_rows(rna_seq_md, fh)
 
 def main(args):
-    groups = Groups(get_lrgasp_rna_seq_metadata())
-
     with open(args.outmd, "w") as fh:
-        write_markdown(groups, fh)
+        write_markdown(get_lrgasp_rna_seq_metadata(), fh)
 
 main(parse_args())
