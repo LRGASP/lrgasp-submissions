@@ -10,36 +10,40 @@ sequences to form genomic sequences and they are included in the reference
 genomes as individual sequences.  For multi-exon SIRVs, a single sequence is
 included converting all isoforms of the gene, as well as introns.
 
-The spike-in genomic sequences are available from [sirvs4.fasta.gz](syn2FIXME).
+The spike-in genomic sequences are available from [sirvs4.fasta.gz](syn2FIXME)
+with the annotations in GTF format [sirvs4.gtf.gz](syn3FIXME).
 
 ### GRCh38-based human reference genome
 
 * [lrgasp_grch38_sirvs.fasta.gz](syn25536103)
 * UCSC style names
-* excludes alt-locus sequences and includes SIRVs
-* compressed with bgzip for indexing with samtools
-* composed of:
-  * GRCh38 without alts: [ENCSR425FOI GRCh38_no_alt_analysis_set_GCA_000001405](https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz)
-  * includes the spike-in genomic sequences.
+* excludes alt-locus sequences
+* includes ERCC/SIRV spike-in genomic sequences
+* FASTA format compressed with bgzip for indexing with samtools
+* based on GRCh38 without alts: [ENCSR425FOI GRCh38_no_alt_analysis_set_GCA_000001405](https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz)
 
 ### GRCm39 based mouse
 
-* [lrgasp_grcm39_sirvs.faata.gz](syn0FIXME)
+* [lrgasp_grcm39_sirvs.fasta.gz](syn0FIXME)
 * UCSC style names
-* compressed with bgzip for indexing with samtools
-* composed of:
-  * GRCm39: [mm39.fa.gz](https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz)
-  * includes the spike-in genomic sequences.
+* includes ERCC/SIRV spike-in genomic sequences
+* FASTA format compressed with bgzip for indexing with samtools
+* based on [GRCm39 mm39.fa.gz](https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz)
 
 ## Transcriptome References
 
-### GENCODE V38 human 
+### GENCODE V38-based human annotation set
 
 * [lrgasp-gencode-v38.gtf.gz](syn0FIXME)
-* composed of:
+* [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
+* excludes alt-locus sequences
+* includes ERCC/SIRV spike-in annotations
+* based on [gencode.v37.chr_patch_hapl_scaff.annotation.gtf.gz](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_37/gencode.v37.chr_patch_hapl_scaff.annotation.gtf.gz) with alts loci sequence removed
 
-* mouse
-  * composed of:
-    * GENCODE-VM28
-    * spike-ins 1: FIXME: needed
-    * spike-ins 2: FIXME: needed
+### GENCODE VM27-based mouse annotation set
+
+* [lrgasp-gencode-vm27.gtf.gz](syn0FIXME)
+* [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
+* includes ERCC/SIRV spike-in annotations
+* based on [gencode.vm27.chr_patch_hapl_scaff.annotation.gtf.gz](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M26/gencode.vM27.chr_patch_hapl_scaff.annotation.gtf.gz)
+
