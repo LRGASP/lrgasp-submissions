@@ -277,7 +277,7 @@
         "sample": "H1_mix",
         "run_acc": "ENCSR967FTZ",
         "description": "Direct RNA seq for Human H1 ES/Def Endoderm cell line Mix",
-        "library_prep": "cDNA",
+        "library_prep": "dRNA",
         "platform": "ONT",
         "replicates": [
             {

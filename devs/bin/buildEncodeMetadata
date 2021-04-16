@@ -55,24 +55,36 @@ def determine_sample(encode_md):
     else:
         raise LrgaspException(f"unable to determine sample from biosample_summary: {biosample}")
 
-def guess_library_prep_from_desc(encode_md):
-    if encode_md.description.startswith("Direct RNA-seq"):
+def _guess_library_prep_from_one_desc(desc):
+    if desc.startswith("Direct RNA"):
         return LibraryPrep.dRNA
-    elif encode_md.description.startswith("LRGASP CapTrap"):
+    elif desc.startswith("LRGASP CapTrap"):
         return LibraryPrep.CapTrap
     else:
         return None
 
-def guess_library_prep_from_construction_method(encode_md):
+def guess_library_prep_from_desc(encode_md):
+    prep = _guess_library_prep_from_one_desc(encode_md.description)
+    if prep is not None:
+        return prep
+    for file_md in encode_md.files:
+        desc = file_md.replicate.get("description")
+        if desc is not None:
+            prep = _guess_library_prep_from_one_desc(desc)
+            if prep is not None:
+                return prep
+    return LibraryPrep.cDNA
+
+def library_prep_from_construction_method(encode_md):
     methods = set()
     for rep in encode_md.replicates:
-        cm = rep.get("construction_method")
+        cm = rep.library.get("construction_method")
         if cm is not None:
             methods.add(cm)
     if len(methods) > 1:
         raise LrgaspException("expected to parse zero one construction_method, got {methods}")
     elif len(methods) == 0:
-        return None
+        return LibraryPrep.cDNA
     cm = list(methods)[0]
     if cm == "CapTrap":
         return LibraryPrep.CapTrap
@@ -84,16 +96,13 @@ def guess_library_prep_from_construction_method(encode_md):
 def determine_library_prep(encode_md):
     "probe metadata to determine construction method"
     desc_meth = guess_library_prep_from_desc(encode_md)
-    cons_meth = guess_library_prep_from_construction_method(encode_md)
-    if (desc_meth is None) and (cons_meth is None):
-        return LibraryPrep.cDNA
-    if cons_meth is None:
-        return desc_meth
-    if desc_meth is None:
-        return cons_meth
+    cons_meth = library_prep_from_construction_method(encode_md)
     if desc_meth != cons_meth:
-        raise LrgaspException(f"Conflicting library construction methods guessed: {desc_meth} and {cons_meth}")
-    return desc_meth
+        # FIXME: make exception
+        print(f"WARNING: {encode_md.accession}: library construction method '{cons_meth}' does match description guess '{desc_meth}'", file=sys.stderr)
+        return desc_meth
+    else:
+        return cons_meth
 
 def determine_platform(encode_md):
     platforms = set()
