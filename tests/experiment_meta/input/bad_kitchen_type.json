@@ -2,7 +2,7 @@
     "experiment_id": "model_ont_drnaKitchen",
     "experiment_type": "model",
     "description": "dRNA kitchen sink",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "notes": "should have specified kitchen sink",
     "species": "human",
     "data_category": "long_short",
     "libraries": [
