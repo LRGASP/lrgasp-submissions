@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_kitchen_type.json
-caused by: long_short experiments must use one and only one long-read library/platform: dRNA/ONT, CapTrap/PacBio, cDNA/ONT
+caused by: long_short experiments must use one and only one long-read library/platform: dRNA/ONT, CapTrap/PacBio

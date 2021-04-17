@@ -55,7 +55,7 @@ experiment_software_fields = (
     fld_notes,
 )
 
-valid_file_types = frozenset(["bam", "fastq"])
+valid_file_content = frozenset(["reads", "subreads", "nanopore_signal"])
 
 def get_extra_libraries(experiment):
     """get the extra libraries field, or empty if not specified"""
@@ -132,9 +132,9 @@ def libraries_validate_compat(experiment, rna_seq_md):
         raise LrgaspException("bug")
 
 def _check_file_type(file_md):
-    if file_md.file_type not in valid_file_types:
-        raise LrgaspException(f"File {file_md.file_acc} of type '{file_md.file_type}' not support for LRGASP, "
-                              "valid types are {}; please contact LRGASP project if this type of file is needed".format(", ".join(sorted(valid_file_types))))
+    if file_md.output_type not in valid_file_content:
+        raise LrgaspException(f"File {file_md.file_acc} of output_type '{file_md.output_type}' not support for LRGASP, "
+                              "valid types are {}; please contact LRGASP project if this type of file is needed".format(", ".join(sorted(valid_file_content))))
 
 def libraries_validate_file_types(rna_seq_md):
     for run_md in rna_seq_md:
