@@ -16,35 +16,71 @@ def parse_args():
 def fmt_set(s):
     return ",".join(sorted(s))
 
-def make_file_cols(fl, paired_done):
-    if fl.paired_with is not None:
-        if fl.file_acc in paired_done:
-            return None
-        paired_with = fl.paired_with
-        paired_done.add(paired_with)
-    else:
-        paired_with = ""
+class FileGrp:
+    def __init__(self, file_type):
+        self.file_type = file_type
+        self.file_accs = set()
 
-    return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
+class Group:
+    def __init__(self, sample, library_prep, platform, run_acc):
+        self.sample = sample
+        self.library_prep = library_prep
+        self.platform = platform
+        self.run_acc = run_acc
+        self.replicates = set()
+        self.file_groups = {}
 
-def generate_run_rows(run, paired_done):
-    output_type_order = {
-        "reads": 1,
-        "subreads": 2,
-        "nanopore_signal": 3
-    }
-    cols1 = [str(c) for c in (run.species, run.sample, run.library_prep, run.platform, run.run_acc)]
-    for rep in run.replicates:
-        cols2 = [str(rep.replicate_number)]
-        for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
-            file_cols = make_file_cols(fl, paired_done)
-            if file_cols is not None:
-                yield cols1 + cols2 + file_cols
+    def key(self):
+        return self.sample, self.library_prep, self.platform, self.run_acc
 
-def generate_rows(rna_seq_md):
-    paired_done = set()
-    for run in sorted(rna_seq_md, key=lambda r: (r.species, r.sample, r.library_prep, r.platform)):
-        yield from generate_run_rows(run, paired_done)
+    def _obtain(self, file_type):
+        file_grp = self.file_groups.get(file_type)
+        if file_grp is None:
+            file_grp = self.file_groups[file_type] = FileGrp(file_type)
+        return file_grp
+
+    def add_file(self, file_type, file_acc):
+        self._obtain(file_type).file_accs.add(file_acc)
+
+    def to_rows(self):
+        lcols1 = [str(c)
+                 for c in (self.sample, self.library_prep, self.platform, self.run_acc, len(self.replicates))]
+        lcols2 = len(lcols1) * [""]
+
+        rrows = [[file_type, fmt_set(self.file_groups[file_type].file_accs)]
+                 for file_type in sorted(self.file_groups.keys())]
+        rows = [lcols1 + rrows[0]]
+        for rrow in rrows[1:]:
+            rows.append(lcols2 + rrow)
+        return rows
+
+class Groups(dict):
+    def __init__(self, rna_seq_md):
+        for run in rna_seq_md.runs:
+            self.add_run(run)
+
+    def _obtain(self, sample, library_prep, platform, run_acc):
+        key = sample, library_prep, platform, run_acc
+        grp = self.get(key)
+        if key not in self:
+            grp = self[key] = Group(sample, library_prep, platform, run_acc)
+        return grp
+
+    def add_file(self, grp, rfile):
+        grp.add_file(rfile.file_type, rfile.file_acc)
+
+    def add_run(self, run):
+        grp = self._obtain(run.sample, run.library_prep, run.platform, run.run_acc)
+        for rep in run.replicates:
+            grp.replicates.add(rep.replicate_number)
+            for rfile in rep.files:
+                self.add_file(grp, rfile)
+
+    def to_rows(self):
+        rows = []
+        for key in sorted(self.keys()):
+            rows.extend(self[key].to_rows())
+        return rows
 
 def get_col_sizes(header, body):
     assert len(header) == len(body[0]), "{} != {}".format(len(header), len(body[0]))
