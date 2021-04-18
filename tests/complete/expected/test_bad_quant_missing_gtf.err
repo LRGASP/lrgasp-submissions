@@ -1,3 +1,5 @@
-Error: entry iso_quant_ont_drna1 experiment quant_ont_drna2 validation failed on output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/models.gtf and output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/expression.tsv
+Error: validation of entry iso_quant_ont_drna1 failed: output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/entry.json
+caused by: validation of experiment drnaB failed: output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/experiment.json
+caused by: validation failed on output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/models.gtf and output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/expression.tsv
 caused by: Parse of GTF failed: output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/models.gtf
 caused by: GTF file does not exist: output/test_bad_quant_missing_gtf/iso_quant_ont_drna1/drnaB/models.gtf

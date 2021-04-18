@@ -1,2 +1,4 @@
-Error: entry iso_detect_ref_ont_drna experiment model_ont_drna2 validation failed on output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/drnaB/models.gtf and output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/drnaB/read_model_map.tsv
+Error: validation of entry iso_detect_ref_ont_drna failed: output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/entry.json
+caused by: validation of experiment drnaB failed: output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/drnaB/experiment.json
+caused by: validation failed on output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/drnaB/models.gtf and output/test_bad_isoform_missing_mapping/iso_detect_ref_ont_drna/drnaB/read_model_map.tsv
 caused by: transcript in models transcript_270.known not in read-model_map

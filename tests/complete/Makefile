@@ -3,6 +3,9 @@ include ${testrootdir}/testing.mk
 
 debug = --debug
 
+# set to get debug on error test cases
+#  err_debug == --debug
+
 entries = iso_detect_ref_ont_drna iso_quant_ont_drna1 iso_detect_de_novo_pb1 iso_quant_pb1
 test: entry_tests bad_tests
 
@@ -30,7 +33,7 @@ test_bad_isoform%: mkout
 	cat input/iso_detect_ref_ont_drna.files | (cd ../../examples/darwin_lab && cpio --quiet -pduml ../../tests/complete/output/$@/)
 	bash -e input/bad_isoform$*.sh output/$@
 	@echo ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna "(should fail)"
-	@if ! ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_ref_ont_drna 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 bad_quant_tests: ${bad_quant_tests:%=test_%}
@@ -38,10 +41,10 @@ bad_quant_tests: ${bad_quant_tests:%=test_%}
 test_bad_quant%: mkout
 	rm -rf output/$@
 	mkdir output/$@
-	cat input/iso_quant_ont_drna1.files | (cd ../../examples/darwin_lab && cpio -pduml ../../tests/complete/output/$@/)
+	cat input/iso_quant_ont_drna1.files | (cd ../../examples/darwin_lab && cpio --quiet -pduml ../../tests/complete/output/$@/)
 	bash -e input/bad_quant$*.sh output/$@
 	@echo ${lrgasp_validate_entry} output/$@/iso_quant_ont_drna1 "(should fail)"
-	@if ! ${lrgasp_validate_entry} output/$@/iso_quant_ont_drna1 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_quant_ont_drna1 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 

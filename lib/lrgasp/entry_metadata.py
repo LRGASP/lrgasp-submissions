@@ -81,4 +81,5 @@ def load_dir(entry_dir):
     if entry_base_dir != entry.entry_id:
         raise LrgaspException(f"entry {entry.entry_id} must be in an directory {entry.entry_id}, not {entry_base_dir}")
     entry.entry_dir = entry_dir
+    entry.entry_json = entry_json
     return entry
