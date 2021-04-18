@@ -78,17 +78,21 @@ class LrgaspRnaSeqMetaData(list):
         for replicate in run.replicates:
             self._add_files(replicate.files)
 
-    def get_by_file_acc(self, file_acc):
+    def get_file_by_acc(self, file_acc):
         try:
             return self.by_file_acc[file_acc]
         except KeyError:
             raise LrgaspException(f"unknown LRGASP file accession {file_acc}")
 
-    def get_by_run_acc(self, run_acc):
+    def get_run_by_acc(self, run_acc):
         try:
             return self.by_run_acc[run_acc]
         except KeyError:
             raise LrgaspException(f"unknown LRGASP run accession {run_acc}")
+
+    def get_run_by_file_acc(self, file_acc):
+        fil = self.get_file_by_acc(file_acc)
+        return self.get_run_by_acc(fil.run_acc)
 
 def _load_lrgasp_rna_seq_metadata_file(md, metadata_json):
     with open(metadata_json) as fh:

@@ -119,3 +119,13 @@ def sample_to_species(sample):
         return Species.manatee
     else:
         raise LrgaspException(f"bug mapping sample to species: {sample}")
+
+
+_challenge_sample_map = {
+    Challenge.iso_detect_ref: frozenset([Sample.WTC11, Sample.H1_mix, Sample.ES]),
+    Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix]),
+    Challenge.iso_detect_de_novo: frozenset([Sample.Manatee, Sample.ES]),
+}
+
+def get_challenge_samples(challenge_id):
+    return _challenge_sample_map[challenge_id]

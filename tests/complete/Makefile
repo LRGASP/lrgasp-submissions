@@ -27,7 +27,7 @@ bad_isoform_tests: ${bad_isoform_tests:%=test_%}
 test_bad_isoform%: mkout
 	rm -rf output/$@
 	mkdir output/$@
-	cat input/iso_detect_ref_ont_drna.files | (cd ../../examples/darwin_lab && cpio -pduml ../../tests/complete/output/$@/)
+	cat input/iso_detect_ref_ont_drna.files | (cd ../../examples/darwin_lab && cpio --quiet -pduml ../../tests/complete/output/$@/)
 	bash -e input/bad_isoform$*.sh output/$@
 	@echo ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna "(should fail)"
 	@if ! ${lrgasp_validate_entry} output/$@/iso_detect_ref_ont_drna 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi

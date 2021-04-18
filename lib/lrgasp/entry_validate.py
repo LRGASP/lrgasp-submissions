@@ -3,12 +3,15 @@ Load and validate model and expression entries
 """
 import os.path as osp
 from lrgasp import LrgaspException
-from lrgasp.defs import ExperimentType, challenge_to_experiment_type, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import ExperimentType, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import challenge_to_experiment_type, get_challenge_samples
 from lrgasp import entry_metadata
 from lrgasp import experiment_metadata
 from lrgasp import model_data
 from lrgasp import read_model_map_data
 from lrgasp import expression_data
+from lrgasp.metadata_validate import set_to_str
+from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
 def _validate_trans_and_read_mapping(trans, read_model_map):
     if read_model_map.get_by_transcript_id(trans.transcript_id) is None:
@@ -54,11 +57,25 @@ def _validate_expression_experiment(entry, experiment):
     except Exception as ex:
         raise LrgaspException(f"entry {entry.entry_id} experiment {experiment.experiment_id} validation failed on {model_gtf} and {expression_tsv}") from ex
 
+def _validate_experiment_library(entry, experiment, rna_seq_md, library):
+    sample = rna_seq_md.get_run_by_file_acc(library).sample
+    valid_samples = get_challenge_samples(entry.challenge_id)
+    if sample not in valid_samples:
+        raise LrgaspException(f"library {library} sample {sample} is not valid for challenge {entry.challenge_id},"
+                              " expected one of {}".format(set_to_str(valid_samples)))
+
+def _validate_experiment_libraries(entry, experiment):
+    "check if libraries uses are compatible with challenge"""
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    for library in experiment.libraries:
+        _validate_experiment_library(entry, experiment, rna_seq_md, library)
+
 def _validate_experiment(entry, experiment_id):
     experiment = experiment_metadata.load_from_entry(entry, experiment_id)
     experiment_type = challenge_to_experiment_type(entry.challenge_id)
     if experiment.experiment_type is not experiment_type:
         raise LrgaspException(f"entry {entry.entry_id} challenge {entry.challenge_id} does not consistent with experiment {experiment_id} type {experiment_type}")
+    _validate_experiment_libraries(entry, experiment)
     if experiment_type == ExperimentType.model:
         _validate_model_experiment(entry, experiment)
     else:

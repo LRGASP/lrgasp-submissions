@@ -116,3 +116,7 @@ def check_from_defs(desc, fields, obj):
     _check_for_unknown_fields(desc, fields, obj)
     for field in fields:
         _check_field(desc, field, obj)
+
+def set_to_str(values):
+    "generate string of set values for use in error messages"
+    return ", ".join([str(v) for v in sorted(values)])

@@ -71,8 +71,8 @@ def find_dups(lst):
     return sorted(dups)
 
 def library_validate(experiment, rna_seq_md, library):
-    file_md = rna_seq_md.get_by_file_acc(library)  # exception if unknown acc
-    run_md = rna_seq_md.get_by_run_acc(file_md.run_acc)
+    file_md = rna_seq_md.get_file_by_acc(library)  # exception if unknown acc
+    run_md = rna_seq_md.get_run_by_acc(file_md.run_acc)
     if run_md.species != experiment.species:
         raise LrgaspException(f"LRGASP RNA Seq library {run_md.run_acc} file {file_md.file_acc} is for species {run_md.species} while experiment {experiment.experiment_id} specifies species as {experiment.species}")
 
@@ -88,11 +88,11 @@ def _group_into_run_files(rna_seq_md, libraries):
     def _obtain_run_files(run_acc):
         run_files = by_run_acc.get(run_acc)
         if run_files is None:
-            run_files = by_run_acc[run_acc] = RunFiles(rna_seq_md.get_by_run_acc(run_acc))
+            run_files = by_run_acc[run_acc] = RunFiles(rna_seq_md.get_run_by_acc(run_acc))
         return run_files
 
     for file_acc in libraries:
-        file_md = rna_seq_md.get_by_file_acc(file_acc)
+        file_md = rna_seq_md.get_file_by_acc(file_acc)
         run_files = _obtain_run_files(file_md.run_acc)
         run_files.file_mds.append(file_md)
     return [rf for rf in by_run_acc.values()]
