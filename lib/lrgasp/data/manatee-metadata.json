@@ -19,7 +19,9 @@
                         "file_size": 146341257396,
                         "md5sum": "0a34c360d397532812b440a944953c49",
                         "run_acc": "manatee1",
-                        "biological_replicate_number": 1
+                        "biological_replicate_number": 1,
+                        "paired_end": null,
+                        "paired_with": null
                     }
                 ]
             },
@@ -35,7 +37,9 @@
                         "file_size": 146341257396,
                         "md5sum": "0a34c360d397532812b440a944953c49",
                         "run_acc": "manatee1",
-                        "biological_replicate_number": 2
+                        "biological_replicate_number": 2,
+                        "paired_end": null,
+                        "paired_with": null
                     }
                 ]
             }
