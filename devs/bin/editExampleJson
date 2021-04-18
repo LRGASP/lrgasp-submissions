@@ -10,7 +10,7 @@ from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
 from lrgasp.defs import DataCategory  # noqa: F401
 
-def edit_json(md):
+def edit_json(mdfile, md):
     "customize this for each edit case"
 
     fix_experiment_order(md)
@@ -74,13 +74,15 @@ def modify_json(mdfile, diff):
         with open(mdfile) as fh:
             md = json.load(fh, object_pairs_hook=ObjDict)
 
-        edit_json(md)
+        edit_json(mdfile, md)
 
         mdfile_edit = get_edited_name(mdfile)
         with open(mdfile_edit, "w") as fh:
             json.dump(md, fh, indent=4)
             fh.write('\n')
         if diff:
+            print("====", mdfile)
+            sys.stdout.flush()
             os.system(f"diff {mdfile} {mdfile_edit}")
     except Exception as ex:
         raise LrgaspException("Error editing: " + mdfile) from ex

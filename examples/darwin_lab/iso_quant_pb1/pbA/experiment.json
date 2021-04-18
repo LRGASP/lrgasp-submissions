@@ -12,11 +12,11 @@
     "units": "counts",
     "software": [
         {
-            "name": "IsoQuant",
-            "description": "IsoQuant is a tool for reference-based analysis of long RNA reads. It assigns reads to known isoforms, detects inconsistencies and construncts novel transcript models.",
+            "name": "LRExpress",
+            "description": "LRExpress is a tool for expression quantification if long RNA reads.",
             "version": "1.0.0",
-            "url": "https://github.com/ablab/IsoQuant",
-            "notes": "IsoQuant was launched with default parameters; minimap2 was launched with the following options -ax splice -Y -k 15 -C5 --junc-bed <annotation BED> --junc-bonus=5  "
+            "url": "https://github.com/darwinlab/LRExpress",
+            "config": "LRExpress used default parameters"
         }
     ]
 }
