@@ -33,6 +33,8 @@ In all the above categories, the genome and transcriptome references specified b
 
 Each team can only submit one entry per category.
 
+For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read.
+
 * The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology.  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data
   * Illumina cDNA - *short-only*
   * Pacbio cDNA - *long-only* or *long and short*
@@ -51,3 +53,7 @@ Each team can only submit one entry per category.
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. No genome reference can be used.
   * *long and genome* - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A genome reference sequence can be used.
   * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).
+
+In all the above categories, except for *kitchen sink* a transcriptome reference CANNOT be used.
+
+Each team can only submit one entry per category.
