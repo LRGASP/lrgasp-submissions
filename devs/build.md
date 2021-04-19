@@ -47,3 +47,15 @@ make release-test
 ```
 
 
+# Data builds
+
+* 2021-04-18 upload genome fastas to references directory
+```
+synapse add --parentid syn25536060 lrgasp_sirv4.fasta.gz
+synapse add --parentid syn25536060 lrgasp_grch38_sirvs.fasta.gz
+synapse add --parentid syn25536060 lrgasp_grcm39_sirvs.fasta.gz
+```
+
+
+
+

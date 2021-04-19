@@ -10,12 +10,12 @@ sequences to form genomic sequences and they are included in the reference
 genomes as individual sequences.  For multi-exon SIRVs, a single sequence is
 included converting all isoforms of the gene, as well as introns.
 
-The spike-in genomic sequences are available from [sirvs4.fasta.gz](syn2FIXME)
-with the annotations in GTF format [sirvs4.gtf.gz](syn3FIXME).
+The spike-in genomic sequences are available from [lrgasp_sirvs4.fasta.gz](syn2FIXME)
+with the annotations in GTF format [lrgasp_sirvs4.gtf.gz](syn3FIXME).
 
 ### GRCh38-based human reference genome
 
-* [lrgasp_grch38_sirvs.fasta.gz](syn25536103)
+* [lrgasp_grch38_sirvs.fasta.gz](synFIXME)
 * UCSC style names
 * excludes alt-locus sequences
 * includes ERCC/SIRV spike-in genomic sequences
@@ -34,7 +34,7 @@ with the annotations in GTF format [sirvs4.gtf.gz](syn3FIXME).
 
 ### GENCODE V38-based human annotation set
 
-* [lrgasp-gencode-v38.gtf.gz](syn0FIXME)
+* [lrgasp_gencode_v38.gtf.gz](syn0FIXME)
 * [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
 * excludes alt-locus sequences
 * includes ERCC/SIRV spike-in annotations
@@ -42,7 +42,7 @@ with the annotations in GTF format [sirvs4.gtf.gz](syn3FIXME).
 
 ### GENCODE VM27-based mouse annotation set
 
-* [lrgasp-gencode-vm27.gtf.gz](syn0FIXME)
+* [lrgasp_gencode_vm27.gtf.gz](syn0FIXME)
 * [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
 * includes ERCC/SIRV spike-in annotations
 * based on [gencode.vm27.chr_patch_hapl_scaff.annotation.gtf.gz](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M26/gencode.vM27.chr_patch_hapl_scaff.annotation.gtf.gz)
