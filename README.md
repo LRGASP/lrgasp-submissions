@@ -1,4 +1,4 @@
-# lrgasp-submissions
+# LRGASP Submissions
 
 Documentation and software for submitting to the
 Long Read Genome Annotation Assessment Project (LRGASP).
@@ -16,10 +16,8 @@ Long Read Genome Annotation Assessment Project (LRGASP).
   - [Transcript model format](docs/model-format.md)
   - [Read to model map format](docs/read_model_map_format.md)
   - [Transcript expression matrix format](docs/expression_matrix_format.md)
-
-## Submissions
-
-FIXME: fill this in Synapse information
+  - [Submission tools](docs/submission-tools.md)
+  - [Synapse submissions](docs/synapse.md)
 
 ## Bug and feature requests
 

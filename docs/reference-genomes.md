@@ -2,7 +2,7 @@
 
 ## Genome References
 
-#### Spike-in sequences
+### Spike-in sequences
 
 Spike-ins are from the [Lexogne SIRV Set 4](https://www.lexogen.com/wp-content/uploads/2020/07/SIRV_Set4_Sequences_200709a.zip),
 consisting of both ERCCs and SIRVs.  Ploy(A) tails are removed from the

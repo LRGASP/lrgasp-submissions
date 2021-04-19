@@ -12,8 +12,8 @@ make test
 
 Markdown doc can be linted if the following packages are installed:
 
-* markdownlint (mdl) - Ruby package
-* markdown-link-check - npm install -g markdown-link-check
+* markdownlint (mdl) - Ruby package: ``gem install mdl``
+* markdown-link-check - Node.js package: ``npm install -g markdown-link-check`
 
 ## Build pip installable packages
 

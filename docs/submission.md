@@ -66,3 +66,4 @@ Quantification experiments must contain the following files:
 - [Read to model map format](read_model_map_format.md)
 - [Transcript expression matrix format](expression_matrix_format.md)
 - [Submission tools](submission-tools.md)
+  - [Synapse submissions](synapse.md)
