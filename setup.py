@@ -28,7 +28,7 @@ setuptools.setup(
         'lrgasp',
     ],
     package_dir = {'': 'lib'},
-    include_package_data = True,
+    include_package_data = True,  # MUST update MANIFEST.in to include files
     install_requires = requirements,
     license = "MIT",
     zip_safe = True,

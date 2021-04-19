@@ -1,1 +1,2 @@
-include lib/lrgasp/data/*tsv
+include lib/lrgasp/data/*.tsv
+include lib/lrgasp/data/*.json

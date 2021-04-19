@@ -56,6 +56,8 @@ synapse add --parentid syn25536060 lrgasp_grch38_sirvs.fasta.gz
 synapse add --parentid syn25536060 lrgasp_grcm39_sirvs.fasta.gz
 ```
 
+```
+faSize -detailed ../../lrgasp-data/references/lrgasp_grch38_sirvs.fasta.gz > lib/lrgasp/data/lrgasp_grch38_sirvs.tsvfaSize -detailed ../../lrgasp-data/references/lrgasp_grcm39_sirvs.fasta.gz  > lib/lrgasp/data/lrgasp_grcm39_sirvs.ts```
 
 
 
