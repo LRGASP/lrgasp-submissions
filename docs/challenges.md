@@ -56,4 +56,6 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
 
 In all the above categories, except for *kitchen sink* a transcriptome reference CANNOT be used.
 
+The submitted FASTA file should only contain transcripts that have been assigned a read.
+
 Each team can only submit one entry per category.
