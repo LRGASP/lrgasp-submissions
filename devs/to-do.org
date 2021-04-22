@@ -1,6 +1,11 @@
 * metadata need
 manatee
 simulation
+* bad SIRV genes
+** SIRVs 1-6 have + and - strand “transcripts”
+** SIRV107has 
+SIRV107	unknownUtrSplice	CT..AG	SIRV1	11242	11403
+SIRV107	unknownUtrSplice	CT..AC	SIRV1	10791	10882
 * improve doc library prep method challenges.md
 * mention they must do their own alignments
 * fix example files software to match experiment types

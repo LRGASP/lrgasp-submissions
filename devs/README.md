@@ -9,7 +9,7 @@ For developers of this package, not of general interest.
 * bin/editExampleJson - make ad-hoc edits to examples
 * bin/buildEncodeMetadata - converts dumps of ENCODE metadata to internal subset
 * bin/generateRnaSeqDataMatrix - generates RNA-Seq data matrix from RNA-Seq metadata
-
+* bin/fixLexogenSirvGtf - fix various problems with Lexogen-provided GTF
 
 ## Notes:
 
@@ -19,3 +19,4 @@ For developers of this package, not of general interest.
   ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
 * to generate docs/rnaseq-data-matrix.md from above
   ./devs/bin/generateRnaSeqDataMatrix 
+

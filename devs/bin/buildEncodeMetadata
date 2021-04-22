@@ -64,17 +64,18 @@ def _guess_library_prep_from_one_desc(desc):
         return None
 
 def guess_library_prep_from_desc(encode_md):
+    desc = None
     if "description" in encode_md:
         prep = _guess_library_prep_from_one_desc(encode_md.description)
         if prep is not None:
-            return prep
+            return prep, encode_md.description
     for file_md in encode_md.files:
         desc = file_md.replicate.get("description")
         if desc is not None:
             prep = _guess_library_prep_from_one_desc(desc)
             if prep is not None:
-                return prep
-    return LibraryPrep.cDNA
+                return prep, desc
+    return LibraryPrep.cDNA, None
 
 def library_prep_from_construction_method(encode_md):
     methods = set()
@@ -100,11 +101,13 @@ def library_prep_from_construction_method(encode_md):
 
 def determine_library_prep(encode_md):
     "probe metadata to determine construction method"
-    desc_meth = guess_library_prep_from_desc(encode_md)
+    desc_meth, desc = guess_library_prep_from_desc(encode_md)
     cons_meth = library_prep_from_construction_method(encode_md)
     if desc_meth != cons_meth:
-        # FIXME: make exception
-        print(f"WARNING: {encode_md.accession}: library construction method '{cons_meth}' does match description guess '{desc_meth}'", file=sys.stderr)
+        if desc is None:
+            print(f"Note: {encode_md.accession}: library construction method '{cons_meth}' used, no description: {encode_md.encode_json}", file=sys.stderr)
+        else:
+            print(f"Note: {encode_md.accession}: library construction method '{cons_meth}' does match description guess '{desc_meth}' from '{desc}': {encode_md.encode_json}", file=sys.stderr)
     return cons_meth
 
 def determine_platform(encode_md):
@@ -190,6 +193,7 @@ def process_encode_run(encode_json):
     try:
         with open(encode_json) as fh:
             encode_md = json.load(fh, object_pairs_hook=ObjDict)
+            encode_md.encode_json = encode_json
         return build_run(encode_md)
     except Exception as ex:
         raise LrgaspException(f"failed to parse and convert: {encode_json}") from ex

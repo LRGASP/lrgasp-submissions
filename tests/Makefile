@@ -1,7 +1,7 @@
 testrootdir = .
 include ${testrootdir}/testing.mk
 
-subdirs = models read_model_map expression_matrix entry_meta experiment_meta complete
+subdirs = models read_model_map expression_matrix entry_meta experiment_meta complete dev_tools
 
 test: ${subdirs:%=%_test}
 %_test:

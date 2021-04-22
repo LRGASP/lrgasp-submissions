@@ -8,6 +8,12 @@
 |         |         |              |          |             |           | subreads        | bam       | ENCFF950ANU |             |
 |         |         |              |          |             | 3         | reads           | fastq     | ENCFF003QZT |             |
 |         |         |              |          |             |           | subreads        | bam       | ENCFF508XUP |             |
+| human   | WTC11   | CapTrap      | ONT      | ENCSR054ABL | 1         | reads           | fastq     | ENCFF654SNK |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF970AUV |             |
+|         |         |              |          |             | 2         | reads           | fastq     | ENCFF934KDM |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF902FSA |             |
+|         |         |              |          |             | 3         | reads           | fastq     | ENCFF104BNW |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF053QEQ |             |
 | human   | WTC11   | dRNA         | ONT      | ENCSR392BGY | 1         | reads           | fastq     | ENCFF155CFF |             |
 |         |         |              |          |             |           | nanopore_signal | tar       | ENCFF146MTW |             |
 |         |         |              |          |             | 3         | reads           | fastq     | ENCFF600LIU |             |
@@ -51,6 +57,12 @@
 |         |         |              |          |             |           | subreads        | bam       | ENCFF509GUL |             |
 |         |         |              |          |             | 3         | reads           | fastq     | ENCFF822IZD |             |
 |         |         |              |          |             |           | subreads        | bam       | ENCFF499AVA |             |
+| human   | H1_mix  | CapTrap      | ONT      | ENCSR364OLS | 1         | reads           | fastq     | ENCFF716HXZ |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF797VHT |             |
+|         |         |              |          |             | 2         | reads           | fastq     | ENCFF595GFC |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF571LYR |             |
+|         |         |              |          |             | 3         | reads           | fastq     | ENCFF072FJA |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF317BHX |             |
 | human   | H1_mix  | dRNA         | ONT      | ENCSR967FTZ | 1         | reads           | fastq     | ENCFF854BEI |             |
 |         |         |              |          |             |           | nanopore_signal | tar       | ENCFF120DLZ |             |
 |         |         |              |          |             | 2         | reads           | fastq     | ENCFF804BPC |             |
@@ -94,6 +106,12 @@
 |         |         |              |          |             |           | subreads        | bam       | ENCFF062QXB |             |
 |         |         |              |          |             | 3         | reads           | fastq     | ENCFF654JHQ |             |
 |         |         |              |          |             |           | subreads        | bam       | ENCFF110VBJ |             |
+| mouse   | ES      | CapTrap      | ONT      | ENCSR065QKS | 1         | reads           | fastq     | ENCFF356OJC |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF670UEC |             |
+|         |         |              |          |             | 2         | reads           | fastq     | ENCFF275RMO |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF942RPL |             |
+|         |         |              |          |             | 3         | reads           | fastq     | ENCFF056EOI |             |
+|         |         |              |          |             |           | nanopore_signal | tar       | ENCFF861WOA |             |
 | mouse   | ES      | dRNA         | ONT      | ENCSR369OLY | 1         | reads           | fastq     | ENCFF765AEC |             |
 |         |         |              |          |             |           | nanopore_signal | tar       | ENCFF914OBQ |             |
 |         |         |              |          |             | 3         | reads           | fastq     | ENCFF412NKJ |             |

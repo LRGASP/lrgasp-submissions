@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+import sys
+import os.path as osp
+import argparse
+import logging
+from collections import defaultdict
+from gtfparse import read_gtf
+
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
+from lrgasp import LrgaspException
+
+# note: this is a specialized hack
+
+def parse_args():
+    desc = """Edit Lexogen provide SIRV GTF to address these issues:
+    - Correct genes with transcripts on opposite strands or have non-overlapping transcripts.
+      This assigns new gene_id values.
+    - Set frame to '.'
+    - Sort by gene, transcript, and locations
+  """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("lexogen_gtf",
+                        help="input GTF")
+    parser.add_argument("fixed_gtf",
+                        help="output GTF")
+    return parser.parse_args()
+
+lexogen_gtf_attrs = ('gene_id', 'transcript_id', 'gene_biotype', 'exon_assignment')
+
+def load_exons(model_gtf):
+    """load GTF exons into a list of Series objects of exons"""
+    gtf_df = read_gtf(model_gtf)
+    gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
+    if len(gtf_df) == 0:
+        raise LrgaspException("no exon records found")
+    return [gtf_df.iloc[i] for i in range(len(gtf_df))]
+
+def group_by_seqname(exons):
+    by_seqname = defaultdict(list)
+    for exon in exons:
+        by_seqname[exon.seqname].append(exon)
+    by_seqname.default_factory = None
+    return by_seqname
+
+def group_transcripts(exons):
+    by_transcript_id = defaultdict(list)
+    for exon in exons:
+        by_transcript_id[exon.transcript_id].append(exon)
+    return list(by_transcript_id.values())
+
+def exons_overlap(exon1, exon2):
+    return ((exon1.seqname == exon2.seqname)
+            and (exon1.strand == exon2.strand)
+            and (exon1.start <= exon2.end)
+            and (exon1.end >= exon2.start))
+
+def any_trans_overlap(trans1, trans2):
+    # way slow, don't matter
+    for exon1 in trans1:
+        for exon2 in trans2:
+            if exons_overlap(exon1, exon2):
+                return True
+    return False
+
+def any_gene_overlap(gene1, gene2):
+    if (len(gene1) == 0) or (len(gene2) == 0):
+        return False
+    for trans1 in gene1:
+        for trans2 in gene2:
+            if any_trans_overlap(trans1, trans2):
+                return True
+    return False
+
+def group_overlap_pass(genes):
+    any_merged = False
+    for i in range(len(genes)):
+        for j in range(i + 1, len(genes)):
+            if any_gene_overlap(genes[i], genes[j]):
+                genes[i].extend(genes[j])
+                genes[j] = []
+                any_merged = True
+    return any_merged
+
+def build_genes(transes):
+    # start with one transcript per `gene'
+    genes = [[t] for t in transes]
+
+    # cluster until all overlapping merged
+    while group_overlap_pass(genes):
+        pass
+    # drop empty
+    return [g for g in genes if len(g) > 0]
+
+def sort_exons(exons):
+    exons.sort(key=lambda e: (e.seqname, e.gene_id, e.transcript_id, e.start))
+
+def sort_genes(genes):
+    # transcripts in order
+    for gene in genes:
+        for trans in gene:
+            sort_exons(trans)
+    genes.sort(key=lambda g: (g[0][0].seqname, g[0][0].transcript_id, g[0][0].start))
+
+def assign_seq_genes(genes):
+    next_suffix = 'A'
+    for gene in genes:
+        gene_id = gene[0][0].seqname + next_suffix
+        for trans in gene:
+            for exon in trans:
+                exon.gene_id = gene_id
+        next_suffix = chr(ord(next_suffix) + 1)
+
+def fix_seq_gene_ids(exons):
+    transes = group_transcripts(exons)
+    genes = build_genes(transes)
+    sort_genes(genes)
+    assign_seq_genes(genes)
+    exons2 = []
+    for gene in genes:
+        for trans in gene:
+            exons2.extend(trans)
+    return exons2
+
+def fix_gene_ids(exons):
+    fixed_exons = []
+    exons_by_seqname = group_by_seqname(exons)
+    for seqname in sorted(exons_by_seqname.keys()):
+        fixed_exons.extend(fix_seq_gene_ids(exons_by_seqname[seqname]))
+    return fixed_exons
+
+def format_attrs(exon):
+    attrs = []
+    for attr in lexogen_gtf_attrs:
+        val = exon[attr]
+        if val != "":
+            attrs.append('{} "{}"'.format(attr, val))
+    return "; ".join(attrs) + ";"
+
+def write_exon(exon, fh):
+    row = [exon.seqname, exon.source, exon.feature, exon.start, exon.end, '0', exon.strand, '.'] + [format_attrs(exon)]
+    print(*row, sep='\t', file=fh)
+
+def write_gtf(exons, fh):
+    for exon in exons:
+        write_exon(exon, fh)
+
+def main(args):
+    logging.getLogger().setLevel(logging.WARN)
+    exons = load_exons(args.lexogen_gtf)
+    exons = fix_gene_ids(exons)
+    with open(args.fixed_gtf, 'w') as fh:
+        write_gtf(exons, fh)
+
+main(parse_args())
