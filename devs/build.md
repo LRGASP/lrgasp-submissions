@@ -34,7 +34,7 @@ git reset --hard
 ```
 
 Note: might have to wait for test-release-testpypi, it seems there might be 
-a slight deal in index update.
+a slight delay in index update.
 
 ## Release to pypi
 
