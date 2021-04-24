@@ -1,17 +1,11 @@
 {
-    "experiment_id": "model_ont_drna",
+    "experiment_id": "model_illumina_cdna",
     "experiment_type": "model",
-    "description": "long/short bad mix",
-    "species": "mouse",
-    "data_category": "long_short",
+    "description": "short bad paired end",
+    "species": "human",
+    "data_category": "short_only",
     "libraries": [
-        "ENCFF765AEC",
-        "ENCFF464USM",
-        "ENCFF521IDK",
-        "ENCFF006WNS",
-        "ENCFF914YPT",
-        "ENCFF089PFT",
-        "ENCFF714ZJR"
+        "ENCFF644AQW"
     ],
     "software": [
         {

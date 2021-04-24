@@ -82,33 +82,33 @@ class LrgaspRnaSeqMetaData(list):
         try:
             return self.by_file_acc[file_acc]
         except KeyError:
-            raise LrgaspException(f"unknown LRGASP file accession {file_acc}")
+            raise LrgaspException(f"unknown LRGASP file accession {file_acc}, file accession should be from the LRGASP RNA-Seq data matrix")
 
     def get_run_by_acc(self, run_acc):
         try:
             return self.by_run_acc[run_acc]
         except KeyError:
-            raise LrgaspException(f"unknown LRGASP run accession {run_acc}")
+            raise LrgaspException(f"unknown LRGASP run accession {run_acc}, run accession should be from the LRGASP RNA-Seq data matrix")
 
     def get_run_by_file_acc(self, file_acc):
         fil = self.get_file_by_acc(file_acc)
         return self.get_run_by_acc(fil.run_acc)
 
-def _load_lrgasp_rna_seq_metadata_file(md, metadata_json):
+def _load_lrgasp_rna_seq_metadata_file(rna_seq_md, metadata_json):
     with open(metadata_json) as fh:
         for run in json.load(fh, object_pairs_hook=ObjDict):
-            md.add(run)
+            rna_seq_md.add(run)
 
 def _load_lrgasp_rna_seq_metadata_files():
     "load of all metadata files when not cached"
-    md = LrgaspRnaSeqMetaData()
+    rna_seq_md = LrgaspRnaSeqMetaData()
     for json_file in lrgasp_run_metadata_files:
         json_path = osp.join(osp.dirname(__file__), "data", json_file)
         try:
-            _load_lrgasp_rna_seq_metadata_file(md, json_path)
+            _load_lrgasp_rna_seq_metadata_file(rna_seq_md, json_path)
         except Exception as ex:
             raise LrgaspException(f"failed to load {json_path}") from ex
-    return md
+    return rna_seq_md
 
 def get_lrgasp_rna_seq_metadata():
     """get LRGASP metadata, possible cached"""

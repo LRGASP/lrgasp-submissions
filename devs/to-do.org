@@ -1,3 +1,4 @@
+* add in sample to  libraries_validate_compat
 * metadata need
 manatee
 simulation

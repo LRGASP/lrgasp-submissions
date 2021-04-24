@@ -2,6 +2,7 @@
 Definitions of metadata identifiers, types, and functions to operate on them.
 """
 import re
+from collections import defaultdict
 from lrgasp import LrgaspException
 from lrgasp.symEnum import SymEnum, auto
 
@@ -127,5 +128,22 @@ _challenge_sample_map = {
     Challenge.iso_detect_de_novo: frozenset([Sample.Manatee, Sample.ES]),
 }
 
+def _build_sample_challenge_map():
+    # reverse mapping
+    s2c = defaultdict(set)
+    for c in _challenge_sample_map:
+        for s in _challenge_sample_map[c]:
+            s2c[s].add(c)
+    s2c.default_factory = None
+    for s in s2c.keys():
+        s2c[s] = tuple(sorted(s2c[s]))
+    return s2c
+
+# challenges are sorted by value
+_sample_challenge_map = _build_sample_challenge_map()
+
 def get_challenge_samples(challenge_id):
     return _challenge_sample_map[challenge_id]
+
+def sample_to_challenges(sample):
+    return _sample_challenge_map[sample]

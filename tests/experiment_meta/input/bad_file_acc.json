@@ -1,23 +1,14 @@
 {
     "experiment_id": "model_ont_drna",
     "experiment_type": "model",
-    "description": "long/short good",
+    "description": "bad file accession",
     "species": "mouse",
     "data_category": "long_short",
     "libraries": [
-        "ENCFF521IDK",
-        "ENCFF006WNS",
-        "ENCFF914YPT",
-        "ENCFF089PFT",
-        "ENCFF874VSI",
-        "ENCFF564NGV",
-        "ENCFF714ZJR",
-        "ENCFF667VXS",
-        "ENCFF493CBP",
-        "ENCFF993JVA",
-        "ENCFF313VYZ",
-        "ENCFF094NZA",
-        "ENCFF280DWZ"
+        "ENCFZ521IDK",
+        "ENCFQ006WNS",
+        "ENCFF941PYT",
+        "ENCFF09PF8T"
     ],
     "software": [
         {
