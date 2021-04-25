@@ -17,8 +17,8 @@ def parse_args():
     args.outtsv = "docs/rnaseq-data-matrix.tsv"
     return args
 
-header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url", "file_s3_uri", "paired_s3_uri"]
-
+header_md = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
+header_tsv = header_md + ["file_url", "paired_url", "file_s3_uri", "paired_s3_uri"]
 
 def challenges_str(run):
     return ",".join((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
@@ -69,9 +69,11 @@ def make_file_cols(file_md, for_markdown):
     else:
         paired_with = paired_url = paired_s3_uri = ""
 
-    return [file_md.output_type, file_md.file_type, file_md.file_acc, paired_with,
-            fmt_link(file_md.url), fmt_link(file_md.s3_uri),
-            fmt_link(paired_url), fmt_link(paired_s3_uri)]
+    row = [file_md.output_type, file_md.file_type, file_md.file_acc, paired_with]
+    if not for_markdown:
+        row += [fmt_link(file_md.url), fmt_link(paired_url),
+                fmt_link(file_md.s3_uri), fmt_link(paired_s3_uri)]
+    return row
 
 def make_row(run_md, replicate_md, file_md, for_markdown):
     return make_run_cols(run_md) + make_replicate_cols(replicate_md) + make_file_cols(file_md, for_markdown)
@@ -91,8 +93,8 @@ def get_col_sizes(header, body):
         else:
             return m.group(1)
 
-    col_sizes = len(header) * [0]
-    for row in [header] + body:
+    col_sizes = len(header_md) * [0]
+    for row in [header_md] + body:
         for i in range(len(row)):
             col_sizes[i] = max(col_sizes[i], len(str(_get_col_text(row[i]))))
     return col_sizes
@@ -119,10 +121,10 @@ def fmt_row(row, col_sizes):
 
 def write_markdown_rows(rna_seq_md, fh):
     body = list(generate_rows(rna_seq_md, for_markdown=True))
-    col_sizes = get_col_sizes(header, body)
+    col_sizes = get_col_sizes(header_md, body)
     header2 = [c * '-' for c in col_sizes]
 
-    print(fmt_row(header, col_sizes), file=fh)
+    print(fmt_row(header_md, col_sizes), file=fh)
     print(fmt_row(header2, col_sizes), file=fh)
     prev = None
     for row in body:
@@ -131,14 +133,14 @@ def write_markdown_rows(rna_seq_md, fh):
 
 def write_markdown(rna_seq_md, markdown_tsv, fh):
     tsv_file = osp.basename(markdown_tsv)
-    print(f"# LRGASP RNA-Seq Data Matrix\n\n"
-          "Matrix in TSV format [{tsv_file}]({tsv_file})\n",
+    print("# LRGASP RNA-Seq Data Matrix\n\n"
+          f"Matrix in is also available in TSV format with download URLs: [{tsv_file}]({tsv_file})\n",
           file=fh)
     write_markdown_rows(rna_seq_md, fh)
 
 
 def write_tsv(rna_seq_md, fh):
-    print(*header, sep='\t', file=fh)
+    print(*header_tsv, sep='\t', file=fh)
     for row in generate_rows(rna_seq_md, for_markdown=False):
         print(*row, sep='\t', file=fh)
 
