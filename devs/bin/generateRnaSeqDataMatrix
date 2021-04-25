@@ -5,6 +5,7 @@ import argparse
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
+from lrgasp.defs import sample_to_challenges
 
 def parse_args():
     desc = """Generate data matrix markdown from metadata"""
@@ -12,9 +13,6 @@ def parse_args():
     args = parser.parse_args()
     args.outmd = "docs/rnaseq-data-matrix.md"
     return args
-
-def fmt_set(s):
-    return ",".join(sorted(s))
 
 def make_file_cols(fl, paired_done):
     if fl.paired_with is not None:
@@ -24,8 +22,13 @@ def make_file_cols(fl, paired_done):
         paired_done.add(paired_with)
     else:
         paired_with = ""
-
     return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
+
+def _challenges_str(run):
+    return ",".join((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
+
+def _challenges_sort_key(run):
+    return min((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
 
 def generate_run_rows(run, paired_done):
     output_type_order = {
@@ -33,7 +36,8 @@ def generate_run_rows(run, paired_done):
         "subreads": 2,
         "nanopore_signal": 3
     }
-    cols1 = [str(c) for c in (run.species, run.sample, run.library_prep, run.platform, run.run_acc)]
+
+    cols1 = [str(c) for c in (_challenges_str(run), run.species, run.sample, run.library_prep, run.platform, run.run_acc)]
     for rep in run.replicates:
         cols2 = [str(rep.replicate_number)]
         for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
@@ -43,7 +47,7 @@ def generate_run_rows(run, paired_done):
 
 def generate_rows(rna_seq_md):
     paired_done = set()
-    for run in sorted(rna_seq_md, key=lambda r: (r.species, r.sample, r.library_prep, r.platform)):
+    for run in sorted(rna_seq_md, key=lambda r: (_challenges_sort_key(r), r.species, r.sample, r.library_prep, r.platform)):
         yield from generate_run_rows(run, paired_done)
 
 def get_col_sizes(header, body):
@@ -75,7 +79,7 @@ def fmt_row(row, col_sizes):
     return "| " + " | ".join([str(row[i]).ljust(col_sizes[i]) for i in range(len(col_sizes))]) + " |"
 
 def write_markdown_rows(rna_seq_md, fh):
-    header = ["species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
+    header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
     body = list(generate_rows(rna_seq_md))
     col_sizes = get_col_sizes(header, body)
     header2 = [c * '-' for c in col_sizes]
@@ -93,7 +97,8 @@ def write_markdown(rna_seq_md, fh):
     write_markdown_rows(rna_seq_md, fh)
 
 def main(args):
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
     with open(args.outmd, "w") as fh:
-        write_markdown(get_lrgasp_rna_seq_metadata(), fh)
+        write_markdown(rna_seq_md, fh)
 
 main(parse_args())

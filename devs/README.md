@@ -18,5 +18,5 @@ For developers of this package, not of general interest.
 * to build encode-metadata.json
   ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
 * to generate docs/rnaseq-data-matrix.md from above
-  ./devs/bin/generateRnaSeqDataMatrix 
+  ./devs/bin/generateRnaSeqDataMatrix
 
