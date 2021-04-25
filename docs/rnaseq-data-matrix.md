@@ -1,7 +1,6 @@
 # LRGASP RNA-Seq Data Matrix
 
-Matrix in is also available in TSV format with download URLs: [rnaseq-data-matrix.md](rnaseq-data-matrix.md)
-
+Matrix in is also available in TSV format from [rnaseq-data-matrix.tsv](rnaseq-data-matrix.tsv). This has both HTTP URLs and S3 URIs
 | challenges | species | sample | library_prep | platform | run_acc     | replicate | file_contents   | file_type | file_acc    | paired_acc  | file_url | paired_url |
 | ---------- | ------- | ------ | ------------ | -------- | ----------- | --------- | --------------- | --------- | ----------- | ----------- | -------- | ---------- |
 | 1,2        | human   | WTC11  | CapTrap      | PacBio   | ENCSR309IKK | 1         | reads           | fastq     | ENCFF105WIJ |             | [ENCODE](https://www.encodeproject.org/files/ENCFF105WIJ/@@download/ENCFF105WIJ.fastq.gz) |            |
