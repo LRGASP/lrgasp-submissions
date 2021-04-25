@@ -73,7 +73,7 @@ def _tsv_reader(fh):
     read_id_col, trans_id_col, width = _parse_header(reader)
     for row in reader:
         if len(row) != width:
-            raise LrgaspException(f"TSV row requires {width} columns found {len(row)}: {row}")
+            raise LrgaspException(f"TSV row requires {width} columns found {len(row)}, row is '{row}'")
         yield _parse_row(row[read_id_col], row[trans_id_col])
 
 def load(model_map_tsv):

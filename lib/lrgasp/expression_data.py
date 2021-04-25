@@ -38,7 +38,7 @@ def validate_header(expression):
 def check_column_type(expression, col):
     "validate column type is correct"
     if expression.dtypes[col] not in (np.float64, np.int64):
-        raise LrgaspException(f"Invalid value(s) in column '{col}', must be a number or NA, appears to contain other types, induced type is ({expression.dtypes[col]})")
+        raise LrgaspException(f"Invalid value(s) in column '{col}', must be a number or NA, appears to contain other types, induced type is '{expression.dtypes[col]}'")
 
 def validate_data(expression):
     if expression.size == 0:
@@ -60,4 +60,4 @@ def load(expression_tsv):
             validate_data(expression)
         return expression
     except (LrgaspException, pd.errors.ParserError, pd.errors.EmptyDataError, ValueError) as ex:
-        raise LrgaspException("Parse of expression matrix TSV failed: {}".format(expression_tsv)) from ex
+        raise LrgaspException(f"Parse of expression matrix TSV failed: {expression_tsv}") from ex

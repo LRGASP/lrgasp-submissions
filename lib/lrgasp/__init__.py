@@ -34,7 +34,7 @@ def defined_file_path(dirname, uncomp_name):
     p = osp.join(dirname, comp_name)
     if osp.exists(p):
         return p
-    raise LrgaspException(f"can't find required file {comp_name} or {uncomp_name} in {dirname}")
+    raise LrgaspException(f"can't find required file '{comp_name}' or '{uncomp_name}' in '{dirname}'")
 
 def gopen(path):
     "open a file for reading, allowing compressed files"

@@ -85,15 +85,15 @@ class ExpressionUnits(SymEnum):
 
 def validate_symbolic_ident(ident):
     if not ident.isidentifier():
-        raise LrgaspException(f"not a valid symbolic identifier: '{ident}'")
+        raise LrgaspException(f"not a valid symbolic identifier '{ident}'")
 
 def validate_feature_ident(ident):
     if (not ident.isascii()) or (not ident.isprintable()) or re.search("\\s", ident) or (len(ident) == 0):
-        raise LrgaspException(f"invalid feature identifier, must be composed of ASCII, printable, non-white-space characters: '{ident}'")
+        raise LrgaspException(f"'{ident}' is not a valid feature identifier, must be composed of ASCII, printable, non-white-space characters")
 
 def validate_synapse_ident(ident):
     if not re.match("^syn[0-9]{4,30}$", ident):
-        raise LrgaspException(f"not a valid Synapse identifier: '{ident}'")
+        raise LrgaspException(f"'{ident}' is not a valid Synapse identifier")
 
 def validate_entry_ident(entry_id):
     """check that an entry is prefix with one of the challenge ids, return the Challenge identifier that
@@ -102,7 +102,7 @@ def validate_entry_ident(entry_id):
         if entry_id.startswith(str(ch) + '_'):
             return ch
     valid_pre = ", ".join([str(ch) + '_*' for ch in Challenge])
-    raise LrgaspException("entry_id {} must be prefixed with a challenge id ({})".format(entry_id, valid_pre))
+    raise LrgaspException(f"entry_id '{entry_id}' must be prefixed with a challenge id {valid_pre}")
 
 def challenge_to_experiment_type(challenge):
     assert isinstance(challenge, Challenge)
@@ -119,7 +119,7 @@ def sample_to_species(sample):
     elif sample == Sample.Manatee:
         return Species.manatee
     else:
-        raise LrgaspException(f"bug mapping sample to species: {sample}")
+        raise LrgaspException(f"bug mapping sample '{sample}' to a species")
 
 
 _challenge_sample_map = {

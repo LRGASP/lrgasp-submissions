@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_file_acc.json
-caused by: unknown LRGASP file accession ENCFZ521IDK, file accession should be from the LRGASP RNA-Seq data matrix
+caused by: unknown LRGASP file accession 'ENCFZ521IDK', file accession must be one in the LRGASP RNA-Seq data matrix

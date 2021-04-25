@@ -68,7 +68,7 @@ class LrgaspRnaSeqMetaData(list):
 
     def _add_file(self, file_md):
         if file_md.file_acc in self.by_file_acc:
-            raise LrgaspException("duplicate file accession: " + file_md.file_acc)
+            raise LrgaspException(f"duplicate file accession '{file_md.file_acc}'")
         self.by_file_acc[file_md.file_acc] = file_md
         if file_md.paired_file is not None:
             self.by_file_acc[file_md.paired_file.file_acc] = file_md.paired_file
@@ -80,7 +80,7 @@ class LrgaspRnaSeqMetaData(list):
     def add(self, run):
         self._edit_run_types(run)
         if run.run_acc in self.by_run_acc:
-            raise LrgaspException("duplicate run id: " + run.run_acc)
+            raise LrgaspException(f"duplicate run id '{run.run_acc}'")
         self.append(run)
         self.by_run_acc[run.run_acc] = run
         for replicate in run.replicates:
@@ -90,13 +90,13 @@ class LrgaspRnaSeqMetaData(list):
         try:
             return self.by_file_acc[file_acc]
         except KeyError:
-            raise LrgaspException(f"unknown LRGASP file accession {file_acc}, file accession should be from the LRGASP RNA-Seq data matrix")
+            raise LrgaspException(f"unknown LRGASP file accession '{file_acc}', file accession must be one in the LRGASP RNA-Seq data matrix")
 
     def get_run_by_acc(self, run_acc):
         try:
             return self.by_run_acc[run_acc]
         except KeyError:
-            raise LrgaspException(f"unknown LRGASP run accession {run_acc}, run accession should be from the LRGASP RNA-Seq data matrix")
+            raise LrgaspException(f"unknown LRGASP run accession '{run_acc}', run accession should be one in the LRGASP RNA-Seq data matrix")
 
     def get_run_by_file_acc(self, file_acc):
         fil = self.get_file_by_acc(file_acc)
@@ -139,7 +139,7 @@ def _load_lrgasp_rna_seq_metadata_files():
         try:
             _load_lrgasp_rna_seq_metadata_file(rna_seq_md, json_path)
         except Exception as ex:
-            raise LrgaspException(f"failed to load {json_path}") from ex
+            raise LrgaspException(f"failed to load '{json_path}'") from ex
     return rna_seq_md
 
 def get_lrgasp_rna_seq_metadata():

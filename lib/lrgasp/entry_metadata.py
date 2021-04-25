@@ -51,11 +51,11 @@ def entry_validate(entry):
     try:
         validate_symbolic_ident(entry.entry_id)
     except LrgaspException as ex:
-        raise LrgaspException(f"invalid {desc} {fld_entry_id.name}") from ex
+        raise LrgaspException(f"invalid {desc} '{fld_entry_id.name}'") from ex
 
     challenge_id = validate_entry_ident(entry.entry_id)
     if entry.challenge_id != challenge_id:
-        raise LrgaspException(f"invalid {desc} {fld_entry_id.name} entry_id {entry.entry-id} prefix does not match challenge_id {entry.challenge_id}")
+        raise LrgaspException(f"invalid {desc} '{fld_entry_id.name}' entry_id '{entry.entry-id}' prefix does not match challenge_id '{entry.challenge_id}'")
     for contact in entry.contacts:
         entry_contact_validate(contact)
 
@@ -77,9 +77,9 @@ def load_dir(entry_dir):
     the entry_id.  Save entry_dir in metadata """
     entry_json = osp.join(entry_dir, ENTRY_JSON)
     entry = load(entry_json)
-    entry_base_dir = osp.basename(entry_dir)
+    entry_base_dir = osp.basename(osp.realpath(entry_dir))
     if entry_base_dir != entry.entry_id:
-        raise LrgaspException(f"entry {entry.entry_id} must be in an directory {entry.entry_id}, not {entry_base_dir}")
+        raise LrgaspException(f"entry '{entry.entry_id}' must be in an directory '{entry.entry_id}', not '{entry_base_dir}'")
     entry.entry_dir = entry_dir
     entry.entry_json = entry_json
     return entry

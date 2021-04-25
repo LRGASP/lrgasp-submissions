@@ -88,11 +88,11 @@ def _get_libraries_file_metadata(rna_seq_md, experiment):
 def library_validate(experiment, rna_seq_md, file_md):
     run_md = rna_seq_md.get_run_by_acc(file_md.run_acc)
     if run_md.species != experiment.species:
-        raise LrgaspException(f"LRGASP RNA Seq library {run_md.run_acc} file {file_md.file_acc} is for species {run_md.species} while experiment {experiment.experiment_id} specifies species as {experiment.species}")
+        raise LrgaspException(f"LRGASP RNA Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment.experiment_id}' specifies species as '{experiment.species}'")
 
     # this should never happen, as the data matrix should be restrict to types we allow
     if file_md.output_type not in valid_file_content:
-        raise LrgaspException(f"File {file_md.file_acc} of output_type '{file_md.output_type}' not support for LRGASP, "
+        raise LrgaspException(f"File '{file_md.file_acc}' of output_type '{file_md.output_type}' not support for LRGASP, "
                               "valid types are {}; please contact LRGASP project if this type of file is needed".format(", ".join(sorted(valid_file_content))))
 
 def _fmt_run_types(run_types):
@@ -165,7 +165,7 @@ def libraries_validate_paired_end(rna_seq_md, expr_file_mds):
     paired_acc = frozenset([fm.file_acc for fm in paired_expr_file_mds])
     for file_md in paired_expr_file_mds:
         if file_md.paired_with not in paired_acc:
-            raise LrgaspException(f"{file_md.file_acc} is a paired-end experiment, however the paired file {file_md.paired_with} is not specified in experiment.libraries")
+            raise LrgaspException(f"'{file_md.file_acc}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment.libraries")
 
 def libraries_validate(experiment):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
@@ -198,10 +198,10 @@ def extra_libraries_validate(experiment):
 def experssion_units_validate(experiment):
     if experiment.experiment_type is ExperimentType.model:
         if fld_units.name in experiment:
-            raise LrgaspException(f"experiment type {experiment.experiment_type} must not specify {fld_units.name}")
+            raise LrgaspException(f"experiment type '{experiment.experiment_type}' must not specify '{fld_units.name}'")
     else:
         if fld_units.name not in experiment:
-            raise LrgaspException(f"experiment type {experiment.experiment_type} must specify {fld_units.name}")
+            raise LrgaspException(f"experiment type '{experiment.experiment_type}' must specify '{fld_units.name}'")
 
 def experiment_validate(experiment):
     desc = "experiment"
@@ -232,7 +232,7 @@ def load_from_entry(entry, experiment_id):
     try:
         experiment = load(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:
-        raise LrgaspException(f"error parse metadata for entry {entry.entry_id}, experiment {experiment_id}: {experiment_json}") from ex
+        raise LrgaspException(f"error parse metadata for entry '{entry.entry_id}', experiment '{experiment_id}': {experiment_json}") from ex
     experiment.experiment_dir = experiment_dir
     experiment.experiment_json = experiment_json
     return experiment

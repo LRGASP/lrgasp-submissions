@@ -1,2 +1,2 @@
 Error: validation of entry metadata failed: input/bad_unknown_field.json
-caused by: entry unknown field name(s): fred, barney
+caused by: entry unknown field name(s): 'fred', 'barney'

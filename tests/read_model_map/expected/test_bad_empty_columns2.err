@@ -1,2 +1,2 @@
 Error: Parse of reads-to-models TSV failed: input/bad_empty_columns2.tsv
-caused by: invalid feature identifier, must be composed of ASCII, printable, non-white-space characters: ''
+caused by: '' is not a valid feature identifier, must be composed of ASCII, printable, non-white-space characters
