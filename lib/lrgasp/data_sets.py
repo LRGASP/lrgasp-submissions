@@ -33,7 +33,9 @@ class LrgaspReplicate(ObjDict):
 class LrgaspRnaSeqFile(ObjDict):
     """One data file from an RNA-Seq run, uses to build JSON in a consistency way
     Class is only uses to serialized, ObjDict used to access when
-    deserialized."""
+    deserialized.
+    When deserialized paired files will be link
+    """
     def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number,
                  output_type, paired_end=None, paired_with=None):
         self.file_acc = file_acc
@@ -47,6 +49,7 @@ class LrgaspRnaSeqFile(ObjDict):
         self.output_type = output_type
         self.paired_end = paired_end
         self.paired_with = paired_with
+        # self.paired_file built when deserialized
 
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
@@ -63,11 +66,16 @@ class LrgaspRnaSeqMetaData(list):
         run.library_prep = LibraryPrep(run.library_prep)
         run.platform = Platform(run.platform)
 
-    def _add_files(self, files):
-        for fil in files:
-            if fil.file_acc in self.by_file_acc:
-                raise LrgaspException("duplicate file accession: " + fil.file_acc)
-            self.by_file_acc[fil.file_acc] = fil
+    def _add_file(self, file_md):
+        if file_md.file_acc in self.by_file_acc:
+            raise LrgaspException("duplicate file accession: " + file_md.file_acc)
+        self.by_file_acc[file_md.file_acc] = file_md
+        if file_md.paired_file is not None:
+            self.by_file_acc[file_md.paired_file.file_acc] = file_md.paired_file
+
+    def _add_files(self, file_mds):
+        for file_md in file_mds:
+            self._add_file(file_md)
 
     def add(self, run):
         self._edit_run_types(run)
@@ -94,10 +102,34 @@ class LrgaspRnaSeqMetaData(list):
         fil = self.get_file_by_acc(file_acc)
         return self.get_run_by_acc(fil.run_acc)
 
+def _pair_files(file_mds):
+    "linked paired ends files and construct list of pairs"
+    files_by_acc = {f.file_acc: f for f in file_mds}
+    paired_files = []
+    while len(files_by_acc) > 0:
+        _, file_md = files_by_acc.popitem()
+        if file_md.paired_end is None:
+            file_md.paired_file = None
+            paired_files.append(file_md)
+        else:
+            # put in right order
+            paired_md = files_by_acc.pop(file_md.paired_with)
+            p1, p2 = (file_md, paired_md) if file_md.paired_end < paired_md.paired_end else (paired_md, file_md)
+            p1.paired_file = p2
+            p2.paired_file = p1
+            paired_files.append(p1)
+    return paired_files
+
+def _edit_run(run):
+    "modify serialized run to link paired end files"
+    for rep in run.replicates:
+        rep.files = _pair_files(rep.files)
+    return run
+
 def _load_lrgasp_rna_seq_metadata_file(rna_seq_md, metadata_json):
     with open(metadata_json) as fh:
         for run in json.load(fh, object_pairs_hook=ObjDict):
-            rna_seq_md.add(run)
+            rna_seq_md.add(_edit_run(run))
 
 def _load_lrgasp_rna_seq_metadata_files():
     "load of all metadata files when not cached"

@@ -14,12 +14,9 @@ def parse_args():
     args.outmd = "docs/rnaseq-data-matrix.md"
     return args
 
-def make_file_cols(fl, paired_done):
-    if fl.paired_with is not None:
-        if fl.file_acc in paired_done:
-            return None
-        paired_with = fl.paired_with
-        paired_done.add(paired_with)
+def make_file_cols(fl):
+    if fl.paired_file is not None:
+        paired_with = fl.paired_file.file_acc
     else:
         paired_with = ""
     return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
@@ -30,7 +27,7 @@ def _challenges_str(run):
 def _challenges_sort_key(run):
     return min((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
 
-def generate_run_rows(run, paired_done):
+def generate_run_rows(run):
     output_type_order = {
         "reads": 1,
         "subreads": 2,
@@ -41,14 +38,13 @@ def generate_run_rows(run, paired_done):
     for rep in run.replicates:
         cols2 = [str(rep.replicate_number)]
         for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
-            file_cols = make_file_cols(fl, paired_done)
+            file_cols = make_file_cols(fl)
             if file_cols is not None:
                 yield cols1 + cols2 + file_cols
 
 def generate_rows(rna_seq_md):
-    paired_done = set()
     for run in sorted(rna_seq_md, key=lambda r: (_challenges_sort_key(r), r.species, r.sample, r.library_prep, r.platform)):
-        yield from generate_run_rows(run, paired_done)
+        yield from generate_run_rows(run)
 
 def get_col_sizes(header, body):
     assert len(header) == len(body[0]), "{} != {}".format(len(header), len(body[0]))
@@ -96,6 +92,10 @@ def write_markdown(rna_seq_md, fh):
     print(file=fh)
     write_markdown_rows(rna_seq_md, fh)
 
+
+def write_tsv(rna_seq_md, fh):
+    # header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url", "file_s3_url", "paired_s3_url",]
+    pass
 def main(args):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
     with open(args.outmd, "w") as fh:
