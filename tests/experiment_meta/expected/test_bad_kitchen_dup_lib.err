@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_kitchen_dup_lib.json
-caused by: experiment field 'libraries [6]' duplicate value 'ENCFF155CFF'
+caused by: experiment field 'libraries[6]' duplicate value 'ENCFF155CFF'
