@@ -88,7 +88,7 @@ def _get_libraries_file_metadata(rna_seq_md, experiment):
 def library_validate(experiment, rna_seq_md, file_md):
     run_md = rna_seq_md.get_run_by_acc(file_md.run_acc)
     if run_md.species != experiment.species:
-        raise LrgaspException(f"LRGASP RNA Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment.experiment_id}' specifies species as '{experiment.species}'")
+        raise LrgaspException(f"LRGASP RNA-Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment.experiment_id}' specifies species as '{experiment.species}'")
 
     # this should never happen, as the data matrix should be restrict to types we allow
     if file_md.output_type not in valid_file_content:

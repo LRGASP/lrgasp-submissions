@@ -1,13 +1,17 @@
 {
     "experiment_id": "model_pb2",
     "experiment_type": "model",
-    "description": "Transcript models for Human NA12878 PacBio CCS RNA sequenceing, more sensitive and less specific models",
-    "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
-    "species": "manatee",
+    "description": "Transcript models for mouse RNA sequenceing, more sensitive and less specific models",
+    "notes": "Reads were downloaded from somewhere",
+    "species": "mouse",
     "data_category": "long_only",
     "libraries": [
-        "syn1231",
-        "syn1232"
+        "ENCFF535DQA",
+        "ENCFF710FCJ",
+        "ENCFF310IPO",
+        "ENCFF062QXB",
+        "ENCFF654JHQ",
+        "ENCFF110VBJ"
     ],
     "software": [
         {

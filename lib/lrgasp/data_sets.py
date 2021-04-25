@@ -8,7 +8,7 @@ from lrgasp.defs import Species, Sample, LibraryPrep, Platform
 ##
 # LRGASP run metadata files in lib/lrgasp/data/
 ##
-lrgasp_run_metadata_files = ("encode-metadata.json", "manatee-metadata.json")
+lrgasp_run_metadata_files = ("encode-metadata.json", )
 
 
 class LrgaspRun(ObjDict):

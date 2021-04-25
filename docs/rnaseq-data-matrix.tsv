@@ -143,5 +143,3 @@ challenges	species	sample	library_prep	platform	run_acc	replicate	file_contents	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	2	nanopore_signal	tar	ENCFF209ZZU		https://www.encodeproject.org/files/ENCFF209ZZU/@@download/ENCFF209ZZU.tar.gz		s3://encode-private/2021/04/12/61998b95-d130-43d6-922e-fe95bda4b289/ENCFF209ZZU.tar.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	reads	fastq	ENCFF288PBL		https://www.encodeproject.org/files/ENCFF288PBL/@@download/ENCFF288PBL.fastq.gz		s3://encode-private/2021/04/12/802c147f-f2dc-4de2-99f4-0bcc28dff7b4/ENCFF288PBL.fastq.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	nanopore_signal	tar	ENCFF931ICQ		https://www.encodeproject.org/files/ENCFF931ICQ/@@download/ENCFF931ICQ.tar.gz		s3://encode-private/2021/04/12/edb604c2-ff2d-4d4d-a1fb-90ab251cf950/ENCFF931ICQ.tar.gz	
-3	manatee	Manatee	cDNA	PacBio	manatee1	1	reads	bam	syn1231		https://api.synpase.org/syn1231.bam			
-3	manatee	Manatee	cDNA	PacBio	manatee1	2	reads	bam	syn1232		https://api.synpase.org/syn1232.bam			

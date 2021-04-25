@@ -17,8 +17,8 @@ def parse_args():
     args.outtsv = "docs/rnaseq-data-matrix.tsv"
     return args
 
-header_md = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
-header_tsv = header_md + ["file_url", "paired_url", "file_s3_uri", "paired_s3_uri"]
+header_md = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url"]
+header_tsv = header_md + ["file_s3_uri", "paired_s3_uri"]
 
 def challenges_str(run):
     return ",".join((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
@@ -54,8 +54,6 @@ def make_file_cols(file_md, for_markdown):
         else:
             if uri.find("https://www.encodeproject.org") >= 0:
                 name = "ENCODE"
-            elif uri.find("s3://encode-") >= 0:
-                name = "AWS S3"
             elif uri.find("synpase.org/") >= 0:
                 name = "Synpase"
             else:
@@ -69,10 +67,9 @@ def make_file_cols(file_md, for_markdown):
     else:
         paired_with = paired_url = paired_s3_uri = ""
 
-    row = [file_md.output_type, file_md.file_type, file_md.file_acc, paired_with]
+    row = [file_md.output_type, file_md.file_type, file_md.file_acc, paired_with, fmt_link(file_md.url), fmt_link(paired_url)]
     if not for_markdown:
-        row += [fmt_link(file_md.url), fmt_link(paired_url),
-                fmt_link(file_md.s3_uri), fmt_link(paired_s3_uri)]
+        row += [fmt_link(file_md.s3_uri), fmt_link(paired_s3_uri)]
     return row
 
 def make_row(run_md, replicate_md, file_md, for_markdown):

@@ -64,7 +64,7 @@ def load(entry_json):
     try:
         with gopen(entry_json) as fh:
             entry = json.load(fh, object_pairs_hook=ObjDict)
-    except json.decoder.JSONDecodeError as ex:
+    except (json.decoder.JSONDecodeError, UnicodeDecodeError) as ex:
         raise LrgaspException(f"parse of entry metadata (JSON) failed: {entry_json}") from ex
     try:
         entry_validate(entry)
