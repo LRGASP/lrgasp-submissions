@@ -2,56 +2,99 @@
 import sys
 import os.path as osp
 import argparse
+import re
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
+from lrgasp import LrgaspException
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 from lrgasp.defs import sample_to_challenges
 
 def parse_args():
-    desc = """Generate data matrix markdown from metadata"""
+    desc = """Generate data matrix markdown and TSV from metadata"""
     parser = argparse.ArgumentParser(description=desc)
     args = parser.parse_args()
     args.outmd = "docs/rnaseq-data-matrix.md"
+    args.outtsv = "docs/rnaseq-data-matrix.tsv"
     return args
 
-def make_file_cols(fl):
-    if fl.paired_file is not None:
-        paired_with = fl.paired_file.file_acc
-    else:
-        paired_with = ""
-    return [fl.output_type, fl.file_type, fl.file_acc, paired_with]
+header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url", "file_s3_uri", "paired_s3_uri"]
 
-def _challenges_str(run):
+
+def challenges_str(run):
     return ",".join((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
 
-def _challenges_sort_key(run):
+def challenges_sort_key(run):
     return min((str(ch.value) for ch in sorted(sample_to_challenges(run.sample), key=lambda ch: ch.value)))
 
-def generate_run_rows(run):
+def metadata_sorted_gen(rna_seq_md):
+    "generator of (run_md, replicate_md, file_md) objects in sorted order"
     output_type_order = {
         "reads": 1,
         "subreads": 2,
         "nanopore_signal": 3
     }
 
-    cols1 = [str(c) for c in (_challenges_str(run), run.species, run.sample, run.library_prep, run.platform, run.run_acc)]
-    for rep in run.replicates:
-        cols2 = [str(rep.replicate_number)]
-        for fl in sorted(rep.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
-            file_cols = make_file_cols(fl)
-            if file_cols is not None:
-                yield cols1 + cols2 + file_cols
+    for run_md in sorted(rna_seq_md, key=lambda r: (challenges_sort_key(r), r.species, r.sample, r.library_prep, r.platform)):
+        for replicate_md in run_md.replicates:
+            for file_md in sorted(replicate_md.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
+                yield (run_md, replicate_md, file_md)
 
-def generate_rows(rna_seq_md):
-    for run in sorted(rna_seq_md, key=lambda r: (_challenges_sort_key(r), r.species, r.sample, r.library_prep, r.platform)):
-        yield from generate_run_rows(run)
+def make_run_cols(run_md):
+    return [str(c) for c in (challenges_str(run_md), run_md.species, run_md.sample, run_md.library_prep, run_md.platform, run_md.run_acc)]
+
+def make_replicate_cols(replicate_md):
+    return [str(replicate_md.replicate_number)]
+
+def make_file_cols(file_md, for_markdown):
+    def fmt_link(uri):
+        if uri in (None, ""):
+            return ''
+        if not for_markdown:
+            return uri  # unchanged
+        else:
+            if uri.find("https://www.encodeproject.org") >= 0:
+                name = "ENCODE"
+            elif uri.find("s3://encode-") >= 0:
+                name = "AWS S3"
+            elif uri.find("synpase.org/") >= 0:
+                name = "Synpase"
+            else:
+                raise LrgaspException(f"bug: don't know location of '{uri}'")
+            return f"[{name}]({uri})"
+
+    if file_md.paired_file is not None:
+        paired_with = file_md.paired_file.file_acc
+        paired_url = file_md.paired_file.url
+        paired_s3_uri = file_md.paired_file.s3_uri
+    else:
+        paired_with = paired_url = paired_s3_uri = ""
+
+    return [file_md.output_type, file_md.file_type, file_md.file_acc, paired_with,
+            fmt_link(file_md.url), fmt_link(file_md.s3_uri),
+            fmt_link(paired_url), fmt_link(paired_s3_uri)]
+
+def make_row(run_md, replicate_md, file_md, for_markdown):
+    return make_run_cols(run_md) + make_replicate_cols(replicate_md) + make_file_cols(file_md, for_markdown)
+
+def generate_rows(rna_seq_md, *, for_markdown):
+    for run_md, replicate_md, file_md in metadata_sorted_gen(rna_seq_md):
+        yield make_row(run_md, replicate_md, file_md, for_markdown)
 
 def get_col_sizes(header, body):
     assert len(header) == len(body[0]), "{} != {}".format(len(header), len(body[0]))
+
+    def _get_col_text(col):
+        "handle getting only text for markdown URL"
+        m = re.match(r'\[(.+)\]\(.+\)$', col)
+        if m is None:
+            return col
+        else:
+            return m.group(1)
+
     col_sizes = len(header) * [0]
     for row in [header] + body:
         for i in range(len(row)):
-            col_sizes[i] = max(col_sizes[i], len(str(row[i])))
+            col_sizes[i] = max(col_sizes[i], len(str(_get_col_text(row[i]))))
     return col_sizes
 
 def should_dedup(prev, row, num_cols):
@@ -75,8 +118,7 @@ def fmt_row(row, col_sizes):
     return "| " + " | ".join([str(row[i]).ljust(col_sizes[i]) for i in range(len(col_sizes))]) + " |"
 
 def write_markdown_rows(rna_seq_md, fh):
-    header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc"]
-    body = list(generate_rows(rna_seq_md))
+    body = list(generate_rows(rna_seq_md, for_markdown=True))
     col_sizes = get_col_sizes(header, body)
     header2 = [c * '-' for c in col_sizes]
 
@@ -87,18 +129,24 @@ def write_markdown_rows(rna_seq_md, fh):
         print(fmt_row(dedup_row(prev, row), col_sizes), file=fh)
         prev = row
 
-def write_markdown(rna_seq_md, fh):
-    print("# LRGASP RNA-Seq Data Matrix", file=fh)
-    print(file=fh)
+def write_markdown(rna_seq_md, markdown_tsv, fh):
+    tsv_file = osp.basename(markdown_tsv)
+    print(f"# LRGASP RNA-Seq Data Matrix\n\n"
+          "Matrix in TSV format [{tsv_file}]({tsv_file})\n",
+          file=fh)
     write_markdown_rows(rna_seq_md, fh)
 
 
 def write_tsv(rna_seq_md, fh):
-    # header = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url", "file_s3_url", "paired_s3_url",]
-    pass
+    print(*header, sep='\t', file=fh)
+    for row in generate_rows(rna_seq_md, for_markdown=False):
+        print(*row, sep='\t', file=fh)
+
 def main(args):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
     with open(args.outmd, "w") as fh:
-        write_markdown(rna_seq_md, fh)
+        write_markdown(rna_seq_md, args.outmd, fh)
+    with open(args.outtsv, "w") as fh:
+        write_tsv(rna_seq_md, fh)
 
 main(parse_args())

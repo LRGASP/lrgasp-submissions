@@ -8,6 +8,12 @@ Running tests set PYTHONPATH and don't require a virtualenv
 make test
 ```
 
+## Data matrix
+
+```
+  ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
+  ./devs/bin/generateRnaSeqDataMatrix
+```
 ## lint
 
 Markdown doc can be linted if the following packages are installed:

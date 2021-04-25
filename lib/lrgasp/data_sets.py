@@ -49,7 +49,7 @@ class LrgaspRnaSeqFile(ObjDict):
         self.output_type = output_type
         self.paired_end = paired_end
         self.paired_with = paired_with
-        # self.paired_file built when deserialized
+        # self.paired_file is built when deserialized
 
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
