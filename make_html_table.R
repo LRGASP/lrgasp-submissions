@@ -1,4 +1,3 @@
-library(dplyr)
 library(DT)
 
 dat <- read.table("rnaseq-data-matrix.tsv", header=TRUE, sep='\t')
