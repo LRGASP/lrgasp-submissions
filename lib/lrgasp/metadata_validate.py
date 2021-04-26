@@ -24,13 +24,13 @@ def _should_convert(dtype):
 def _convert_type(desc, field, dtype, val):
     try:
         return dtype(val)
-    except ValueError as ex:
+    except Exception as ex:
         raise LrgaspException(f"{desc} field '{field.name}' is not a valid '{dtype.__name__}', value is '{val}'") from ex
 
 def _validate_value(desc, field, val):
     try:
         field.validator(val)
-    except ValueError as ex:
+    except Exception as ex:
         raise LrgaspException(f"{desc} field '{field.name}' is not valid, value is '{val}'") from ex
 
 def _check_scalar(desc, field, val):
