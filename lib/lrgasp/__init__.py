@@ -3,7 +3,7 @@ import sys
 import gzip
 import traceback
 
-__version__ = "0.8.0"
+__version__ = "0.9.0"
 
 class LrgaspException(Exception):
     pass
