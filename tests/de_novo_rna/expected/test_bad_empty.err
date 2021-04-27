@@ -1,0 +1,2 @@
+Error: Parse of RNA FASTA file failed: input/bad_empty.fasta
+caused by: no RNA sequences in FASTA

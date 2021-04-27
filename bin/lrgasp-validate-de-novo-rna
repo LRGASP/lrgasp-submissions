@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import argparse
+import logging
+from lrgasp import handle_prog_errors, prog_error_excepts
+from lrgasp import de_novo_rna
+
+def parse_args():
+    desc = """Validate that an LRGASP de-novo FASTA meets requirements.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("--debug", action='store_true',
+                        help="print stack on any error")
+    parser.add_argument("--rna_ids",
+                        help="write ids found to this file, mainly for tests")
+    parser.add_argument("rna_fasta",
+                        help="FASTA to file to validate")
+    return parser.parse_args()
+
+
+def write_ids(rna_ids, out_file):
+    with open(out_file, 'w') as fh:
+        for rna_id in sorted(rna_ids):
+            print(rna_id, file=fh)
+
+def main(args):
+    logging.getLogger().setLevel(logging.WARN)
+    try:
+        rna_ids = de_novo_rna.load(args.rna_fasta)
+        if args.rna_ids is not None:
+            write_ids(rna_ids, args.rna_ids)
+    except prog_error_excepts as ex:
+        handle_prog_errors(ex, args.debug)
+
+main(parse_args())

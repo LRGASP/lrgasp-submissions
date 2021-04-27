@@ -46,17 +46,23 @@ tools](submission-tools.md) before uploading.
 
 ## Experiment structure
 
-Model experiments must contain the following files:
+Challenge 1 model experiments must contain the following files:
 
 - `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
 - `models.gtf.gz` - [GTF file](model-format.md} with model annotations, compressed with gzip.
-- `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model with a least one read.
+- `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model the GTF with a least one read.
 
-Quantification experiments must contain the following files:
+Challenge 2 quantification experiments must contain the following files:
 
 - `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
 - `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
 - `models.gtf.gz` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
+
+Challenge 3 novel model experiments must contain the following files:
+
+- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `rna.fasta.gz` - FASTA file with model RNA sequences, compressed with gzip.
+- `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model in the FASTA with a least one read.
 
 ## Detailed specifications
 

@@ -20,6 +20,7 @@ else
   binpre = 
 endif
 
+lrgasp_validate_de_novo_rna = ${binpre}lrgasp-validate-de-novo-rna
 lrgasp_validate_models = ${binpre}lrgasp-validate-models
 lrgasp_validate_read_model_map = ${binpre}lrgasp-validate-read-model-map
 lrgasp_validate_expression_matrix = ${binpre}lrgasp-validate-expression-matrix

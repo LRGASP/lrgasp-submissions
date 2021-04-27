@@ -26,7 +26,8 @@ These only check the syntax of the files and are intended to allow for quick
 validation during development.  Another tool does complete checking of an entry,
 including file syntax validation and relationships between files.
 
-- `lrgasp-validate-models` - validate a ``models.gtf.gz`` file
+- `lrgasp-validate-models` - validate a `models.gtf.gz` file
+- `lrgasp-validate-de-novo-rna` - validate a `rna.fasta.gz` file.
 - `lrgasp-validate-read-model-map` - validate a `read_model_map.tsv.gz` file, optionally checking against a model GTF
 - `lrgasp-validate-expression-matrix` - validate an `expression.tsv.gz` file, optionally checking against a model GTF
 - `lrgasp-validate-experiment-metadata` - validate an `experiment.json` metadata file

@@ -105,7 +105,7 @@ def validate_transcripts(models):
         validate_transcript(trans)
 
 def load(model_gtf):
-    """Validate GTF,returns exons grouped into transcripts"""
+    """Validate GTF, returns exons grouped into transcripts"""
     try:
         exons = load_exons(model_gtf)
         validate_exons(exons)
