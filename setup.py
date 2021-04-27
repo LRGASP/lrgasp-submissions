@@ -6,7 +6,7 @@ requirements = [
     "gtfparse>=1.2.1",
     "validators>=0.18.2",
     "synapseclient>=2.3.0",
-    "fasta-reader>=1.0.0
+    "fasta-reader>=1.0.0"
 ]
 
 setuptools.setup(
@@ -18,7 +18,7 @@ setuptools.setup(
     author_email = 'markd@ucsc.edu',
     url = 'https://github.com/LRGASP/lrgasp-submissions',
     scripts=[
-        `bin/lrgasp-validate-de-novo-rna',
+        'bin/lrgasp-validate-de-novo-rna',
         'bin/lrgasp-validate-entry',
         'bin/lrgasp-validate-entry-metadata',
         'bin/lrgasp-validate-experiment-metadata',
