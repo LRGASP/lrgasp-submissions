@@ -28,7 +28,7 @@ including file syntax validation and relationships between files.
 
 - `lrgasp-validate-models` - validate a `models.gtf.gz` file
 - `lrgasp-validate-de-novo-rna` - validate a `rna.fasta.gz` file.
-- `lrgasp-validate-read-model-map` - validate a `read_model_map.tsv.gz` file, optionally checking against a model GTF
+- `lrgasp-validate-read-model-map` - validate a `read_model_map.tsv.gz` file, optionally checking against a model GTF or de novo RNA fasta.
 - `lrgasp-validate-expression-matrix` - validate an `expression.tsv.gz` file, optionally checking against a model GTF
 - `lrgasp-validate-experiment-metadata` - validate an `experiment.json` metadata file
 - `lrgasp-validate-entry-metadata`- validate an `entry.json` metadata file

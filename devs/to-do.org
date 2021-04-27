@@ -4,7 +4,6 @@
 * remove lost of info with select catchs:
 except (LrgaspException, ParsingError, ValueError) as ex:
         raise GtfException("Parse of GTF failed: {}".format(model_gtf)) from ex
-
 * metadata need
 manatee
 simulation

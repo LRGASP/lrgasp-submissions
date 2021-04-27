@@ -1,2 +1,3 @@
 Error: validation of entry metadata failed: input/bad_email.json
+caused by: entry.contacts field 'email' is not valid, value is 'fred'
 caused by: invalid email address 'fred'

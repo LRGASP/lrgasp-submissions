@@ -71,7 +71,7 @@ def order_edit_list(md, field, order):
 
 def fix_experiment_order(md):
     "keep experiment examples in same order as doc and template to keep them clear"
-    order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "units", "software",)
+    order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "software",)
     order_edit(md, order)
 
     extra_lib_order = ("repository", "acc", "notes")

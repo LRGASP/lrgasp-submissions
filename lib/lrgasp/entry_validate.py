@@ -14,6 +14,10 @@ from lrgasp import expression_data
 from lrgasp.metadata_validate import set_to_str
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
+def _model_map_transcript_ids(read_model_map):
+    "get list of all read_model_map transcript ids"
+    return sorted(set([p.transcript_id for p in read_model_map if p.transcript_id is not None]))
+
 def _validate_model_to_read_mapping(transcript_id, read_model_map):
     if read_model_map.get_by_transcript_id(transcript_id) is None:
         raise LrgaspException(f"transcript in models '{transcript_id}' not in read-model_map")
@@ -25,7 +29,7 @@ def _validate_read_mapping_to_model(transcript_id, models):
 
 def validate_ref_model_and_read_mapping(models, read_model_map):
     # all model mapping must be in models
-    for transcript_id in sorted(set([p.transcript_id for p in read_model_map])):
+    for transcript_id in _model_map_transcript_ids(read_model_map):
         _validate_read_mapping_to_model(transcript_id, models)
     # all transcripts must be in model map
     for trans in models:
@@ -52,7 +56,7 @@ def _validate_read_mapping_to_de_novo_rna(transcript_id, de_novo_rna_ids):
 
 def validate_de_novo_rna_and_read_mapping(de_novo_rna_ids, read_model_map):
     # all model mapping must be in reads
-    for transcript_id in sorted(set([p.transcript_id for p in read_model_map])):
+    for transcript_id in _model_map_transcript_ids(read_model_map):
         _validate_read_mapping_to_de_novo_rna(transcript_id, de_novo_rna_ids)
     # all transcripts must be in model map
     for transcript_id in de_novo_rna_ids:

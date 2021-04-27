@@ -1,2 +1,3 @@
 Error: validation of entry metadata failed: input/bad_expr_ids.json
+caused by: entry field 'experiment_ids' is not valid, value is '1fred'
 caused by: not a valid symbolic identifier '1fred'

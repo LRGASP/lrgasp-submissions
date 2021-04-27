@@ -8,9 +8,9 @@ Expression matrix files must be gzip-compressed and named ```expression.tsv.gz``
 
 * **Header**: The first field must be `ID`, and the rest of the column names should be the sample/replicates labels.
 * **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](metadata-identifiers.md#feature-identifiers).
-* **Quantification values reported**: Any metric is acceptable as long as they correlate with RNA concentration. This can be evaluated using known concentrationa of SIRVs. `NA` values are allowed.
+* **Quantification values reported**: Units must be TPM, `NA` values are allowed when no expression is observed. See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
 
-Gene expression will be calculated  by summing up all the transcripts' expression values coming from the same locus.
+Gene expression will be calculated by summing up all the transcripts' expression values coming from the same locus.
 
 ## Expression matrix example
 

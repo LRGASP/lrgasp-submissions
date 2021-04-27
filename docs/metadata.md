@@ -45,7 +45,6 @@ An empty template is also available: [``experiment.json``](../templates/experime
     [Public repository identifiers](metadata-identifiers.md#public repository_identifiers)
   * ``acc`` - accession in a public repository for input data file.
   * ``notes`` - notes about the file (optional)
-* ``units`` - Expression units for expression results matrix: ``RPM``, ``RPKM``, ``FPKM``, ``TPM``, ``counts``.  See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
 * ``software`` - list of software used by the pipeline:
   * ``name`` - the name of the software package
   * ``description`` - description of software (optional)

@@ -1,2 +1,3 @@
 Error: validation of entry metadata failed: input/bad_entry_id.json
+caused by: entry field 'entry_id' is not valid, value is 'fred_ref_our_entry'
 caused by: entry_id 'fred_ref_our_entry' must be prefixed with a challenge id iso_detect_ref_*, iso_quant_*, iso_detect_de_novo_*

@@ -41,14 +41,3 @@ If another public archive is needed, please create an  issue in the
 * ``INSDC`` - One of the [INSDC](http://www.insdc.org/) database (DBDB, EMBL-EBI/ENA, or NCBI).  These share an accession namespace and are synchronized daily.
 * ``ENC`` - [ENCODE DCC](https://www.encodeproject.org/).
 
-## Expression unit identifiers
-
-LRGAPS accepts various expression units.  See
-[Renesh Bedre's blog](https://www.reneshbedre.com/blog/expression_units.html)
-for a good overview of expression units.
-
-*``RPM`` - reads per million mapped reads
-*``RPKM`` - reads per kilobase per million mapped reads
-*``FPKM`` - fragments per kilobase per million mapped read
-*``TPM`` - transcripts per million
-*``counts`` - raw counts

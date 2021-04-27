@@ -1,3 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_quant_bad_units.json
-caused by: experiment field 'units' is not a valid 'ExpressionUnits', value is 'Barney'
-caused by: 'Barney' is not a member, external name, or alias of ExpressionUnits

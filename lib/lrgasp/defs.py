@@ -71,14 +71,6 @@ class Gencode(SymEnum):
     GENCODE_V38 = auto()
     GENCODE_VM27 = auto()
 
-class ExpressionUnits(SymEnum):
-    "Units used in expression matrix"
-    RPM = auto()
-    RPKM = auto()
-    FPKM = auto()
-    TPM = auto()
-    counts = auto()
-
 def validate_symbolic_ident(ident):
     if not ident.isidentifier():
         raise LrgaspException(f"not a valid symbolic identifier '{ident}'")

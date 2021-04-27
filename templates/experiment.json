@@ -1,6 +1,6 @@
 {
     "experiment_id": "",
-    "experiment_type": "",
+    "challange_id": "",
     "description": "",
     "notes": "",
     "species": "",
@@ -14,7 +14,6 @@
             "notes": ""
         }
     ],
-    "units": "",
     "software": [
         {
             "name": "",

@@ -55,7 +55,7 @@ Challenge 1 model experiments must contain the following files:
 Challenge 2 quantification experiments must contain the following files:
 
 - `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment.
+- `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment, which must be in TPM. See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
 - `models.gtf.gz` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
 
 Challenge 3 novel model experiments must contain the following files:

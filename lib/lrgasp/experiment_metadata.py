@@ -6,7 +6,7 @@ import json
 from collections import namedtuple, defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
@@ -17,7 +17,6 @@ fld_species = Field("species", Species)
 fld_data_category = Field("data_category", DataCategory)
 fld_libraries = Field("libraries", list, element_dtype=str, validator=validate_symbolic_ident)
 fld_extra_libraries = Field("extra_libraries", list, optional=True, allow_empty=True, element_dtype=dict)
-fld_units = Field("units", ExpressionUnits, optional=True)
 fld_software = Field("software", list, element_dtype=dict)
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
@@ -29,7 +28,6 @@ experiment_fields = (
     fld_data_category,
     fld_libraries,
     fld_extra_libraries,
-    fld_units,
     fld_software,
     fld_notes,
 )
@@ -195,21 +193,12 @@ def extra_libraries_validate(experiment):
     for extra_library in experiment.extra_libraries:
         extra_library_validate(extra_library)
 
-def experssion_units_validate(experiment):
-    if experiment.challenge_id is Challenge.iso_quant:
-        if fld_units.name not in experiment:
-            raise LrgaspException(f"experiment type '{experiment.challenge_id}' must specify '{fld_units.name}'")
-    else:
-        if fld_units.name in experiment:
-            raise LrgaspException(f"experiment type '{experiment.challenge_id}' must not specify '{fld_units.name}'")
-
 def experiment_validate(experiment):
     desc = "experiment"
     check_from_defs(desc, experiment_fields, experiment)
     libraries_validate(experiment)
     if len(get_extra_libraries(experiment)) > 0:
         extra_libraries_validate(experiment)
-    experssion_units_validate(experiment)
 
 def load(experiment_json):
     """load and validate experiment metadata"""
