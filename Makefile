@@ -31,6 +31,8 @@ help:
 
 lint:
 	${FLAKE8} ${pyprogs} lib
+	json_pp < templates/entry.json >/dev/null
+	json_pp < templates/experiment.json >/dev/null
 
 # requires the NPM packages:
 #   remark-cli remark-lint remark-preset-lint-recommended markdown-link-check
