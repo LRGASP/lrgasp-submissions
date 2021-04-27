@@ -1,6 +1,6 @@
 {
     "experiment_id": "model_ont_drna1",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_ref",
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
     "species": "human",
     "libraries": [

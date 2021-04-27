@@ -1,6 +1,6 @@
 {
     "experiment_id": "model_pb1",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_de_novo",
     "description": "Transcript models for mouse RNA sequenceing",
     "notes": "Reads were downloaded from somewhere",
     "species": "mouse",

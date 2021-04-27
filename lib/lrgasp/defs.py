@@ -12,17 +12,13 @@ EXPERIMENT_JSON = "experiment.json"
 MODELS_GTF = "models.gtf"
 READ_MODEL_MAP_TSV = "read_model_map.tsv"
 EXPRESSION_TSV = "expression.tsv"
+DE_NOVO_RNA_FASTA = "rna.fasta"
 
 class Challenge(SymEnum):
     """Challenge identifiers, value matches challenge number"""
     iso_detect_ref = 1
     iso_quant = 2
     iso_detect_de_novo = 3
-
-class ExperimentType(SymEnum):
-    "type of a experiment, assumed from Challenge type"
-    model = auto()
-    expression = auto()
 
 class DataCategory(SymEnum):
     """categories of experiments based on data accepted"""
@@ -103,13 +99,6 @@ def validate_entry_ident(entry_id):
             return ch
     valid_pre = ", ".join([str(ch) + '_*' for ch in Challenge])
     raise LrgaspException(f"entry_id '{entry_id}' must be prefixed with a challenge id {valid_pre}")
-
-def challenge_to_experiment_type(challenge):
-    assert isinstance(challenge, Challenge)
-    if challenge is Challenge.iso_quant:
-        return ExperimentType.expression
-    else:
-        return ExperimentType.model
 
 def sample_to_species(sample):
     if sample in (Sample.WTC11, Sample.H1_mix):

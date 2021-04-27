@@ -8,10 +8,22 @@ import argparse
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
-from lrgasp.defs import DataCategory  # noqa: F401
+from lrgasp.defs import DataCategory, Challenge  # noqa: F401
 
 def edit_json(mdfile, md):
     "customize this for each edit case"
+
+    if 0:
+        assert md.experiment_type == "expression"
+        md.challenge_id = str(Challenge.iso_quant)
+    if 1:
+        assert md.experiment_type == "model"
+        md.challenge_id = str(Challenge.iso_detect_ref)
+    if 0:
+        assert md.experiment_type == "model"
+        md.challenge_id = str(Challenge.iso_detect_de_novo)
+
+    del md.experiment_type
 
     fix_experiment_order(md)
 
@@ -20,7 +32,7 @@ def parse_args():
     as schema changes. Code must be modified to implement changes
     """
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("--inplace", action="store_true",
+    parser.add_argument("--edit", action="store_true",
                         help="""overwrite the files, otherwise output as thefile.edit.json""")
     parser.add_argument("--diff", action="store_true",
                         help="""display a diff""")
@@ -59,7 +71,7 @@ def order_edit_list(md, field, order):
 
 def fix_experiment_order(md):
     "keep experiment examples in same order as doc and template to keep them clear"
-    order = ("experiment_id", "experiment_type", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "units", "software",)
+    order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "units", "software",)
     order_edit(md, order)
 
     extra_lib_order = ("repository", "acc", "notes")
@@ -93,7 +105,7 @@ def install_json(mdfile):
 def main(args):
     for f in args.json_files:
         modify_json(f, args.diff)
-    if args.inplace:
+    if args.edit:
         # only install if all edits succeeded
         for f in args.json_files:
             install_json(f)

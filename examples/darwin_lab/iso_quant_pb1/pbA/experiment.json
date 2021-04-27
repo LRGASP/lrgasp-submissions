@@ -1,6 +1,6 @@
 {
     "experiment_id": "quant_pb1",
-    "experiment_type": "expression",
+    "challenge_id": "iso_quant",
     "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
     "species": "human",

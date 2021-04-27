@@ -34,7 +34,7 @@ See [``experiment.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/drnaA/e
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry, defined by the submitter.
-* ``experiment_type`` - one of ``model`` or ``expression``.
+* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers). This must match the value in``entry.json``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
 * ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species_identifiers).

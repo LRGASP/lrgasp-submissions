@@ -6,12 +6,12 @@ import json
 from collections import namedtuple, defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, ExperimentType, DataCategory, Platform, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, ExpressionUnits, validate_symbolic_ident, EXPERIMENT_JSON
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
 fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
-fld_experiment_type = Field("experiment_type", ExperimentType)
+fld_challenge_id = Field("challenge_id", Challenge)
 fld_description = Field("description")
 fld_species = Field("species", Species)
 fld_data_category = Field("data_category", DataCategory)
@@ -23,7 +23,7 @@ fld_notes = Field("notes", allow_empty=True, optional=True)
 
 experiment_fields = (
     fld_experiment_id,
-    fld_experiment_type,
+    fld_challenge_id,
     fld_species,
     fld_description,
     fld_data_category,
@@ -196,12 +196,12 @@ def extra_libraries_validate(experiment):
         extra_library_validate(extra_library)
 
 def experssion_units_validate(experiment):
-    if experiment.experiment_type is ExperimentType.model:
-        if fld_units.name in experiment:
-            raise LrgaspException(f"experiment type '{experiment.experiment_type}' must not specify '{fld_units.name}'")
-    else:
+    if experiment.challenge_id is Challenge.iso_quant:
         if fld_units.name not in experiment:
-            raise LrgaspException(f"experiment type '{experiment.experiment_type}' must specify '{fld_units.name}'")
+            raise LrgaspException(f"experiment type '{experiment.challenge_id}' must specify '{fld_units.name}'")
+    else:
+        if fld_units.name in experiment:
+            raise LrgaspException(f"experiment type '{experiment.challenge_id}' must not specify '{fld_units.name}'")
 
 def experiment_validate(experiment):
     desc = "experiment"

@@ -3,43 +3,70 @@ Load and validate model and expression entries
 """
 import os.path as osp
 from lrgasp import LrgaspException
-from lrgasp.defs import ExperimentType, MODELS_GTF, READ_MODEL_MAP_TSV, EXPRESSION_TSV
-from lrgasp.defs import challenge_to_experiment_type, get_challenge_samples
+from lrgasp.defs import Challenge, MODELS_GTF, DE_NOVO_RNA_FASTA, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import get_challenge_samples
 from lrgasp import entry_metadata
 from lrgasp import experiment_metadata
 from lrgasp import model_data
+from lrgasp import de_novo_rna_data
 from lrgasp import read_model_map_data
 from lrgasp import expression_data
 from lrgasp.metadata_validate import set_to_str
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
-def _validate_trans_and_read_mapping(trans, read_model_map):
-    if read_model_map.get_by_transcript_id(trans.transcript_id) is None:
-        raise LrgaspException(f"transcript in models '{trans.transcript_id}' not in read-model_map")
+def _validate_model_to_read_mapping(transcript_id, read_model_map):
+    if read_model_map.get_by_transcript_id(transcript_id) is None:
+        raise LrgaspException(f"transcript in models '{transcript_id}' not in read-model_map")
 
-def _validate_read_mapping_trans(transcript_id, models):
-    if models.by_transcript_id.get(transcript_id) is None:
+def _validate_read_mapping_to_model(transcript_id, models):
+    # transcript might be None if specified as `*'
+    if (transcript_id is not None) and (models.by_transcript_id.get(transcript_id) is None):
         raise LrgaspException(f"transcript in read_model_map '{transcript_id}' not in models")
 
-def validate_model_and_read_mapping(models, read_model_map):
+def validate_ref_model_and_read_mapping(models, read_model_map):
     # all model mapping must be in models
-    for transcript_id in set([p.transcript_id for p in read_model_map]):
-        # transcript might be None if specified as `*'
-        if transcript_id is not None:
-            _validate_read_mapping_trans(transcript_id, models)
+    for transcript_id in sorted(set([p.transcript_id for p in read_model_map])):
+        _validate_read_mapping_to_model(transcript_id, models)
     # all transcripts must be in model map
     for trans in models:
-        _validate_trans_and_read_mapping(trans, read_model_map)
+        _validate_model_to_read_mapping(trans.transcript_id, read_model_map)
 
-def _validate_model_experiment(experiment):
+def _validate_ref_model_experiment(experiment):
     model_gtf = osp.join(experiment.experiment_dir, MODELS_GTF)
     map_file = osp.join(experiment.experiment_dir, READ_MODEL_MAP_TSV)
     try:
         models = model_data.load(model_gtf)
         read_model_map = read_model_map_data.load(map_file)
-        validate_model_and_read_mapping(models, read_model_map)
+        validate_ref_model_and_read_mapping(models, read_model_map)
     except Exception as ex:
         raise LrgaspException(f"validation failed on '{model_gtf}' and '{map_file}'") from ex
+
+def _validate_de_novo_rna_to_read_mapping(transcript_id, read_model_map):
+    if read_model_map.get_by_transcript_id(transcript_id) is None:
+        raise LrgaspException(f"transcript in de novo RNAs '{transcript_id}' not in read-model_map")
+
+def _validate_read_mapping_to_de_novo_rna(transcript_id, de_novo_rna_ids):
+    # transcript might be None if specified as `*'
+    if (transcript_id is not None) and (transcript_id not in de_novo_rna_ids):
+        raise LrgaspException(f"transcript in read_model_map '{transcript_id}' not in de novo RNAs")
+
+def validate_de_novo_rna_and_read_mapping(de_novo_rna_ids, read_model_map):
+    # all model mapping must be in reads
+    for transcript_id in sorted(set([p.transcript_id for p in read_model_map])):
+        _validate_read_mapping_to_de_novo_rna(transcript_id, de_novo_rna_ids)
+    # all transcripts must be in model map
+    for transcript_id in de_novo_rna_ids:
+        _validate_de_novo_rna_to_read_mapping(transcript_id, read_model_map)
+
+def _validate_de_novo_model_experiment(experiment):
+    rna_fasta = osp.join(experiment.experiment_dir, DE_NOVO_RNA_FASTA)
+    map_file = osp.join(experiment.experiment_dir, READ_MODEL_MAP_TSV)
+    try:
+        de_novo_rna_ids = de_novo_rna_data.load(rna_fasta)
+        read_model_map = read_model_map_data.load(map_file)
+        validate_de_novo_rna_and_read_mapping(de_novo_rna_ids, read_model_map)
+    except Exception as ex:
+        raise LrgaspException(f"validation failed on '{rna_fasta}' with '{map_file}'") from ex
 
 def validate_expression_and_model(models, expression):
     # all expression matrix ids must be in models
@@ -55,7 +82,7 @@ def _validate_expression_experiment(experiment):
         expression = expression_data.load(expression_tsv)
         validate_expression_and_model(models, expression)
     except Exception as ex:
-        raise LrgaspException(f"validation failed on '{model_gtf}' and '{expression_tsv}'") from ex
+        raise LrgaspException(f"validation failed on '{model_gtf}' with '{expression_tsv}'") from ex
 
 def _validate_experiment_library(entry, experiment, rna_seq_md, library):
     sample = rna_seq_md.get_run_by_file_acc(library).sample
@@ -71,14 +98,17 @@ def _validate_experiment_libraries(entry, experiment):
         _validate_experiment_library(entry, experiment, rna_seq_md, library)
 
 def _validate_experiment(entry, experiment):
-    experiment_type = challenge_to_experiment_type(entry.challenge_id)
-    if experiment.experiment_type is not experiment_type:
-        raise LrgaspException(f"entry '{entry.entry_id}' challenge '{entry.challenge_id}' does not consistent with experiment '{experiment.experiment_id}' type '{experiment_type}'")
+    if experiment.challenge_id != entry.challenge_id:
+        raise LrgaspException(f"entry '{entry.entry_id}' challenge_id '{entry.challenge_id}' match experiment '{experiment.experiment_id}' challenge_id")
     _validate_experiment_libraries(entry, experiment)
-    if experiment_type == ExperimentType.model:
-        _validate_model_experiment(experiment)
-    else:
+    if experiment.challenge_id == Challenge.iso_detect_ref:
+        _validate_ref_model_experiment(experiment)
+    elif experiment.challenge_id == Challenge.iso_detect_de_novo:
+        _validate_de_novo_model_experiment(experiment)
+    elif experiment.challenge_id == Challenge.iso_quant:
         _validate_expression_experiment(experiment)
+    else:
+        raise LrgaspException("bug")
 
 def validate_experiment(entry, experiment_id):
     experiment = experiment_metadata.load_from_entry(entry, experiment_id)

@@ -1,6 +1,6 @@
 {
     "experiment_id": "model_ont_drnaKitchen",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_ref",
     "description": "dRNA kitchen sink",
     "notes": "should have specified kitchen sink",
     "species": "human",

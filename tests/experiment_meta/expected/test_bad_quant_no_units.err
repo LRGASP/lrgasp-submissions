@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_quant_no_units.json
-caused by: experiment type 'expression' must specify 'units'
+caused by: experiment type 'iso_quant' must specify 'units'

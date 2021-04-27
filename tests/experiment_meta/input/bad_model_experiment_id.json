@@ -1,6 +1,6 @@
 {
     "experiment_id": "123model_try",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_ref",
     "description": "Our best transcript models",
     "notes": "this is really good",
     "species": "human",

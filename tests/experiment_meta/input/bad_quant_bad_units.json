@@ -1,6 +1,6 @@
 {
     "experiment_id": "quant_try",
-    "experiment_type": "expression",
+    "challenge_id": "iso_quant",
     "description": "Expression results",
     "notes": "this is so-so good",
     "species": "human",

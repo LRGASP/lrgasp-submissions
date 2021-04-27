@@ -1,6 +1,6 @@
 {
     "experiment_id": "model_ont_drna",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_ref",
     "description": "long/short good",
     "species": "mouse",
     "data_category": "long_short",
@@ -19,8 +19,7 @@
         "ENCFF094NZA",
         "ENCFF280DWZ"
     ],
-    "extra_libraries": [
-    ],
+    "extra_libraries": [],
     "software": [
         {
             "name": "LRModel",

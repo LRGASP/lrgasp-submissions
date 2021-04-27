@@ -1,6 +1,6 @@
 {
     "experiment_id": "model_pb2",
-    "experiment_type": "model",
+    "challenge_id": "iso_detect_ref",
     "description": "Transcript models for Human NA12878 PacBio CCS RNA sequenceing, more sensitive and less specific models",
     "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
     "species": "human",

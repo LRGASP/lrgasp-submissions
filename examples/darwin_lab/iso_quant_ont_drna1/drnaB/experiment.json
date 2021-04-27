@@ -1,6 +1,6 @@
 {
     "experiment_id": "quant_ont_drna2",
-    "experiment_type": "expression",
+    "challenge_id": "iso_quant",
     "description": "Expression matrix for Human NA12878 ONT direct RNA sequenceing",
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
     "species": "human",
