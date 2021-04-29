@@ -26,8 +26,9 @@ class LrgaspRun(ObjDict):
 class LrgaspReplicate(ObjDict):
     """collection of files for a replicate. Class is only uses
     to serialized, ObjDict used to access when deserialized."""
-    def __init__(self, replicate_number):
+    def __init__(self, replicate_number, size_range):
         self.replicate_number = replicate_number
+        self.size_range = size_range
         self.files = []
 
 class LrgaspRnaSeqFile(ObjDict):

@@ -9,6 +9,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF535DQA",
@@ -40,6 +41,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF310IPO",
@@ -71,6 +73,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF654JHQ",
@@ -112,6 +115,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF705IEA",
@@ -143,6 +147,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF885YGF",
@@ -174,6 +179,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF822IZD",
@@ -215,6 +221,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF105WIJ",
@@ -246,6 +253,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF212HLP",
@@ -277,6 +285,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF003QZT",
@@ -318,6 +327,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF120DLZ",
@@ -349,6 +359,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF336WGD",
@@ -380,6 +391,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF316TNM",
@@ -421,6 +433,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF521IDK",
@@ -452,6 +465,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF914YPT",
@@ -483,6 +497,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF696TCH",
@@ -524,6 +539,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF201EVI",
@@ -555,6 +571,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF221SLD",
@@ -586,6 +603,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF145IIO",
@@ -653,6 +671,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF766OAK",
@@ -684,6 +703,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF198RQU",
@@ -715,6 +735,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF247XJT",
@@ -756,6 +777,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF914OBQ",
@@ -787,6 +809,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF464USM",
@@ -828,6 +851,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF670UEC",
@@ -859,6 +883,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF942RPL",
@@ -890,6 +915,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF861WOA",
@@ -931,6 +957,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF797VHT",
@@ -962,6 +989,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF571LYR",
@@ -993,6 +1021,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF317BHX",
@@ -1034,6 +1063,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF970AUV",
@@ -1065,6 +1095,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF902FSA",
@@ -1096,6 +1127,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF053QEQ",
@@ -1137,6 +1169,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "500-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF429FDN",
@@ -1168,6 +1201,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "500-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF209ZZU",
@@ -1199,6 +1233,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "500-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF931ICQ",
@@ -1240,6 +1275,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF741ZFV",
@@ -1271,6 +1307,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF506RNI",
@@ -1302,6 +1339,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF013SGT",
@@ -1343,6 +1381,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF585AMS",
@@ -1374,6 +1413,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF737GVV",
@@ -1405,6 +1445,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "600-5000",
                 "files": [
                     {
                         "file_acc": "ENCFF510ABH",
@@ -1446,6 +1487,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF874VSI",
@@ -1490,6 +1532,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF667VXS",
@@ -1534,6 +1577,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF313VYZ",
@@ -1588,6 +1632,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF525JUC",
@@ -1632,6 +1677,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF743MYM",
@@ -1676,6 +1722,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF372YUA",
@@ -1730,6 +1777,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF563QZR",
@@ -1787,6 +1835,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF370NFS",
@@ -1844,6 +1893,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF245IPA",
@@ -1911,6 +1961,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF438GQV",
@@ -1942,6 +1993,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF433QSW",
@@ -1973,6 +2025,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF348EXF",
@@ -2014,6 +2067,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF178BYM",
@@ -2045,6 +2099,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF063ASB",
@@ -2076,6 +2131,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF408XXR",
@@ -2117,6 +2173,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF918TKZ",
@@ -2148,6 +2205,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF923NYH",
@@ -2179,6 +2237,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF894DPZ",
@@ -2220,6 +2279,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF055REA",
@@ -2251,6 +2311,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF598YQO",
@@ -2282,6 +2343,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF335WMC",
@@ -2323,6 +2385,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF797PJV",
@@ -2354,6 +2417,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF742GCO",
@@ -2385,6 +2449,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": "2000-10000",
                 "files": [
                     {
                         "file_acc": "ENCFF717LLT",
@@ -2426,6 +2491,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF542VPN",
@@ -2457,6 +2523,7 @@
             },
             {
                 "replicate_number": 2,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF679LUJ",
@@ -2488,6 +2555,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF357UQD",
@@ -2529,6 +2597,7 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF146MTW",
@@ -2560,6 +2629,7 @@
             },
             {
                 "replicate_number": 3,
+                "size_range": null,
                 "files": [
                     {
                         "file_acc": "ENCFF591QYR",

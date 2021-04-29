@@ -156,22 +156,20 @@ def build_file(run, file_md):
                             output_type=file_md.output_type.replace(' ', '_'),
                             paired_end=paired_end, paired_with=paired_with)
 
-def build_replicates(encode_md, run):
-    """replicates are a group of files"""
-    # split files in replicates, don't make assumptions about numbers
-    replicates = defaultdict(list)
-
-    def _obtain_rep(frec):
-        rep = replicates.get(frec.biological_replicate_number)
-        if rep is None:
-            rep = replicates[frec.biological_replicate_number] = LrgaspReplicate(frec.biological_replicate_number)
-        return rep
-
+def build_files(encode_md, run, replicate_map):
+    """build files and add to replicates"""
     for file_md in encode_md.files:
         frec = build_file(run, file_md)
-        rep = _obtain_rep(frec)
-        rep.files.append(frec)
-    return [replicates[i] for i in sorted(replicates.keys())]
+        replicate_map[frec.biological_replicate_number].files.append(frec)
+
+def build_replicates(encode_md):
+    """replicates are a group of files"""
+    replicate_map = {}
+    for replicate in encode_md.replicates:
+        rep = LrgaspReplicate(replicate.biological_replicate_number,
+                              replicate.library.get("size_range"))
+        replicate_map[rep.replicate_number] = rep
+    return replicate_map
 
 def build_run(encode_md):
     run_acc = encode_md.accession
@@ -186,17 +184,16 @@ def build_run(encode_md):
     run = LrgaspRun(species=species, sample=sample, run_acc=run_acc,
                     description=description, library_prep=library_prep,
                     platform=platform)
-    run.replicates = build_replicates(encode_md, run)
+    replicate_map = build_replicates(encode_md)
+    run.replicates = [replicate_map[r] for r in sorted(replicate_map.keys())]
+    build_files(encode_md, run, replicate_map)
     return run
 
 def process_encode_run(encode_json):
-    try:
-        with open(encode_json) as fh:
-            encode_md = json.load(fh, object_pairs_hook=ObjDict)
-            encode_md.encode_json = encode_json
-        return build_run(encode_md)
-    except Exception as ex:
-        raise LrgaspException(f"failed to parse and convert: {encode_json}") from ex
+    with open(encode_json) as fh:
+        encode_md = json.load(fh, object_pairs_hook=ObjDict)
+        encode_md.encode_json = encode_json
+    return build_run(encode_md)
 
 def load_encode_run(runs, encode_json):
     try:
