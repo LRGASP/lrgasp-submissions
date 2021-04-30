@@ -1,0 +1,204 @@
+[
+    {
+        "species": "mouse",
+        "sample": "mouse_simulation",
+        "run_acc": "syn25591622",
+        "description": "LRGASP Mouse PacBio simulated data",
+        "library_prep": "IsoSeqSim",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25591622",
+                        "file_type": "fasta",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "2c71488b4602547fff8a9ef6a6f6d033",
+                        "run_acc": "syn25591622",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+		]
+	    }
+	  ]
+	},
+    {
+        "species": "mouse",
+        "sample": "mouse_simulation",
+        "run_acc": "syn25591653",
+        "description": "LRGASP Mouse ONT dRNA simulated data",
+        "library_prep": "Trans_NanoSim",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25591653",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "faed34ccc9f8e4977a4ee6f05b72131c",
+                        "run_acc": "syn25591653",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+		]
+	   }
+	]
+    },
+    {
+        "species": "mouse",
+        "sample": "mouse_simulation",
+        "run_acc": "syn25591436",
+        "description": "LRGASP Mouse Illumina simulated data",
+        "library_prep": "RSEM",
+        "platform": "Illumina",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25591503",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "34c9d6b7039e3a05cbd29aac2e9d195a",
+                        "run_acc": "syn25591436",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "syn25591548"
+                    },
+                    {
+                        "file_acc": "syn25591548",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "4c7faad1acb282cce2a6f525ce26bc3f",
+                        "run_acc": "syn25591436",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "syn25591503"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "human_simulation",
+        "run_acc": "syn25591693",
+        "description": "LRGASP Human PacBio simulated data",
+        "library_prep": "IsoSeqSim",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25591693",
+                        "file_type": "fasta",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "",
+                        "md5sum": "b8e80a82d96209dbe51064d23a7b6250",
+                        "run_acc": "syn25591693",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "human_simulation",
+        "run_acc": "syn25604221",
+        "description": "LRGASP Human ONT cDNA simulated data",
+        "library_prep": "Trans_NanoSim",
+	"platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25604221",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "cccaf1d5cc242d24c4c6bdb296059cc3",
+                        "run_acc": "syn25604221",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "human_simulation",
+        "run_acc": "syn25591443",
+        "description": "LRGASP Human Illumina simulated data",
+        "library_prep": "RSEM",
+        "platform": "Illumina",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "syn25591675",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "" ,
+                        "md5sum": "b7c4468cbcb19193851d4f396556d0a5",
+                        "run_acc": "syn25591443",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": 1,
+                        "paired_with": "syn25591686"
+                    },
+                    {
+                        "file_acc": "syn25591686",
+                        "file_type": "fastq",
+                        "url": "",
+                        "s3_uri": "",
+                        "file_size": "",
+                        "md5sum": "53b52491347f7d7d6bb47ab3a6a09922",
+                        "run_acc": "syn25591443",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": 2,
+                        "paired_with": "syn25591675"
+                    }
+                ]
+            }
+        ]
+    }
+]

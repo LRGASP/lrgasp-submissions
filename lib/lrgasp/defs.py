@@ -39,6 +39,9 @@ class LibraryPrep(SymEnum):
     dRNA = auto()
     R2C2 = auto()
     cDNA = auto()
+    IsoSeqSim = auto()
+    Trans_NanoSim = auto()
+    RSEM = auto()
 
 class Sample(SymEnum):
     """LRGASP sample identifier"""
@@ -46,6 +49,8 @@ class Sample(SymEnum):
     H1_mix = auto()
     ES = auto()
     Manatee = auto()
+    mouse_simulation = auto()
+    human_simulation = auto()
 
 class Species(SymEnum):
     """Species identifiers"""
@@ -104,8 +109,8 @@ def sample_to_species(sample):
 
 
 _challenge_sample_map = {
-    Challenge.iso_detect_ref: frozenset([Sample.WTC11, Sample.H1_mix, Sample.ES]),
-    Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix]),
+    Challenge.iso_detect_ref: frozenset([Sample.WTC11, Sample.H1_mix, Sample.ES, Sample.mouse_simulation, Sample.human_simulation]),
+    Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix, Sample.mouse_simulation, Sample.human_simulation]),
     Challenge.iso_detect_de_novo: frozenset([Sample.Manatee, Sample.ES]),
 }
 
