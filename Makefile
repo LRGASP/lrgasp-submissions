@@ -16,6 +16,7 @@ have_mdlinkcheck = $(shell which markdown-link-check >&/dev/null && echo yes || 
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
+	@echo "doc - build various pieces of the doc"
 	@echo "lint - check style with flake8"
 	@echo "lint-doc - check documentation"
 	@echo "lint-all - lint plus lint-doc"
@@ -28,6 +29,25 @@ help:
 	@echo "release - package and upload a release"
 	@echo "test-release - test final release"
 
+
+data_matrix_tsv =  docs/rnaseq-data-matrix.tsv
+
+# data matrix HTML is only built on hgwdev or if htmldir is set on the commandline
+ifeq ($(shell hostname),hgwdev)
+    htmldir = ${HOME}/public_html/lrgasp
+endif
+ifneq (${htmldir},)
+    data_matrix_html = ${htmldir}/rnaseq-data-matrix.html
+endif
+doc: ${data_matrix_tsv} ${data_matrix_html}
+
+
+${data_matrix_tsv}: $(wildcard lib/lrgasp/data/*.json) \
+	lib/lrgasp/data_sets.py devs/bin/generateRnaSeqDataMatrix
+	./devs/bin/generateRnaSeqDataMatrix
+
+${data_matrix_html}: ${data_matrix_tsv} devs/bin/make_html_table.R 
+	Rscript devs/bin/make_html_table.R ${data_matrix_html}
 
 lint:
 	${FLAKE8} ${pyprogs} lib
@@ -66,7 +86,7 @@ test:
 	cd tests && ${MAKE} test
 
 clean: test_clean
-	rm -rf build/ dist/ ${testenv}/ lib/lrgasp_tools.egg-info/ lib/lrgasp/__pycache__/
+	rm -rf build/ dist/ ${testenv}/ lib/lrgasp_tools.egg-info/ lib/lrgasp/__pycache__/ docs/rnaseq-data-matrix_files/
 
 test_clean:
 	cd tests && ${MAKE} clean

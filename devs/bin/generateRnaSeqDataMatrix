@@ -7,7 +7,9 @@ import re
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp import LrgaspException
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
-from lrgasp.defs import sample_to_challenges
+from lrgasp.defs import sample_to_challenges, Challenge
+
+html_url = "https://hgwdev.gi.ucsc.edu/~markd/lrgasp/rnaseq-data-matrix.html"
 
 def parse_args():
     desc = """Generate data matrix markdown and TSV from metadata"""
@@ -17,8 +19,12 @@ def parse_args():
     args.outtsv = "docs/rnaseq-data-matrix.tsv"
     return args
 
-header_md = ["challenges", "species", "sample", "library_prep", "platform", "run_acc", "replicate", "sizes", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url"]
-header_tsv = header_md + ["file_s3_uri", "paired_s3_uri"]
+header1 = ["challenges"]
+header2 = ["C1", "C2", "C3"]  # filter columns didn't work out well
+header3 = ["species", "sample", "library_prep", "platform", "run_acc", "replicate", "sizes", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url"]
+header4 = ["file_s3_uri", "paired_s3_uri"]
+header_md = header1 + header3
+header_tsv = header1 + header2 + header3 + header4
 dedup_col = header_md.index("replicate")
 
 def challenges_str(run):
@@ -40,8 +46,19 @@ def metadata_sorted_gen(rna_seq_md):
             for file_md in sorted(replicate_md.files, key=lambda f: (output_type_order[f.output_type], f.file_type, f.file_acc)):
                 yield (run_md, replicate_md, file_md)
 
-def make_run_cols(run_md):
-    return [str(c) for c in (challenges_str(run_md), run_md.species, run_md.sample, run_md.library_prep, run_md.platform, run_md.run_acc)]
+
+def make_challenge_sort_cols(run_md):
+    challenges = sample_to_challenges(run_md.sample)
+    # '~' sorts after numbers
+    return [str(c.value) if c in challenges else '~'
+            for c in Challenge]
+
+def make_run_cols(run_md, for_markdown):
+    row = [challenges_str(run_md)]
+    if not for_markdown:
+        row.extend(make_challenge_sort_cols(run_md))
+    row.extend([run_md.species, run_md.sample, run_md.library_prep, run_md.platform, run_md.run_acc])
+    return [str(c) for c in row]
 
 def make_replicate_cols(replicate_md):
     return [str(replicate_md.replicate_number),
@@ -75,7 +92,7 @@ def make_file_cols(file_md, for_markdown):
     return row
 
 def make_row(run_md, replicate_md, file_md, for_markdown):
-    return make_run_cols(run_md) + make_replicate_cols(replicate_md) + make_file_cols(file_md, for_markdown)
+    return make_run_cols(run_md, for_markdown) + make_replicate_cols(replicate_md) + make_file_cols(file_md, for_markdown)
 
 def generate_rows(rna_seq_md, *, for_markdown):
     for run_md, replicate_md, file_md in metadata_sorted_gen(rna_seq_md):
@@ -133,7 +150,9 @@ def write_markdown_rows(rna_seq_md, fh):
 def write_markdown(rna_seq_md, markdown_tsv, fh):
     tsv_file = osp.basename(markdown_tsv)
     print("# LRGASP RNA-Seq Data Matrix\n\n"
-          f"Matrix in is also available in TSV format from [{tsv_file}]({tsv_file}). This has both HTTP URLs and S3 URIs",
+          "data Matrix in is also available as:\n"
+          f"* TSV format file: [{tsv_file}]({tsv_file}) (with both HTTP URLs and S3 URIs)\n"
+          f"* sortable and searchable HTML page: {html_url}\n\n",
           file=fh)
     write_markdown_rows(rna_seq_md, fh)
 

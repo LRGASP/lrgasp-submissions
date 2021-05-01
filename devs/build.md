@@ -12,14 +12,23 @@ make test
 
 ```
   ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
-  ./devs/bin/generateRnaSeqDataMatrix
+  make doc
 ```
+
+If on the UCSC hgwdev system the data matrix is written to
+`~/public_html/lrgasp/rnaseq-data-matrix.html`.  To build
+data matrix in another directory:
+```
+  make doc htmldir=the/html/dir
+```
+
+
 ## lint
 
 Markdown doc can be linted if the following packages are installed:
 
-* markdownlint (mdl) - Ruby package: ``gem install mdl``
-* markdown-link-check - Node.js package: ``npm install -g markdown-link-check`
+* markdownlint (mdl) - Ruby package: `gem install mdl`
+* markdown-link-check - Node.js package: `npm install -g markdown-link-check`
 
 ## Build pip installable packages
 
@@ -32,6 +41,15 @@ make test-pip
 ### pypitest
 
 WARNING: commit any changes first
+
+Ensure data matrix documentation is up-to-date:
+```
+make doc
+commit -am 'updated data matrix doc'
+```
+
+
+Test without committing version number:
 ```
 bumpversion --allow-dirty --no-commit --no-tag (major|minor|patch)
 make release-testpypi
@@ -43,6 +61,7 @@ Note: might have to wait for test-release-testpypi, it seems there might be
 a slight delay in index update.
 
 ## Release to pypi
+
 
 ```
 bumpversion (major|minor|patch)
@@ -63,7 +82,8 @@ synapse add --parentid syn25536060 lrgasp_grcm39_sirvs.fasta.gz
 ```
 
 ```
-faSize -detailed ../../lrgasp-data/references/lrgasp_grch38_sirvs.fasta.gz > lib/lrgasp/data/lrgasp_grch38_sirvs.tsvfaSize -detailed ../../lrgasp-data/references/lrgasp_grcm39_sirvs.fasta.gz  > lib/lrgasp/data/lrgasp_grcm39_sirvs.ts```
+faSize -detailed ../../lrgasp-data/references/lrgasp_grch38_sirvs.fasta.gz > lib/lrgasp/data/lrgasp_grch38_sirvs.tsvfaSize -detailed ../../lrgasp-data/references/lrgasp_grcm39_sirvs.fasta.gz  > lib/lrgasp/data/lrgasp_grcm39_sirvs.ts
+```
 
 
 

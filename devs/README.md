@@ -17,6 +17,9 @@ For developers of this package, not of general interest.
   Version perl 2.30 seems to work.
 * to build encode-metadata.json
   ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
-* to generate docs/rnaseq-data-matrix.md from above
+* to generate docs/rnaseq-data-matrix.md from above (run by make doc)
   ./devs/bin/generateRnaSeqDataMatrix
-
+* to generate docs/rnaseq-data-matrix.html from above (run by make doc)
+  ./devs/bin/make_html_table.R
+  
+  

@@ -3,7 +3,6 @@ import sys
 import os.path as osp
 import json
 import argparse
-from collections import defaultdict
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp.objDict import ObjDict
