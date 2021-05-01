@@ -38,9 +38,7 @@ To build and test package
 make test-pip
 ```
 
-### pypitest
-
-WARNING: commit any changes first
+### make sure data matrix documentation is current
 
 Ensure data matrix documentation is up-to-date:
 ```
@@ -48,6 +46,10 @@ make doc
 commit -am 'updated data matrix doc'
 ```
 
+### pypitest
+
+* WARNING: commit any changes first
+* WARNING: [make sure data matrix documentation is current](#make_sure_data_matrix_documentation_is_current)
 
 Test without committing version number:
 ```

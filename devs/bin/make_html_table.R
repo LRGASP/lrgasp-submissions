@@ -18,7 +18,7 @@ tbDt <- datatable(dat,extensions = c('Buttons','ColReorder','FixedColumns', 'Fix
 	pageLength =200,
 	keys = TRUE,
 	rowId =0,
-	rowGroup = list(dataSrc = c(5,6)),
+	rowGroup = list(dataSrc = c(2,3)),
 	selection = 'none',
 	initComplete = JS(
     "function(settings, json) {",

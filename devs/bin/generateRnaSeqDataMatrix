@@ -20,11 +20,10 @@ def parse_args():
     return args
 
 header1 = ["challenges"]
-header2 = ["C1", "C2", "C3"]  # filter columns didn't work out well
 header3 = ["species", "sample", "library_prep", "platform", "run_acc", "replicate", "sizes", "file_contents", "file_type", "file_acc", "paired_acc", "file_url", "paired_url"]
 header4 = ["file_s3_uri", "paired_s3_uri"]
 header_md = header1 + header3
-header_tsv = header1 + header2 + header3 + header4
+header_tsv = header1 + header3 + header4
 dedup_col = header_md.index("replicate")
 
 def challenges_str(run):
@@ -47,16 +46,8 @@ def metadata_sorted_gen(rna_seq_md):
                 yield (run_md, replicate_md, file_md)
 
 
-def make_challenge_sort_cols(run_md):
-    challenges = sample_to_challenges(run_md.sample)
-    # '~' sorts after numbers
-    return [str(c.value) if c in challenges else '~'
-            for c in Challenge]
-
 def make_run_cols(run_md, for_markdown):
     row = [challenges_str(run_md)]
-    if not for_markdown:
-        row.extend(make_challenge_sort_cols(run_md))
     row.extend([run_md.species, run_md.sample, run_md.library_prep, run_md.platform, run_md.run_acc])
     return [str(c) for c in row]
 
@@ -150,7 +141,7 @@ def write_markdown_rows(rna_seq_md, fh):
 def write_markdown(rna_seq_md, markdown_tsv, fh):
     tsv_file = osp.basename(markdown_tsv)
     print("# LRGASP RNA-Seq Data Matrix\n\n"
-          "data Matrix in is also available as:\n"
+          "Data matrix in is also available as:\n"
           f"* TSV format file: [{tsv_file}]({tsv_file}) (with both HTTP URLs and S3 URIs)\n"
           f"* sortable and searchable HTML page: {html_url}\n\n",
           file=fh)

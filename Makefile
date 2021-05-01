@@ -86,7 +86,7 @@ test:
 	cd tests && ${MAKE} test
 
 clean: test_clean
-	rm -rf build/ dist/ ${testenv}/ lib/lrgasp_tools.egg-info/ lib/lrgasp/__pycache__/ docs/rnaseq-data-matrix_files/
+	rm -rf build/ dist/ ${testenv}/ lib/lrgasp_tools.egg-info/ lib/lrgasp/__pycache__/
 
 test_clean:
 	cd tests && ${MAKE} clean

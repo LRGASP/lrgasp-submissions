@@ -1,6 +1,6 @@
 # LRGASP RNA-Seq Data Matrix
 
-data Matrix in is also available as:
+Data matrix in is also available as:
 * TSV format file: [rnaseq-data-matrix.tsv](rnaseq-data-matrix.tsv) (with both HTTP URLs and S3 URIs)
 * sortable and searchable HTML page: https://hgwdev.gi.ucsc.edu/~markd/lrgasp/rnaseq-data-matrix.html
 
