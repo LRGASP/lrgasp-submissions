@@ -5,13 +5,19 @@
     * `WTC11` (human iPSC cell line)
     * `H1_mix` (human H1 ES cell line mixed with human Definitive Endoderm derived from H1)
     * `ES` (mouse ES cell line)
+    * `human_simulation` - simulated human reads
+    * `mouse_simulation` - simulated mouse reads
+
 * Challenge 2: transcript isoform quantification (`iso_quant`)
   * Samples
     * `WTC11` (human iPSC cell line)
     * `H1_mix` (human H1 ES cell line mixed with human Definitive Endoderm derived from H1)
+    * `human_simulation` - simulated human reads
+    * `mouse_simulation` - simulated mouse reads
+
 * Challenge 3: de novo transcript isoform detection (`iso_detect_de_novo`)
   * Samples
-    * manatee whole blood
+    * `Manatee` (manatee whole blood)
     * `ES` (mouse ES cell line)
 
 ## Challenge data requirements
