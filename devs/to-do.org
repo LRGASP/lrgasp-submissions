@@ -1,5 +1,8 @@
+* SUBMISSION IMAGE
+** code broken
+** doesn't show model for quant
+** should show denovo
 * issues:
-** TPM only
 ** read_model_map for short-read only experiment?
 * remove lost of info with select catchs:
 except (LrgaspException, ParsingError, ValueError) as ex:
