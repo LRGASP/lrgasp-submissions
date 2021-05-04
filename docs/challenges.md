@@ -37,18 +37,20 @@ one or more *experiments*.  Each *entry* must meet the following requirements:
 
 In all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the *long and short* and *kitchen sink* category, additional transcriptome references can be used.
 
-Each team can only submit one entry per category.
+Each team can only submit one entry per challenge.
 
 For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read.
 
-* The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology.  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data
-  * Illumina cDNA - *short-only*
-  * Pacbio cDNA - *long-only* or *long and short*
-  * Pacbio CapTrap - *long-only* or *long and short*
-  * ONT cDNA - *long-only* or *long and short*
-  * ONT CapTrap - *long-only* or *long and short*
-  * ONT R2C2 - *long-only* or *long and short*
-  * ONT dRNA - *long-only* or *long and short*
+* Any given *experiment* in *long-only* or *short-only* category is limited to the data from a single library preparation method plus sequencing technology. Each data type can be used in the following experiment categories:  
+  * Illumina cDNA - *short-only* / *long and short*
+  * Pacbio cDNA - *long-only* / *long and short*
+  * Pacbio CapTrap - *long-only* / *long and short*
+  * ONT cDNA - *long-only* / *long and short*
+  * ONT CapTrap - *long-only* / *long and short*
+  * ONT R2C2 - *long-only* / *long and short*
+  * ONT dRNA - *long-only* / *long and short*
+  
+Any listed data type can be included in *kitchen sink* experiments.  
 
 ### Requirements for Challenge 3
 
