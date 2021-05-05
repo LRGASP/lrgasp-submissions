@@ -1,9 +1,9 @@
 # LRGASP RNA-Seq Data Matrix
 
 Data matrix in is also available as:
-* TSV format file: [rnaseq-data-matrix.tsv](rnaseq-data-matrix.tsv) (with both HTTP URLs and S3 URIs)
-* sortable and searchable HTML page: https://hgwdev.gi.ucsc.edu/~markd/lrgasp/rnaseq-data-matrix.html
 
+* a TSV format file: [rnaseq-data-matrix.tsv](rnaseq-data-matrix.tsv) (with both HTTP URLs and S3 URIs)
+* a sortable and searchable HTML page: [https://hgwdev.gi.ucsc.edu/~markd/lrgasp/rnaseq-data-matrix.html](https://hgwdev.gi.ucsc.edu/~markd/lrgasp/rnaseq-data-matrix.html)
 
 | challenges | species | sample           | library_prep  | platform | run_acc     | replicate | sizes      | file_contents   | file_type | file_acc    | paired_acc  | file_url | paired_url |
 | ---------- | ------- | ---------------- | ------------- | -------- | ----------- | --------- | ---------- | --------------- | --------- | ----------- | ----------- | -------- | ---------- |

@@ -141,9 +141,9 @@ def write_markdown_rows(rna_seq_md, fh):
 def write_markdown(rna_seq_md, markdown_tsv, fh):
     tsv_file = osp.basename(markdown_tsv)
     print("# LRGASP RNA-Seq Data Matrix\n\n"
-          "Data matrix in is also available as:\n"
-          f"* TSV format file: [{tsv_file}]({tsv_file}) (with both HTTP URLs and S3 URIs)\n"
-          f"* sortable and searchable HTML page: {html_url}\n\n",
+          "Data matrix in is also available as:\n\n"
+          f"* a TSV format file: [{tsv_file}]({tsv_file}) (with both HTTP URLs and S3 URIs)\n"
+          f"* a sortable and searchable HTML page: [{html_url}]({html_url})\n",
           file=fh)
     write_markdown_rows(rna_seq_md, fh)
 
