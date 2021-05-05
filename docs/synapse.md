@@ -13,4 +13,4 @@ A LRGASP challenge entry is submitted to an evaluation for the LRGASP
 challenge.  In Synapse terminology, all of LRGASP is a challenge and each of
 the LRGASP challenges is an evaluation queue (also called a sub-challenge).
 
-FIXME: section needs finished once exact mechanism are tested.
+Section needs finished once exact mechanism are tested.
