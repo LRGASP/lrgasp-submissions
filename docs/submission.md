@@ -49,13 +49,13 @@ tools](submission-tools.md) before uploading.
 Challenge 1 model experiments must contain the following files:
 
 - `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- `models.gtf.gz` - [GTF file](model-format.md} with model annotations, compressed with gzip.
+- `models.gtf.gz` - [GTF file](model-format.md) with model annotations, compressed with gzip.
 - `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model the GTF with a least one read.
 
 Challenge 2 quantification experiments must contain the following files:
 
 - `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
-- `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment, which must be in TPM. See [Expression unit identifiers](metadata-identifiers.md#expression_unit_identifiers).
+- `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment, which must be in TPM.
 - `models.gtf.gz` - [GTF file](model-format.md} with target model annotations, compressed with gzip.
 
 Challenge 3 novel model experiments must contain the following files:
