@@ -36,6 +36,10 @@ Run `make lint-all` to run local lint both source and documentation lint.
 To verify the generate web documentation at [https://lrgasp.github.io/lrgasp-submissions/docs/](https://lrgasp.github.io/lrgasp-submissions/docs/),
 run `make lint-pages`.
 
+Checking  [https://lrgasp.github.io/lrgasp-submissions/docs/](https://lrgasp.github.io/lrgasp-submissions/docs/)
+against the [W3C Link Validator](http://validator.w3.org/) is also useful, as it finds
+broken HTML fragment links.  Set `Check linked documents recursively, recursion depth:` to 2.
+
 ## Build pip installable packages
 
 To build and test package

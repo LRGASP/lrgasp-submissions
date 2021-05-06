@@ -34,7 +34,7 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 * ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
 * ``Manatee`` - manatee whole blood
 
-## Experiment_data_categories
+## Experiment data categories
 
 They following symbols identify the data category to which the experiment belongs:
 
