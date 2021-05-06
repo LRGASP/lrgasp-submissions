@@ -14,6 +14,13 @@ Feature identifiers (transcripts and genes) and read identifiers may contain any
 
 Identifiers assigned by Synapse are in the form ```syn123456``.
 
+## Challenge identifiers
+
+* ``iso_detect_ref`` - Challenge 1: transcript isoform detection with a high-quality genome
+* ``iso_quant`` - Challenge 2: transcript isoform quantification
+* ``iso_detect_de_novo`` - Challenge 3: de novo transcript isoform detection
+
+
 ## Species identifiers
 
 * ``human`` - taxon 9606
