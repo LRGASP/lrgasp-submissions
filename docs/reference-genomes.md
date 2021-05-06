@@ -30,6 +30,14 @@ with the annotations in GTF format [lrgasp_sirvs4.gtf.gz](http://www.synpase.org
 * FASTA format compressed with bgzip for indexing with samtools
 * based on [GRCm39 mm39.fa.gz](https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz)
 
+### De novo ONT-based manatee genome
+
+* [lrgasp_manatee_sirv1.fasta.gz](http://www.synpase.org/syn0FIXME)
+* *De novo* assembly at the contig level of manatee genome using ONT sequencing. 
+* includes ERCC/SIRV spike-in genomic sequences
+* FASTA format compressed with bgzip for indexing with samtools
+* genomic material used came from the same individual (Lorelei) that was sequenced by the Broad Institute in 2012 for the [current reference genome of the manatee](https://www.ncbi.nlm.nih.gov/assembly/GCF_000243295.1/).
+
 ## Transcriptome References
 
 ### GENCODE V38-based human annotation set
