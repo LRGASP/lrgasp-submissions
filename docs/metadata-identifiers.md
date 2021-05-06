@@ -32,7 +32,7 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 
 The following public data repositories symbols are used to specify where non-LRGASP
 data used in experiments has been obtained, as specified in the experiment
-[experiment JSON ``extra_libraries`` field](metadata.md#experiment_json).
+[experiment JSON ``extra_libraries`` field](metadata.md#experimentjson).
 If another public archive is needed, please create an  issue in the
 [LRGASP submissions GitHub tracker](https://github.com/LRGASP/lrgasp-submissions/issues).
 

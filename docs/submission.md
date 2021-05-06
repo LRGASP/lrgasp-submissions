@@ -37,7 +37,7 @@ a `_` and a unique team-defined name.  For instance:
 - `iso_quant_ont_drna1`
 - `iso_detect_de_novo_pb1`
 
-The entry directory contains an `entry.json` [entry metadata](metadata.md#entry.json)
+The entry directory contains an `entry.json` [entry metadata](metadata.md#entryjson)
 describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the
 submitter-defined ``experiment_id`.
 
@@ -48,19 +48,19 @@ tools](submission-tools.md) before uploading.
 
 Challenge 1 model experiments must contain the following files:
 
-- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `experiment.json` - [Experiment metadata](metadata.md#experimentjson) describing the experiment results
 - `models.gtf.gz` - [GTF file](model-format.md) with model annotations, compressed with gzip.
 - `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model the GTF with a least one read.
 
 Challenge 2 quantification experiments must contain the following files:
 
-- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `experiment.json` - [Experiment metadata](metadata.md#experimentjson) describing the experiment results
 - `expression.tsv.gz` - [Expression matrix file](expression_matrix_format.md) with the results of the experiment, which must be in TPM.
 - `models.gtf.gz` - [GTF file](model-format.md) with target model annotations, compressed with gzip.
 
 Challenge 3 novel model experiments must contain the following files:
 
-- `experiment.json` - [Experiment metadata](metadata.md#experiment.json) describing the experiment results
+- `experiment.json` - [Experiment metadata](metadata.md#experimentjson) describing the experiment results
 - `rna.fasta.gz` - FASTA file with model RNA sequences, compressed with gzip.
 - `read_model_map.tsv.gz` [Read to model map file](read_model_map_format.md) that associates every transcript model in the FASTA with a least one read.
 
