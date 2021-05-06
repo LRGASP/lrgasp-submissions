@@ -41,8 +41,7 @@ The entry directory contains an `entry.json` [entry metadata](metadata.md#entryj
 describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the
 submitter-defined ``experiment_id`.
 
-All entries MUST be validated with the provided [submission
-tools](submission-tools.md) before uploading.
+All entries MUST be validated with the provided [submission tools](submission-tools.md) before uploading.
 
 ## Experiment structure
 
