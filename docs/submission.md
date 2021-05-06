@@ -14,10 +14,10 @@ the unit of both submission and evaluation.  The *experiments* in an *entry*
 should uses as similar a set of parameters and data to allow
 for the meaningful combination of the results.
 
-When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a [Synapse
-identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
-experiment identifiers assigned by the team and must be valid [symbolic
-identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
+When a team registers for LRGASP on [Synapse](https://www.synapse.org), they are assigned a
+[Synapse identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
+experiment identifiers assigned by the team and must be valid
+[symbolic identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
 ## Submission overview
 
@@ -37,8 +37,8 @@ a `_` and a unique team-defined name.  For instance:
 - `iso_quant_ont_drna1`
 - `iso_detect_de_novo_pb1`
 
-The entry directory contains an `entry.json` [entry
-metadata](metadata.md#entry.json) describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the
+The entry directory contains an `entry.json` [entry metadata](metadata.md#entry.json)
+describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the
 submitter-defined ``experiment_id`.
 
 All entries MUST be validated with the provided [submission
