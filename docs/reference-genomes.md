@@ -4,7 +4,7 @@
 
 ### Spike-in sequences
 
-Spike-ins are from the [Lexogne SIRV Set 4](https://www.lexogen.com/wp-content/uploads/2020/07/SIRV_Set4_Sequences_200709a.zip),
+Spike-ins are from the [Lexogen SIRV Set 4](https://www.lexogen.com/wp-content/uploads/2020/07/SIRV_Set4_Sequences_200709a.zip),
 consisting of both ERCCs and SIRVs.  Poly(A) tails are removed from the
 sequences to form genomic sequences and they are included in the reference
 genomes as individual sequences.  For multi-exon SIRVs, a single sequence is
