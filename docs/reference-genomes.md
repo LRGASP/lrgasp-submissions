@@ -35,7 +35,7 @@ with the annotations in GTF format [lrgasp_sirvs4.gtf.gz](syn3FIXME).
 ### GENCODE V38-based human annotation set
 
 * [lrgasp_gencode_v38.gtf.gz](syn0FIXME)
-* [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
+* [GTF format](https://www.ensembl.org/info/website/upload/gff.html)
 * excludes alt-locus sequences
 * includes ERCC/SIRV spike-in annotations
 * based on [gencode.v37.chr_patch_hapl_scaff.annotation.gtf.gz](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_37/gencode.v37.chr_patch_hapl_scaff.annotation.gtf.gz) with alts loci sequence removed
@@ -43,7 +43,7 @@ with the annotations in GTF format [lrgasp_sirvs4.gtf.gz](syn3FIXME).
 ### GENCODE VM27-based mouse annotation set
 
 * [lrgasp_gencode_vm27.gtf.gz](syn0FIXME)
-* [GTF format](https://uswest.ensembl.org/info/website/upload/gff.html)
+* [GTF format](https://www.ensembl.org/info/website/upload/gff.html)
 * includes ERCC/SIRV spike-in annotations
 * based on [gencode.vm27.chr_patch_hapl_scaff.annotation.gtf.gz](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M26/gencode.vM27.chr_patch_hapl_scaff.annotation.gtf.gz)
 
