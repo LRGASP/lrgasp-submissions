@@ -13,6 +13,8 @@ version = $(shell PYTHONPATH=lib ${PYTHON} -c "import lrgasp; print(lrgasp.__ver
 have_mdl = $(shell which mdl >&/dev/null && echo yes || echo no)
 have_mdlinkcheck = $(shell which markdown-link-check >&/dev/null && echo yes || echo no)
 
+github_pages_url = https://lrgasp.github.io/lrgasp-submissions/docs/
+
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
@@ -20,6 +22,7 @@ help:
 	@echo "lint - check style with flake8"
 	@echo "lint-doc - check documentation"
 	@echo "lint-all - lint plus lint-doc"
+	@echo "lint-pages - lint github pages, must have been pushed first"
 	@echo "test - run tests quickly with the default Python"
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
@@ -81,6 +84,10 @@ else
 check-doc-links:
 	@echo "Note: markdown-link-check not installed, not checking markdown links" >&2
 endif
+
+lint-pages:
+	linkchecker ${github_pages_url}
+
 
 test:
 	cd tests && ${MAKE} test

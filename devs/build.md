@@ -29,6 +29,12 @@ Markdown doc can be linted if the following packages are installed:
 
 * markdownlint (mdl) - Ruby package: `gem install mdl`
 * markdown-link-check - Node.js package: `npm install -g markdown-link-check`
+* LinkChecker - `pip3 install LinkChecker`
+
+Run `make lint-all` to run local lint both source and documentation lint.
+
+To verify the generate web documentation at [https://lrgasp.github.io/lrgasp-submissions/docs/](https://lrgasp.github.io/lrgasp-submissions/docs/),
+run `make lint-pages`.
 
 ## Build pip installable packages
 
