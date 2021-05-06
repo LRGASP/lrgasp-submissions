@@ -12,7 +12,7 @@ See [``entry.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/entry.json) 
 template is also available: [``entry.json``](../templates/entry.json).
 
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
-* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers)
+* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers)
 * ``team_id`` - the Synapse *team* identifier.
 * ``team_name`` - the name of the submitting lab
 * ``experiment_ids`` - Experiment ids, which is also the directory name containing the
@@ -34,11 +34,11 @@ See [``experiment.json``](../examples/darwin_lab/iso_detect_ref_ont_drna/drnaA/e
 An empty template is also available: [``experiment.json``](../templates/experiment.json).
 
 * ``experiment_id`` -  Experiment [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry, defined by the submitter.
-* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#LRGASP_Challenge_identifiers). This must match the value in``entry.json``.
+* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers). This must match the value in``entry.json``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
-* ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species_identifiers).
-* ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#Experiment_data_categories).
+* ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species-identifiers).
+* ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
 * ``libraries`` - list of LRGASP RNA-Seq file accessions used in the experiment. The file accessions are those found in the [LRGASP RNA-Seq Data Matrix](rnaseq-data-matrix.md). For non-kitchen sink experiments, only replicates of the same sample and library preparation.  It must be one sequence method, or one sequencing method plus Illumina short-read sequencing.   For kitchen sink experiments, any combination of LRGASP libraries may be specified, with at least one LRGASP library being used. For paired-end Illumina experiments, both pairs must be specified.
 * ``extra_libraries`` - list of non-LRGASP libraries files accessions that were used.  Optional; should be empty or omitted for non-kitchen sink experiments.
   * ``repository`` - Public repository where data was obtained; one of the values in

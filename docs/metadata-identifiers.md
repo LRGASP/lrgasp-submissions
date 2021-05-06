@@ -20,7 +20,6 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 * ``iso_quant`` - Challenge 2: transcript isoform quantification
 * ``iso_detect_de_novo`` - Challenge 3: de novo transcript isoform detection
 
-
 ## Species identifiers
 
 * ``human`` - taxon 9606
@@ -34,6 +33,15 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 * ``H1_mix`` - human H1 ES cell line mixed with human Definitive Endoderm derived from H1
 * ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
 * ``Manatee`` - manatee whole blood
+
+## Experiment_data_categories
+
+They following symbols identify the data category to which the experiment belongs:
+
+* ``long-only`` - uses only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
+* ``short-only`` - uses only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches.
+* ``long and short`` - uses only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used.
+* ``kitchen sink`` - any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *kitchen sink* experiments.
 
 ## Public repository identifiers
 
