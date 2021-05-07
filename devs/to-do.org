@@ -1,5 +1,5 @@
 * update ENCODE metadata
-* Can we add a column for ENCODE Biosample ID to the RNA-Seq matrix? https://www.encodeproject.org/biosamples/ENCBS944CBA/ (edited) 
+* should simulation have special library preps??
 * DOC:
 ** FAQ
 ** better data overview
