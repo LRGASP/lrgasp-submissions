@@ -9,6 +9,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -41,6 +44,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -73,6 +79,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -115,6 +124,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -147,6 +160,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -179,6 +196,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -221,6 +242,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -253,6 +277,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -285,6 +312,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -327,6 +357,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -359,6 +393,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -391,6 +429,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -433,6 +475,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -465,6 +510,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -497,6 +545,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -539,6 +590,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -571,6 +626,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -603,6 +662,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -671,6 +734,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -703,6 +769,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -735,6 +804,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -777,6 +849,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -809,6 +884,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -851,6 +929,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -883,6 +964,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -915,6 +999,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -957,6 +1044,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -989,6 +1080,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1021,6 +1116,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1063,6 +1162,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1095,6 +1197,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1127,6 +1232,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1169,6 +1277,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": "500-5000",
                 "files": [
                     {
@@ -1201,6 +1312,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": "500-5000",
                 "files": [
                     {
@@ -1233,6 +1347,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": "500-5000",
                 "files": [
                     {
@@ -1275,6 +1392,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1307,6 +1428,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1339,6 +1464,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1381,6 +1510,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1413,6 +1545,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1445,6 +1580,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": "600-5000",
                 "files": [
                     {
@@ -1487,6 +1625,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1532,6 +1673,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1577,6 +1721,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1632,6 +1779,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1677,6 +1828,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1722,6 +1877,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1777,6 +1936,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1835,6 +1997,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1893,6 +2058,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -1961,6 +2129,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -1993,6 +2165,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2025,6 +2201,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2067,6 +2247,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2099,6 +2282,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2131,6 +2317,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2173,6 +2362,10 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI",
+                    "ENCBS664DSZ"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2205,6 +2398,10 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC",
+                    "ENCBS872CFG"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2237,6 +2434,10 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC",
+                    "ENCBS971DDS"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2279,6 +2480,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2311,6 +2515,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2343,6 +2550,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2385,6 +2595,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS648HXY"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2417,6 +2630,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2449,6 +2665,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS418RDP"
+                ],
                 "size_range": "2000-10000",
                 "files": [
                     {
@@ -2491,6 +2710,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2523,6 +2745,9 @@
             },
             {
                 "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2555,6 +2780,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2597,6 +2825,9 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS944CBA"
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -2629,6 +2860,9 @@
             },
             {
                 "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS474NOC"
+                ],
                 "size_range": null,
                 "files": [
                     {

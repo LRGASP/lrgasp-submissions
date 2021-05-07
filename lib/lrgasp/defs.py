@@ -40,7 +40,8 @@ class LibraryPrep(SymEnum):
     R2C2 = auto()
     cDNA = auto()
     IsoSeqSim = auto()
-    Trans_NanoSim = auto()
+    Trans_NanoSim_cDNA = auto()
+    Trans_NanoSim_dRNA = auto()
     RSEM = auto()
 
 class Sample(SymEnum):

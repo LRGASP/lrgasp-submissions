@@ -9,6 +9,8 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -33,11 +35,13 @@
         "sample": "mouse_simulation",
         "run_acc": "syn25591653",
         "description": "LRGASP Mouse ONT dRNA simulated data",
-        "library_prep": "Trans-NanoSim (dRNA)",
+        "library_prep": "Trans_NanoSim_dRNA",
         "platform": "ONT",
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -67,6 +71,8 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -109,6 +115,8 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -134,11 +142,13 @@
         "sample": "human_simulation",
         "run_acc": "syn25604221",
         "description": "LRGASP Human ONT cDNA simulated data",
-        "library_prep": "Trans-NanoSim (cDNA)",
+        "library_prep": "Trans_NanoSim_cDNA",
 	"platform": "ONT",
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {
@@ -169,6 +179,8 @@
         "replicates": [
             {
                 "replicate_number": 1,
+                "biosample_accs": [
+                ],
                 "size_range": null,
                 "files": [
                     {

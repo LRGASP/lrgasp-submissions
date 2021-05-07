@@ -7,7 +7,8 @@ For developers of this package, not of general interest.
 * [build.md](build.md) - build, test and release instructions
 * bin/genSubmitTree - generate plot images for documentation
 * bin/editExampleJson - make ad-hoc edits to examples
-* bin/buildEncodeMetadata - converts dumps of ENCODE metadata to internal subset
+* bin/getEncodeMetadata - get JSON ENCODE metadata for LRGASP
+* bin/buildEncodeMetadata - converts ENCODE metadata to internal subset
 * bin/generateRnaSeqDataMatrix - generates RNA-Seq data matrix from RNA-Seq metadata
 * bin/fixLexogenSirvGtf - fix various problems with Lexogen-provided GTF
 

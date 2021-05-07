@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import json
+import argparse
+import requests
+
+def parse_args():
+    desc = """get JSON ENCODE metadata for LRGASP"""
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("encode_json",
+                        help="output")
+    return parser.parse_args()
+
+def queryMetadata():
+    headers = {'accept': 'application/json'}
+    url = 'https://www.encodeproject.org/search/?searchTerm=LRGASP&frame=object'
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+
+def main(args):
+    metadata = queryMetadata()
+    with open(args.encode_json, "w") as fh:
+        json.dump(metadata, fh, indent=4)
+
+main(parse_args())

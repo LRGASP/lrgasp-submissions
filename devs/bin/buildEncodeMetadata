@@ -23,15 +23,26 @@ def parse_args():
                         help="per-run dumps of encode metadata")
     return parser.parse_args()
 
+def encode_id_to_acc(eid):
+    "parse accession from @id like /files/ENCFF644AQW/"
+    parts = eid.split('/')
+    if len(parts) != 4:
+        raise LrgaspException(f"can't parse @id '{eid}'")
+    return parts[2]
+
+def get_biosamples(encode_md):
+    biosamples = []
+    for rep in encode_md.replicates:
+        if "biosample" in rep.library:
+            biosamples.append(rep.library.biosample)
+    return biosamples
 
 def determine_species(encode_md, sample):
     """figure out the species"""
     species = set()
-    for rep in encode_md.replicates:
-        if "biosample" in rep.library:
-            biosample = rep.library.biosample
-            if "organism" in biosample.donor:
-                species.add(biosample.donor.organism.name)
+    for biosample in get_biosamples(encode_md):
+        if "organism" in biosample.donor:
+            species.add(biosample.donor.organism.name)
     if len(species) == 0:
         if sample == Sample.H1_mix:
             return Species.human
@@ -133,7 +144,7 @@ def get_replicate(file_md):
 
 def parse_paired_end(file_md):
     # "paired_with" : "/files/ENCFF644AQW/",
-    return (file_md.paired_end, file_md.paired_with.split('/')[2])
+    return (file_md.paired_end, encode_id_to_acc(file_md.paired_with))
 
 def build_file(run, file_md):
     file_acc = file_md.accession
@@ -161,11 +172,23 @@ def build_files(encode_md, run, replicate_map):
         frec = build_file(run, file_md)
         replicate_map[frec.biological_replicate_number].files.append(frec)
 
+def get_replicate_biosample_accs(replicate):
+    accs = set()
+    if "biosample" in replicate.library:
+        accs.add(encode_id_to_acc(replicate.library.biosample["@id"]))
+    elif "mixed_biosamples" in replicate.library:
+        for bsid in replicate.library.mixed_biosamples:
+            accs.add(encode_id_to_acc(bsid))
+    else:
+        raise LrgaspException("can't fix replicate biosample accessions")
+    return sorted(accs)
+
 def build_replicates(encode_md):
     """replicates are a group of files"""
     replicate_map = {}
     for replicate in encode_md.replicates:
         rep = LrgaspReplicate(replicate.biological_replicate_number,
+                              get_replicate_biosample_accs(replicate),
                               replicate.library.get("size_range"))
         replicate_map[rep.replicate_number] = rep
     return replicate_map
@@ -178,7 +201,7 @@ def build_run(encode_md):
     platform = determine_platform(encode_md)
     library_prep = determine_library_prep(encode_md)
     species = determine_species(encode_md, sample)
-    # FIXME: tmp until R2C2 is fixed
+    # FIXME: tmp until R2C2 is fixed, allow no description
     description = encode_md.get("description", encode_md.accession)
     run = LrgaspRun(species=species, sample=sample, run_acc=run_acc,
                     description=description, library_prep=library_prep,
