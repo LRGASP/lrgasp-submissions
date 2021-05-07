@@ -33,7 +33,7 @@
         "sample": "mouse_simulation",
         "run_acc": "syn25591653",
         "description": "LRGASP Mouse ONT dRNA simulated data",
-        "library_prep": "Trans_NanoSim",
+        "library_prep": "Trans-NanoSim (dRNA)",
         "platform": "ONT",
         "replicates": [
             {
@@ -134,7 +134,7 @@
         "sample": "human_simulation",
         "run_acc": "syn25604221",
         "description": "LRGASP Human ONT cDNA simulated data",
-        "library_prep": "Trans_NanoSim",
+        "library_prep": "Trans-NanoSim (cDNA)",
 	"platform": "ONT",
         "replicates": [
             {
