@@ -15,8 +15,8 @@ PacBio error rate was estimated from the real LRGASP PacBio CCS data and expecte
 For ONT data default pre-trained models contained in NanoSim package were used.
 Expected error rates are ~16% for ONT cDNA and ~11% ONT dRNA.
 
-Detailed parameters usd for data simulation will remain undisclosed to *all* participants during the entire LRGAPS challenge.
+Detailed parameters used for data simulation will remain undisclosed to *all* participants during the entire LRGAPS challenge.
 
 For convenience of the LRGASP challenge participants we created a [simulation wrapper](https://github.com/LRGASP/lrgasp-simulation), which allows to easily
-generate synthetic data with described parameters. Thus, any participant may simulate data and perfrom their
+generate synthetic data with described characteristic. Thus, any participant may simulate data and perfrom their
 own benchmarks prior to submission. The wrapper is available [here](https://github.com/LRGASP/lrgasp-simulation).
