@@ -39,10 +39,6 @@ class LibraryPrep(SymEnum):
     dRNA = auto()
     R2C2 = auto()
     cDNA = auto()
-    IsoSeqSim = auto()
-    Trans_NanoSim_cDNA = auto()
-    Trans_NanoSim_dRNA = auto()
-    RSEM = auto()
 
 class Sample(SymEnum):
     """LRGASP sample identifier"""

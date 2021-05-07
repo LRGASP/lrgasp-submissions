@@ -4,7 +4,7 @@
         "sample": "mouse_simulation",
         "run_acc": "syn25591622",
         "description": "LRGASP Mouse PacBio simulated data",
-        "library_prep": "IsoSeqSim",
+        "library_prep": "cDNA",
         "platform": "PacBio",
         "replicates": [
             {
@@ -35,7 +35,7 @@
         "sample": "mouse_simulation",
         "run_acc": "syn25591653",
         "description": "LRGASP Mouse ONT dRNA simulated data",
-        "library_prep": "Trans_NanoSim_dRNA",
+        "library_prep": "dRNA",
         "platform": "ONT",
         "replicates": [
             {
@@ -66,7 +66,7 @@
         "sample": "mouse_simulation",
         "run_acc": "syn25591436",
         "description": "LRGASP Mouse Illumina simulated data",
-        "library_prep": "RSEM",
+        "library_prep": "cDNA",
         "platform": "Illumina",
         "replicates": [
             {
@@ -110,7 +110,7 @@
         "sample": "human_simulation",
         "run_acc": "syn25591693",
         "description": "LRGASP Human PacBio simulated data",
-        "library_prep": "IsoSeqSim",
+        "library_prep": "cDNA",
         "platform": "PacBio",
         "replicates": [
             {
@@ -142,7 +142,7 @@
         "sample": "human_simulation",
         "run_acc": "syn25604221",
         "description": "LRGASP Human ONT cDNA simulated data",
-        "library_prep": "Trans_NanoSim_cDNA",
+        "library_prep": "cDNA",
 	"platform": "ONT",
         "replicates": [
             {
@@ -174,7 +174,7 @@
         "sample": "human_simulation",
         "run_acc": "syn25591443",
         "description": "LRGASP Human Illumina simulated data",
-        "library_prep": "RSEM",
+        "library_prep": "cDNA",
         "platform": "Illumina",
         "replicates": [
             {

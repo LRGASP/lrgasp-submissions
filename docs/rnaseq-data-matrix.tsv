@@ -97,9 +97,9 @@ challenges	species	sample	library_prep	platform	run_acc	replicate	biosample	size
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	2	ENCBS012DYC ENCBS872CFG	600-5000	nanopore_signal	tar	ENCFF506RNI		https://www.encodeproject.org/files/ENCFF506RNI/@@download/ENCFF506RNI.tar.gz		s3://encode-private/2021/04/12/71287031-a5c5-469a-a788-989a7081c227/ENCFF506RNI.tar.gz	
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	3	ENCBS667PZC ENCBS971DDS	600-5000	reads	fastq	ENCFF389YOZ		https://www.encodeproject.org/files/ENCFF389YOZ/@@download/ENCFF389YOZ.fastq.gz		s3://encode-private/2021/04/12/d0b8eb8b-d15d-4d9e-b455-189b5cfd4443/ENCFF389YOZ.fastq.gz	
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	3	ENCBS667PZC ENCBS971DDS	600-5000	nanopore_signal	tar	ENCFF013SGT		https://www.encodeproject.org/files/ENCFF013SGT/@@download/ENCFF013SGT.tar.gz		s3://encode-private/2021/04/12/5304bc94-d3da-496b-888a-1c7dc17f2a9a/ENCFF013SGT.tar.gz	
-1,2	human	human_simulation	IsoSeqSim	PacBio	syn25591693	1			reads	fasta	syn25591693					
-1,2	human	human_simulation	Trans_NanoSim_cDNA	ONT	syn25604221	1			reads	fastq	syn25604221					
-1,2	human	human_simulation	RSEM	Illumina	syn25591443	1			reads	fastq	syn25591675	syn25591686				
+1,2	human	human_simulation	cDNA	Illumina	syn25591443	1			reads	fastq	syn25591675	syn25591686				
+1,2	human	human_simulation	cDNA	PacBio	syn25591693	1			reads	fasta	syn25591693					
+1,2	human	human_simulation	cDNA	ONT	syn25604221	1			reads	fastq	syn25604221					
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	1	ENCBS648HXY		reads	fastq	ENCFF535DQA		https://www.encodeproject.org/files/ENCFF535DQA/@@download/ENCFF535DQA.fastq.gz		s3://encode-private/2021/03/26/adc861f9-c19b-43a0-b7a4-a312e0abbc17/ENCFF535DQA.fastq.gz	
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	1	ENCBS648HXY		subreads	bam	ENCFF710FCJ		https://www.encodeproject.org/files/ENCFF710FCJ/@@download/ENCFF710FCJ.bam		s3://encode-files/2021/03/26/34e7c8eb-a050-4abd-a070-a3fafe5b05fe/ENCFF710FCJ.bam	
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	2	ENCBS951CRC		reads	fastq	ENCFF310IPO		https://www.encodeproject.org/files/ENCFF310IPO/@@download/ENCFF310IPO.fastq.gz		s3://encode-private/2021/03/26/98c25d09-c48e-4e53-bc5b-a4b0c6b86fbd/ENCFF310IPO.fastq.gz	
@@ -146,6 +146,6 @@ challenges	species	sample	library_prep	platform	run_acc	replicate	biosample	size
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	2	ENCBS951CRC	500-5000	nanopore_signal	tar	ENCFF209ZZU		https://www.encodeproject.org/files/ENCFF209ZZU/@@download/ENCFF209ZZU.tar.gz		s3://encode-private/2021/04/12/61998b95-d130-43d6-922e-fe95bda4b289/ENCFF209ZZU.tar.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	ENCBS418RDP	500-5000	reads	fastq	ENCFF288PBL		https://www.encodeproject.org/files/ENCFF288PBL/@@download/ENCFF288PBL.fastq.gz		s3://encode-private/2021/04/12/802c147f-f2dc-4de2-99f4-0bcc28dff7b4/ENCFF288PBL.fastq.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	ENCBS418RDP	500-5000	nanopore_signal	tar	ENCFF931ICQ		https://www.encodeproject.org/files/ENCFF931ICQ/@@download/ENCFF931ICQ.tar.gz		s3://encode-private/2021/04/12/edb604c2-ff2d-4d4d-a1fb-90ab251cf950/ENCFF931ICQ.tar.gz	
-1,2	mouse	mouse_simulation	IsoSeqSim	PacBio	syn25591622	1			reads	fasta	syn25591622					
-1,2	mouse	mouse_simulation	Trans_NanoSim_dRNA	ONT	syn25591653	1			reads	fastq	syn25591653					
-1,2	mouse	mouse_simulation	RSEM	Illumina	syn25591436	1			reads	fastq	syn25591503	syn25591548				
+1,2	mouse	mouse_simulation	dRNA	ONT	syn25591653	1			reads	fastq	syn25591653					
+1,2	mouse	mouse_simulation	cDNA	Illumina	syn25591436	1			reads	fastq	syn25591503	syn25591548				
+1,2	mouse	mouse_simulation	cDNA	PacBio	syn25591622	1			reads	fasta	syn25591622					
