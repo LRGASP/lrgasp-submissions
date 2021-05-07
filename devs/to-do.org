@@ -1,20 +1,29 @@
+* Can we add a column for ENCODE Biosample ID to the RNA-Seq matrix? https://www.encodeproject.org/biosamples/ENCBS944CBA/ (edited) 
+* DOC:
+** FAQ
+** better data overview
+** QC tables
+** self-evaluation
+* validate
+** create command line script to download all files
+** entry is against all samples
+** insure sizes select and non-size select?
+** no simulated in kitchen sink
+** only one kitchen sink
+** short-only - no 
+** does ch #3 require all samples?
+** only one entry per data category + library type
+* kitchen sink must be public at the start of the challange available
+* add manatee genome
 * SUBMISSION IMAGE
 ** code broken
 ** doesn't show model for quant
 ** should show denovo
 * issues:
 ** read_model_map for short-read only experiment?
-* remove lost of info with select catchs:
-except (LrgaspException, ParsingError, ValueError) as ex:
-        raise GtfException("Parse of GTF failed: {}".format(model_gtf)) from ex
 * metadata need
 manatee
 simulation
-* bad SIRV genes
-** SIRVs 1-6 have + and - strand “transcripts”
-** SIRV107has 
-SIRV107	unknownUtrSplice	CT..AG	SIRV1	11242	11403
-SIRV107	unknownUtrSplice	CT..AC	SIRV1	10791	10882
 * improve doc library prep method challenges.md
 * mention they must do their own alignments
 * fix example files software to match experiment types
