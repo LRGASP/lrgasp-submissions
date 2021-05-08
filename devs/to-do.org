@@ -1,5 +1,4 @@
 * update ENCODE metadata
-* should simulation have special library preps??
 * DOC:
 ** FAQ
 ** better data overview

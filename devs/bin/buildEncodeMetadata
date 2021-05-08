@@ -130,7 +130,7 @@ def determine_platform(encode_md):
     for file_md in encode_md.files:
         platforms.add(file_md.platform.term_name)
     if len(platforms) != 1:
-        raise LrgaspException(f"expected to parse one platform name, got {platform}")
+        raise LrgaspException(f"expected to parse one platform name, got {platforms}")
     pt = list(platforms)[0]
     if pt == 'Oxford Nanopore MinION':
         return Platform.ONT

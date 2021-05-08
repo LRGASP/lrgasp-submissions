@@ -6,7 +6,7 @@ import json
 from collections import namedtuple, defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, validate_symbolic_ident, EXPERIMENT_JSON
+from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, validate_symbolic_ident, EXPERIMENT_JSON, is_simulation
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
@@ -77,7 +77,7 @@ def find_dups(lst):
         found.add(v)
     return sorted(dups)
 
-def _get_libraries_file_metadata(rna_seq_md, experiment):
+def get_libraries_file_metadata(rna_seq_md, experiment):
     """collect metadata for all library files in experiment"""
     # exception if unknown acc
     return [rna_seq_md.get_file_by_acc(file_acc)
@@ -127,8 +127,7 @@ def get_run_type_descs(rna_seq_md, expr_file_mds):
     return ["{}: {}".format(str(rt), ", ".join(sorted(rt_to_file_acc[rt])))
             for rt in sorted(rt_to_file_acc.keys())]
 
-
-def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):
+def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C901
     """compatibility between libraries and experiments;"""
     data_category = experiment.data_category
     long_run_types, short_run_types = get_run_types(rna_seq_md, expr_file_mds)
@@ -136,24 +135,40 @@ def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):
     def _run_type_err_msg(rts):
         return "found: " + _fmt_run_types(rts) + " in these specified library files:\n    " + "\n    ".join(get_run_type_descs(rna_seq_md, expr_file_mds))
 
-    if data_category == DataCategory.short_only:
+    def _validate_short_only():
         if len(long_run_types) > 0:
             raise LrgaspException(f"{data_category} experiments must not use long-read platforms, " + _run_type_err_msg(long_run_types))
         if len(short_run_types) != 1:
             raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform, " + _run_type_err_msg(short_run_types))
-    elif data_category == DataCategory.long_only:
+
+    def _validate_long_only():
         if len(long_run_types) != 1:
             raise LrgaspException(f"{data_category} experiments must use one and only one long-read library/platform, " + _run_type_err_msg(long_run_types))
         if len(short_run_types) != 0:
             raise LrgaspException(f"{data_category} experiments must not use short read platforms, " + _run_type_err_msg(short_run_types))
-    elif data_category == DataCategory.long_short:
+
+    def _validate_long_short():
         if len(long_run_types) != 1:
             raise LrgaspException(f"{data_category} experiments must use one and only one long-read library/platform, " + _run_type_err_msg(long_run_types))
         if len(short_run_types) != 1:
             raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform, " + _run_type_err_msg(short_run_types))
-    elif data_category == DataCategory.kitchen_sink:
+
+    def _validate_kitchen_sink():
         if len(experiment.libraries) == 0:
             raise LrgaspException(f"{data_category} experiments must use some LRGASP RNA-Seq libraries")
+        # simulation not allowed:
+        for file_md in get_libraries_file_metadata(rna_seq_md, experiment):
+            if is_simulation(rna_seq_md.get_run_by_file_acc(file_md.file_acc).sample):
+                raise LrgaspException(f"{data_category} experiments may not use simulation data '{file_md.file_acc}'")
+
+    if data_category == DataCategory.short_only:
+        _validate_short_only()
+    elif data_category == DataCategory.long_only:
+        _validate_long_only()
+    elif data_category == DataCategory.long_short:
+        _validate_long_short()
+    elif data_category == DataCategory.kitchen_sink:
+        _validate_kitchen_sink()
     else:
         raise LrgaspException("bug")
 
@@ -172,7 +187,7 @@ def libraries_validate(experiment):
         raise LrgaspException(f"duplicate accession in libraries: {dups}")
 
     # per library validation
-    expr_file_mds = _get_libraries_file_metadata(rna_seq_md, experiment)
+    expr_file_mds = get_libraries_file_metadata(rna_seq_md, experiment)
     for file_md in expr_file_mds:
         library_validate(experiment, rna_seq_md, file_md)
 

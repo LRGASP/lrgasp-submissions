@@ -130,3 +130,6 @@ def get_challenge_samples(challenge_id):
 
 def sample_to_challenges(sample):
     return _sample_challenge_map[sample]
+
+def is_simulation(sample):
+    return sample in (Sample.human_simulation, Sample.mouse_simulation)
