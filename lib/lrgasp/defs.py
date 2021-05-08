@@ -45,7 +45,7 @@ class Sample(SymEnum):
     WTC11 = auto()
     H1_mix = auto()
     ES = auto()
-    Manatee = auto()
+    blood = auto()
     mouse_simulation = auto()
     human_simulation = auto()
 
@@ -99,7 +99,7 @@ def sample_to_species(sample):
         return Species.human
     elif sample == Sample.ES:
         return Species.model
-    elif sample == Sample.Manatee:
+    elif sample == Sample.blood:
         return Species.manatee
     else:
         raise LrgaspException(f"bug mapping sample '{sample}' to a species")
@@ -108,7 +108,7 @@ def sample_to_species(sample):
 _challenge_sample_map = {
     Challenge.iso_detect_ref: frozenset([Sample.WTC11, Sample.H1_mix, Sample.ES, Sample.mouse_simulation, Sample.human_simulation]),
     Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix, Sample.mouse_simulation, Sample.human_simulation]),
-    Challenge.iso_detect_de_novo: frozenset([Sample.Manatee, Sample.ES]),
+    Challenge.iso_detect_de_novo: frozenset([Sample.blood, Sample.ES]),
 }
 
 def _build_sample_challenge_map():

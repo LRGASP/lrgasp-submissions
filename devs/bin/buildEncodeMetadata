@@ -41,8 +41,11 @@ def determine_species(encode_md, sample):
     """figure out the species"""
     species = set()
     for biosample in get_biosamples(encode_md):
-        if "organism" in biosample.donor:
+        if ("donor" in biosample) and ("organism" in biosample.donor):
             species.add(biosample.donor.organism.name)
+        elif "organism" in biosample:
+            species.add(biosample.organism.name)
+
     if len(species) == 0:
         if sample == Sample.H1_mix:
             return Species.human
@@ -62,6 +65,8 @@ def determine_sample(encode_md):
         return Sample.H1_mix
     elif biosample == "WTC11":
         return Sample.WTC11
+    elif biosample == "peripheral blood mononuclear cell":
+        return Sample.blood
     else:
         raise LrgaspException(f"unable to determine sample from biosample_summary: {biosample}")
 
@@ -129,9 +134,9 @@ def determine_platform(encode_md):
     pt = list(platforms)[0]
     if pt == 'Oxford Nanopore MinION':
         return Platform.ONT
-    elif pt == 'Pacific Biosciences Sequel II':
+    elif pt.startswith('Pacific Biosciences Sequel'):
         return Platform.PacBio
-    elif pt == 'Illumina HiSeq 2500':
+    elif pt.startswith('Illumina HiSeq'):
         return Platform.Illumina
     else:
         raise LrgaspException(f"can't convert platform {pt}")

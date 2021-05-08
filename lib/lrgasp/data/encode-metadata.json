@@ -840,6 +840,563 @@
         ]
     },
     {
+        "species": "manatee",
+        "sample": "blood",
+        "run_acc": "ENCSR272BQI",
+        "description": "PacBio (Sequel II) Long-read RNA-Seq experiment of a pool of manatee blood samples.",
+        "library_prep": "cDNA",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS028XVY"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF835YMN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF835YMN/@@download/ENCFF835YMN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/30/3ca60c6d-ec13-42f6-a283-8ea6d82af206/ENCFF835YMN.fastq.gz",
+                        "file_size": 1710097650,
+                        "md5sum": "124dfd22f2d1a5a2a9711afd4781a7db",
+                        "run_acc": "ENCSR272BQI",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF123MVQ",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF123MVQ/@@download/ENCFF123MVQ.bam",
+                        "s3_uri": "s3://encode-public/2021/04/30/4438c259-a9f0-4616-8e1c-859a02b98248/ENCFF123MVQ.bam",
+                        "file_size": 423323649447,
+                        "md5sum": "507dbb5563f4b4c4de871c8bb120489b",
+                        "run_acc": "ENCSR272BQI",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF058GPT",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF058GPT/@@download/ENCFF058GPT.bam",
+                        "s3_uri": "s3://encode-public/2021/04/30/6fb61a1e-0ff7-4bc7-8432-b801528cd061/ENCFF058GPT.bam",
+                        "file_size": 519921798693,
+                        "md5sum": "f848cb5b9d82f4e2ceb2b7cf52d59a9b",
+                        "run_acc": "ENCSR272BQI",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF529XIE",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF529XIE/@@download/ENCFF529XIE.bam",
+                        "s3_uri": "s3://encode-public/2021/04/30/74e71399-2860-4910-95aa-ee5dce3649d5/ENCFF529XIE.bam",
+                        "file_size": 529693565264,
+                        "md5sum": "85c7c0517d67eec8b08b606c402a4e04",
+                        "run_acc": "ENCSR272BQI",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "manatee",
+        "sample": "blood",
+        "run_acc": "ENCSR513JKI",
+        "description": "Short-read RNA-Seq experiment of blood sample from 9 manatees.",
+        "library_prep": "cDNA",
+        "platform": "Illumina",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS538IUC"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF646MEJ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF646MEJ/@@download/ENCFF646MEJ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/046a80b4-55dd-4b47-bd3e-e2ec4f082721/ENCFF646MEJ.fastq.gz",
+                        "file_size": 4304069720,
+                        "md5sum": "5955bf377e8e5c30e350ed52b70648d6",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF402UPZ"
+                    },
+                    {
+                        "file_acc": "ENCFF402UPZ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF402UPZ/@@download/ENCFF402UPZ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/74046633-ac72-4715-a87a-f2714ccd4808/ENCFF402UPZ.fastq.gz",
+                        "file_size": 4643657575,
+                        "md5sum": "edbb779d4ed924e17561e63f55d1c1fc",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF646MEJ"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS797CKD"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF380MWG",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF380MWG/@@download/ENCFF380MWG.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/68d73494-610f-4f96-a9cd-29cb4a2d2ce0/ENCFF380MWG.fastq.gz",
+                        "file_size": 4107593959,
+                        "md5sum": "25ffe8b6c5941c7bc9584956d67e960d",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF293HYT"
+                    },
+                    {
+                        "file_acc": "ENCFF293HYT",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF293HYT/@@download/ENCFF293HYT.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/dc8aff09-7bae-465f-bec8-f5ed40dbe680/ENCFF293HYT.fastq.gz",
+                        "file_size": 4627732885,
+                        "md5sum": "df03e1e8abb8a3ad81b2f838a3a57d48",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF380MWG"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS193IGY"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF195QJY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF195QJY/@@download/ENCFF195QJY.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/464e63ad-15ae-4405-9e94-0850b8872373/ENCFF195QJY.fastq.gz",
+                        "file_size": 3425167892,
+                        "md5sum": "d11e1152165ba0f56b0d5c29503b335a",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF704YKH"
+                    },
+                    {
+                        "file_acc": "ENCFF704YKH",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF704YKH/@@download/ENCFF704YKH.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/642217a8-555c-47c6-9e1b-505844061a79/ENCFF704YKH.fastq.gz",
+                        "file_size": 3615076979,
+                        "md5sum": "298c765ab14455bef42b04b51a5b4ad6",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF195QJY"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 4,
+                "biosample_accs": [
+                    "ENCBS621PNS"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF447NFQ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF447NFQ/@@download/ENCFF447NFQ.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/9fa7a633-5def-4881-8a3d-c67bd46de7d5/ENCFF447NFQ.fastq.gz",
+                        "file_size": 3133118407,
+                        "md5sum": "c6340ba6f98ab20db19aa0c3182d836c",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 4,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF031QKC"
+                    },
+                    {
+                        "file_acc": "ENCFF031QKC",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF031QKC/@@download/ENCFF031QKC.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/0e962f8b-1671-4abb-841b-535ff6c3980f/ENCFF031QKC.fastq.gz",
+                        "file_size": 3515940073,
+                        "md5sum": "987b61fc1e148fcbab79bac9243d05b8",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 4,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF447NFQ"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 5,
+                "biosample_accs": [
+                    "ENCBS416GXR"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF968KOV",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF968KOV/@@download/ENCFF968KOV.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/bf11827d-448a-4cd4-bd39-8c0d2f637316/ENCFF968KOV.fastq.gz",
+                        "file_size": 7168301239,
+                        "md5sum": "48f4e13b5984c6b13e4ff1d6be8666fb",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 5,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF803GHI"
+                    },
+                    {
+                        "file_acc": "ENCFF803GHI",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF803GHI/@@download/ENCFF803GHI.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/db466e08-cefb-47a5-87f3-03f64b8faf66/ENCFF803GHI.fastq.gz",
+                        "file_size": 7934300969,
+                        "md5sum": "ede687470095712fa2856b25c50dc174",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 5,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF968KOV"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 6,
+                "biosample_accs": [
+                    "ENCBS689ZOI"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF112OQR",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF112OQR/@@download/ENCFF112OQR.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/1634a16d-e993-4910-8566-01ea8b1db80d/ENCFF112OQR.fastq.gz",
+                        "file_size": 5478089428,
+                        "md5sum": "904d3b9c543aa9fddd223eb5c0da3411",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 6,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF530SHH"
+                    },
+                    {
+                        "file_acc": "ENCFF530SHH",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF530SHH/@@download/ENCFF530SHH.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/a06902c0-5a21-4c13-90a9-081b00b69ddd/ENCFF530SHH.fastq.gz",
+                        "file_size": 6559322321,
+                        "md5sum": "1704bb16748759362a542e7fd63610fa",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 6,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF112OQR"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 7,
+                "biosample_accs": [
+                    "ENCBS235LIE"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF411RUT",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF411RUT/@@download/ENCFF411RUT.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/1f06062c-ade9-4d89-acb1-43d08954ca9e/ENCFF411RUT.fastq.gz",
+                        "file_size": 11482097453,
+                        "md5sum": "70bb0d7eac10e21013afde94f0d456c0",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 7,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF029FVJ"
+                    },
+                    {
+                        "file_acc": "ENCFF029FVJ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF029FVJ/@@download/ENCFF029FVJ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/0add0ba0-4e72-46c0-b969-d75b13eba518/ENCFF029FVJ.fastq.gz",
+                        "file_size": 12818690658,
+                        "md5sum": "317fc041ced4ec9f25ff4f5adad8ea6f",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 7,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF411RUT"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 8,
+                "biosample_accs": [
+                    "ENCBS014III"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF970WAY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF970WAY/@@download/ENCFF970WAY.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/c62a714c-9c2a-4ee3-9091-35ee6991632c/ENCFF970WAY.fastq.gz",
+                        "file_size": 5453264975,
+                        "md5sum": "0edfa20197aff443fabfcf9e66304da2",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 8,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF940ZOB"
+                    },
+                    {
+                        "file_acc": "ENCFF940ZOB",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF940ZOB/@@download/ENCFF940ZOB.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/d70ee7da-281c-4aa7-8403-b2d876ce74df/ENCFF940ZOB.fastq.gz",
+                        "file_size": 6340410215,
+                        "md5sum": "3354122f75f044bd828b8d0901ccc879",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 8,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF970WAY"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 9,
+                "biosample_accs": [
+                    "ENCBS169YJA"
+                ],
+                "size_range": "300-350",
+                "files": [
+                    {
+                        "file_acc": "ENCFF382JPM",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF382JPM/@@download/ENCFF382JPM.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/51fc28e7-5d4e-4663-b8d9-8a434859ca9a/ENCFF382JPM.fastq.gz",
+                        "file_size": 5262808717,
+                        "md5sum": "70ab56e88211488a52a7208f25d78953",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 9,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF028TCU"
+                    },
+                    {
+                        "file_acc": "ENCFF028TCU",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF028TCU/@@download/ENCFF028TCU.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/29/c8652af7-3dff-405c-a879-c87297b77037/ENCFF028TCU.fastq.gz",
+                        "file_size": 6045400355,
+                        "md5sum": "f569a140a2981017bdcf1faa55d4f3d9",
+                        "run_acc": "ENCSR513JKI",
+                        "biological_replicate_number": 9,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF382JPM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "manatee",
+        "sample": "blood",
+        "run_acc": "ENCSR583MLP",
+        "description": "PacBio (Sequel I) Long-read RNA-Seq experiment of a pool of manatee blood samples. Enriched for fragments >2.5kb.",
+        "library_prep": "cDNA",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS028XVY"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF973PES",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF973PES/@@download/ENCFF973PES.bam",
+                        "s3_uri": "s3://encode-public/2021/04/29/4d789137-ea70-4690-8f85-7d7df2bbbf3c/ENCFF973PES.bam",
+                        "file_size": 46131039746,
+                        "md5sum": "0b9109a81139a9c40c1ec3bb4e324d2c",
+                        "run_acc": "ENCSR583MLP",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF589LDN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF589LDN/@@download/ENCFF589LDN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/ab77bb35-68a3-4c2a-99d6-990178ecde36/ENCFF589LDN.fastq.gz",
+                        "file_size": 234217238,
+                        "md5sum": "9ec9edf6425331a94327546b74932424",
+                        "run_acc": "ENCSR583MLP",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "manatee",
+        "sample": "blood",
+        "run_acc": "ENCSR703ZIY",
+        "description": "ONT Long-read RNA-Seq experiment of a pool of manatee blood samples. Enriched for fragments >2.5kb.",
+        "library_prep": "cDNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS028XVY"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF527WMT",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF527WMT/@@download/ENCFF527WMT.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/30/84e04752-0a5d-4ff7-8d62-9c8c3322b7fa/ENCFF527WMT.tar.gz",
+                        "file_size": 151696443464,
+                        "md5sum": "b0f0c3562977ce6688d82960002b1533",
+                        "run_acc": "ENCSR703ZIY",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF629AWL",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF629AWL/@@download/ENCFF629AWL.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/30/ba717efa-ff37-4e78-876e-ffaafc6202f5/ENCFF629AWL.fastq.gz",
+                        "file_size": 4543114796,
+                        "md5sum": "10b089f303121ad470a498fd175d0adb",
+                        "run_acc": "ENCSR703ZIY",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "manatee",
+        "sample": "blood",
+        "run_acc": "ENCSR941VON",
+        "description": "ONT Long-read RNA-Seq experiment of a pool of manatee blood samples.",
+        "library_prep": "cDNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS028XVY"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF691IHT",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF691IHT/@@download/ENCFF691IHT.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/29/fdc6467c-e6c7-4627-9720-dc4fe64a3dc6/ENCFF691IHT.tar.gz",
+                        "file_size": 159782404362,
+                        "md5sum": "ffba29e9d7737952958c41d65870e7dc",
+                        "run_acc": "ENCSR941VON",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF090GGQ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF090GGQ/@@download/ENCFF090GGQ.fastq.gz",
+                        "s3_uri": "s3://encode-private/2021/04/30/038e18c1-1747-4738-860a-eb591dcaabf0/ENCFF090GGQ.fastq.gz",
+                        "file_size": 11421451092,
+                        "md5sum": "fb9bc7759c4ae07a317363d2ce5753be",
+                        "run_acc": "ENCSR941VON",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF268XPT",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF268XPT/@@download/ENCFF268XPT.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/30/53c3dca3-c35e-45c1-9da1-b1d79e4651eb/ENCFF268XPT.tar.gz",
+                        "file_size": 286205312024,
+                        "md5sum": "81e362c4aba854b09ff3063c6e077500",
+                        "run_acc": "ENCSR941VON",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF620ASK",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF620ASK/@@download/ENCFF620ASK.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/30/36e175e3-dd91-4a39-958c-a5e912a118c3/ENCFF620ASK.fastq.gz",
+                        "file_size": 20608100387,
+                        "md5sum": "77799f9acc93f7d4012128fcaccf1fd0",
+                        "run_acc": "ENCSR941VON",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "species": "mouse",
         "sample": "ES",
         "run_acc": "ENCSR369OLY",
