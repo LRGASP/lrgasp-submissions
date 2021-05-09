@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_long_genome_challenge.json
+caused by: long_genome only allowed for Challenge 3 (Challenge.iso_detect_de_novo)

@@ -25,6 +25,7 @@ class DataCategory(SymEnum):
     long_only = auto()
     short_only = auto()
     long_short = auto()
+    long_genome = auto()
     kitchen_sink = auto()
 
 class Platform(SymEnum):

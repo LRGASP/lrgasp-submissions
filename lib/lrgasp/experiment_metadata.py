@@ -153,10 +153,15 @@ def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C
         if len(short_run_types) != 1:
             raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform, " + _run_type_err_msg(short_run_types))
 
+    def _validate_long_genome():
+        if experiment.challenge_id != Challenge.iso_detect_de_novo:
+            raise LrgaspException(f"{data_category} only allowed for Challenge {Challenge.iso_detect_de_novo.value} (Challenge.iso_detect_de_novo)")
+        _validate_long_only()
+
     def _validate_kitchen_sink():
         if len(experiment.libraries) == 0:
             raise LrgaspException(f"{data_category} experiments must use some LRGASP RNA-Seq libraries")
-        # simulation not allowed:
+        # simulation not allowed
         for file_md in get_libraries_file_metadata(rna_seq_md, experiment):
             if is_simulation(rna_seq_md.get_run_by_file_acc(file_md.file_acc).sample):
                 raise LrgaspException(f"{data_category} experiments may not use simulation data '{file_md.file_acc}'")
@@ -167,6 +172,8 @@ def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C
         _validate_long_only()
     elif data_category == DataCategory.long_short:
         _validate_long_short()
+    elif data_category == DataCategory.long_genome:
+        _validate_long_genome()
     elif data_category == DataCategory.kitchen_sink:
         _validate_kitchen_sink()
     else:
