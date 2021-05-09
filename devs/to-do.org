@@ -7,7 +7,6 @@
 * validate
 ** 1&2n all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the long and short and kitchen sink category, additional transcriptome references can be used.
 ** 3 In all the above categories, except for kitchen sink a transcriptome reference CANNOT be used.
-** transcriptome 
 ** create command line script to download all files
 ** entry is against all samples
 ** insure sizes select and non-size select?

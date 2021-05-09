@@ -10,47 +10,30 @@ from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, 
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
-fld_experiment_id = Field("experiment_id", validator=validate_symbolic_ident)
-fld_challenge_id = Field("challenge_id", Challenge)
-fld_description = Field("description")
-fld_species = Field("species", Species)
-fld_data_category = Field("data_category", DataCategory)
-fld_libraries = Field("libraries", list, element_dtype=str, validator=validate_symbolic_ident)
-fld_extra_libraries = Field("extra_libraries", list, optional=True, allow_empty=True, element_dtype=dict)
-fld_software = Field("software", list, element_dtype=dict)
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
 experiment_fields = (
-    fld_experiment_id,
-    fld_challenge_id,
-    fld_species,
-    fld_description,
-    fld_data_category,
-    fld_libraries,
-    fld_extra_libraries,
-    fld_software,
+    Field("experiment_id", validator=validate_symbolic_ident),
+    Field("challenge_id", Challenge),
+    Field("description"),
+    Field("species", Species),
+    Field("data_category", DataCategory),
+    Field("libraries", list, element_dtype=str, validator=validate_symbolic_ident),
+    Field("extra_libraries", list, optional=True, allow_empty=True, element_dtype=dict),
+    Field("software", list, element_dtype=dict),
     fld_notes,
 )
 
-fld_acc = Field("acc")
-fld_repository = Field("repository", Repository)
-
-extra_library_fields = (
-    fld_acc,
-    fld_repository,
+extra_libraries_fields = (
+    Field("acc"),
+    Field("repository", Repository),
     fld_notes,
 )
-
-fld_name = Field("name")
-fld_version = Field("version")
-fld_url = Field("url", validator=validate_url)
-fld_config = Field("url", allow_empty=True, optional=True)
 
 experiment_software_fields = (
-    fld_name,
-    fld_version,
-    fld_url,
-    fld_config,
+    Field("name"),
+    Field("version"),
+    Field("url", validator=validate_url),
     fld_notes,
 )
 
@@ -65,7 +48,7 @@ class RunType(namedtuple("RunType",
 
 
 def get_extra_libraries(experiment):
-    """get the extra libraries field, or empty if not specified"""
+    """get the extra_libraries field, or empty if not specified"""
     return experiment.get("extra_libraries", ())
 
 def find_dups(lst):
@@ -202,9 +185,9 @@ def libraries_validate(experiment):
     libraries_validate_compat(experiment, rna_seq_md, expr_file_mds)
     libraries_validate_paired_end(rna_seq_md, expr_file_mds)
 
-def extra_library_validate(extra_library):
-    desc = "experiment.extra_libraries"
-    check_from_defs(desc, extra_library_fields, extra_library)
+def extra_library_validate(extra_libraries, ilib):
+    desc = f"experiment.extra_libraries[{ilib}]"
+    check_from_defs(desc, extra_libraries_fields, extra_libraries[ilib])
 
 def extra_libraries_validate(experiment):
     if experiment.data_category != DataCategory.kitchen_sink:
@@ -212,8 +195,8 @@ def extra_libraries_validate(experiment):
     dups = find_dups([el.acc for el in experiment.extra_libraries])
     if len(dups) > 0:
         raise LrgaspException(f"duplicate accession in extra libraries: {dups}")
-    for extra_library in experiment.extra_libraries:
-        extra_library_validate(extra_library)
+    for ilib in range(len(experiment.extra_libraries)):
+        extra_library_validate(experiment.extra_libraries, ilib)
 
 def experiment_validate(experiment):
     desc = "experiment"
