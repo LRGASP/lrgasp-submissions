@@ -190,8 +190,8 @@ def extra_library_validate(extra_libraries, ilib):
     check_from_defs(desc, extra_libraries_fields, extra_libraries[ilib])
 
 def extra_libraries_validate(experiment):
-    if experiment.data_category != DataCategory.kitchen_sink:
-        raise LrgaspException("experiment extra_libraries may only be specified for kitchen_sink experiments")
+    if experiment.data_category not in (DataCategory.long_short, DataCategory.kitchen_sink):
+        raise LrgaspException("experiment extra_libraries may only be specified for 'long_short' or 'kitchen_sink' experiments")
     dups = find_dups([el.acc for el in experiment.extra_libraries])
     if len(dups) > 0:
         raise LrgaspException(f"duplicate accession in extra libraries: {dups}")

@@ -1,23 +1,12 @@
 {
     "experiment_id": "model_ont_drna",
     "challenge_id": "iso_detect_ref",
-    "description": "long/short good",
+    "description": "long only with extra libraries",
     "species": "mouse",
-    "data_category": "long_short",
+    "data_category": "long_only",
     "libraries": [
-        "ENCFF521IDK",
-        "ENCFF006WNS",
-        "ENCFF914YPT",
-        "ENCFF089PFT",
         "ENCFF874VSI",
-        "ENCFF564NGV",
-        "ENCFF714ZJR",
-        "ENCFF667VXS",
-        "ENCFF493CBP",
-        "ENCFF993JVA",
-        "ENCFF313VYZ",
-        "ENCFF094NZA",
-        "ENCFF280DWZ"
+        "ENCFF667VXS"
     ],
     "extra_libraries": [
         {
