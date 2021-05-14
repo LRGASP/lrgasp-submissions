@@ -1415,7 +1415,7 @@
                         "file_acc": "ENCFF914OBQ",
                         "file_type": "tar",
                         "url": "https://www.encodeproject.org/files/ENCFF914OBQ/@@download/ENCFF914OBQ.tar.gz",
-                        "s3_uri": "s3://encode-private/2021/04/07/3c9d32af-5d7e-4f15-af7a-419679d651a4/ENCFF914OBQ.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/3c9d32af-5d7e-4f15-af7a-419679d651a4/ENCFF914OBQ.tar.gz",
                         "file_size": 79197512912,
                         "md5sum": "2f4751aabf1884756be40ee607f117f3",
                         "run_acc": "ENCSR369OLY",
@@ -1428,11 +1428,46 @@
                         "file_acc": "ENCFF765AEC",
                         "file_type": "fastq",
                         "url": "https://www.encodeproject.org/files/ENCFF765AEC/@@download/ENCFF765AEC.fastq.gz",
-                        "s3_uri": "s3://encode-files/2021/04/07/8b970935-b98c-4328-85bd-8c809d7af383/ENCFF765AEC.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/8b970935-b98c-4328-85bd-8c809d7af383/ENCFF765AEC.fastq.gz",
                         "file_size": 1279199619,
                         "md5sum": "89769cc09c1948c6432288dd2074b4ac",
                         "run_acc": "ENCSR369OLY",
                         "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS951CRC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF793LSF",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF793LSF/@@download/ENCFF793LSF.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/05/06/67cae41b-cdc8-4002-9ac7-aab63805913d/ENCFF793LSF.tar.gz",
+                        "file_size": 183841210943,
+                        "md5sum": "b5f3d24d5c4d3cedda79d8c358c2b8f9",
+                        "run_acc": "ENCSR369OLY",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF349BIN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF349BIN/@@download/ENCFF349BIN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/05/06/57f48674-eba1-4561-bee5-83c0ec146b49/ENCFF349BIN.fastq.gz",
+                        "file_size": 2758237279,
+                        "md5sum": "a06de562ba5aee528021cf0636465fad",
+                        "run_acc": "ENCSR369OLY",
+                        "biological_replicate_number": 2,
                         "output_type": "reads",
                         "paired_end": null,
                         "paired_with": null
@@ -1450,7 +1485,7 @@
                         "file_acc": "ENCFF464USM",
                         "file_type": "tar",
                         "url": "https://www.encodeproject.org/files/ENCFF464USM/@@download/ENCFF464USM.tar.gz",
-                        "s3_uri": "s3://encode-private/2021/04/07/44377850-cfd8-46fc-8e14-3ff839b44133/ENCFF464USM.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/44377850-cfd8-46fc-8e14-3ff839b44133/ENCFF464USM.tar.gz",
                         "file_size": 74183953697,
                         "md5sum": "3247c557de2978111313ce5a04dfd80c",
                         "run_acc": "ENCSR369OLY",
@@ -1463,7 +1498,7 @@
                         "file_acc": "ENCFF412NKJ",
                         "file_type": "fastq",
                         "url": "https://www.encodeproject.org/files/ENCFF412NKJ/@@download/ENCFF412NKJ.fastq.gz",
-                        "s3_uri": "s3://encode-files/2021/04/07/9c305104-c1e0-497b-88be-c0466fbc7e22/ENCFF412NKJ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/9c305104-c1e0-497b-88be-c0466fbc7e22/ENCFF412NKJ.fastq.gz",
                         "file_size": 1137518244,
                         "md5sum": "ede197df4548756a4e41eec134ee1c8a",
                         "run_acc": "ENCSR369OLY",
@@ -3391,7 +3426,7 @@
                         "file_acc": "ENCFF146MTW",
                         "file_type": "tar",
                         "url": "https://www.encodeproject.org/files/ENCFF146MTW/@@download/ENCFF146MTW.tar.gz",
-                        "s3_uri": "s3://encode-private/2021/04/07/7e19cd87-1199-4efd-94da-21349ad7b30b/ENCFF146MTW.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/7e19cd87-1199-4efd-94da-21349ad7b30b/ENCFF146MTW.tar.gz",
                         "file_size": 60458121950,
                         "md5sum": "b7e38c9bbcc7c786da0dc118cf1fb009",
                         "run_acc": "ENCSR392BGY",
@@ -3404,11 +3439,46 @@
                         "file_acc": "ENCFF155CFF",
                         "file_type": "fastq",
                         "url": "https://www.encodeproject.org/files/ENCFF155CFF/@@download/ENCFF155CFF.fastq.gz",
-                        "s3_uri": "s3://encode-files/2021/04/07/6b54b9f1-6612-447c-8421-c7ad431063c6/ENCFF155CFF.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/6b54b9f1-6612-447c-8421-c7ad431063c6/ENCFF155CFF.fastq.gz",
                         "file_size": 954758087,
                         "md5sum": "78d7566c453e2d485810d460e5c455c3",
                         "run_acc": "ENCSR392BGY",
                         "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS593PKA"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF389XGB",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF389XGB/@@download/ENCFF389XGB.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/05/06/498793b0-c258-41b7-b134-4a1626937b40/ENCFF389XGB.tar.gz",
+                        "file_size": 170405977017,
+                        "md5sum": "ae11fe3511ada601fc14f4717d071193",
+                        "run_acc": "ENCSR392BGY",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF771DIX",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF771DIX/@@download/ENCFF771DIX.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/05/06/15245caa-8521-4821-ab0a-541f4ac51069/ENCFF771DIX.fastq.gz",
+                        "file_size": 2591167118,
+                        "md5sum": "206795731759937be7e3092613937079",
+                        "run_acc": "ENCSR392BGY",
+                        "biological_replicate_number": 2,
                         "output_type": "reads",
                         "paired_end": null,
                         "paired_with": null
@@ -3426,7 +3496,7 @@
                         "file_acc": "ENCFF591QYR",
                         "file_type": "tar",
                         "url": "https://www.encodeproject.org/files/ENCFF591QYR/@@download/ENCFF591QYR.tar.gz",
-                        "s3_uri": "s3://encode-private/2021/04/07/a4092f54-9463-4256-afb4-9cccf1d7bb29/ENCFF591QYR.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/a4092f54-9463-4256-afb4-9cccf1d7bb29/ENCFF591QYR.tar.gz",
                         "file_size": 31753212215,
                         "md5sum": "6a5cbfe44dfcae44c5301b52290c317f",
                         "run_acc": "ENCSR392BGY",
@@ -3439,7 +3509,7 @@
                         "file_acc": "ENCFF600LIU",
                         "file_type": "fastq",
                         "url": "https://www.encodeproject.org/files/ENCFF600LIU/@@download/ENCFF600LIU.fastq.gz",
-                        "s3_uri": "s3://encode-files/2021/04/07/e81c19d1-77be-4e89-a2c8-853c6aad3d3d/ENCFF600LIU.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/07/e81c19d1-77be-4e89-a2c8-853c6aad3d3d/ENCFF600LIU.fastq.gz",
                         "file_size": 496175462,
                         "md5sum": "1e21d33876b06d02b3599a9d5161bcbe",
                         "run_acc": "ENCSR392BGY",
