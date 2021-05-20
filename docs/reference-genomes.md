@@ -39,7 +39,7 @@ with the annotations in GTF format [lrgasp_sirvs4.gtf.gz (syn25683630)](https://
 
 ### De novo ONT-based manatee genome
 
-* [lrgasp_manatee_sirv1.fasta.gz](http://www.synpase.org/syn0FIXME)
+* [lrgasp_manatee_sirv1.fasta.gz (syn25683366)](https://www.synapse.org/#!Synapse:syn25683366)
 * *De novo* assembly at the contig level of manatee genome using ONT sequencing.
 * includes ERCC/SIRV spike-in genomic sequences
 * FASTA format compressed with bgzip for indexing with samtools
