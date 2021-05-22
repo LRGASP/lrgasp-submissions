@@ -179,17 +179,26 @@ def get_runs_replicates(rna_seq_md, expr_file_mds):
     runs_replicates.default_factory = None
     return runs_replicates
 
-def libraries_validate_restrictions(experiment, rna_seq_md, expr_file_mds):
-    """validate that libraries meet challenge restrictions"""
-    def _check_isoquat_replicates():
-        runs_replicates = get_runs_replicates(rna_seq_md, expr_file_mds)
-        for run_acc, rep_set in runs_replicates.items():
-            if len(rep_set) > 1:
-                raise LrgaspException(f"{run_acc} {challenge_desc(Challenge.iso_quant)} must have one replicate per experiment, {run_acc} has {len(rep_set)}")
+def libraries_validate_replicates(experiment, rna_seq_md, expr_file_mds):
+    """validate that all replicates are used in an experiment"""
+    runs_replicates = get_runs_replicates(rna_seq_md, expr_file_mds)
 
-    if experiment.challenge_id == Challenge.iso_quant:
-        _check_isoquat_replicates()
+    def _get_run_file_desc(run_md):
+        """generate list of possible files"""
+        rep_file_descs = []
+        for rep in run_md.replicates:
+            for f in rep.files:
+                rep_file_descs.append(f"{f.run_acc} {f.file_acc} {f.biological_replicate_number} {f.file_type}")
+        return rep_file_descs
 
+    def _check_run(run_acc, rep_set):
+        run_md = rna_seq_md.get_run_by_acc(run_acc)
+        if len(rep_set) != len(run_md.replicates):
+            raise LrgaspException(f"experiment must use all replicates from run {run_acc}, available replicate files:\n    "
+                                  + "\n    ".join(_get_run_file_desc(run_md)))
+
+    for run_acc, rep_set in runs_replicates.items():
+        _check_run(run_acc, rep_set)
 
 def libraries_validate(experiment):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
@@ -205,7 +214,7 @@ def libraries_validate(experiment):
     # cross-library validations
     libraries_validate_compat(experiment, rna_seq_md, expr_file_mds)
     libraries_validate_paired_end(rna_seq_md, expr_file_mds)
-    libraries_validate_restrictions(experiment, rna_seq_md, expr_file_mds)
+    libraries_validate_replicates(experiment, rna_seq_md, expr_file_mds)
 
 def extra_library_validate(extra_libraries, ilib):
     desc = f"experiment.extra_libraries[{ilib}]"

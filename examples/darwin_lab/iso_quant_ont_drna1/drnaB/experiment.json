@@ -7,6 +7,7 @@
     "data_category": "long_only",
     "libraries": [
         "ENCFF155CFF",
+        "ENCFF771DIX",
         "ENCFF600LIU"
     ],
     "software": [

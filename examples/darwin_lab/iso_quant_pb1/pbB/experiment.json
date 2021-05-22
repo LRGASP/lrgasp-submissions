@@ -7,7 +7,8 @@
     "data_category": "long_only",
     "libraries": [
         "ENCFF073YYF",
-        "ENCFF509GUL"
+        "ENCFF509GUL",
+        "ENCFF499AVA"
     ],
     "software": [
         {

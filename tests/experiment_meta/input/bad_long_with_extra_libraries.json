@@ -6,7 +6,8 @@
     "data_category": "long_only",
     "libraries": [
         "ENCFF874VSI",
-        "ENCFF667VXS"
+        "ENCFF667VXS",
+        "ENCFF313VYZ"
     ],
     "extra_libraries": [
         {

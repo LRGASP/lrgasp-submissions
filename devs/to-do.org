@@ -7,6 +7,7 @@ https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 ** QC tables
 ** self-evaluation
 * validate
+** check that expression matrix contains all replicates
 **  that they must use all replicates. This is definitely a must for challenge 2 since we want expression for each replicate
 For challenge 1, they can pool the data or use the replicate information for
 filtering, etc

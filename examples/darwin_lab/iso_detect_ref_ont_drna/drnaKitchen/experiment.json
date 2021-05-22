@@ -7,11 +7,13 @@
     "data_category": "kitchen_sink",
     "libraries": [
         "ENCFF155CFF",
+        "ENCFF771DIX",
         "ENCFF600LIU",
         "ENCFF854BEI",
         "ENCFF804BPC",
         "ENCFF557WRQ",
         "ENCFF028FCL",
+        "ENCFF950ANU",
         "ENCFF003QZT"
     ],
     "extra_libraries": [
