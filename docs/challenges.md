@@ -49,8 +49,8 @@ Each *entry* must meet the following requirements:
 
 In all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the *long and short* and *kitchen sink* category, additional transcriptome references can be used.
 
-For Challenge 1, replicates maybe pooled in one experiment, which is preferred,
-or submitted as separate experiments.  For Challenge 2, replicates must be submitted as separate experiments.
+All replicates must be used in each experiment.  Challenge 2 must report
+replicates separately in the [expression matrix](expression_matrix_format.md).
 
 Each team can only submit one entry per challenge.
 
