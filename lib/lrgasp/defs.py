@@ -134,3 +134,6 @@ def sample_to_challenges(sample):
 
 def is_simulation(sample):
     return sample in (Sample.human_simulation, Sample.mouse_simulation)
+
+def challenge_desc(challenge_id):
+    return f"Challenge {challenge_id.value} ({str(challenge_id)})"

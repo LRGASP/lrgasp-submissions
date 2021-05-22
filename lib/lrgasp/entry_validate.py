@@ -121,7 +121,11 @@ def validate_experiment(entry, experiment_id):
     except Exception as ex:
         raise LrgaspException(f"validation of experiment '{experiment_id}' failed: {experiment.experiment_json}") from ex
 
-def _entry_data_validate(entry, restrict_experiment_id=None):
+def validate_entry_consistency(entry, experiment_ids, allow_partial):
+    """validate that all experiments are consistent"""
+    pass
+
+def _entry_data_validate(entry, restrict_experiment_id, allow_partial):
     if restrict_experiment_id is not None:
         if restrict_experiment_id not in entry.experiment_ids:
             raise LrgaspException(f"entry '{entry.entry_id}' does not contain experiment '{restrict_experiment_id}'")
@@ -131,12 +135,17 @@ def _entry_data_validate(entry, restrict_experiment_id=None):
 
     for experiment_id in experiment_ids:
         validate_experiment(entry, experiment_id)
+    validate_entry_consistency(entry, experiment_ids, allow_partial)
 
-def entry_data_validate(entry_dir, restrict_experiment_id=None):
+def entry_data_validate(entry_dir, *, restrict_experiment_id=None, allow_partial=False):
     """load and validate all metadata and data files for an entry, ensuring
-    consistency.  Optionally restricted to one experiment for speed"""
+    consistency.  Optionally restricted to one experiment for speed.  Setting
+    allow_partial disables checking of submissions without all samples, checking
+    incompletely entries.  This is implies by restrict_experiment_id."""
+    if restrict_experiment_id is not None:
+        allow_partial = True
     entry = entry_metadata.load_dir(entry_dir)
     try:
-        _entry_data_validate(entry, restrict_experiment_id=restrict_experiment_id)
+        _entry_data_validate(entry, restrict_experiment_id=restrict_experiment_id, allow_partial=allow_partial)
     except Exception as ex:
         raise LrgaspException(f"validation of entry '{entry.entry_id}' failed: {entry.entry_json}") from ex

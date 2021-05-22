@@ -6,7 +6,8 @@ import json
 from collections import namedtuple, defaultdict
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, validate_symbolic_ident, EXPERIMENT_JSON, is_simulation
+from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, EXPERIMENT_JSON
+from lrgasp.defs import validate_symbolic_ident, is_simulation, challenge_desc
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
@@ -138,7 +139,7 @@ def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C
 
     def _validate_long_genome():
         if experiment.challenge_id != Challenge.iso_detect_de_novo:
-            raise LrgaspException(f"{data_category} only allowed for Challenge {Challenge.iso_detect_de_novo.value} (Challenge.iso_detect_de_novo)")
+            raise LrgaspException(f"{data_category} only allowed for {challenge_desc(Challenge.iso_detect_de_novo)}")
         _validate_long_only()
 
     def _validate_kitchen_sink():
@@ -170,6 +171,26 @@ def libraries_validate_paired_end(rna_seq_md, expr_file_mds):
         if file_md.paired_with not in paired_acc:
             raise LrgaspException(f"'{file_md.file_acc}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment.libraries")
 
+def get_runs_replicates(rna_seq_md, expr_file_mds):
+    "get dict of runs to set of replicates for all libraries"
+    runs_replicates = defaultdict(set)
+    for file_md in expr_file_mds:
+        runs_replicates[file_md.run_acc].add(file_md.biological_replicate_number)
+    runs_replicates.default_factory = None
+    return runs_replicates
+
+def libraries_validate_restrictions(experiment, rna_seq_md, expr_file_mds):
+    """validate that libraries meet challenge restrictions"""
+    def _check_isoquat_replicates():
+        runs_replicates = get_runs_replicates(rna_seq_md, expr_file_mds)
+        for run_acc, rep_set in runs_replicates.items():
+            if len(rep_set) > 1:
+                raise LrgaspException(f"{run_acc} {challenge_desc(Challenge.iso_quant)} must have one replicate per experiment, {run_acc} has {len(rep_set)}")
+
+    if experiment.challenge_id == Challenge.iso_quant:
+        _check_isoquat_replicates()
+
+
 def libraries_validate(experiment):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
     dups = find_dups(experiment.libraries)
@@ -184,6 +205,7 @@ def libraries_validate(experiment):
     # cross-library validations
     libraries_validate_compat(experiment, rna_seq_md, expr_file_mds)
     libraries_validate_paired_end(rna_seq_md, expr_file_mds)
+    libraries_validate_restrictions(experiment, rna_seq_md, expr_file_mds)
 
 def extra_library_validate(extra_libraries, ilib):
     desc = f"experiment.extra_libraries[{ilib}]"

@@ -40,7 +40,7 @@ Each *entry* must meet the following requirements:
 ### Requirements for Challenge 1 and 2
 
 * At least one *experiment* must be supplied for each *sample* available for
-  a given challenge. Human and mouse samples will have biological replicates that should be used for the entry.
+  a given challenge. Human and mouse samples will have biological replicates that must be used for the entry.
 * The data used for a given *experiment* must fit in one of the following categories:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches
@@ -48,6 +48,9 @@ Each *entry* must meet the following requirements:
   * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *kitchen sink* experiments.
 
 In all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the *long and short* and *kitchen sink* category, additional transcriptome references can be used.
+
+For Challenge 1, replicates maybe pooled in one experiment, which is preferred,
+or submitted as separate experiments.  For Challenge 2, replicates must be submitted as separate experiments.
 
 Each team can only submit one entry per challenge.
 

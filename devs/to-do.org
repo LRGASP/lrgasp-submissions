@@ -1,10 +1,16 @@
-* update ENCODE metadata
+* ENCODE search
+https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 * DOC:
 ** FAQ
+** step-by-step
 ** better data overview
 ** QC tables
 ** self-evaluation
 * validate
+**  that they must use all replicates. This is definitely a must for challenge 2 since we want expression for each replicate
+For challenge 1, they can pool the data or use the replicate information for
+filtering, etc
+** require experiments against all samples
 ** 1&2n all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the long and short and kitchen sink category, additional transcriptome references can be used.
 ** 3 In all the above categories, except for kitchen sink a transcriptome reference CANNOT be used.
 ** create command line script to download all files
@@ -17,7 +23,6 @@
 ** does ch #3 require all samples?
 ** only one entry per data category + library type
 * kitchen sink must be public at the start of the challange available
-* add manatee genome
 * SUBMISSION IMAGE
 ** code broken
 ** doesn't show model for quant

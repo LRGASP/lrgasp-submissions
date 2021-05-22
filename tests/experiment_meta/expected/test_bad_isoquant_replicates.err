@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_isoquant_replicates.json
+caused by: ENCSR392BGY Challenge 2 (iso_quant) must have one replicate per experiment, ENCSR392BGY has 2

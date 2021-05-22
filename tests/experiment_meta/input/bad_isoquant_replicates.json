@@ -6,7 +6,8 @@
     "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF155CFF"
+        "ENCFF155CFF",
+        "ENCFF600LIU"
     ],
     "software": [
         {
