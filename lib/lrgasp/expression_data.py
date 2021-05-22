@@ -12,6 +12,7 @@ def check_row_consistency(expression_tsv):
     """Pandas just pads or ignores inconsistent number of columns,
     so to validate the matrix is consistent, we need to make another pass.
     """
+    # note: if pandas was given a header, it will error on long rows, but not short ones
     minLen = maxLen = None
     with gopen(expression_tsv) as fh:
         for row in csv.reader(fh, dialect=csv.excel_tab):
