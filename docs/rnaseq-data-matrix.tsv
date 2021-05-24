@@ -99,9 +99,9 @@ challenges	species	sample	library_prep	platform	run_acc	replicate	biosample	size
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	2	ENCBS012DYC ENCBS872CFG	600-5000	nanopore_signal	tar	ENCFF506RNI		https://www.encodeproject.org/files/ENCFF506RNI/@@download/ENCFF506RNI.tar.gz		s3://encode-private/2021/04/12/71287031-a5c5-469a-a788-989a7081c227/ENCFF506RNI.tar.gz	
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	3	ENCBS667PZC ENCBS971DDS	600-5000	reads	fastq	ENCFF389YOZ		https://www.encodeproject.org/files/ENCFF389YOZ/@@download/ENCFF389YOZ.fastq.gz		s3://encode-private/2021/04/12/d0b8eb8b-d15d-4d9e-b455-189b5cfd4443/ENCFF389YOZ.fastq.gz	
 1,2	human	H1_mix	cDNA	ONT	ENCSR957QYS	3	ENCBS667PZC ENCBS971DDS	600-5000	nanopore_signal	tar	ENCFF013SGT		https://www.encodeproject.org/files/ENCFF013SGT/@@download/ENCFF013SGT.tar.gz		s3://encode-private/2021/04/12/5304bc94-d3da-496b-888a-1c7dc17f2a9a/ENCFF013SGT.tar.gz	
-1,2	human	human_simulation	cDNA	Illumina	syn25591443	1			reads	fastq	syn25591675	syn25591686				
-1,2	human	human_simulation	cDNA	PacBio	syn25591693	1			reads	fasta	syn25591693					
-1,2	human	human_simulation	cDNA	ONT	syn25604221	1			reads	fastq	syn25604221					
+1,2	human	human_simulation	cDNA	Illumina	syn25591443	1	hs_illumina_sim		reads	fastq	syn25591675	syn25591686				
+1,2	human	human_simulation	cDNA	PacBio	syn25591693	1	hs_pb_sim		reads	fasta	syn25591693					
+1,2	human	human_simulation	cDNA	ONT	syn25604221	1	hs_ont_sim		reads	fastq	syn25604221					
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	1	ENCBS648HXY		reads	fastq	ENCFF535DQA		https://www.encodeproject.org/files/ENCFF535DQA/@@download/ENCFF535DQA.fastq.gz		s3://encode-private/2021/03/26/adc861f9-c19b-43a0-b7a4-a312e0abbc17/ENCFF535DQA.fastq.gz	
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	1	ENCBS648HXY		subreads	bam	ENCFF710FCJ		https://www.encodeproject.org/files/ENCFF710FCJ/@@download/ENCFF710FCJ.bam		s3://encode-files/2021/03/26/34e7c8eb-a050-4abd-a070-a3fafe5b05fe/ENCFF710FCJ.bam	
 1,3	mouse	ES	CapTrap	PacBio	ENCSR879GEQ	2	ENCBS951CRC		reads	fastq	ENCFF310IPO		https://www.encodeproject.org/files/ENCFF310IPO/@@download/ENCFF310IPO.fastq.gz		s3://encode-private/2021/03/26/98c25d09-c48e-4e53-bc5b-a4b0c6b86fbd/ENCFF310IPO.fastq.gz	
@@ -150,9 +150,9 @@ challenges	species	sample	library_prep	platform	run_acc	replicate	biosample	size
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	2	ENCBS951CRC	500-5000	nanopore_signal	tar	ENCFF209ZZU		https://www.encodeproject.org/files/ENCFF209ZZU/@@download/ENCFF209ZZU.tar.gz		s3://encode-private/2021/04/12/61998b95-d130-43d6-922e-fe95bda4b289/ENCFF209ZZU.tar.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	ENCBS418RDP	500-5000	reads	fastq	ENCFF288PBL		https://www.encodeproject.org/files/ENCFF288PBL/@@download/ENCFF288PBL.fastq.gz		s3://encode-private/2021/04/12/802c147f-f2dc-4de2-99f4-0bcc28dff7b4/ENCFF288PBL.fastq.gz	
 1,3	mouse	ES	cDNA	ONT	ENCSR198UZE	3	ENCBS418RDP	500-5000	nanopore_signal	tar	ENCFF931ICQ		https://www.encodeproject.org/files/ENCFF931ICQ/@@download/ENCFF931ICQ.tar.gz		s3://encode-private/2021/04/12/edb604c2-ff2d-4d4d-a1fb-90ab251cf950/ENCFF931ICQ.tar.gz	
-1,2	mouse	mouse_simulation	dRNA	ONT	syn25591653	1			reads	fastq	syn25591653					
-1,2	mouse	mouse_simulation	cDNA	Illumina	syn25591436	1			reads	fastq	syn25591503	syn25591548				
-1,2	mouse	mouse_simulation	cDNA	PacBio	syn25591622	1			reads	fasta	syn25591622					
+1,2	mouse	mouse_simulation	dRNA	ONT	syn25591653	1	mm_ont_sim		reads	fastq	syn25591653					
+1,2	mouse	mouse_simulation	cDNA	Illumina	syn25591436	1	mm_illumina_sim		reads	fastq	syn25591503	syn25591548				
+1,2	mouse	mouse_simulation	cDNA	PacBio	syn25591622	1	mm_pb_sim		reads	fasta	syn25591622					
 3	manatee	blood	cDNA	Illumina	ENCSR513JKI	1	ENCBS538IUC	300-350	reads	fastq	ENCFF646MEJ	ENCFF402UPZ	https://www.encodeproject.org/files/ENCFF646MEJ/@@download/ENCFF646MEJ.fastq.gz	https://www.encodeproject.org/files/ENCFF402UPZ/@@download/ENCFF402UPZ.fastq.gz	s3://encode-public/2021/04/29/046a80b4-55dd-4b47-bd3e-e2ec4f082721/ENCFF646MEJ.fastq.gz	s3://encode-public/2021/04/29/74046633-ac72-4715-a87a-f2714ccd4808/ENCFF402UPZ.fastq.gz
 3	manatee	blood	cDNA	Illumina	ENCSR513JKI	2	ENCBS797CKD	300-350	reads	fastq	ENCFF380MWG	ENCFF293HYT	https://www.encodeproject.org/files/ENCFF380MWG/@@download/ENCFF380MWG.fastq.gz	https://www.encodeproject.org/files/ENCFF293HYT/@@download/ENCFF293HYT.fastq.gz	s3://encode-public/2021/04/29/68d73494-610f-4f96-a9cd-29cb4a2d2ce0/ENCFF380MWG.fastq.gz	s3://encode-public/2021/04/29/dc8aff09-7bae-465f-bec8-f5ed40dbe680/ENCFF293HYT.fastq.gz
 3	manatee	blood	cDNA	Illumina	ENCSR513JKI	3	ENCBS193IGY	300-350	reads	fastq	ENCFF195QJY	ENCFF704YKH	https://www.encodeproject.org/files/ENCFF195QJY/@@download/ENCFF195QJY.fastq.gz	https://www.encodeproject.org/files/ENCFF704YKH/@@download/ENCFF704YKH.fastq.gz	s3://encode-private/2021/04/29/464e63ad-15ae-4405-9e94-0850b8872373/ENCFF195QJY.fastq.gz	s3://encode-public/2021/04/29/642217a8-555c-47c6-9e1b-505844061a79/ENCFF704YKH.fastq.gz

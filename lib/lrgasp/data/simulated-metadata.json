@@ -10,6 +10,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "mm_pb_sim"
                 ],
                 "size_range": null,
                 "files": [
@@ -41,6 +42,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "mm_ont_sim"
                 ],
                 "size_range": null,
                 "files": [
@@ -72,6 +74,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "mm_illumina_sim"
                 ],
                 "size_range": null,
                 "files": [
@@ -116,6 +119,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "hs_pb_sim"
                 ],
                 "size_range": null,
                 "files": [
@@ -148,6 +152,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "hs_ont_sim"
                 ],
                 "size_range": null,
                 "files": [
@@ -180,6 +185,7 @@
             {
                 "replicate_number": 1,
                 "biosample_accs": [
+                    "hs_illumina_sim"
                 ],
                 "size_range": null,
                 "files": [
