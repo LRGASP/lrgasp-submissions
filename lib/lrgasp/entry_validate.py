@@ -75,7 +75,7 @@ def _validate_de_novo_model_experiment(experiment):
 
 def validate_expression_and_model(models, expression_mat):
     # all expression matrix ids must be in models
-    for row in expression_mat.iterrows():
+    for row in expression_mat.df.iterrows():
         if row[1].ID not in models.by_transcript_id:
             raise LrgaspException(f"expression matrix ID '{row[1].ID}' not found in models")
 
