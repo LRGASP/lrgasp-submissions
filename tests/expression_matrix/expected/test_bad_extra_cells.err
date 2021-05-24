@@ -1,2 +1,3 @@
 Error: Parse of expression matrix TSV failed: input/bad_extra_cells.tsv
-caused by: TSV has an inconsistent number of columns: min=11, max=12
+caused by: Error tokenizing data. C error: Expected 11 fields in line 3, saw 12
+
