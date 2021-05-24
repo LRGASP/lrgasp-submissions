@@ -9,18 +9,18 @@ good_tests = $(basename $(notdir ${good_tsvs}))
 
 test: test_ref_example test_de_novo_example test_example_gz bad_tests good_tests
 
-ref_example_dir = ${darwindir}/iso_detect_ref_ont_drna/drnaA
+ref_example_dir = ${darwindir}/iso_detect_ref_ont_drna/WTC11_drna_ont_long
 test_ref_example:
 	${lrgasp_validate_read_model_map} ${ref_example_dir}/read_model_map.tsv --model_gtf=${ref_example_dir}/models.gtf
 
-de_novo_example_dir = ${darwindir}/iso_detect_de_novo_pb1/pbA
+de_novo_example_dir = ${darwindir}/iso_detect_de_novo_pb/pbManteeBlood
 test_de_novo_example:
 	${lrgasp_validate_read_model_map} ${de_novo_example_dir}/read_model_map.tsv --rna_fasta=${de_novo_example_dir}/rna.fasta
 
 test_example_gz: output/read_model_map.tsv.gz
 	${lrgasp_validate_read_model_map} $<
 
-output/read_model_map.tsv.gz: ${darwindir}/iso_detect_ref_ont_drna/drnaA/read_model_map.tsv
+output/read_model_map.tsv.gz: ${darwindir}/iso_detect_ref_ont_drna/WTC11_drna_ont_long/read_model_map.tsv
 	@mkdir -p output	
 	gzip -c $< >$@
 

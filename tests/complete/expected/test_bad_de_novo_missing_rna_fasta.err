@@ -1,5 +1,5 @@
-Error: validation of entry 'iso_detect_de_novo_pb1' failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/entry.json
-caused by: validation of experiment 'pbA' failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/pbA/experiment.json
-caused by: validation failed on 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/pbA/rna.fasta' with 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/pbA/read_model_map.tsv'
-caused by: Parse of RNA FASTA file failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/pbA/rna.fasta
-caused by: [Errno 2] No such file or directory: 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb1/pbA/rna.fasta'
+Error: validation of entry 'iso_detect_de_novo_pb' failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/entry.json
+caused by: validation of experiment 'pbCapTrapES' failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/pbCapTrapES/experiment.json
+caused by: validation failed on 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/pbCapTrapES/rna.fasta' with 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/pbCapTrapES/read_model_map.tsv'
+caused by: Parse of RNA FASTA file failed: output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/pbCapTrapES/rna.fasta
+caused by: [Errno 2] No such file or directory: 'output/test_bad_de_novo_missing_rna_fasta/iso_detect_de_novo_pb/pbCapTrapES/rna.fasta'

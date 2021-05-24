@@ -1,14 +1,12 @@
 {
-    "experiment_id": "model_ont_drna1",
+    "experiment_id": "human_sim_cdna_ont",
     "challenge_id": "iso_detect_ref",
-    "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "description": "Transcript models for human simulation ONT cDNA sequenceing",
+    "notes": "noted",
     "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF155CFF",
-        "ENCFF771DIX",
-        "ENCFF600LIU"
+        "syn25591693"
     ],
     "software": [
         {

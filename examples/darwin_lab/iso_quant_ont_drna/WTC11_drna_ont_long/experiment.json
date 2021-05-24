@@ -1,14 +1,14 @@
 {
-    "experiment_id": "quant_pb1",
+    "experiment_id": "wtc11_drna_ont_long",
     "challenge_id": "iso_quant",
-    "description": "Expression matrix for Human NA12878 PacBio CCS RNA sequenceing",
-    "notes": "Reads were downloaded from https://github.com/diekhans/lrgasp-submissions/blob/master/docs/pilot-data.md",
+    "description": "Transcript expression for human WTC11 ONT direct RNA sequenceing",
+    "notes": "noted",
     "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF073YYF",
-        "ENCFF509GUL",
-        "ENCFF499AVA"
+        "ENCFF155CFF",
+        "ENCFF771DIX",
+        "ENCFF600LIU"
     ],
     "software": [
         {

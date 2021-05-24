@@ -1,11 +1,11 @@
 {
-    "entry_id": "iso_quant_ont_drna1",
-    "challenge_id": "iso_quant",
+    "entry_id": "iso_detect_de_novo_pb",
+    "challenge_id": "iso_detect_de_novo",
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "experiment_ids": [
-        "drnaA",
-        "drnaB"
+        "pbCapTrapES",
+        "pbManteeBlood"
     ],
     "contacts": [
         {

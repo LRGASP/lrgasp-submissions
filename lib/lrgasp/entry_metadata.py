@@ -8,6 +8,9 @@ from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
 from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident, validate_entry_ident, ENTRY_JSON
 
+# Note: a field "experiments" is added when metadata is loaded.  It is None
+# until experiments are loaded.
+
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
 
@@ -63,6 +66,7 @@ def load(entry_json):
         entry_validate(entry)
     except LrgaspException as ex:
         raise LrgaspException(f"validation of entry metadata failed: {entry_json}") from ex
+    entry.experiments = None
     return entry
 
 def load_dir(entry_dir):
@@ -72,7 +76,7 @@ def load_dir(entry_dir):
     entry = load(entry_json)
     entry_base_dir = osp.basename(osp.realpath(entry_dir))
     if entry_base_dir != entry.entry_id:
-        raise LrgaspException(f"entry '{entry.entry_id}' must be in an directory '{entry.entry_id}', not '{entry_base_dir}'")
+        raise LrgaspException(f"entry_id and directory name must be the same; '{entry.entry_id}' is in '{entry_base_dir}' ({entry_dir})")
     entry.entry_dir = entry_dir
     entry.entry_json = entry_json
     return entry

@@ -2,7 +2,7 @@ testrootdir = ..
 include ${testrootdir}/testing.mk
 
 debug = --debug
-err_debug =  # --debug to get debug in error cases
+err_debug =  # --debug to get debug in expected error cases
 
 bad_jsons = $(wildcard input/bad_*.json)
 bad_tests = $(basename $(notdir ${bad_jsons}))
@@ -10,13 +10,17 @@ bad_tests = $(basename $(notdir ${bad_jsons}))
 good_jsons = $(wildcard input/good_*.json)
 good_tests = $(basename $(notdir ${good_jsons}))
 
-test: test_model_example test_quant_example bad_tests good_tests
+test: iso_detect_ref_tests iso_quant_tests bad_tests good_tests
 
-test_model_example:
-	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_detect_ref_ont_drna/drnaA/experiment.json
+iso_detect_ref_tests: $(addsuffix _iso_detect_ref_test,$(dir $(wildcard ${darwindir}/iso_detect_ref_*/*/experiment.json)))
 
-test_quant_example:
-	${lrgasp_validate_experiment_metadata} ${debug} ${darwindir}/iso_quant_ont_drna1/drnaA/experiment.json
+%_iso_detect_ref_test: mkout
+	${lrgasp_validate_experiment_metadata} ${debug} $*/experiment.json
+
+iso_quant_tests: $(addsuffix _iso_quant_test,$(dir $(wildcard ${darwindir}/iso_quant_*/*/experiment.json)))
+
+%_iso_quant_test: mkout
+	${lrgasp_validate_experiment_metadata} ${debug} $*/experiment.json
 
 bad_tests: ${bad_tests:%=test_%}
 

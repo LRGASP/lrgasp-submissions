@@ -4,8 +4,11 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "experiment_ids": [
-        "drnaA",
-        "drnaB",
+        "ES_drna_ont_long",
+        "H1_mix_drna_ont_long",
+        "human_sim_cdna_ont",
+        "mouse_sim_cdna_ont",
+        "WTC11_drna_ont_long",
         "drnaKitchen"
     ],
     "contacts": [

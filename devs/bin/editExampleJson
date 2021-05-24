@@ -12,18 +12,18 @@ from lrgasp.defs import DataCategory, Challenge  # noqa: F401
 
 def edit_json(mdfile, md):
     "customize this for each edit case"
-
-    if 0:
-        assert md.experiment_type == "expression"
-        md.challenge_id = str(Challenge.iso_quant)
-    if 1:
-        assert md.experiment_type == "model"
-        md.challenge_id = str(Challenge.iso_detect_ref)
-    if 0:
-        assert md.experiment_type == "model"
-        md.challenge_id = str(Challenge.iso_detect_de_novo)
-
-    del md.experiment_type
+    software = """
+    [
+        {
+            "name": "LRExpress",
+            "description": "LRExpress is a tool for expression quantification if long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRExpress",
+            "config": "LRExpress used default parameters"
+        }
+    ]"""
+    soft = json.loads(software)
+    md.software = soft
 
     fix_experiment_order(md)
 

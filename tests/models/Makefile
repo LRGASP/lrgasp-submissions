@@ -4,17 +4,16 @@ include ${testrootdir}/testing.mk
 bad_gtfs = $(wildcard input/bad_*.gtf)
 bad_tests = $(basename $(notdir ${bad_gtfs}))
 
-test: test_example test_example_gz bad_tests
+test: example_tests test_example_gz bad_tests
 
-test_example:
-	${lrgasp_validate_models} ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
+example_tests: $(addsuffix _model_test,$(wildcard ${darwindir}/iso_detect_ref_*/*/models.gtf))
 
-test_example_gz: output/models.gtf.gz
-	${lrgasp_validate_models} $<
+%_model_test: mkout
+	${lrgasp_validate_models} $*
 
-output/models.gtf.gz: ${darwindir}/iso_detect_ref_ont_drna/drnaA/models.gtf
-	@mkdir -p output	
-	gzip -c $< >$@
+test_example_gz: mkout
+	gzip -c ${darwindir}/iso_detect_ref_ont_drna/WTC11_drna_ont_long/models.gtf >output/models.gtf.gz
+	${lrgasp_validate_models} output/models.gtf.gz
 
 bad_tests: ${bad_tests:%=test_%}
 

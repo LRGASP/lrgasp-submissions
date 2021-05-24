@@ -1,10 +1,11 @@
 """
-Load and validate model and expression entries
+Load and validate model and expression entries.  This does full validation of
+all metadata and data files
 """
 import os.path as osp
 from lrgasp import LrgaspException
 from lrgasp.defs import Challenge, MODELS_GTF, DE_NOVO_RNA_FASTA, READ_MODEL_MAP_TSV, EXPRESSION_TSV
-from lrgasp.defs import get_challenge_samples
+from lrgasp.defs import get_challenge_samples, challenge_desc
 from lrgasp import entry_metadata
 from lrgasp import experiment_metadata
 from lrgasp import model_data
@@ -114,16 +115,39 @@ def _validate_experiment(entry, experiment):
     else:
         raise LrgaspException("bug")
 
-def validate_experiment(entry, experiment_id):
-    experiment = experiment_metadata.load_from_entry(entry, experiment_id)
+def validate_experiment(entry, experiment):
     try:
         _validate_experiment(entry, experiment)
     except Exception as ex:
-        raise LrgaspException(f"validation of experiment '{experiment_id}' failed: {experiment.experiment_json}") from ex
+        raise LrgaspException(f"validation of experiment '{experiment.experiment_id}' failed: {experiment.experiment_json}") from ex
 
-def validate_entry_consistency(entry, experiment_ids, allow_partial):
+def get_entry_samples(entry):
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    samples = set()
+    for ex in entry.experiments:
+        for file_acc in ex.libraries:
+            samples.add(rna_seq_md.get_run_by_file_acc(file_acc).sample)
+    return samples
+
+def validate_samples(entry):
+    "validate that all samples are covered (requires all experiments"
+    entry_samples = get_entry_samples(entry)
+    challenge_samples = get_challenge_samples(entry.challenge_id)
+    if entry_samples != challenge_samples:
+        raise LrgaspException("{} must have all of the samples '{}', only '{}' were found".format(challenge_desc(entry.challenge_id),
+                                                                                                  set_to_str(challenge_samples),
+                                                                                                  set_to_str(entry_samples)))
+
+def validate_experiment_consistency(entry, allow_partial):
     """validate that all experiments are consistent"""
-    pass
+    if not allow_partial:
+        validate_samples(entry)
+
+def load_experiments_metadata(entry, experiment_ids):
+    "read experiment metadata and save in entry.experiments"
+    entry.experiments = [experiment_metadata.load_from_entry(entry, experiment_id)
+                         for experiment_id in experiment_ids]
+
 
 def _entry_data_validate(entry, restrict_experiment_id, allow_partial):
     if restrict_experiment_id is not None:
@@ -132,10 +156,11 @@ def _entry_data_validate(entry, restrict_experiment_id, allow_partial):
         experiment_ids = [restrict_experiment_id]
     else:
         experiment_ids = entry.experiment_ids
+    load_experiments_metadata(entry, experiment_ids)
 
-    for experiment_id in experiment_ids:
-        validate_experiment(entry, experiment_id)
-    validate_entry_consistency(entry, experiment_ids, allow_partial)
+    for experiment in entry.experiments:
+        validate_experiment(entry, experiment)
+    validate_experiment_consistency(entry, allow_partial)
 
 def entry_data_validate(entry_dir, *, restrict_experiment_id=None, allow_partial=False):
     """load and validate all metadata and data files for an entry, ensuring

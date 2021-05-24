@@ -3,4 +3,4 @@ if [ "$(uname -s)" = "Darwin" ] ; then
 else
     sed=sed
 fi
-${sed} --in-place -e '/transcript_id "transcript_270.known"/d' $1/iso_detect_ref_ont_drna/drnaB/models.gtf
+${sed} --in-place -e '/transcript_id "transcript_270.known"/d' $1/iso_detect_ref_ont_drna/H1_mix_drna_ont_long/models.gtf

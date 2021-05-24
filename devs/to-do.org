@@ -7,8 +7,8 @@ https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 ** QC tables
 ** self-evaluation
 * validate
-** check that expression matrix contains all replicates
-** require experiments against all samples
+** check that expression matrix contains all replicates and validate ids
+for paired-end, take either id
 ** 1&2n all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the long and short and kitchen sink category, additional transcriptome references can be used.
 ** 3 In all the above categories, except for kitchen sink a transcriptome reference CANNOT be used.
 ** create command line script to download all files
@@ -17,8 +17,6 @@ https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 ** short-only - no read-map
 ** long-and-short additional accessioned data in public genomics data repositories can also be used. [in slides]
 
-** does ch #3 require all samples?
-** only one entry per data category + library type
 * kitchen sink must be public at the start of the challange available
 * SUBMISSION IMAGE
 ** code broken

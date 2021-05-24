@@ -257,7 +257,7 @@ def load_from_entry(entry, experiment_id):
     try:
         experiment = load(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:
-        raise LrgaspException(f"error parse metadata for entry '{entry.entry_id}', experiment '{experiment_id}': {experiment_json}") from ex
+        raise LrgaspException(f"error parse metadata for entry '{entry.entry_id}', experiment '{experiment_id}' (obtained from entry.json): {experiment_json}") from ex
     experiment.experiment_dir = experiment_dir
     experiment.experiment_json = experiment_json
     return experiment

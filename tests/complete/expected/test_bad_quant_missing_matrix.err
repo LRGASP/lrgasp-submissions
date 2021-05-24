@@ -1,4 +1,4 @@
-Error: validation of entry 'iso_quant_ont_drna1' failed: output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/entry.json
-caused by: validation of experiment 'drnaB' failed: output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/experiment.json
-caused by: validation failed on 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/models.gtf' with 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/expression.tsv'
-caused by: [Errno 2] No such file or directory: 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna1/drnaB/expression.tsv'
+Error: validation of entry 'iso_quant_ont_drna' failed: output/test_bad_quant_missing_matrix/iso_quant_ont_drna/entry.json
+caused by: validation of experiment 'wtc11_drna_ont_long' failed: output/test_bad_quant_missing_matrix/iso_quant_ont_drna/WTC11_drna_ont_long/experiment.json
+caused by: validation failed on 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna/WTC11_drna_ont_long/models.gtf' with 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna/WTC11_drna_ont_long/expression.tsv'
+caused by: [Errno 2] No such file or directory: 'output/test_bad_quant_missing_matrix/iso_quant_ont_drna/WTC11_drna_ont_long/expression.tsv'

@@ -6,7 +6,7 @@ bad_tests = $(basename $(notdir ${bad_tsvs}))
 
 test: test_example test_with_NA bad_tests
 
-example_dir = ${darwindir}/iso_quant_ont_drna1/drnaA
+example_dir = ${darwindir}/iso_quant_ont_drna/WTC11_drna_ont_long
 test_example:
 	${lrgasp_validate_expression_matrix} ${example_dir}/expression.tsv ${example_dir}/models.gtf
 
