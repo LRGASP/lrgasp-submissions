@@ -1,6 +1,7 @@
 """Class to load pre-built data set information from JSON files in source .  All results are cached"""
 import os.path as osp
 import json
+from collections import defaultdict
 from lrgasp import LrgaspException
 from lrgasp.objDict import ObjDict
 from lrgasp.defs import Species, Sample, LibraryPrep, Platform
@@ -28,9 +29,10 @@ class LrgaspReplicate(ObjDict):
     to serialized, ObjDict used to access when deserialized."""
     def __init__(self, replicate_number, biosample_accs, size_range):
         self.replicate_number = replicate_number
-        self.biosample_accs = biosample_accs
+        self.biosample_accs = biosample_accs  # deserialized as a sorted tuple
         self.size_range = size_range
         self.files = []
+        # self.run_md = added when deserialized
 
 class LrgaspRnaSeqFile(ObjDict):
     """One data file from an RNA-Seq run, used to build JSON in a consistent way
@@ -52,51 +54,71 @@ class LrgaspRnaSeqFile(ObjDict):
         self.paired_end = paired_end
         self.paired_with = paired_with
         # self.paired_file is built when deserialized
+        # self.replicate_md = added when deserialized
 
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
     cache = None
 
     def __init__(self):
-        self.by_file_acc = {}
-        self.by_run_acc = {}
+        self.file_md_by_acc = {}
+        self.run_by_acc = {}
+        # this is indexed by both individual biosample accs and by sorted
+        # tuple of accs to handle mixes.  The same values can map to replicates
+        # in different sequences technologies, hence it is a list
+        self.replicate_by_biosample_acc = defaultdict(list)
 
-    def _edit_run_types(self, run):
+    def finish(self):
+        self.replicate_by_biosample_acc.default_factory = None
+
+    def _edit_run_types(self, run_md):
         "conversion to SymEnum"
-        run.species = Species(run.species)
-        run.sample = Sample(run.sample)
-        run.library_prep = LibraryPrep(run.library_prep)
-        run.platform = Platform(run.platform)
+        run_md.species = Species(run_md.species)
+        run_md.sample = Sample(run_md.sample)
+        run_md.library_prep = LibraryPrep(run_md.library_prep)
+        run_md.platform = Platform(run_md.platform)
 
-    def _add_file(self, file_md):
-        if file_md.file_acc in self.by_file_acc:
+    def _add_file(self, replicate_md, file_md):
+        if file_md.file_acc in self.file_md_by_acc:
             raise LrgaspException(f"duplicate file accession '{file_md.file_acc}'")
-        self.by_file_acc[file_md.file_acc] = file_md
+        self.file_md_by_acc[file_md.file_acc] = file_md
+        file_md.replicate_md = replicate_md
         if file_md.paired_file is not None:
-            self.by_file_acc[file_md.paired_file.file_acc] = file_md.paired_file
+            self.file_md_by_acc[file_md.paired_file.file_acc] = file_md.paired_file
 
-    def _add_files(self, file_mds):
+    def _add_files(self, replicate_md, file_mds):
         for file_md in file_mds:
-            self._add_file(file_md)
+            self._add_file(replicate_md, file_md)
 
-    def add(self, run):
-        self._edit_run_types(run)
-        if run.run_acc in self.by_run_acc:
-            raise LrgaspException(f"duplicate run id '{run.run_acc}'")
-        self.append(run)
-        self.by_run_acc[run.run_acc] = run
-        for replicate in run.replicates:
-            self._add_files(replicate.files)
+    def _add_biosample(self, replicate_md):
+        # add by both all samples and sorted tuple
+        self.replicate_by_biosample_acc[replicate_md.biosample_accs] = replicate_md
+        for acc in replicate_md.biosample_accs:
+            self.replicate_by_biosample_acc[acc] = replicate_md
+
+    def _add_replicate(self, run_md, replicate_md):
+        replicate_md.run_md = run_md
+        self._add_biosample(replicate_md)
+        self._add_files(replicate_md, replicate_md.files)
+
+    def add(self, run_md):
+        self._edit_run_types(run_md)
+        if run_md.run_acc in self.run_by_acc:
+            raise LrgaspException(f"duplicate run id '{run_md.run_acc}'")
+        self.append(run_md)
+        self.run_by_acc[run_md.run_acc] = run_md
+        for replicate_md in run_md.replicates:
+            self._add_replicate(run_md, replicate_md)
 
     def get_file_by_acc(self, file_acc):
         try:
-            return self.by_file_acc[file_acc]
+            return self.file_md_by_acc[file_acc]
         except KeyError:
             raise LrgaspException(f"unknown LRGASP file accession '{file_acc}', file accession must be one in the LRGASP RNA-Seq data matrix")
 
     def get_run_by_acc(self, run_acc):
         try:
-            return self.by_run_acc[run_acc]
+            return self.run_by_acc[run_acc]
         except KeyError:
             raise LrgaspException(f"unknown LRGASP run accession '{run_acc}', run accession should be one in the LRGASP RNA-Seq data matrix")
 
@@ -122,16 +144,18 @@ def _pair_files(file_mds):
             paired_files.append(p1)
     return paired_files
 
-def _edit_run(run):
-    "modify serialized run to link paired end files"
-    for rep in run.replicates:
+def _edit_run(run_md):
+    """Modify deserialized run. Link paired end files and convert biosample_accs
+    to a sorted tuple"""
+    for rep in run_md.replicates:
         rep.files = _pair_files(rep.files)
-    return run
+        rep.biosample_accs = tuple(sorted(rep.biosample_accs))
+    return run_md
 
 def _load_lrgasp_rna_seq_metadata_file(rna_seq_md, metadata_json):
     with open(metadata_json) as fh:
-        for run in json.load(fh, object_pairs_hook=ObjDict):
-            rna_seq_md.add(_edit_run(run))
+        for run_md in json.load(fh, object_pairs_hook=ObjDict):
+            rna_seq_md.add(_edit_run(run_md))
 
 def _load_lrgasp_rna_seq_metadata_files():
     "load of all metadata files when not cached"
@@ -142,6 +166,7 @@ def _load_lrgasp_rna_seq_metadata_files():
             _load_lrgasp_rna_seq_metadata_file(rna_seq_md, json_path)
         except Exception as ex:
             raise LrgaspException(f"failed to load '{json_path}'") from ex
+    rna_seq_md.finish()
     return rna_seq_md
 
 def get_lrgasp_rna_seq_metadata():

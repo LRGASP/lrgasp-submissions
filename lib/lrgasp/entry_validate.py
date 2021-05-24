@@ -73,9 +73,9 @@ def _validate_de_novo_model_experiment(experiment):
     except Exception as ex:
         raise LrgaspException(f"validation failed on '{rna_fasta}' with '{map_file}'") from ex
 
-def validate_expression_and_model(models, expression):
+def validate_expression_and_model(models, expression_mat):
     # all expression matrix ids must be in models
-    for row in expression.iterrows():
+    for row in expression_mat.iterrows():
         if row[1].ID not in models.by_transcript_id:
             raise LrgaspException(f"expression matrix ID '{row[1].ID}' not found in models")
 
@@ -84,8 +84,8 @@ def _validate_expression_experiment(experiment):
     expression_tsv = osp.join(experiment.experiment_dir, EXPRESSION_TSV)
     try:
         models = model_data.load(model_gtf)
-        expression = expression_data.load(expression_tsv)
-        validate_expression_and_model(models, expression)
+        expression_mat = expression_data.load(expression_tsv)
+        validate_expression_and_model(models, expression_mat)
     except Exception as ex:
         raise LrgaspException(f"validation failed on '{model_gtf}' with '{expression_tsv}'") from ex
 
