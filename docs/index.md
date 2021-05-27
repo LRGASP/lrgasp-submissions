@@ -9,7 +9,7 @@ Synapse challenge is at [Synapse LRGASP](https://www.synapse.org/#!Synapse:syn25
 
 Github repository is at [LRGASP/lrgasp-submissions](https://github.com/LRGASP/lrgasp-submissions).
 
-**FAQ**(faq.md)
+[**FAQ**](faq.md)
 
 ## Documentation
 
