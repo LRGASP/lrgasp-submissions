@@ -1,6 +1,6 @@
 # Challenge 1 Evaluation
 
-The evaluation of submitted transcript models will be done using [SQANTI3](https://github.com/ConesaLab/SQANTI3) descriptors and number of LRGASP-agreed evaluation metrics. The general procedure to assess these evaluation metrics on your data is to run **sqanti3_lrgasp.py**, an adapted version of the original code that will generate automatically an HTML report with the results of the evaluation.
+The evaluation of submitted transcript models will be done using [SQANTI3](https://github.com/ConesaLab/SQANTI3) descriptors and number of LRGASP-agreed evaluation metrics. The general procedure to assess these evaluation metrics on your data is to run **sqanti3_lrgasp.py**, an adapted version of the original code that will generate automatically an HTML report with the results of the evaluation. Please, download/clone the entire [sqanti3_evaluation](https://github.com/LRGASP/lrgasp-submissions/tree/fran/bin/sqanti3_evaluation) directory, including the **utilities** subfolder.
 
 ## Setting up the environment
 
@@ -10,7 +10,7 @@ conda env create -f sqanti3_lrgasp.yml
 source activate sqanti3_lrgasp
 ```
 
-SQANTI3 also takes advantage of some scripts of [cDNA_Cupcake](https://github.com/Magdoll/cDNA_Cupcake/wiki#install). Please install it with the *sqanti3_lrgasp* environment activated and add `cDNA_Cupcake`and `cDNA_Cupcake/sequence` to your `PYTHONPATH``
+SQANTI3 also takes advantage of some scripts of [cDNA_Cupcake](https://github.com/Magdoll/cDNA_Cupcake/wiki#install). Please install it with the *sqanti3_lrgasp* environment activated and add `cDNA_Cupcake`and `cDNA_Cupcake/sequence` to your `PYTHONPATH`.
 
 ```
 (sqanti3_lrgasp)$ git clone https://github.com/Magdoll/cDNA_Cupcake.git
@@ -18,8 +18,8 @@ SQANTI3 also takes advantage of some scripts of [cDNA_Cupcake](https://github.co
 (sqanti3_lrgasp)$ python setup.py build
 (sqanti3_lrgasp)$ python setup.py install
 
-(sqanti3_lrgasp)$ export PATH=$PATH:<path_to>/cDNA_Cupcake/sequence/
-(sqanti3_lrgasp)$ export PATH=$PATH:<path_to>/cDNA_Cupcake/
+(sqanti3_lrgasp)$ export PYTHONPATH=$PYTHONPATH:<path_to>/cDNA_Cupcake/sequence/
+(sqanti3_lrgasp)$ export PYTHONPATH=$PYTHONPATH:<path_to>/cDNA_Cupcake/
 
 ```
 
@@ -51,7 +51,7 @@ This is an example of how to run the **sqanti3_lrgasp.py** script:
 ```
 python sqanti3_lrgasp.py human_submitted.gtf lrgasp_gencode_v38.gtf lrgasp_grch38_sirvs.fasta \
 	--gtf --name human_submission --platform PacBio --cage_peak refTSS.human.bed \
-	--polyA_list_motif polyA_list.txt -c my_test.SJ.out.tab \
+	--polyA_motif_list polyA_list.txt -c my_test.SJ.out.tab \
 	-d /my_output/directory -o human_submission_test
 ```
 
