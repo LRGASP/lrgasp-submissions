@@ -70,7 +70,7 @@ In the case of *Associated gene* TP ratios, we will take into account not only t
 
 ```{r , echo=FALSE}
 
-kable(all.results["FSM"], align = "r ")
+kable(all.results["FSM"], align = "r")
 
 ggplot(sqanti_data_FSM, aes(x=log(mean_all_coverage+1), fill=structural_category ) )+
   geom_density(na.rm = T) +
@@ -86,7 +86,7 @@ ggplot(sqanti_data_FSM, aes(x=log(mean_all_coverage+1), fill=structural_category
 
 ```{r , echo=FALSE}
 
-kable(all.results["ISM"], align = "r ")
+kable(all.results["ISM"], align = "r")
 ggplot(sqanti_data_ISM, aes(x=log(mean_all_coverage+1), fill=structural_category ) )+
   geom_density(na.rm = T) +
   mytheme +
@@ -111,7 +111,7 @@ ggplot(sqanti_data_ISM, aes( x=subcategory, y=missing_exons_perc, fill=subcatego
 
 ```{r , echo=FALSE}
 
-kable(all.results["NIC"], align = "r ")
+kable(all.results["NIC"], align = "r")
 
 ggplot(sqanti_data_NIC) +
   geom_density(color="black", size=0.5, aes( x = log(mean_novel_coverage +1) , fill="Just novel SJ"), alpha=0.5, na.rm = T) +
@@ -138,7 +138,7 @@ ggplot(nic_only) +
 
 ```{r, echo=FALSE}
 
-kable(all.results["NNC"], align = "r ")
+kable(all.results["NNC"], align = "r")
 
 ggplot(sqanti_data_NNC) +
   geom_density(color="black", size=0.5, aes( x = log(mean_novel_coverage +1) , fill="Just novel SJ"), alpha=0.5, na.rm = T) +
@@ -174,7 +174,7 @@ If in this chunk of the evaluation all the results are 0, please, check if the r
 
 
 ```{r , echo=FALSE}
-kable(all.results["SIRV"], align = "r ")
+kable(all.results["SIRV"], align = "r")
 
 TP_sirvs=sirv_data[which(sirv_data$structural_category=="full-splice_match" & 
                                            abs(sirv_data$diff_to_TSS)<=50 & abs(sirv_data$diff_to_TTS)<=50),]

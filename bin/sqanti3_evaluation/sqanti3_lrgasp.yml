@@ -1,9 +1,9 @@
 name: sqanti3_lrgasp
 channels:
-  - r
-  - anaconda
   - conda-forge
   - bioconda
+  - anaconda
+  - r
   - defaults
 dependencies:
   - python=3.7
