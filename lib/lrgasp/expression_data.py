@@ -42,7 +42,15 @@ def validate_data(expression_mat):
     for col in sample_column_names(expression_mat):
         check_column_type(expression_mat, col)
 
-def load(expression_tsv):
+def validate_biosamples(experiment_md, expression_mat):
+    """validate that samples match those for the experiment and that all samples
+    are in the matrix."""
+    pass
+    # biosample_map = get_experiment_biosample_file_map(experiment)
+    # sample_cols = sample_column_names(expression_mat)
+
+def load(expression_tsv, experiment_md=None):
+    "if experiment_md is provide, validate samples"
     try:
         with gopen(expression_tsv) as fh:
             # na_value handling is needed to detect empty cells and short
@@ -55,6 +63,8 @@ def load(expression_tsv):
             validate_header(expression_mat)
             expression_mat.df.set_index("ID", drop=False, inplace=True, verify_integrity=True)
             validate_data(expression_mat)
+            if experiment_md is not None:
+                validate_biosamples(experiment_md, expression_mat)
         return expression_mat
     except (LrgaspException, pd.errors.ParserError, pd.errors.EmptyDataError, ValueError) as ex:
         raise LrgaspException(f"Parse of expression matrix TSV failed: {expression_tsv}") from ex

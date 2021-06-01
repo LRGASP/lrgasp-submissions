@@ -261,3 +261,29 @@ def load_from_entry(entry, experiment_id):
     experiment.experiment_dir = experiment_dir
     experiment.experiment_json = experiment_json
     return experiment
+
+class ExperimentBiosampleFileMap:
+    """mapping between biosample and files in an experiment"""
+    def __init__(self, experiment):
+        # both single samples and sorted tuples
+        self.sample_accs_to_files = defaultdict(set)
+        # only maps sorted tuples of samples
+        self.file_to_sample_accs = {}
+
+        rna_seq_md = get_lrgasp_rna_seq_metadata()
+        for file_acc in experiment.libraries:
+            self._add_file(rna_seq_md, file_acc)
+
+    def _add_file(self, rna_seq_md, file_acc):
+        rep_md = rna_seq_md.get_file_by_acc(file_acc).replicate_md
+        self.sample_accs_to_files[rep_md.biosample_accs].add(file_acc)
+        for ba in rep_md.biosample_accs:
+            self.sample_accs_to_files[ba].add(file_acc)
+        self.files_to_sample_accs[file_acc] = rep_md.biosample_accs
+
+def get_experiment_biosample_file_map(experiment):
+    """Get mapping of biosamples to files for an experiment, which are cached"""
+    fld_name = "_biosample_file_map"
+    if fld_name not in experiment:
+        experiment[fld_name] = ExperimentBiosampleFileMap(experiment)
+    return experiment[fld_name]

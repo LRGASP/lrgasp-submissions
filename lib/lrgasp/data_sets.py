@@ -14,7 +14,7 @@ lrgasp_run_metadata_files = ("encode-metadata.json", "simulated-metadata.json", 
 
 class LrgaspRun(ObjDict):
     """Used to create an LRGASP run object for sequencing data. Class is only used
-    to serialized, ObjDict used to access when deserialized."""
+    to serialized, ObjDict is used to access when deserialized."""
     def __init__(self, *, species, sample, run_acc, description, library_prep, platform):
         self.species = species
         self.sample = sample
@@ -25,8 +25,9 @@ class LrgaspRun(ObjDict):
         self.replicates = None
 
 class LrgaspReplicate(ObjDict):
-    """collection of files for a replicate. Class is only used
-    to serialized, ObjDict used to access when deserialized."""
+    """Collection of files for a replicate within a run.   Note that a given
+    Biosample and replicated can be used by multiple runs.  Class is only used
+    to serialized, ObjDict is used to access when deserialized."""
     def __init__(self, replicate_number, biosample_accs, size_range):
         self.replicate_number = replicate_number
         self.biosample_accs = biosample_accs  # deserialized as a sorted tuple
@@ -36,8 +37,7 @@ class LrgaspReplicate(ObjDict):
 
 class LrgaspRnaSeqFile(ObjDict):
     """One data file from an RNA-Seq run, used to build JSON in a consistent way
-    Class is only used to serialized, ObjDict used to access when
-    deserialized.
+    Class is only used to serialized, ObjDict is used to access when deserialized.
     When deserialized paired files will be link
     """
     def __init__(self, *, file_acc, file_type, url, s3_uri, file_size, md5sum, run_acc, biological_replicate_number,
@@ -52,6 +52,7 @@ class LrgaspRnaSeqFile(ObjDict):
         self.biological_replicate_number = biological_replicate_number
         self.output_type = output_type
         self.paired_end = paired_end
+
         self.paired_with = paired_with
         # self.paired_file is built when deserialized
         # self.replicate_md = added when deserialized

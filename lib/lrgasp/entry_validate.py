@@ -3,7 +3,7 @@ Load and validate model and expression entries.  This does full validation of
 all metadata and data files
 """
 import os.path as osp
-from lrgasp import LrgaspException
+from lrgasp import LrgaspException, iter_to_str
 from lrgasp.defs import Challenge, MODELS_GTF, DE_NOVO_RNA_FASTA, READ_MODEL_MAP_TSV, EXPRESSION_TSV
 from lrgasp.defs import get_challenge_samples, challenge_desc
 from lrgasp import entry_metadata
@@ -12,7 +12,6 @@ from lrgasp import model_data
 from lrgasp import de_novo_rna_data
 from lrgasp import read_model_map_data
 from lrgasp import expression_data
-from lrgasp.metadata_validate import set_to_str
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
 def _model_map_transcript_ids(read_model_map):
@@ -94,7 +93,7 @@ def _validate_experiment_library(entry, experiment, rna_seq_md, library):
     valid_samples = get_challenge_samples(entry.challenge_id)
     if sample not in valid_samples:
         raise LrgaspException(f"library '{library}' sample '{sample}' is not valid for challenge '{entry.challenge_id}',"
-                              " expected one of {}".format(set_to_str(valid_samples)))
+                              " expected one of {}".format(iter_to_str(valid_samples)))
 
 def _validate_experiment_libraries(entry, experiment):
     "check if libraries uses are compatible with challenge"""
@@ -135,8 +134,8 @@ def validate_samples(entry):
     challenge_samples = get_challenge_samples(entry.challenge_id)
     if entry_samples != challenge_samples:
         raise LrgaspException("{} must have all of the samples '{}', only '{}' were found".format(challenge_desc(entry.challenge_id),
-                                                                                                  set_to_str(challenge_samples),
-                                                                                                  set_to_str(entry_samples)))
+                                                                                                  iter_to_str(challenge_samples),
+                                                                                                  iter_to_str(entry_samples)))
 
 def validate_experiment_consistency(entry, allow_partial):
     """validate that all experiments are consistent"""

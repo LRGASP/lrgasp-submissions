@@ -42,3 +42,10 @@ def gopen(path):
         return gzip.open(path, "rt")
     else:
         return open(path)
+
+def iter_to_str(values):
+    "generate string of values for use in error messages.  Sets will be sorted."
+    if isinstance(values, (set, frozenset)):
+        return ", ".join([str(v) for v in sorted(values)])
+    else:
+        return ", ".join([str(v) for v in values])
