@@ -169,7 +169,7 @@ Here we will evaluate if the transcriptome contains the SIRVs that should be det
 
 We will also plot the expression values of the TP SIRVs. If the quantification is perfect, they should have the exact same expression values because they were spiked-in at equimolar concentrations.
 
-**ATENTION**
+**ATTENTION**
 If in this chunk of the evaluation all the results are 0, please, check if the reference genome and/or transcriptome used for building your transcript-model are contain information about spike-ins.
 
 
