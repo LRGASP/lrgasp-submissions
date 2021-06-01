@@ -2,13 +2,13 @@
 
 The format required for providing quantification results by the user should be a **tab-separated** matrix in which long read-defined transcripts will be the rows and biological replicates will be columns.
 
-Expression matrix files must be gzip-compressed and named ```expression.tsv.gz```.
+Expression matrix files should be gzip-compressed and named ```expression.tsv.gz```.
 
 ## Key features
 
 * **Header**: The first field must be `ID`, and the rest of the column names should be the replicate labels.
 * **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](metadata-identifiers.md#feature-and-read-identifiers).
-* **Replicates**: Should refer to the Biosample ID of the biological replicate or the file accession. This can be found in the [RNA-Seq Data Matrix](rnaseq-data-matrix.md)
+* **Replicate columns**: Should have the FASTQ file accession associated  with the replicate. This can be found in the [RNA-Seq Data Matrix](rnaseq-data-matrix.md)
 * **Quantification values reported**: Units must be TPM, `NA` values are allowed when no expression is observed.
 
 Gene expression will be calculated by summing up all the transcripts' expression values coming from the same locus.
@@ -16,7 +16,7 @@ Gene expression will be calculated by summing up all the transcripts' expression
 ## Expression matrix example
 
 ```
-ID	rep1	rep2	rep3
+ID	ENCFF155CFF	ENCFF771DIX	ENCFF600LIU
 PB.1.1	49.98	49.22	75.64
 PB.10.1	39.67   42.66   4.74
 PB.10.2	33.08   29.32   5.37

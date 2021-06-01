@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_paired_end.json
-caused by: 'ENCFF644AQW' is a paired-end experiment, however the paired file 'ENCFF766OAK' is not specified in experiment.libraries
+caused by: 'ENCFF644AQW' is a paired-end experiment, however the paired file 'ENCFF766OAK' is not specified in experiment_md.libraries

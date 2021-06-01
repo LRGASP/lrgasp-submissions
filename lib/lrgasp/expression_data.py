@@ -5,8 +5,9 @@ import csv
 import numpy as np
 import pandas as pd
 from lrgasp import LrgaspException
-from lrgasp import gopen
+from lrgasp import gopen, iter_to_str
 from lrgasp.defs import validate_feature_ident
+from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
 ##
 # In order to detect empty columns and short rows, disallow space as a NA value, as well
@@ -42,12 +43,39 @@ def validate_data(expression_mat):
     for col in sample_column_names(expression_mat):
         check_column_type(expression_mat, col)
 
-def validate_biosamples(experiment_md, expression_mat):
+def validate_replicates(experiment_md, expression_mat):
     """validate that samples match those for the experiment and that all samples
     are in the matrix."""
-    pass
-    # biosample_map = get_experiment_biosample_file_map(experiment)
-    # sample_cols = sample_column_names(expression_mat)
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    sample_cols = sample_column_names(expression_mat)
+
+    def _check_in_expr():
+        "check that all columns are in the experiment"
+        for sc in sample_cols:
+            if sc not in experiment_md.libraries:
+                raise LrgaspException(f"matrix column '{sc}' is not listed in experiment_md.libraries for '{experiment_md.experiment_id}'")
+
+    def _build_run_replicates(file_accs):
+        "create a set with tuples of (run_acc, replicate_number)"
+        run_reps = set()
+        for file_acc in file_accs:
+            file_md = rna_seq_md.get_file_by_acc(file_acc)
+            run_reps.add((file_md.run_acc, file_md.biological_replicate_number))
+        return run_reps
+
+    def _check_covers_expr():
+        """check that every run and replicate for an experiment is in matrix"""
+        expr_rr = _build_run_replicates(experiment_md.libraries)
+        mat_rr = _build_run_replicates(sample_cols)
+        if len(mat_rr) > len(expr_rr):
+            raise LrgaspException(f"BUG: matrix has more run replicates than experiment: matrix='{mat_rr}' experiment='{expr_rr}'")
+        missing_rr = expr_rr - mat_rr
+        if len(missing_rr) > 0:
+            missing_desc = iter_to_str(["{}/{}".format(*rr) for rr in missing_rr])
+            raise LrgaspException(f"matrix does not have an entries for all run and replicate in experiment, missing: {missing_desc}")
+
+    _check_in_expr()
+    _check_covers_expr()
 
 def load(expression_tsv, experiment_md=None):
     "if experiment_md is provide, validate samples"
@@ -64,7 +92,7 @@ def load(expression_tsv, experiment_md=None):
             expression_mat.df.set_index("ID", drop=False, inplace=True, verify_integrity=True)
             validate_data(expression_mat)
             if experiment_md is not None:
-                validate_biosamples(experiment_md, expression_mat)
+                validate_replicates(experiment_md, expression_mat)
         return expression_mat
     except (LrgaspException, pd.errors.ParserError, pd.errors.EmptyDataError, ValueError) as ex:
         raise LrgaspException(f"Parse of expression matrix TSV failed: {expression_tsv}") from ex

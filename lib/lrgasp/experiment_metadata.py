@@ -48,9 +48,9 @@ class RunType(namedtuple("RunType",
         return str(self.sample) + '/' + str(self.library_prep) + '/' + str(self.platform)
 
 
-def get_extra_libraries(experiment):
+def get_extra_libraries(experiment_md):
     """get the extra_libraries field, or empty if not specified"""
-    return experiment.get("extra_libraries", ())
+    return experiment_md.get("extra_libraries", ())
 
 def find_dups(lst):
     dups = []
@@ -61,16 +61,16 @@ def find_dups(lst):
         found.add(v)
     return sorted(dups)
 
-def get_libraries_file_metadata(rna_seq_md, experiment):
+def get_libraries_file_metadata(rna_seq_md, experiment_md):
     """collect metadata for all library files in experiment"""
     # exception if unknown acc
     return [rna_seq_md.get_file_by_acc(file_acc)
-            for file_acc in experiment.libraries]
+            for file_acc in experiment_md.libraries]
 
-def library_validate(experiment, rna_seq_md, file_md):
+def library_validate(experiment_md, rna_seq_md, file_md):
     run_md = rna_seq_md.get_run_by_acc(file_md.run_acc)
-    if run_md.species != experiment.species:
-        raise LrgaspException(f"LRGASP RNA-Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment.experiment_id}' specifies species as '{experiment.species}'")
+    if run_md.species != experiment_md.species:
+        raise LrgaspException(f"LRGASP RNA-Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment_md.experiment_id}' specifies species as '{experiment_md.species}'")
 
     # this should never happen, as the data matrix should be restrict to types we allow
     if file_md.output_type not in valid_file_content:
@@ -111,9 +111,9 @@ def get_run_type_descs(rna_seq_md, expr_file_mds):
     return ["{}: {}".format(str(rt), ", ".join(sorted(rt_to_file_acc[rt])))
             for rt in sorted(rt_to_file_acc.keys())]
 
-def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C901
+def libraries_validate_compat(experiment_md, rna_seq_md, expr_file_mds):  # noqa: C901
     """compatibility between libraries and experiments;"""
-    data_category = experiment.data_category
+    data_category = experiment_md.data_category
     long_run_types, short_run_types = get_run_types(rna_seq_md, expr_file_mds)
 
     def _run_type_err_msg(rts):
@@ -138,15 +138,15 @@ def libraries_validate_compat(experiment, rna_seq_md, expr_file_mds):  # noqa: C
             raise LrgaspException(f"{data_category} experiments must use one and only one short read library/platform, " + _run_type_err_msg(short_run_types))
 
     def _validate_long_genome():
-        if experiment.challenge_id != Challenge.iso_detect_de_novo:
+        if experiment_md.challenge_id != Challenge.iso_detect_de_novo:
             raise LrgaspException(f"{data_category} only allowed for {challenge_desc(Challenge.iso_detect_de_novo)}")
         _validate_long_only()
 
     def _validate_kitchen_sink():
-        if len(experiment.libraries) == 0:
+        if len(experiment_md.libraries) == 0:
             raise LrgaspException(f"{data_category} experiments must use some LRGASP RNA-Seq libraries")
         # simulation not allowed
-        for file_md in get_libraries_file_metadata(rna_seq_md, experiment):
+        for file_md in get_libraries_file_metadata(rna_seq_md, experiment_md):
             if is_simulation(rna_seq_md.get_run_by_file_acc(file_md.file_acc).sample):
                 raise LrgaspException(f"{data_category} experiments may not use simulation data '{file_md.file_acc}'")
 
@@ -169,7 +169,7 @@ def libraries_validate_paired_end(rna_seq_md, expr_file_mds):
     paired_acc = frozenset([fm.file_acc for fm in paired_expr_file_mds])
     for file_md in paired_expr_file_mds:
         if file_md.paired_with not in paired_acc:
-            raise LrgaspException(f"'{file_md.file_acc}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment.libraries")
+            raise LrgaspException(f"'{file_md.file_acc}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment_md.libraries")
 
 def get_runs_replicates(rna_seq_md, expr_file_mds):
     "get dict of runs to set of replicates for all libraries"
@@ -200,34 +200,34 @@ def libraries_validate_replicates(experiment, rna_seq_md, expr_file_mds):
     for run_acc, rep_set in runs_replicates.items():
         _check_run(run_acc, rep_set)
 
-def libraries_validate(experiment):
+def libraries_validate(experiment_md):
     rna_seq_md = get_lrgasp_rna_seq_metadata()
-    dups = find_dups(experiment.libraries)
+    dups = find_dups(experiment_md.libraries)
     if len(dups) > 0:
         raise LrgaspException(f"duplicate accession in libraries: {dups}")
 
     # per library validation
-    expr_file_mds = get_libraries_file_metadata(rna_seq_md, experiment)
+    expr_file_mds = get_libraries_file_metadata(rna_seq_md, experiment_md)
     for file_md in expr_file_mds:
-        library_validate(experiment, rna_seq_md, file_md)
+        library_validate(experiment_md, rna_seq_md, file_md)
 
     # cross-library validations
-    libraries_validate_compat(experiment, rna_seq_md, expr_file_mds)
+    libraries_validate_compat(experiment_md, rna_seq_md, expr_file_mds)
     libraries_validate_paired_end(rna_seq_md, expr_file_mds)
-    libraries_validate_replicates(experiment, rna_seq_md, expr_file_mds)
+    libraries_validate_replicates(experiment_md, rna_seq_md, expr_file_mds)
 
 def extra_library_validate(extra_libraries, ilib):
-    desc = f"experiment.extra_libraries[{ilib}]"
+    desc = f"experiment_md.extra_libraries[{ilib}]"
     check_from_defs(desc, extra_libraries_fields, extra_libraries[ilib])
 
-def extra_libraries_validate(experiment):
-    if experiment.data_category not in (DataCategory.long_short, DataCategory.kitchen_sink):
+def extra_libraries_validate(experiment_md):
+    if experiment_md.data_category not in (DataCategory.long_short, DataCategory.kitchen_sink):
         raise LrgaspException("experiment extra_libraries may only be specified for 'long_short' or 'kitchen_sink' experiments")
-    dups = find_dups([el.acc for el in experiment.extra_libraries])
+    dups = find_dups([el.acc for el in experiment_md.extra_libraries])
     if len(dups) > 0:
         raise LrgaspException(f"duplicate accession in extra libraries: {dups}")
-    for ilib in range(len(experiment.extra_libraries)):
-        extra_library_validate(experiment.extra_libraries, ilib)
+    for ilib in range(len(experiment_md.extra_libraries)):
+        extra_library_validate(experiment_md.extra_libraries, ilib)
 
 def experiment_validate(experiment):
     desc = "experiment"
@@ -249,41 +249,15 @@ def load(experiment_json):
         raise LrgaspException(f"validation of experiment metadata failed: {experiment_json}") from ex
     return experiment
 
-def load_from_entry(entry, experiment_id):
+def load_from_entry(entry_md, experiment_id):
     """load and validation experiment metadata given a entry,
     add experiment_dir to metadata"""
-    experiment_dir = osp.join(entry.entry_dir, experiment_id)
+    experiment_dir = osp.join(entry_md.entry_dir, experiment_id)
     experiment_json = osp.join(experiment_dir, EXPERIMENT_JSON)
     try:
-        experiment = load(experiment_json)
+        experiment_md = load(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:
-        raise LrgaspException(f"error parse metadata for entry '{entry.entry_id}', experiment '{experiment_id}' (obtained from entry.json): {experiment_json}") from ex
-    experiment.experiment_dir = experiment_dir
-    experiment.experiment_json = experiment_json
-    return experiment
-
-class ExperimentBiosampleFileMap:
-    """mapping between biosample and files in an experiment"""
-    def __init__(self, experiment):
-        # both single samples and sorted tuples
-        self.sample_accs_to_files = defaultdict(set)
-        # only maps sorted tuples of samples
-        self.file_to_sample_accs = {}
-
-        rna_seq_md = get_lrgasp_rna_seq_metadata()
-        for file_acc in experiment.libraries:
-            self._add_file(rna_seq_md, file_acc)
-
-    def _add_file(self, rna_seq_md, file_acc):
-        rep_md = rna_seq_md.get_file_by_acc(file_acc).replicate_md
-        self.sample_accs_to_files[rep_md.biosample_accs].add(file_acc)
-        for ba in rep_md.biosample_accs:
-            self.sample_accs_to_files[ba].add(file_acc)
-        self.files_to_sample_accs[file_acc] = rep_md.biosample_accs
-
-def get_experiment_biosample_file_map(experiment):
-    """Get mapping of biosamples to files for an experiment, which are cached"""
-    fld_name = "_biosample_file_map"
-    if fld_name not in experiment:
-        experiment[fld_name] = ExperimentBiosampleFileMap(experiment)
-    return experiment[fld_name]
+        raise LrgaspException(f"error parse metadata for entry '{entry_md.entry_id}', experiment '{experiment_id}' (obtained from entry.json): {experiment_json}") from ex
+    experiment_md.experiment_dir = experiment_dir
+    experiment_md.experiment_json = experiment_json
+    return experiment_md
