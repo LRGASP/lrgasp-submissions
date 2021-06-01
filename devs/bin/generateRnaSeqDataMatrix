@@ -53,7 +53,7 @@ def make_run_cols(run_md, for_markdown):
 
 def make_replicate_cols(replicate_md):
     return [str(replicate_md.replicate_number),
-            " ".join(replicate_md.biosample_accs),
+            ",".join(replicate_md.biosample_accs),
             (replicate_md.size_range if replicate_md.size_range is not None else '')]
 
 def make_file_cols(file_md, for_markdown):
