@@ -7,7 +7,7 @@ For details on result files that must be submitted, see [Submission structure](s
     * `WTC11` (human iPSC cell line)
     * `H1_mix` (human H1 ES cell line mixed with human Definitive Endoderm derived from H1)
     * `ES` (mouse ES cell line)
-    * `human_simulation` - simulated human reads (Illumina, ONT, and PacBio cDNA) 
+    * `human_simulation` - simulated human reads (Illumina, ONT, and PacBio cDNA)
     * `mouse_simulation` - simulated mouse reads (Illumina and PacBio cDNA, ONT dRNA)
   * Result files:
     * `models.gtf.gz`
@@ -17,7 +17,7 @@ For details on result files that must be submitted, see [Submission structure](s
   * Samples
     * `WTC11` (human iPSC cell line)
     * `H1_mix` (human H1 ES cell line mixed with human Definitive Endoderm derived from H1)
-    * `human_simulation` - simulated human reads (Illumina, ONT, and PacBio cDNA) 
+    * `human_simulation` - simulated human reads (Illumina, ONT, and PacBio cDNA)
     * `mouse_simulation` - simulated mouse reads (Illumina and PacBio cDNA, ONT dRNA)
   * Result files:
     * `expression.tsv.gz`

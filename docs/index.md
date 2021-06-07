@@ -9,16 +9,16 @@ Synapse challenge is at [Synapse LRGASP](https://www.synapse.org/#!Synapse:syn25
 
 Github repository is at [LRGASP/lrgasp-submissions](https://github.com/LRGASP/lrgasp-submissions).
 
-[**FAQ**](faq.md)
-
 ## Documentation
 
 - [Challenges](challenges.md)
+- [**FAQ: Frequently asked questions**](faq.md)
 - LRGASP data
   - [Reference genomes and transcripts](reference-genomes.md)
   - [Simulated data description](simulated-data-description.md)
   - [RNA-Seq data matrix](rnaseq-data-matrix.md)
   - [RNA-Seq data matrix TSV](rnaseq-data-matrix.tsv)
+  - [Adapters and other data](other-data.md)
 - [Submission structure](submission.md)
 - Submission formats:
   - [Metadata](metadata.md)
