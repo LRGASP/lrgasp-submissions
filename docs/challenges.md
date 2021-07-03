@@ -56,7 +56,7 @@ Each team can only submit one entry per challenge.
 
 For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read.
 
-* The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology.  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data
+* The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology (*long-only*).  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data (*long and short*)
   * Illumina cDNA - *short-only*
   * Pacbio cDNA - *long-only* or *long and short*
   * Pacbio CapTrap - *long-only* or *long and short*
