@@ -54,7 +54,7 @@ replicates separately in the [expression matrix](expression_matrix_format.md).
 
 Each team can only submit one entry per challenge.
 
-For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read.
+For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read. For Challenge 2, submitters have the option of quantifying against the reference transcriptome or a transcriptome derived from the data (i.e., results from Challenge 1). The GTF used for quantification is included as part of the [Challenge 2 submission](submission.md).
 
 * The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology (*long-only*).  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data (*long and short*)
   * Illumina cDNA - *short-only*
