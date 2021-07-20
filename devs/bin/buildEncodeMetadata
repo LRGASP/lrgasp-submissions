@@ -37,6 +37,11 @@ def get_biosamples(encode_md):
             biosamples.append(rep.library.biosample)
     return biosamples
 
+def file_md_filter(encode_md):
+    """get subset of file to consider; this discards files that we don't use"""
+    return [f for f in encode_md.files
+            if ("platform" in f) and ("replicate" in f)]
+
 def determine_species(encode_md, sample):
     """figure out the species"""
     species = set()
@@ -84,7 +89,7 @@ def guess_library_prep_from_desc(encode_md):
         prep = _guess_library_prep_from_one_desc(encode_md.description)
         if prep is not None:
             return prep, encode_md.description
-    for file_md in encode_md.files:
+    for file_md in file_md_filter(encode_md):
         desc = file_md.replicate.get("description")
         if desc is not None:
             prep = _guess_library_prep_from_one_desc(desc)
@@ -127,7 +132,7 @@ def determine_library_prep(encode_md):
 
 def determine_platform(encode_md):
     platforms = set()
-    for file_md in encode_md.files:
+    for file_md in file_md_filter(encode_md):
         platforms.add(file_md.platform.term_name)
     if len(platforms) != 1:
         raise LrgaspException(f"expected to parse one platform name, got {platforms}")
@@ -173,9 +178,13 @@ def build_file(run, file_md):
 
 def build_files(encode_md, run, replicate_map):
     """build files and add to replicates"""
-    for file_md in encode_md.files:
-        frec = build_file(run, file_md)
-        replicate_map[frec.biological_replicate_number].files.append(frec)
+    for file_md in file_md_filter(encode_md):
+        try:
+            frec = build_file(run, file_md)
+            replicate_map[frec.biological_replicate_number].files.append(frec)
+        except Exception as ex:
+            raise LrgaspException(f"error parsing file metedata {file_md.accession}") from ex
+
 
 def get_replicate_biosample_accs(replicate):
     accs = set()
@@ -198,10 +207,7 @@ def build_replicates(encode_md):
         replicate_map[rep.replicate_number] = rep
     return replicate_map
 
-def build_run(encode_md):
-    run_acc = encode_md.accession
-    if not run_acc.startswith("ENCSR"):
-        raise LrgaspException(f"accession should start with ENCSR, got {run_acc}")
+def parse_run(encode_md, run_acc):
     sample = determine_sample(encode_md)
     platform = determine_platform(encode_md)
     library_prep = determine_library_prep(encode_md)
@@ -216,25 +222,41 @@ def build_run(encode_md):
     build_files(encode_md, run, replicate_map)
     return run
 
-def process_encode_run(encode_json):
-    with open(encode_json) as fh:
-        encode_md = json.load(fh, object_pairs_hook=ObjDict)
-        encode_md.encode_json = encode_json
-    return build_run(encode_md)
-
-def load_encode_run(runs, encode_json):
+def build_run(encode_md):
+    run_acc = encode_md.accession
+    if not run_acc.startswith("ENCSR"):
+        raise LrgaspException(f"accession should start with ENCSR, got {run_acc}")
     try:
-        run = process_encode_run(encode_json)
+        return parse_run(encode_md, run_acc)
+    except Exception as ex:
+        rec = json.dumps(encode_md, sys.stderr, cls=SymEnumJsonEncoder, indent=4)
+        raise LrgaspException(f"error parsing run {run_acc}\n{rec}") from ex
+
+def load_encode_run(runs, encode_json, encode_md):
+    encode_md.encode_json = encode_json
+    try:
+        run = build_run(encode_md)
         if run.run_acc in runs:
             raise LrgaspException("duplicate run: " + run.run_acc)
         runs[run.run_acc] = run
     except Exception:
         raise LrgaspException("error processing: " + encode_json)
 
+def load_encode_json(runs, encode_json):
+    with open(encode_json) as fh:
+        encode_md_all = json.load(fh, object_pairs_hook=ObjDict)
+
+    # can either be a record or list of records
+    if isinstance(encode_md_all, list) :
+        for encode_md in encode_md_all:
+            load_encode_run(runs, encode_json, encode_md)
+    else:
+        load_encode_run(runs, encode_json, encode_md_all)
+
 def main(args):
     runs = {}
     for encode_json in args.encode_jsons:
-        load_encode_run(runs, encode_json)
+        load_encode_json(runs, encode_json)
 
     with open(args.dataset_json, "w") as fh:
         json.dump(list(runs.values()), fh, cls=SymEnumJsonEncoder, indent=4)

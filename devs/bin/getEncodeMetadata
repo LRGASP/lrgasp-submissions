@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import sys
 import json
 import argparse
 import requests
+
+DEBUG = False
 
 def parse_args():
     desc = """get JSON ENCODE metadata for LRGASP"""
@@ -10,15 +13,34 @@ def parse_args():
                         help="output")
     return parser.parse_args()
 
-def queryMetadata():
+def queryMetadata(url):
     headers = {'accept': 'application/json'}
-    url = 'https://www.encodeproject.org/search/?searchTerm=LRGASP&frame=object'
     response = requests.get(url, headers=headers)
     return response.json()
 
+def getRunAccessions():
+    url = 'https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP&limit=all&format=json'
+    lgraspRuns = []
+
+    response = queryMetadata(url)
+    if DEBUG:
+        json.dump(response, sys.stderr, indent=4)
+
+    # one rec per run
+    for rec in response["@graph"]:
+        lgraspRuns.append(rec["accession"])
+    return sorted(lgraspRuns)
+
+def queryRun(runAcc):
+    url = f"https://www.encodeproject.org/experiments/{runAcc}/?format=json"
+    return queryMetadata(url)
+
+def queryRuns(lrgaspRuns):
+    return [queryRun(r) for r in lrgaspRuns]
 
 def main(args):
-    metadata = queryMetadata()
+    lrgaspRuns = getRunAccessions()
+    metadata =  queryRuns(lrgaspRuns)
     with open(args.encode_json, "w") as fh:
         json.dump(metadata, fh, indent=4)
 

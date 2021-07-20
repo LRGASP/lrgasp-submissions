@@ -37,7 +37,8 @@ def metadata_sorted_gen(rna_seq_md):
     output_type_order = {
         "reads": 1,
         "subreads": 2,
-        "nanopore_signal": 3
+        "R2C2_subreads": 2,
+        "nanopore_signal": 4,
     }
 
     for run_md in sorted(rna_seq_md, key=lambda r: (challenges_sort_key(r), r.species, r.sample, r.library_prep, r.platform)):

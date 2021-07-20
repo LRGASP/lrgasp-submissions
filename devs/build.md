@@ -11,7 +11,8 @@ make test
 ## Data matrix
 
 ```
-  ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/*.json
+  ./devs/bin/getEncodeMetadata ../metadata-dumps/encode-all.json
+  ./devs/bin/buildEncodeMetadata  --dataset_json=lib/lrgasp/data/encode-metadata.json ../metadata-dumps/encode-all.json
   make doc
 ```
 
