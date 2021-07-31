@@ -11,7 +11,7 @@ test: test_ref_example test_de_novo_example test_example_gz bad_tests good_tests
 
 ref_example_dir = ${darwindir}/iso_detect_ref_ont_drna/WTC11_drna_ont_long
 test_ref_example:
-	${lrgasp_validate_read_model_map} ${ref_example_dir}/read_model_map.tsv --model_gtf=${ref_example_dir}/models.gtf
+	${lrgasp_validate_read_model_map} ${ref_example_dir}/read_model_map.tsv --models_gtf=${ref_example_dir}/models.gtf
 
 de_novo_example_dir = ${darwindir}/iso_detect_de_novo_pb/pbManteeBlood
 test_de_novo_example:
@@ -35,7 +35,7 @@ test_bad%: mkout
 good_tests: ${good_tests:%=test_%}
 
 test_good%: mkout
-	${lrgasp_validate_read_model_map} input/good$*.tsv --model_gtf=input/good$*.gtf
+	${lrgasp_validate_read_model_map} input/good$*.tsv --models_gtf=input/good$*.gtf
 
 clean:
 	rm -rf output

@@ -12,23 +12,23 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument("--debug", action='store_true',
                         help="print stack on any error")
-    parser.add_argument("--model_gtf",
+    parser.add_argument("--models_gtf",
                         help="optional reference GTF model file to compare against")
     parser.add_argument("--rna_fasta",
                         help="optional de novo RNA fasta file to compare against")
     parser.add_argument("read_model_map_tsv",
                         help="TSV for read_model_map")
     args = parser.parse_args()
-    if (args.model_gtf is not None) and (args.rna_fasta is not None):
-        parser.error("it makes not sense to specify both --model_gtf and --rna_fasta")
+    if (args.models_gtf is not None) and (args.rna_fasta is not None):
+        parser.error("it makes not sense to specify both --models_gtf and --rna_fasta")
     return args
 
 def main(args):
     logging.getLogger().setLevel(logging.WARN)
     try:
         read_model_map = read_model_map_data.load(args.read_model_map_tsv)
-        if args.model_gtf is not None:
-            models = model_data.load(args.model_gtf)
+        if args.models_gtf is not None:
+            models = model_data.load(args.models_gtf)
             entry_validate.validate_ref_model_and_read_mapping(models, read_model_map)
         if args.rna_fasta is not None:
             de_novo_rna_ids = de_novo_rna_data.load(args.rna_fasta)

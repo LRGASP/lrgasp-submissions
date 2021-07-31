@@ -27,9 +27,9 @@ def parse_args():
 
 lexogen_gtf_attrs = ('gene_id', 'transcript_id', 'gene_biotype', 'exon_assignment')
 
-def load_exons(model_gtf):
+def load_exons(models_gtf):
     """load GTF exons into a list of Series objects of exons"""
-    gtf_df = read_gtf(model_gtf)
+    gtf_df = read_gtf(models_gtf)
     gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
     if len(gtf_df) == 0:
         raise LrgaspException("no exon records found")

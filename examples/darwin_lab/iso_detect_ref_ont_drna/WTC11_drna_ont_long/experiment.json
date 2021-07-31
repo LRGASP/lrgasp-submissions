@@ -1,5 +1,5 @@
 {
-    "experiment_id": "wtc11_drna_ont_long",
+    "experiment_id": "WTC11_drna_ont_long",
     "challenge_id": "iso_detect_ref",
     "description": "Transcript models for human WTC11 ONT direct RNA sequenceing",
     "notes": "noted",

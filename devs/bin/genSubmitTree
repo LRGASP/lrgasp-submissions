@@ -14,9 +14,9 @@ ENTRY_MD = "entry.json"
 EXPERIMENT_MD = "experiment.json"
 
 # data files
-MODEL_GTF = "models.gtf.gz"
-MODEL_READ_MODEL_MAP = "read_model_map.tsv.gz"
-QUANT_MATRIX = "expression.tsv.gz"
+MODELS_GTF_GZ = "models.gtf.gz"
+READ_MODEL_MAP_GZ = "read_model_map.tsv.gz"
+EXPRESSION_TSV_GZ = "expression.tsv.gz"
 
 # directories
 ENTRY_MODEL = "entry_A\n(" + str(Challenge.iso_detect_ref) + ")"
@@ -68,18 +68,18 @@ def add_experiment(g, parent, label, data_files):
 def build_entry_model(g):
     add_entry(g, ENTRY_MODEL)
     add_experiment(g, ENTRY_MODEL, MODEL_HS1,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
     add_experiment(g, ENTRY_MODEL, MODEL_HS2,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
     add_experiment(g, ENTRY_MODEL, MODEL_MM,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
 
 def build_entry_quant(g):
     add_entry(g, ENTRY_QUANT)
     add_experiment(g, ENTRY_QUANT, QUANT_HS,
-                   (QUANT_MATRIX,))
+                   (EXPRESSION_TSV_GZ,))
     add_experiment(g, ENTRY_QUANT, QUANT_MM,
-                   (QUANT_MATRIX,))
+                   (EXPRESSION_TSV_GZ,))
 
 def build_submission_tree(g):
     build_entry_model(g)

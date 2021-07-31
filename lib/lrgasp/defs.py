@@ -77,14 +77,17 @@ class Gencode(SymEnum):
 def validate_symbolic_ident(ident):
     if not ident.isidentifier():
         raise LrgaspException(f"not a valid symbolic identifier '{ident}'")
+    return ident
 
 def validate_feature_ident(ident):
     if (not ident.isascii()) or (not ident.isprintable()) or re.search("\\s", ident) or (len(ident) == 0):
         raise LrgaspException(f"'{ident}' is not a valid feature identifier, must be composed of ASCII, printable, non-white-space characters")
+    return ident
 
 def validate_synapse_ident(ident):
     if not re.match("^syn[0-9]{4,30}$", ident):
         raise LrgaspException(f"'{ident}' is not a valid Synapse identifier")
+    return ident
 
 def validate_entry_ident(entry_id):
     """check that an entry is prefix with one of the challenge ids, return the Challenge identifier that

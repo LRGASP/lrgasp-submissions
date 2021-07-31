@@ -6,10 +6,11 @@ import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
+from lrgasp import experiment_metadata
 from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident, validate_entry_ident, ENTRY_JSON
 
 # Note: a field "experiments" is added when metadata is loaded.  It is None
-# until experiments are loaded.
+# until experiment metadata is loaded.
 
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
@@ -51,7 +52,7 @@ def entry_validate(entry_md):
 
     challenge_id = validate_entry_ident(entry_md.entry_id)
     if entry_md.challenge_id != challenge_id:
-        raise LrgaspException(f"invalid {desc} entry_id '{entry_md.entry-id}' prefix does not match challenge_id '{entry_md.challenge_id}'")
+        raise LrgaspException(f"invalid {desc} entry_id '{entry_md.entry_id}' prefix does not match challenge_id '{entry_md.challenge_id}'")
     for contact in entry_md.contacts:
         entry_contact_validate(contact)
 
@@ -80,3 +81,10 @@ def load_dir(entry_dir):
     entry_md.entry_dir = entry_dir
     entry_md.entry_json = entry_json
     return entry_md
+
+def load_experiments_metadata(entry_md):
+    """read experiment metadata and save in entry_md.experiments, no-op if already loaded.
+    Can be restricted for testing"""
+    if entry_md.experiments is None:
+        entry_md.experiments = [experiment_metadata.load_from_entry(entry_md, experiment_id)
+                                for experiment_id in entry_md.experiment_ids]

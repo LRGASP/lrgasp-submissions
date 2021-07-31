@@ -27,3 +27,4 @@ lrgasp_validate_expression_matrix = ${binpre}lrgasp-validate-expression-matrix
 lrgasp_validate_entry_metadata = ${binpre}lrgasp-validate-entry-metadata
 lrgasp_validate_experiment_metadata = ${binpre}lrgasp-validate-experiment-metadata
 lrgasp_validate_entry = ${binpre}lrgasp-validate-entry
+lrgasp_upload_entry = ${binpre}lrgasp-upload-entry

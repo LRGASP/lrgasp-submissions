@@ -2,7 +2,7 @@ PYTHON = python3
 FLAKE8 = python3 -m flake8
 TWINE = ${PYTHON} -m twine
 
-pyprogs = $(shell file -F $$'\t' bin/* devs/bin/* | awk '/Python script/{print $$1}')
+pyprogs = $(shell file -F $$'\t' bin/* devs/bin/* tests/*/bin/* | awk '/Python script/{print $$1}')
 pypi_url = https://upload.pypi.org/simple/
 testpypi_url = https://test.pypi.org/simple/
 testenv = testenv
