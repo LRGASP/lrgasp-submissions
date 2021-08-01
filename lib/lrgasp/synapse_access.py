@@ -112,7 +112,7 @@ def add_login_args(parser):
     parser.add_argument('--rememberMe', '--remember-me', dest='rememberMe', action='store_true', default=False,
                         help='Cache credentials for automatic authentication on future interactions with Synapse')
 
-def connect(args):
+def syn_connect(args):
     "connect and log in based on options"
     syn_conf = LrgaspSynConfig.factory(args)
     syn = Synapse()
@@ -122,7 +122,7 @@ def connect(args):
     user = args.synapseUser if args.synapseUser is not None else syn_conf.user
     password = args.synapsePassword if args.synapsePassword is not None else syn_conf.password
     login_with_prompt(syn, user, password, rememberMe=args.rememberMe)
-    return syn, syn_conf
+    return syn
 
 def get_project_by_name(syn, project_name):
     synid = syn.findEntityId(project_name)
