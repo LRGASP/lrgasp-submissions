@@ -5,7 +5,9 @@ an entry before submitting.
 
 The code is installable from the [PyPi lrgasp-tools package](https://pypi.org/project/lrgasp-tools/), and the
 source is available on from the [GitHub LRGASP-submissions repository](https://github.com/LRGASP/lrgasp-submissions).
+
 If there are problems, please [create a ticket on GitHub](https://github.com/LRGASP/lrgasp-submissions/issues).
+If there is a program failure, run with `--logDebug` to report errors.
 
 ## Installation
 
@@ -33,3 +35,14 @@ including file syntax validation and relationships between files.
 - `lrgasp-validate-experiment-metadata` - validate an `experiment.json` metadata file
 - `lrgasp-validate-entry-metadata`- validate an `entry.json` metadata file
 - `lrgasp-validate-entry` - validate a full entry given a populated entry directory.
+
+## Submission tools
+
+These tools are provide to assist submission of entries to LRGASP challenges to Synapse.
+See [Uploading to Synapse and submitting to LRGASP](upload-submit.md) for details on the submission
+process.
+
+- `lrgasp-upload-entry` - uploads or updates an [LRGASP entry](submission.md/#entry_structure) metadata and data to the participates private project.
+  This does not submit the entry for evaluation, which must be done in a separate step.
+- `lrgasp-synapse-download` - download file hierarchies from Synapse.  While mainly intended for LRGASP organizers,
+  this may also be used by participates to download their entries if they need to review them.

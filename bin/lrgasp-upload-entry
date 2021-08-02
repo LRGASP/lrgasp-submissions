@@ -8,7 +8,6 @@ import synapseclient
 from lrgasp import LrgaspException, handle_prog_errors
 from lrgasp import loggingOps
 from lrgasp import entry_metadata
-from lrgasp import loggingOps
 from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts, get_project_by_name, FileTree
 from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
 
@@ -18,8 +17,8 @@ upload_logger.propagate = False
 
 def parse_args():
     desc = """Upload an LGASP entry to Synapse. This uploads LRGASP metedata defined files from an
-    entry directory to Synapse.  This does not submit for evaluation.  A entry maybe resubmitted
-    if needed.
+    entry directory to a  Synapse project.  This does not submit for evaluation.  A entry maybe resubmitted
+    if needed, updating changed files
 
     Use --logDebug when reporting a problem.
     """

@@ -1,8 +1,8 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-debug = --debug
-err_debug =  # --debug to get debug in expected error cases
+debug = --logDebug
+err_debug =  # --logDebug to get debug in expected error cases
 
 bad_jsons = $(wildcard input/bad_*.json)
 bad_tests = $(basename $(notdir ${bad_jsons}))

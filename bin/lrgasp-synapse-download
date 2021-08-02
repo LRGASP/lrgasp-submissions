@@ -9,6 +9,7 @@ import synapseclient
 from lrgasp import LrgaspException
 from lrgasp import handle_prog_errors
 from lrgasp import loggingOps
+from lrgasp.loggingOps import getLrgaspLogger
 from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts
 
 download_logger = loggingOps.setupStderrLogger("download", level=logging.INFO)
@@ -60,7 +61,7 @@ def download_submission(syn, submit_id, local_dir):
 def download_syn_src(syn, syn_src, local_dir):
     if re.match("^syn[0-9]+$", syn_src):
         # specific entity
-        download_files(syn, synid, local_dir)
+        download_files(syn, syn_src, local_dir)
     elif re.match("^[0-9]+$", syn_src):
         # submission id
         download_submission(syn, syn_src, local_dir)

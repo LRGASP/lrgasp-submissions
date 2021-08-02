@@ -1,10 +1,10 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-debug = --debug
+debug = --logDebug
 
 # set to get debug on error test cases
-#  err_debug=--debug
+#  err_debug=--logDebug
 
 entries = iso_detect_ref_ont_drna iso_quant_ont_drna iso_detect_de_novo_pb
 test: entry_tests bad_tests
