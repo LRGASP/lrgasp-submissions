@@ -8,22 +8,28 @@ import synapseclient
 from lrgasp import LrgaspException, handle_prog_errors
 from lrgasp import loggingOps
 from lrgasp import entry_metadata
+from lrgasp import loggingOps
 from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts, get_project_by_name, FileTree
 from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
+
+upload_logger = loggingOps.setupStderrLogger("upload", level=logging.INFO)
+upload_logger.propagate = False
+
 
 def parse_args():
     desc = """Upload an LGASP entry to Synapse. This uploads LRGASP metedata defined files from an
     entry directory to Synapse.  This does not submit for evaluation.  A entry maybe resubmitted
-    if needed."""
+    if needed.
+
+    Use --logDebug when reporting a problem.
+    """
     parser = argparse.ArgumentParser(description=desc)
     add_login_args(parser)
     loggingOps.addCmdOptions(parser)
-    parser.add_argument("--debug", action='store_true',
-                        help="print stack on any error")
     parser.add_argument("entry_dir",
                         help="entry directory")
     parser.add_argument("project_name",
-                        help="name of synapes project where data is to be uploaded")
+                        help="name of synapes project  where data is to be uploaded")
     return parser.parse_args()
 
 def entry_tree_add_experiment(entry_tree, entry_node, experiment_md):
@@ -81,7 +87,7 @@ def upload_directory(syn, entry_md, parent_synid, fnode):
 
 def upload_file(syn, entry_md, parent_synid, fnode):
     fpath = fnode.get_path(osp.dirname(entry_md.entry_dir))
-    logging.getLogger().info(f"syncing {fpath}")
+    upload_logger.info(f"syncing {fpath}")
     syn.store(synapseclient.File(fpath, name=fnode.filename, parent=parent_synid))
 
 def recursive_upload(syn, entry_md, parent_synid, fnode):
@@ -105,6 +111,6 @@ def main(args):
         project_synid = get_project_by_name(syn, args.project_name)
         upload_entry(syn, args.entry_dir, project_synid)
     except prog_error_syn_excepts as ex:
-        handle_prog_errors(ex, args.debug)
+        handle_prog_errors(ex)
 
 main(parse_args())

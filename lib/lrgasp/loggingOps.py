@@ -6,6 +6,11 @@ import os
 import sys
 from logging.handlers import SysLogHandler
 
+# setup from command line
+_lrgasp_logger = None
+
+def getLrgaspLogger():
+    return _lrgasp_logger
 
 def getFacilityNames():
     return tuple(SysLogHandler.facility_names.keys())
@@ -40,11 +45,22 @@ def _convertLevel(level):
     """convert level from string to number, if not already a number"""
     return level if isinstance(level, int) else parseLevel(level)
 
+def _loggerBySpec(logger):
+    """Logger maybe a logger, logger name, or None for default logger, returns the
+    logger."""
+    if not isinstance(logger, logging.Logger):
+        logger = logging.getLogger(logger)
+    return logger
 
-def setupLogger(handler, formatter=None):
-    """add handle to logger and set logger level to the minimum of it's
-    current and the handler level.  Returns logger."""
-    logger = logging.getLogger()
+def setupLogger(logger, handler, formatter=None, level=None):
+    """add handle to logger and set logger level to the minimum of it's current
+    and the handler level.  Logger maybe a logger, logger name, or None for
+    default logger, returns the logger.
+
+    """
+    logger = _loggerBySpec(logger)
+    if level is not None:
+        logger.setLevel(_convertLevel(level))
     if handler.level is not None:
         logger.setLevel(min(handler.level, logger.level))
     logger.addHandler(handler)
@@ -52,16 +68,19 @@ def setupLogger(handler, formatter=None):
         handler.setFormatter(formatter)
     return logger
 
-def setupStreamLogger(fh, level, formatter=None):
-    "Configure logging to a specified open file.  Returns logger."
+def setupStreamLogger(logger, fh, level, formatter=None):
+    """Configure logging to a specified open file.  Logger maybe a logger or
+    logger name, returns the logger."""
+    level = _convertLevel(level)
     handler = logging.StreamHandler(stream=fh)
-    handler.setLevel(_convertLevel(level))
-    return setupLogger(handler, formatter)
+    handler.setLevel(level)
+    return setupLogger(logger, handler, formatter, level=level)
 
 
-def setupStderrLogger(level, formatter=None):
-    "configure logging to stderr  Returns logger."
-    return setupStreamLogger(sys.stderr, _convertLevel(level), formatter)
+def setupStderrLogger(logger, level, formatter=None):
+    """configure logging to stderr.  Logger maybe a logger, logger name, or
+    None for default logger, returns the logger."""
+    return setupStreamLogger(logger, sys.stderr, _convertLevel(level), formatter)
 
 
 def getSyslogAddress():
@@ -72,9 +91,10 @@ def getSyslogAddress():
     return ("localhost", 514)
 
 
-def setupSyslogLogger(facility, level, prog=None, address=None, formatter=None):
-    """configure logging to syslog based on the specified facility.  If
-    prog specified, each line is prefixed with the name.  Returns logger."""
+def setupSyslogLogger(logger, facility, level, prog=None, address=None, formatter=None):
+    """configure logging to syslog based on the specified facility.  If prog
+    specified, each line is prefixed with the name.  Logger maybe a logger or
+    logger name, returns the logger."""
     if address is None:
         address = getSyslogAddress()
     handler = SysLogHandler(address=address, facility=facility)
@@ -82,18 +102,18 @@ def setupSyslogLogger(facility, level, prog=None, address=None, formatter=None):
     if prog is not None:
         handler.setFormatter(logging.Formatter(fmt="{} %(message)s".format(prog)))
     handler.setLevel(level)
-    return setupLogger(handler, formatter)
+    return setupLogger(logger, handler, formatter)
 
 
-def setupNullLogger(level=None):
+def setupNullLogger(logger, level=None):
     "configure discard logging.  Returns logger."
     handler = logging.NullHandler()
     if level is not None:
         handler.setLevel(_convertLevel(level))
-    return setupLogger(handler)
+    return setupLogger(logger, handler)
 
 
-def addCmdOptions(parser):
+def addCmdOptions(parser, *, defaultLevel=logging.WARN):
     """
     Add command line options related to logging.  None of these are defaulted,
     as one might need to determine if they were explicitly set. The use case
@@ -115,24 +135,51 @@ def addCmdOptions(parser):
                         " one of {}".format(", ".join(getFacilityNames())))
     parser.add_argument("--logStderr", action="store_true",
                         help="also log to stderr, even when logging to syslog")
-    parser.add_argument("--logLevel", type=validateLevel,
+    parser.add_argument("--logLevel", type=validateLevel, default=defaultLevel,
                         help="Set level to case-insensitive symbolic value, one of {}".format(", ".join(getLevelNames())))
     parser.add_argument("--logConfFile",
                         help="Python logging configuration file, see logging.config.fileConfig()")
+    parser.add_argument("--logDebug", action="store_true",
+                        help="short-cut that that sets --logStderr and --logLevel=DEBUG")
 
 
-def setupFromCmd(opts, prog=None):
+def setupFromCmd(opts, *, logger=None, prog=None):
     """configure logging based on command options. Prog is used it to set the
     syslog program name. If prog is not specified, it is obtained from sys.arg.
+    Logger maybe a logger, logger name, or None for default logger, returns the logger.
 
     N.B: logging must be initialized after daemonization
     """
+    if opts.logDebug:
+        opts.logStderr = True
+        opts.logLevel = logging.DEBUG
     if prog is None:
         prog = os.path.basename(sys.argv[0])
-    level = _convertLevel(opts.logLevel) if opts.logLevel is not None else logging.INFO
+    logger = _loggerBySpec(logger)
+    level = _convertLevel(opts.logLevel) if opts.logLevel is not None else logging.WARN
     if opts.syslogFacility is not None:
-        setupSyslogLogger(opts.syslogFacility, level, prog=prog)
+        setupSyslogLogger(logger, opts.syslogFacility, level, prog=prog)
     if (opts.syslogFacility is None) or opts.logStderr:
-        setupStderrLogger(level)
+        setupStderrLogger(logger, level)
     if opts.logConfFile is not None:
         logging.config.fileConfig(opts.logConfFile)
+    global _lrgasp_logger
+    _lrgasp_logger = logger
+    return logger
+
+
+class StreamToLogger(object):
+    """
+    File-like stream object that redirects writes to a logger instance.
+    """
+    def __init__(self, logger, level):
+       self.logger = logger
+       self.level = level
+       self.linebuf = ''
+
+    def write(self, buf):
+       for line in buf.rstrip().splitlines():
+          self.logger.log(self.level, line.rstrip())
+
+    def flush(self):
+        pass

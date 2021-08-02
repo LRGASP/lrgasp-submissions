@@ -3,7 +3,7 @@
 import sys
 import os.path as osp
 import json
-import logging
+from lrgasp.loggingOps import getLrgaspLogger
 from lrgasp import LrgaspException
 
 
@@ -116,12 +116,13 @@ def syn_connect(args):
     "connect and log in based on options"
     syn_conf = LrgaspSynConfig.factory(args)
     syn = Synapse()
-    syn.logger.setLevel(logging.WARN)
+    syn.logger.setLevel(getLrgaspLogger().level)  # cut down on noise
 
     # None user/password uses cache or prompts.  Command line overrides conf
     user = args.synapseUser if args.synapseUser is not None else syn_conf.user
     password = args.synapsePassword if args.synapsePassword is not None else syn_conf.password
     login_with_prompt(syn, user, password, rememberMe=args.rememberMe)
+    getLrgaspLogger().debug(f"logged in as synpase user '{syn.username}'")
     return syn
 
 def get_project_by_name(syn, project_name):

@@ -24,7 +24,6 @@ endif
 ifeq ($(shell uname -s), Darwin)
    PATH := /opt/local/libexec/gnubin:${PATH}
    export PATH
-   $(warning @@@@ ${PATH})
 endif
 
 lrgasp_validate_de_novo_rna = ${binpre}lrgasp-validate-de-novo-rna

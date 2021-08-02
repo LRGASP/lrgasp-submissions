@@ -2,6 +2,8 @@ import os.path as osp
 import sys
 import gzip
 import traceback
+import logging
+from lrgasp import loggingOps
 
 __version__ = "0.9.0"
 
@@ -11,8 +13,13 @@ class LrgaspException(Exception):
 # exceptions that should result in a call to handle_prog_errors
 prog_error_excepts = (LrgaspException, FileNotFoundError)
 
-def handle_prog_errors(ex, debug):
+def handle_prog_errors(ex, debug=None):
     """Prints error messages without call stack and exit. For expected exceptions """
+
+    # --logDebug will enable debug, however we currently just send to stderr,
+    # as we need basic errors to stderr always
+    if debug is None:
+        debug = (loggingOps.getLrgaspLogger().level == logging.DEBUG)
 
     print("Error: " + str(ex), file=sys.stderr)
     if debug:
