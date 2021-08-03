@@ -4,14 +4,13 @@ import argparse
 from synapseclient import Project
 from lrgasp.synapse_access import add_login_args, syn_connect
 from lrgasp import loggingOps
+from lrgasp import LrgaspException
 
 def parse_args():
-    desc = """Delete a test project if it exists, and then create.  Requires specifying --test_config_json"""
+    desc = """remove all files from the test project.  Requires specifying --test_config_json"""
     parser = argparse.ArgumentParser(description=desc)
     add_login_args(parser)
     loggingOps.addCmdOptions(parser)
-    parser.add_argument("--debug", action='store_true',
-                        help="print stack on any error")
     parser.add_argument("project_name",
                         help="synapse project name to remake")
     args = parser.parse_args()
@@ -24,8 +23,10 @@ def main(args):
     syn = syn_connect(args)
 
     project_synid = syn.findEntityId(args.project_name)
-    if project_synid is not None:
-        syn.delete(project_synid)
-    syn.store(Project(args.project_name))
+    if project_synid is None:
+        raise LrgaspException(f"test project not found {args.project_name}")
+
+    for child in syn.getChildren(project_synid):
+        syn.delete(child['id'])
 
 main(parse_args())
