@@ -40,7 +40,7 @@ def queryRuns(lrgaspRuns):
 
 def main(args):
     lrgaspRuns = getRunAccessions()
-    metadata =  queryRuns(lrgaspRuns)
+    metadata = queryRuns(lrgaspRuns)
     with open(args.encode_json, "w") as fh:
         json.dump(metadata, fh, indent=4)
 

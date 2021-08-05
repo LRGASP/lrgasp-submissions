@@ -12,7 +12,8 @@ Github repository is at [LRGASP/lrgasp-submissions](https://github.com/LRGASP/lr
 ## Documentation
 
 - [Challenges](challenges.md)
-- [**FAQ: Frequently asked questions**](faq.md)
+- [FAQ: Frequently asked questions](faq.md)
+- [Known issues](known-issues.md)
 - LRGASP data
   - [Reference genomes and transcripts](reference-genomes.md)
   - [Simulated data description](simulated-data-description.md)

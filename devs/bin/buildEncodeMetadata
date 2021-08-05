@@ -247,7 +247,7 @@ def load_encode_json(runs, encode_json):
         encode_md_all = json.load(fh, object_pairs_hook=ObjDict)
 
     # can either be a record or list of records
-    if isinstance(encode_md_all, list) :
+    if isinstance(encode_md_all, list):
         for encode_md in encode_md_all:
             load_encode_run(runs, encode_json, encode_md)
     else:
