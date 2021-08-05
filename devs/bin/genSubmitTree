@@ -3,9 +3,18 @@
 
 import sys
 import os.path as osp
+import argparse
 import pygraphviz as pgv
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
 from lrgasp.defs import Challenge
+
+def parse_args():
+    desc = """generate the graph of the submission tree.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("output",
+                        help="output file, ending in .pdf or .png")
+    return parser.parse_args()
 
 # unique names are generate by including the parent name to prefix the label
 
@@ -95,10 +104,9 @@ def build_experiment_tree(g):
     build_model_experiment(g)
     build_quant_experiment(g)
 
-def mk_graph():
+def mk_graph(args):
     g = pgv.AGraph()
     build_submission_tree(g)
-    fmt = "png"
-    g.draw(f"submit_tree.{fmt}", prog="dot", args="-Grankdir=LR")
+    g.draw(args.output, prog="dot", args="-Grankdir=LR")
 
-mk_graph()
+mk_graph(parse_args())

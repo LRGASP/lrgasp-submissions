@@ -42,6 +42,9 @@ people in the past.  We will call these "LRPLAY"
    % challengeutils set-evaluation-quota --num_rounds=1 --round_start=2021-06-01T00:00:00 --round_end=2021-10-01T23:59:59 9614870
    % challengeutils set-evaluation-quota --num_rounds=1 --round_start=2021-06-01T00:00:00 --round_end=2021-10-01T23:59:59 9614868
    % challengeutils set-evaluation-quota --num_rounds=1 --round_start=2021-06-01T00:00:00 --round_end=2021-10-01T23:59:59 9614869
+7. Modified each evaluation queue to have the permissions:
+   * LRPLAY Participants - Can submit
+   * LRPLAY Evaluators - Administrator
 6. go to `tables` and `Add Submission View` for each queue.
 8. go to `Project Sharing Settings` and `Make Public`
 

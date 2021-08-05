@@ -1,5 +1,6 @@
 PYTHON = python3
 FLAKE8 = python3 -m flake8
+export PYTHONPATH = lib
 TWINE = ${PYTHON} -m twine
 
 pyprogs = $(shell file -F $$'\t' bin/* devs/bin/* tests/*/bin/* | awk '/Python script/{print $$1}')
@@ -34,6 +35,7 @@ help:
 
 
 data_matrix_tsv =  docs/rnaseq-data-matrix.tsv
+submit_tree_png =  docs/submit_tree.png
 
 # data matrix HTML is only built on hgwdev or if htmldir is set on the commandline
 ifeq ($(shell hostname),hgwdev)
@@ -42,7 +44,7 @@ endif
 ifneq (${htmldir},)
     data_matrix_html = ${htmldir}/rnaseq-data-matrix.html
 endif
-doc: ${data_matrix_tsv} ${data_matrix_html}
+doc: ${data_matrix_tsv} ${data_matrix_html} ${submit_tree_png}
 
 
 ${data_matrix_tsv}: $(wildcard lib/lrgasp/data/*.json) \
@@ -51,6 +53,9 @@ ${data_matrix_tsv}: $(wildcard lib/lrgasp/data/*.json) \
 
 ${data_matrix_html}: ${data_matrix_tsv} devs/bin/make_html_table.R 
 	Rscript devs/bin/make_html_table.R ${data_matrix_html}
+
+${submit_tree_png}: devs/bin/genSubmitTree
+	devs/bin/genSubmitTree $@
 
 lint:
 	${FLAKE8} ${pyprogs} lib
