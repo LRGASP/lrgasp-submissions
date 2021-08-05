@@ -38,9 +38,9 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
 * ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species-identifiers).
-* ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, or ``kitchen_sink``, See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
-* ``libraries`` - list of LRGASP RNA-Seq file accessions used in the experiment. The file accessions are those found in the [LRGASP RNA-Seq Data Matrix](rnaseq-data-matrix.md). For non-kitchen sink experiments, only replicates of the same sample and library preparation.  It must be one sequence method, or one sequencing method plus Illumina short-read sequencing.   For kitchen sink experiments, any combination of LRGASP libraries may be specified, with at least one LRGASP library being used. For paired-end Illumina experiments, both pairs must be specified.
-* ``extra_libraries`` - list of non-LRGASP libraries files accessions that were used.  Optional; should be empty or omitted for non-kitchen sink experiments.  For Challenge 3, may also include external transcript that is used.
+* ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, `'long_genome``, or ``freestyle``, See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
+* ``libraries`` - list of LRGASP RNA-Seq file accessions used in the experiment. The file accessions are those found in the [LRGASP RNA-Seq Data Matrix](rnaseq-data-matrix.md). For non-freestyle experiments, only replicates of the same sample and library preparation.  It must be one sequence method, or one sequencing method plus Illumina short-read sequencing.   For freestyle experiments, any combination of LRGASP libraries may be specified, with at least one LRGASP library being used. For paired-end Illumina experiments, both pairs must be specified.
+* ``extra_libraries`` - list of non-LRGASP libraries files accessions that were used.  Optional; should be empty or omitted for non-freestyle experiments.  For Challenge 3, may also include external transcript that is used.
   * ``repository`` - Public repository where data was obtained; one of the values in
     [Public repository identifiers](metadata-identifiers.md#public-repository-identifiers)
   * ``acc`` - accession in a public repository for input data file.

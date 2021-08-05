@@ -26,7 +26,7 @@ class DataCategory(SymEnum):
     short_only = auto()
     long_short = auto()
     long_genome = auto()
-    kitchen_sink = auto()
+    freestyle = auto()
 
 class Platform(SymEnum):
     """Simplified sequencing platform, mostly used if figuring out LibraryCategory"""

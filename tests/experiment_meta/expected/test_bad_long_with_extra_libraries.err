@@ -1,2 +1,2 @@
 Error: validation of experiment metadata failed: input/bad_long_with_extra_libraries.json
-caused by: experiment extra_libraries may only be specified for 'long_short' or 'kitchen_sink' experiments
+caused by: experiment extra_libraries may only be specified for 'long_short' or 'freestyle' experiments

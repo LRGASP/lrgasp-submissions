@@ -45,9 +45,9 @@ Each *entry* must meet the following requirements:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used.
-  * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *kitchen sink* experiments.
+  * *freestyle* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *freestyle* experiments.
 
-In all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the *long and short* and *kitchen sink* category, additional transcriptome references can be used.
+In all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the *long and short* and *freestyle* category, additional transcriptome references can be used.
 
 All replicates must be used in each experiment.  Challenge 2 must report
 replicates separately in the [expression matrix](expression_matrix_format.md).
@@ -56,7 +56,7 @@ Each team can only submit one entry per challenge.
 
 For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read. For Challenge 2, submitters have the option of quantifying against the reference transcriptome or a transcriptome derived from the data (i.e., results from Challenge 1). The GTF used for quantification is included as part of the [Challenge 2 submission](submission.md).
 
-* The type of platform and libraries preparation method used in a given *experiment*, except for *kitchen sink* experiments, is limited to data from a single library preparation method plus sequencing technology (*long-only*).  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data (*long and short*)
+* The type of platform and libraries preparation method used in a given *experiment*, except for *freestyle* experiments, is limited to data from a single library preparation method plus sequencing technology (*long-only*).  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data (*long and short*)
   * Illumina cDNA - *short-only*
   * Pacbio cDNA - *long-only* or *long and short*
   * Pacbio CapTrap - *long-only* or *long and short*
@@ -73,10 +73,10 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform. No genome reference can be used.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches. No genome reference can be used.
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. No genome reference can be used.
-  * *long and genome* - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A genome reference sequence can be used.
-  * *kitchen sink* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + ONT cDNA).
+  * *long and genome* - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A genome sequence can be used.
+  * *freestyle* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + ONT cDNA).
 
-In all the above categories, except for *kitchen sink* a transcriptome reference CANNOT be used.
+In all the above categories, except for *freestyle* a transcriptome reference CANNOT be used.
 
 The submitted FASTA file should only contain transcripts that have been assigned a read.
 

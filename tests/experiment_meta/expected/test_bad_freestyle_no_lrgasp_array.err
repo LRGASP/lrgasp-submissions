@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_freestyle_no_lrgasp_array.json
+caused by: experiment field 'libraries' is required

@@ -1,19 +1,10 @@
 {
-    "experiment_id": "model_ont_drnaKitchen",
+    "experiment_id": "model_ont_drnaFreestyle",
     "challenge_id": "iso_detect_ref",
-    "description": "dRNA kitchen sink",
-    "notes": "should have specified kitchen sink",
+    "description": "dRNA freestyle",
+    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
     "species": "human",
-    "data_category": "long_short",
-    "libraries": [
-        "ENCFF155CFF",
-        "ENCFF600LIU",
-        "ENCFF854BEI",
-        "ENCFF804BPC",
-        "ENCFF557WRQ",
-        "ENCFF028FCL",
-        "ENCFF003QZT"
-    ],
+    "data_category": "freestyle",
     "extra_libraries": [
         {
             "repository": "ENC",

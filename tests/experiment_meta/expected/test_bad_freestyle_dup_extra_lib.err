@@ -1,2 +1,2 @@
-Error: validation of experiment metadata failed: input/bad_kitchen_dup_extra_lib.json
+Error: validation of experiment metadata failed: input/bad_freestyle_dup_extra_lib.json
 caused by: experiment field 'extra_libraries[2]' duplicate value '{'repository': 'ENC', 'acc': 'ENF12345'}'

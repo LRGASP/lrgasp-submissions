@@ -9,15 +9,15 @@ https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 * validate
 ** check that expression matrix contains all replicates and validate ids
 for paired-end, take either id
-** 1&2n all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the long and short and kitchen sink category, additional transcriptome references can be used.
-** 3 In all the above categories, except for kitchen sink a transcriptome reference CANNOT be used.
+** 1&2n all the above categories, the genome and transcriptome references specified by LRGASP should be used. For the long and short and freestyle category, additional transcriptome references can be used.
+** 3 In all the above categories, except for freestyle a transcriptome reference CANNOT be used.
 ** create command line script to download all files
 ** entry is against all samples
-** only one kitchen sink
+** only one freestyle
 ** short-only - no read-map
 ** long-and-short additional accessioned data in public genomics data repositories can also be used. [in slides]
 
-* kitchen sink must be public at the start of the challange available
+* freestyle must be public at the start of the challange available
 * SUBMISSION IMAGE
 ** code broken
 ** doesn't show model for quant
@@ -43,8 +43,6 @@ https://www.encodeproject.org/references/ENCSR089MWE/
 * have lrgasp-validate-entry print each entry being validated
 * fix software descriptions to be better
 * make extra_libraries optional
-* is ES really the right library name for mm??
-* validate libraries, extra_libraries, is_kitchen_sink, etc, are valid and consistent
 * https://docs.google.com/presentation/d/1RxmZPd8UgWgm3F-0BquP7NmhxE3zYB5lJ_u6XKgbFME/edit#slide=id.p
 * require protocol description??
 * add assembly

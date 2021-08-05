@@ -142,7 +142,7 @@ def libraries_validate_compat(experiment_md, rna_seq_md, expr_file_mds):  # noqa
             raise LrgaspException(f"{data_category} only allowed for {challenge_desc(Challenge.iso_detect_de_novo)}")
         _validate_long_only()
 
-    def _validate_kitchen_sink():
+    def _validate_freestyle():
         if len(experiment_md.libraries) == 0:
             raise LrgaspException(f"{data_category} experiments must use some LRGASP RNA-Seq libraries")
         # simulation not allowed
@@ -158,8 +158,8 @@ def libraries_validate_compat(experiment_md, rna_seq_md, expr_file_mds):  # noqa
         _validate_long_short()
     elif data_category == DataCategory.long_genome:
         _validate_long_genome()
-    elif data_category == DataCategory.kitchen_sink:
-        _validate_kitchen_sink()
+    elif data_category == DataCategory.freestyle:
+        _validate_freestyle()
     else:
         raise LrgaspException("bug")
 
@@ -221,8 +221,8 @@ def extra_library_validate(extra_libraries, ilib):
     check_from_defs(desc, extra_libraries_fields, extra_libraries[ilib])
 
 def extra_libraries_validate(experiment_md):
-    if experiment_md.data_category not in (DataCategory.long_short, DataCategory.kitchen_sink):
-        raise LrgaspException("experiment extra_libraries may only be specified for 'long_short' or 'kitchen_sink' experiments")
+    if experiment_md.data_category not in (DataCategory.long_short, DataCategory.freestyle):
+        raise LrgaspException("experiment extra_libraries may only be specified for 'long_short' or 'freestyle' experiments")
     dups = find_dups([el.acc for el in experiment_md.extra_libraries])
     if len(dups) > 0:
         raise LrgaspException(f"duplicate accession in extra libraries: {dups}")

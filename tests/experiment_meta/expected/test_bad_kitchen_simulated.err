@@ -1,2 +1,0 @@
-Error: validation of experiment metadata failed: input/bad_kitchen_simulated.json
-caused by: kitchen_sink experiments may not use simulation data 'syn25591675'
