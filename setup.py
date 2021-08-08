@@ -25,6 +25,8 @@ setuptools.setup(
         'bin/lrgasp-validate-expression-matrix',
         'bin/lrgasp-validate-models',
         'bin/lrgasp-validate-read-model-map',
+        'bin/lrgasp-upload-entry',
+        'bin/lrgasp-synapse-download',
     ],
     packages = [
         'lrgasp',

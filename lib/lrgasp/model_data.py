@@ -2,6 +2,7 @@
 Simplified GTF parser/validator
 """
 import numpy as np
+import warnings
 from gtfparse import read_gtf, ParsingError
 from lrgasp import LrgaspException
 
@@ -53,7 +54,12 @@ def fixup_gtf_attrs(gtf_df):
 
 def load_exons(models_gtf):
     """load GTF exons into a list of Series objects of exons"""
-    gtf_df = read_gtf(models_gtf)
+    # gtfparse uses pandas read_csv with deprecated options:
+    #   error_bad_lines=True,
+    #   warn_bad_lines=True,
+    with warnings.catch_warnings():
+        warnings.filterwarnings('ignore',  '.*_bad_lines argument.*', category=FutureWarning)
+        gtf_df = read_gtf(models_gtf)
     gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
     if len(gtf_df) == 0:
         raise GtfException("no exon records found")

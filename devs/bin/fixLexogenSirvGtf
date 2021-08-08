@@ -3,6 +3,7 @@ import sys
 import os.path as osp
 import argparse
 import logging
+import warnings
 from collections import defaultdict
 from gtfparse import read_gtf
 
@@ -10,6 +11,12 @@ sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
 from lrgasp import LrgaspException
 
 # note: this is a specialized hack
+
+# gtfparse uses pandas read_csv with deprecated options:
+#   error_bad_lines=True,
+#   warn_bad_lines=True,
+warnings.filterwarnings('ignore',  '.*_bad_lines argument.*', category=FutureWarning)
+
 
 def parse_args():
     desc = """Edit Lexogen provide SIRV GTF to address these issues:
