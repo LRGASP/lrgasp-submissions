@@ -72,7 +72,7 @@ lint-all: lint lint-doc
 
 ifeq (${have_mdl},yes)
 check-doc-format:
-	mdl --style=mdl-style.rb README.md docs/
+	mdl --style=mdl-style.rb README.md docs
 else
 check-doc-format:
 	@echo "Note: mdl not installed, not linting markdown" >&2

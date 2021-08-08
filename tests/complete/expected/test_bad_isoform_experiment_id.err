@@ -1,2 +1,2 @@
-Error: validation of entry 'iso_detect_ref_ont_drna' failed: output/test_bad_isoform_experiment_id/iso_detect_ref_ont_drna/entry.json
-caused by: experiment_id and directory name must be the same; 'ready_mix' is in 'H1_mix_drna_ont_long' (output/test_bad_isoform_experiment_id/iso_detect_ref_ont_drna/H1_mix_drna_ont_long)
+Error: validation of entry 'iso_detect_ref_darwin' failed: output/test_bad_isoform_experiment_id/iso_detect_ref_darwin/entry.json
+caused by: experiment_id and directory name must be the same; 'ready_mix' is in 'H1_mix_drna_ont_long' (output/test_bad_isoform_experiment_id/iso_detect_ref_darwin/H1_mix_drna_ont_long)

@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD:examples/darwin_lab/iso_detect_ref_ont_drna/drnaFreestyle/experiment.json
-    "experiment_id": "model_ont_drnaFreestyle",
-=======
     "experiment_id": "drnaFreestyle",
->>>>>>> 4e9164f (dev checkpoint):examples/darwin_lab/iso_detect_ref_ont_drna/drnaKitchen/experiment.json
     "challenge_id": "iso_detect_ref",
     "description": "dRNA freestyle",
     "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",

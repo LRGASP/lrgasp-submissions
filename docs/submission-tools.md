@@ -36,10 +36,10 @@ including file syntax validation and relationships between files.
 - `lrgasp-validate-entry-metadata`- validate an `entry.json` metadata file
 - `lrgasp-validate-entry` - validate a full entry given a populated entry directory.
 
-## Submission tools
+## Submission programs
 
 These tools are provide to assist submission of entries to LRGASP challenges to Synapse.
-See [Uploading to Synapse and submitting to LRGASP](upload-submit.md) for details on the submission
+See [Uploading to Synapse and submitting to LRGASP](synapse.md) for details on the submission
 process.
 
 - `lrgasp-upload-entry` - uploads or updates an [LRGASP entry](submission.md/#entry_structure) metadata and data to the participates private project.

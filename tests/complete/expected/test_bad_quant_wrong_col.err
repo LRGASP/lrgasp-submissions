@@ -1,5 +1,5 @@
-Error: validation of entry 'iso_quant_ont_drna' failed: output/test_bad_quant_wrong_col/iso_quant_ont_drna/entry.json
-caused by: validation of experiment 'H1_mix_drna_ont_long' failed: output/test_bad_quant_wrong_col/iso_quant_ont_drna/H1_mix_drna_ont_long/experiment.json
-caused by: validation failed on 'output/test_bad_quant_wrong_col/iso_quant_ont_drna/H1_mix_drna_ont_long/models.gtf' with 'output/test_bad_quant_wrong_col/iso_quant_ont_drna/H1_mix_drna_ont_long/expression.tsv'
-caused by: Parse of expression matrix TSV failed: output/test_bad_quant_wrong_col/iso_quant_ont_drna/H1_mix_drna_ont_long/expression.tsv
+Error: validation of entry 'iso_quant_darwin' failed: output/test_bad_quant_wrong_col/iso_quant_darwin/entry.json
+caused by: validation of experiment 'H1_mix_drna_ont_long' failed: output/test_bad_quant_wrong_col/iso_quant_darwin/H1_mix_drna_ont_long/experiment.json
+caused by: validation failed on 'output/test_bad_quant_wrong_col/iso_quant_darwin/H1_mix_drna_ont_long/models.gtf' with 'output/test_bad_quant_wrong_col/iso_quant_darwin/H1_mix_drna_ont_long/expression.tsv'
+caused by: Parse of expression matrix TSV failed: output/test_bad_quant_wrong_col/iso_quant_darwin/H1_mix_drna_ont_long/expression.tsv
 caused by: matrix column 'ENCFF600LIU' is not listed in experiment_md.libraries for 'H1_mix_drna_ont_long'

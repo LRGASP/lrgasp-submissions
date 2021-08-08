@@ -31,4 +31,4 @@ The standard GTF fields have the following restrictions:
 
 All of the attributes specified above must be repeated on all exons of a
 transcript with the same value.  An example models submission GTF file is at
-[models.gtf](../examples/darwin_lab/iso_detect_ref_ont_drna/H1_mix_drna_ont_long/models.gtf).
+[models.gtf](../examples/darwin_lab/iso_detect_ref_darwin/H1_mix_drna_ont_long/models.gtf).

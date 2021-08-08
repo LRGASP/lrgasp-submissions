@@ -1,1 +1,1 @@
-Error: entry_id and directory name must be the same; 'iso_detect_ref_ont_drna' is in 'iso_quant_ont_drna' (output/test_bad_quant_challange/iso_quant_ont_drna)
+Error: entry_id and directory name must be the same; 'iso_detect_ref_darwin' is in 'iso_quant_darwin' (output/test_bad_quant_challange/iso_quant_darwin)

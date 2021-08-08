@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-from synapseclient import Project
 from lrgasp.synapse_access import add_login_args, syn_connect
 from lrgasp import loggingOps
 from lrgasp import LrgaspException

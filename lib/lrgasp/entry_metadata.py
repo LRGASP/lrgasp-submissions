@@ -38,6 +38,12 @@ entry_contact_fields = (
     fld_notes
 )
 
+def entry_id_validate(challenge_id, entry_id):
+    "entry id must be prefixed by the challenge_id"
+    expect_pre = str(challenge_id) + '_'
+    if (not entry_id.startswith(expect_pre)) or (len(entry_id) == len(expect_pre)):
+        raise LrgaspException(f"entry id '{entry_id}' must be prefixed with challenge_id ({challenge_id}) + '_' + a participant-defined name")
+
 def entry_contact_validate(contact):
     desc = "entry.contacts"
     check_from_defs(desc, entry_contact_fields, contact)
@@ -45,10 +51,7 @@ def entry_contact_validate(contact):
 def entry_validate(entry_md):
     desc = "entry"
     check_from_defs(desc, entry_fields, entry_md)
-    try:
-        validate_symbolic_ident(entry_md.entry_id)
-    except LrgaspException as ex:
-        raise LrgaspException(f"invalid {desc} entry_id '{entry_md.entry_id}'") from ex
+    entry_id_validate(entry_md.challenge_id, entry_md.entry_id)
 
     challenge_id = validate_entry_ident(entry_md.entry_id)
     if entry_md.challenge_id != challenge_id:
