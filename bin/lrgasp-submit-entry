@@ -16,9 +16,7 @@ upload_logger.propagate = False
 
 
 def parse_args():
-    desc = """Upload an LGASP entry to Synapse. This uploads LRGASP metedata defined files from an
-    entry directory to a  Synapse project.  This does not submit for evaluation.  A entry maybe resubmitted
-    if needed, updating changed files
+    desc = """
 
     Use --logDebug when reporting a problem.
     """

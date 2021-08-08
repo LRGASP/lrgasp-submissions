@@ -31,7 +31,7 @@ Two commands are provide to assist in submitting entries to LRGASP via
 Synapse.  This is a two-step process of uploading an entry and then submitting
 it for evaluation.
 
-
+synapse login -u diekhans --rememberMe
 
 
 A LRGASP challenge entry is submitted to an evaluation for the LRGASP
