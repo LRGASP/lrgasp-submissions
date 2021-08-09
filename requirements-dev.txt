@@ -2,3 +2,4 @@ virtualenv
 setuptools
 wheel
 bumpversion
+twine
