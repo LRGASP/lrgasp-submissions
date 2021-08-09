@@ -8,22 +8,28 @@
 ## Viewing submissions:
 
 1. Go to Tables
-1. Select the Challenge to view submissions
-1. As the table shows the results of a query, added or removed submissions are , they will not be 
+1. Select the challenge queue to view submissions
+1. As the table shows the results of a query, seeing added or removed submissions requires going back to
+   Tables and reissuing the query.
 
-# One-time setup of LRGASP
+## Downloading submissions for evaluation
 
-## Create evaluation queues
-An evaluation queue is a Synapse sub-challange and LRGASP challange.
+To recursively download an submission using the submission id:
 
-For each queue
-    * create each challenge in web-GUI
-    * modify to allow "LRGASP Participants' to upload
-    * modify to allow "LRGASP Organizers to score
-    * set quota to allow only one submission per team for each queue with:
-      challengeutils set-evaluation-quota --num_rounds=1 --round_start=2021-06-01T00:00:00 --round_end=2021-10-01T23:59:59 9614862
+```
+lrgasp-synapse-download 9713623 targetdir
+```
 
-# Test Synapse projects
+The `lrgasp-synapse-download` program can also be used to download other
+entities by synapse id:
+
+```
+lrgasp-synapse-download syn324578 targetdir
+```
+
+# Test Synapse projects setup
+
+This also is a guide on how the actually LRGASP site is configured.
 
 ## Creating test challenge
 This outlines the steps for creating the test projects.  This is also shows
