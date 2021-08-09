@@ -49,7 +49,7 @@ https://www.encodeproject.org/references/ENCSR089MWE/
 * doc that file paths are relative
 * add additional file types
 * should expression matrix have transcript_id instead of ID?
-* require included model_gtf in quant.
+* require included models_gtf in quant.
 * check experiment_type is deduced from challange id
 challange_id can be obtained from entry_id (add to experiment)
 ** validate same type of experiments

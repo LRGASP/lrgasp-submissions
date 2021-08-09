@@ -8,6 +8,7 @@ from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.defs import Repository, Species, Challenge, DataCategory, Platform, EXPERIMENT_JSON
 from lrgasp.defs import validate_symbolic_ident, is_simulation, challenge_desc
+from lrgasp.defs import MODELS_GTF, READ_MODEL_MAP_TSV, DE_NOVO_RNA_FASTA, EXPRESSION_TSV
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 
@@ -258,6 +259,42 @@ def load_from_entry(entry_md, experiment_id):
         experiment_md = load(experiment_json)
     except (LrgaspException, FileNotFoundError, ValueError) as ex:
         raise LrgaspException(f"error parse metadata for entry '{entry_md.entry_id}', experiment '{experiment_id}' (obtained from entry.json): {experiment_json}") from ex
-    experiment_md.experiment_dir = experiment_dir
+
+    if experiment_md.experiment_id != osp.basename(experiment_dir):
+        raise LrgaspException(f"experiment_id and directory name must be the same; '{experiment_md.experiment_id}' is in '{osp.basename(experiment_dir)}' ({experiment_dir})")
+
+    experiment_md.experiment_dir = osp.normpath(experiment_dir)
     experiment_md.experiment_json = experiment_json
     return experiment_md
+
+def get_models_gtf(experiment_md):
+    """get path to models.gtf file or None if not valid for this experiment.
+    Will not include .gz extension or check for existence."""
+    if experiment_md.challenge_id in (Challenge.iso_detect_ref, Challenge.iso_quant):
+        return osp.join(experiment_md.experiment_dir, MODELS_GTF)
+    else:
+        return None
+
+def get_read_model_map_tsv(experiment_md):
+    """get path to read_model_map.gtf file or None if not valid for this
+    experiment. Will not include .gz extension or check for existence."""
+    if experiment_md.challenge_id in (Challenge.iso_detect_ref, Challenge.iso_detect_de_novo):
+        return osp.join(experiment_md.experiment_dir, READ_MODEL_MAP_TSV)
+    else:
+        return None
+
+def get_rna_fasta(experiment_md):
+    """get path to RNA fasta file or None if not valid for this
+    experiment. Will not include .gz extension or check for existence."""
+    if experiment_md.challenge_id is Challenge.iso_detect_de_novo:
+        return osp.join(experiment_md.experiment_dir, DE_NOVO_RNA_FASTA)
+    else:
+        return None
+
+def get_expression_tsv(experiment_md):
+    """get path to expression TSV file or None if not valid for this
+    experiment. Will not include .gz extension or check for existence."""
+    if experiment_md.challenge_id is Challenge.iso_quant:
+        return osp.join(experiment_md.experiment_dir, EXPRESSION_TSV)
+    else:
+        return None

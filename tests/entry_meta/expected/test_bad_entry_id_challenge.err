@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_entry_id_challenge.json
+caused by: entry id 'iso_quant_ont_our_entry' must be prefixed with challenge_id (iso_detect_ref) + '_' + a participant-defined name

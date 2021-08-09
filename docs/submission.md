@@ -30,12 +30,12 @@ which are explain below.
 
 Each ``entry`` must conform to fix, straight-forward file hierarchy.
 Each entry to a challenge is in a directory with the same name as the `entry_id`.
-The entry ids must be prefixed with the [Challenge identifier](metadata-identifiers.md#lchallenge-identifiers) followed by
+The entry ids must be prefixed with the [Challenge identifier](metadata-identifiers.md#challenge-identifiers) followed by
 a `_` and a unique team-defined name.  For instance:
 
-- `iso_detect_ref_ont_drna`
-- `iso_quant_ont_drna1`
-- `iso_detect_de_novo_pb1`
+- `iso_detect_ref_darwin`
+- `iso_quant_ont_darwin`
+- `iso_detect_de_novo_darwin`
 
 The entry directory contains an `entry.json` [entry metadata](metadata.md#entryjson)
 describing the entry.  There is a directory per experiment within the entry directory, with each directory named the same as the

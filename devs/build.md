@@ -43,6 +43,11 @@ broken HTML fragment links.  Set `Check linked documents recursively, recursion 
 
 ## Build pip installable packages
 
+Setup your build environment (either global or virtualenv):
+```
+pip install -r requirements-dev.txt
+```
+
 To build and test package
 
 ```

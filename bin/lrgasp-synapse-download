@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+
+import os.path as osp
+import argparse
+import logging
+import re
+import synapseutils
+import synapseclient
+from lrgasp import LrgaspException
+from lrgasp import handle_prog_errors
+from lrgasp import loggingOps
+from lrgasp.loggingOps import getLrgaspLogger
+from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts
+
+download_logger = loggingOps.setupStderrLogger("download", level=logging.INFO)
+download_logger.propagate = False
+
+def parse_args():
+    desc = """Recursively download an or anything else. This uploads LRGASP metedata defined files from an
+    entry directory to Synapse.
+
+    Use --logDebug when reporting a problem.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    add_login_args(parser)
+    loggingOps.addCmdOptions(parser)
+    parser.add_argument("syn_src",
+                        help="a synapse id, a challenge submission id  or a slash-separate path name of synapes folder or file to download.  Path must start with a project.")
+    parser.add_argument("local_dir",
+                        help="write to this directory")
+    return parser.parse_args()
+
+def download_file(syn, root_path, file_name, file_synid, local_dir):
+    download_logger.info("downloading {}".format(osp.join(root_path, file_name)))
+    syn.get(file_synid, downloadLocation=osp.join(local_dir, root_path))
+
+def download_files(syn, synid, local_dir):
+    for root_info, dirs_info, files_info in synapseutils.walk(syn, synid):
+        for file_info in files_info:
+            download_file(syn, root_info[0], file_info[0], file_info[1], local_dir)
+
+def recurse_to_download(syn, parent_synid, syn_path_parts, local_dir):
+    """walk down path at synapse to find point to start download"""
+    if len(syn_path_parts) == 0:
+        download_files(syn, parent_synid, local_dir)
+    else:
+        synid = syn.findEntityId(syn_path_parts[0], parent_synid)
+        if synid is None:
+            raise LrgaspException(f"synapse project not found '{syn_path_parts[0]}'")
+        entity = syn.get(synid)
+        if isinstance(entity, synapseclient.File):
+            download_file(syn, '.', entity.name, synid, local_dir)
+        else:
+            recurse_to_download(syn, synid, syn_path_parts[1:], local_dir)
+
+def download_submission(syn, submit_id, local_dir):
+    submit_entity = syn.getSubmission(submit_id)
+    getLrgaspLogger().debug(f"submission id '{submit_id}' is entity '{submit_entity.entityId}'")
+    download_files(syn, submit_entity.entityId, local_dir)
+
+def download_syn_src(syn, syn_src, local_dir):
+    if re.match("^syn[0-9]+$", syn_src):
+        # specific entity
+        download_files(syn, syn_src, local_dir)
+    elif re.match("^[0-9]+$", syn_src):
+        # submission id
+        download_submission(syn, syn_src, local_dir)
+    else:
+        # by project path
+        recurse_to_download(syn, None, syn_src.split('/'), local_dir)
+
+def main(args):
+    loggingOps.setupFromCmd(args)
+    try:
+        syn = syn_connect(args)
+        download_syn_src(syn, args.syn_src, args.local_dir)
+    except prog_error_syn_excepts as ex:
+        handle_prog_errors(ex)
+
+main(parse_args())

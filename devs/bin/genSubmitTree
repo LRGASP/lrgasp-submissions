@@ -3,24 +3,36 @@
 
 import sys
 import os.path as osp
+import argparse
 import pygraphviz as pgv
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
 from lrgasp.defs import Challenge
 
+def parse_args():
+    desc = """generate the graph of the submission tree.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("output",
+                        help="output file, ending in .pdf or .png")
+    return parser.parse_args()
+
 # unique names are generate by including the parent name to prefix the label
+
+# root node, use to force order
+ROOT = "root"
 
 # metadata files
 ENTRY_MD = "entry.json"
 EXPERIMENT_MD = "experiment.json"
 
 # data files
-MODEL_GTF = "models.gtf.gz"
-MODEL_READ_MODEL_MAP = "read_model_map.tsv.gz"
-QUANT_MATRIX = "expression.tsv.gz"
+MODELS_GTF_GZ = "models.gtf.gz"
+READ_MODEL_MAP_GZ = "read_model_map.tsv.gz"
+EXPRESSION_TSV_GZ = "expression.tsv.gz"
 
 # directories
-ENTRY_MODEL = "entry_A\n(" + str(Challenge.iso_detect_ref) + ")"
-ENTRY_QUANT = "entry_B\n(" + str(Challenge.iso_quant) + ")"
+ENTRY_MODEL = str(Challenge.iso_detect_ref) + "_darwin\n(entry)"
+ENTRY_QUANT = str(Challenge.iso_quant) + "_darwin\n(entry)"
 
 MODEL_HS1 = "model_hs1\n(experiment)"
 MODEL_HS2 = "model_hs2\n(experiment)"
@@ -68,37 +80,31 @@ def add_experiment(g, parent, label, data_files):
 def build_entry_model(g):
     add_entry(g, ENTRY_MODEL)
     add_experiment(g, ENTRY_MODEL, MODEL_HS1,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
     add_experiment(g, ENTRY_MODEL, MODEL_HS2,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
     add_experiment(g, ENTRY_MODEL, MODEL_MM,
-                   (MODEL_GTF, MODEL_READ_MODEL_MAP))
+                   (MODELS_GTF_GZ, READ_MODEL_MAP_GZ))
 
 def build_entry_quant(g):
     add_entry(g, ENTRY_QUANT)
     add_experiment(g, ENTRY_QUANT, QUANT_HS,
-                   (QUANT_MATRIX,))
+                   (EXPRESSION_TSV_GZ,))
     add_experiment(g, ENTRY_QUANT, QUANT_MM,
-                   (QUANT_MATRIX,))
+                   (EXPRESSION_TSV_GZ,))
 
 def build_submission_tree(g):
     build_entry_model(g)
     build_entry_quant(g)
 
-def build_model_experiment(g):
-    pass
+    # force ordering
+    g.add_node(ROOT, style='invisible')
+    g.add_edge(ROOT, ENTRY_MODEL, style='invisible')
+    g.add_edge(ROOT, ENTRY_QUANT, style='invisible')
 
-def build_quant_experiment(g):
-    pass
-
-def build_experiment_tree(g):
-    build_model_experiment(g)
-    build_quant_experiment(g)
-
-def mk_graph():
+def mk_graph(args):
     g = pgv.AGraph()
     build_submission_tree(g)
-    fmt = "png"
-    g.draw(f"submit_tree.{fmt}", prog="dot", args="-Grankdir=LR")
+    g.draw(args.output, prog="dot", args="-Grankdir=LR")
 
-mk_graph()
+mk_graph(parse_args())

@@ -1,8 +1,8 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
-debug = --debug
-err_debug =  # --debug to get debug in error cases
+debug = --logDebug
+err_debug =  # --logDebug to get debug in error cases
 
 bad_fastas = $(wildcard input/bad_*.fasta)
 bad_tests = $(basename $(notdir ${bad_fastas}))

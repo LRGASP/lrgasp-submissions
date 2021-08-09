@@ -2,6 +2,7 @@
 Simplified GTF parser/validator
 """
 import numpy as np
+import warnings
 from gtfparse import read_gtf, ParsingError
 from lrgasp import LrgaspException
 
@@ -51,9 +52,14 @@ def fixup_gtf_attrs(gtf_df):
     fixup_attr(gtf_df, "reference_gene_id")
     fixup_attr(gtf_df, "reference_transcript_id")
 
-def load_exons(model_gtf):
+def load_exons(models_gtf):
     """load GTF exons into a list of Series objects of exons"""
-    gtf_df = read_gtf(model_gtf)
+    # gtfparse uses pandas read_csv with deprecated options:
+    #   error_bad_lines=True,
+    #   warn_bad_lines=True,
+    with warnings.catch_warnings():
+        warnings.filterwarnings('ignore', '.*_bad_lines argument.*', category=FutureWarning)
+        gtf_df = read_gtf(models_gtf)
     gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
     if len(gtf_df) == 0:
         raise GtfException("no exon records found")
@@ -104,13 +110,13 @@ def validate_transcripts(models):
     for trans in models.by_transcript_id.values():
         validate_transcript(trans)
 
-def load(model_gtf):
+def load(models_gtf):
     """Validate GTF, returns exons grouped into transcripts"""
     try:
-        exons = load_exons(model_gtf)
+        exons = load_exons(models_gtf)
         validate_exons(exons)
         models = build_transcripts(exons)
         validate_transcripts(models)
         return models
     except (LrgaspException, ParsingError, ValueError) as ex:
-        raise GtfException("Parse of GTF failed: {}".format(model_gtf)) from ex
+        raise GtfException("Parse of GTF failed: {}".format(models_gtf)) from ex

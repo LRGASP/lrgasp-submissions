@@ -1,3 +1,3 @@
-Error: validation of entry 'iso_quant_ont_drna' failed: output/test_bad_quant_challange_sample/iso_quant_ont_drna/entry.json
-caused by: validation of experiment 'wtc11_drna_ont_long' failed: output/test_bad_quant_challange_sample/iso_quant_ont_drna/WTC11_drna_ont_long/experiment.json
+Error: validation of entry 'iso_quant_darwin' failed: output/test_bad_quant_challange_sample/iso_quant_darwin/entry.json
+caused by: validation of experiment 'WTC11_drna_ont_long' failed: output/test_bad_quant_challange_sample/iso_quant_darwin/WTC11_drna_ont_long/experiment.json
 caused by: library 'ENCFF535DQA' sample 'ES' is not valid for challenge 'iso_quant', expected one of WTC11, H1_mix, mouse_simulation, human_simulation

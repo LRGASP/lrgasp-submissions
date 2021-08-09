@@ -1,1 +1,1 @@
-rm $1/iso_detect_ref_ont_drna/H1_mix_drna_ont_long/models.gtf
+rm $1/iso_detect_ref_darwin/H1_mix_drna_ont_long/models.gtf

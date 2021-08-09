@@ -1,18 +1,17 @@
 """
 Load and validate model and expression entries.  This does full validation of
-all metadata and data files
+all metadata and data files.
 """
-import os.path as osp
 from lrgasp import LrgaspException, iter_to_str
-from lrgasp.defs import Challenge, MODELS_GTF, DE_NOVO_RNA_FASTA, READ_MODEL_MAP_TSV, EXPRESSION_TSV
+from lrgasp.defs import Challenge
 from lrgasp.defs import get_challenge_samples, challenge_desc
 from lrgasp import entry_metadata
-from lrgasp import experiment_metadata
 from lrgasp import model_data
 from lrgasp import de_novo_rna_data
 from lrgasp import read_model_map_data
 from lrgasp import expression_data
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
+from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
 
 def _model_map_transcript_ids(read_model_map):
     "get list of all read_model_map transcript ids"
@@ -36,14 +35,14 @@ def validate_ref_model_and_read_mapping(models, read_model_map):
         _validate_model_to_read_mapping(trans.transcript_id, read_model_map)
 
 def _validate_ref_model_experiment(experiment_md):
-    model_gtf = osp.join(experiment_md.experiment_dir, MODELS_GTF)
-    map_file = osp.join(experiment_md.experiment_dir, READ_MODEL_MAP_TSV)
+    models_gtf = get_models_gtf(experiment_md)
+    map_file = get_read_model_map_tsv(experiment_md)
     try:
-        models = model_data.load(model_gtf)
+        models = model_data.load(models_gtf)
         read_model_map = read_model_map_data.load(map_file)
         validate_ref_model_and_read_mapping(models, read_model_map)
     except Exception as ex:
-        raise LrgaspException(f"validation failed on '{model_gtf}' and '{map_file}'") from ex
+        raise LrgaspException(f"validation failed on '{models_gtf}' and '{map_file}'") from ex
 
 def _validate_de_novo_rna_to_read_mapping(transcript_id, read_model_map):
     if read_model_map.get_by_transcript_id(transcript_id) is None:
@@ -63,8 +62,8 @@ def validate_de_novo_rna_and_read_mapping(de_novo_rna_ids, read_model_map):
         _validate_de_novo_rna_to_read_mapping(transcript_id, read_model_map)
 
 def _validate_de_novo_model_experiment(experiment_md):
-    rna_fasta = osp.join(experiment_md.experiment_dir, DE_NOVO_RNA_FASTA)
-    map_file = osp.join(experiment_md.experiment_dir, READ_MODEL_MAP_TSV)
+    rna_fasta = get_rna_fasta(experiment_md)
+    map_file = get_read_model_map_tsv(experiment_md)
     try:
         de_novo_rna_ids = de_novo_rna_data.load(rna_fasta)
         read_model_map = read_model_map_data.load(map_file)
@@ -79,14 +78,14 @@ def validate_expression_and_model(models, expression_mat):
             raise LrgaspException(f"expression matrix ID '{row[1].ID}' not found in models")
 
 def _validate_expression_experiment(experiment_md):
-    model_gtf = osp.join(experiment_md.experiment_dir, MODELS_GTF)
-    expression_tsv = osp.join(experiment_md.experiment_dir, EXPRESSION_TSV)
+    models_gtf = get_models_gtf(experiment_md)
+    expression_tsv = get_expression_tsv(experiment_md)
     try:
-        models = model_data.load(model_gtf)
+        models = model_data.load(models_gtf)
         expression_mat = expression_data.load(expression_tsv, experiment_md)
         validate_expression_and_model(models, expression_mat)
     except Exception as ex:
-        raise LrgaspException(f"validation failed on '{model_gtf}' with '{expression_tsv}'") from ex
+        raise LrgaspException(f"validation failed on '{models_gtf}' with '{expression_tsv}'") from ex
 
 def _validate_experiment_library(entry_md, experiment_md, rna_seq_md, library):
     sample = rna_seq_md.get_run_by_file_acc(library).sample
@@ -96,7 +95,7 @@ def _validate_experiment_library(entry_md, experiment_md, rna_seq_md, library):
                               " expected one of {}".format(iter_to_str(valid_samples)))
 
 def _validate_experiment_libraries(entry_md, experiment_md):
-    "check if libraries uses are compatible with challenge"""
+    """check if libraries uses are compatible with challenge"""
     rna_seq_md = get_lrgasp_rna_seq_metadata()
     for library in experiment_md.libraries:
         _validate_experiment_library(entry_md, experiment_md, rna_seq_md, library)
@@ -142,33 +141,20 @@ def validate_experiment_consistency(entry_md, allow_partial):
     if not allow_partial:
         validate_samples(entry_md)
 
-def load_experiments_metadata(entry_md, experiment_ids):
-    "read experiment metadata and save in entry_md.experiments"
-    entry_md.experiments = [experiment_metadata.load_from_entry(entry_md, experiment_id)
-                            for experiment_id in experiment_ids]
-
-def _entry_data_validate(entry_md, restrict_experiment_id, allow_partial):
-    if restrict_experiment_id is not None:
-        if restrict_experiment_id not in entry_md.experiment_ids:
-            raise LrgaspException(f"entry '{entry_md.entry_id}' does not contain experiment '{restrict_experiment_id}'")
-        experiment_ids = [restrict_experiment_id]
-    else:
-        experiment_ids = entry_md.experiment_ids
-    load_experiments_metadata(entry_md, experiment_ids)
+def _entry_data_validate(entry_md, allow_partial):
+    entry_metadata.load_experiments_metadata(entry_md)
 
     for experiment_md in entry_md.experiments:
         validate_experiment(entry_md, experiment_md, allow_partial)
     validate_experiment_consistency(entry_md, allow_partial)
 
-def entry_data_validate(entry_dir, *, restrict_experiment_id=None, allow_partial=False):
+def entry_data_validate(entry_dir, *, allow_partial=False):
     """load and validate all metadata and data files for an entry, ensuring
     consistency.  Optionally restricted to one experiment for speed.  Setting
     allow_partial disables checking of submissions without all samples, checking
-    incompletely entries.  This is implies by restrict_experiment_id."""
-    if restrict_experiment_id is not None:
-        allow_partial = True
+    incompletely entries."""
     entry_md = entry_metadata.load_dir(entry_dir)
     try:
-        _entry_data_validate(entry_md, restrict_experiment_id=restrict_experiment_id, allow_partial=allow_partial)
+        _entry_data_validate(entry_md, allow_partial=allow_partial)
     except Exception as ex:
         raise LrgaspException(f"validation of entry '{entry_md.entry_id}' failed: {entry_md.entry_json}") from ex

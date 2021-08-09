@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+
+import os.path as osp
+import argparse
+import logging
+from http import HTTPStatus
+import synapseclient
+from lrgasp import LrgaspException, handle_prog_errors
+from lrgasp import loggingOps
+from lrgasp import entry_metadata
+
+from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts, get_project_by_name, FileTree
+from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
+
+upload_logger = loggingOps.setupStderrLogger("upload", level=logging.INFO)
+upload_logger.propagate = False
+
+
+def parse_args():
+    desc = """Upload an LGASP entry to Synapse. This uploads LRGASP metedata defined files from an
+    entry directory to a  Synapse project.  This does not submit for evaluation.  A entry maybe resubmitted
+    if needed, updating changed files
+
+    Use --logDebug when reporting a problem.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    add_login_args(parser)
+    loggingOps.addCmdOptions(parser)
+    parser.add_argument("entry_dir",
+                        help="entry directory")
+    parser.add_argument("project_spec",
+                        help="name or synapse id of Synapes project where data is to be uploaded")
+    return parser.parse_args()
+
+def entry_tree_add_experiment(entry_tree, entry_node, experiment_md):
+    experiment_node = entry_tree.add(experiment_md.experiment_id, entry_node, isdir=True)
+    entry_tree.add(experiment_md.experiment_json, experiment_node)
+
+    # these are None is not defined for experiment type
+    data_files = (get_models_gtf(experiment_md),
+                  get_read_model_map_tsv(experiment_md),
+                  get_rna_fasta(experiment_md),
+                  get_expression_tsv(experiment_md))
+    for data_file in data_files:
+        if data_file is not None:
+            entry_tree.add(data_file, experiment_node)
+
+def build_entry_tree(entry_md):
+    "construct file tree from entry metadata"
+    entry_tree = FileTree()
+    entry_node = entry_tree.add(entry_md.entry_id, None, isdir=True)
+    entry_tree.add(entry_md.entry_json, entry_node)
+    for experiment_md in entry_md.experiments:
+        entry_tree_add_experiment(entry_tree, entry_node, experiment_md)
+    return entry_tree
+
+def load_entry(entry_dir):
+    entry_md = entry_metadata.load_dir(entry_dir)
+    entry_metadata.load_experiments_metadata(entry_md)
+    entry_tree = build_entry_tree(entry_md)
+    return entry_md, entry_tree
+
+def get_syn_upload_project(syn, project_synid):
+    "Make sure folder exist and is writable. Return the entity"
+    try:
+        project_entity = syn.get(project_synid)
+    except synapseclient.core.exceptions.SynapseHTTPError as ex:
+        status_code = ex.response.status_code
+        if status_code == HTTPStatus.NOT_FOUND:
+            raise LrgaspException(f"upload destination folder {project_synid} does not exist") from ex
+        elif status_code == HTTPStatus.FORBIDDEN:
+            raise LrgaspException(f"synapse user '{syn.username}' does not have access to upload destination folder {project_synid}") from ex
+        else:
+            raise LrgaspException(f"unexpected HTTP error {status_code} attempting to check upload destination folder {project_synid}") from ex
+
+    # check user has access
+    perms = set(syn.getPermissions(project_entity, syn.username))
+    needed_perms = set(['READ', 'CREATE', 'UPDATE', 'DELETE', 'DOWNLOAD'])
+    if (perms & needed_perms) != needed_perms:
+        raise LrgaspException(f"user '{syn.username}' does not have required permissions for {project_synid}, missing {needed_perms - perms}")
+    return project_entity
+
+def upload_directory(syn, entry_md, parent_synid, fnode):
+    synid = syn.store(synapseclient.Folder(fnode.filename, parent_synid))
+    for child_fnode in fnode.children:
+        recursive_upload(syn, entry_md, synid, child_fnode)
+
+def upload_file(syn, entry_md, parent_synid, fnode):
+    fpath = fnode.get_path(osp.dirname(entry_md.entry_dir))
+    upload_logger.info(f"syncing {fpath}")
+    syn.store(synapseclient.File(fpath, name=fnode.filename, parent=parent_synid))
+
+def recursive_upload(syn, entry_md, parent_synid, fnode):
+    if fnode.isdir:
+        upload_directory(syn, entry_md, parent_synid, fnode)
+    else:
+        upload_file(syn, entry_md, parent_synid, fnode)
+
+def upload_entry_data(syn, entry_md, entry_tree, project_entity):
+    recursive_upload(syn, entry_md, project_entity, entry_tree.root)
+
+def upload_entry(syn, entry_dir, project_synid):
+    project_entity = get_syn_upload_project(syn, project_synid)
+    entry_md, entry_tree = load_entry(entry_dir)
+    upload_entry_data(syn, entry_md, entry_tree, project_entity)
+
+def main(args):
+    loggingOps.setupFromCmd(args)
+    try:
+        syn = syn_connect(args)
+        if args.project_spec.startswith('syn'):
+            project_synid = args.project_spec
+        else:
+            project_synid = get_project_by_name(syn, args.project_spec)
+
+        upload_entry(syn, args.entry_dir, project_synid)
+    except prog_error_syn_excepts as ex:
+        handle_prog_errors(ex)
+
+main(parse_args())

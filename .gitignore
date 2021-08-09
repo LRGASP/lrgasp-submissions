@@ -131,3 +131,5 @@ output/
 
 .emacs.bak/
 .DS_Store
+
+test-conf.json
