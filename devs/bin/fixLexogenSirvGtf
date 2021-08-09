@@ -15,7 +15,7 @@ from lrgasp import LrgaspException
 # gtfparse uses pandas read_csv with deprecated options:
 #   error_bad_lines=True,
 #   warn_bad_lines=True,
-warnings.filterwarnings('ignore',  '.*_bad_lines argument.*', category=FutureWarning)
+warnings.filterwarnings('ignore', '.*_bad_lines argument.*', category=FutureWarning)
 
 
 def parse_args():

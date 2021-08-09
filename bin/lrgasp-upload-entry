@@ -8,6 +8,7 @@ import synapseclient
 from lrgasp import LrgaspException, handle_prog_errors
 from lrgasp import loggingOps
 from lrgasp import entry_metadata
+
 from lrgasp.synapse_access import add_login_args, syn_connect, prog_error_syn_excepts, get_project_by_name, FileTree
 from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
 
@@ -27,8 +28,8 @@ def parse_args():
     loggingOps.addCmdOptions(parser)
     parser.add_argument("entry_dir",
                         help="entry directory")
-    parser.add_argument("project_name",
-                        help="name of synapes project  where data is to be uploaded")
+    parser.add_argument("project_spec",
+                        help="name or synapse id of Synapes project where data is to be uploaded")
     return parser.parse_args()
 
 def entry_tree_add_experiment(entry_tree, entry_node, experiment_md):
@@ -107,7 +108,11 @@ def main(args):
     loggingOps.setupFromCmd(args)
     try:
         syn = syn_connect(args)
-        project_synid = get_project_by_name(syn, args.project_name)
+        if args.project_spec.startswith('syn'):
+            project_synid = args.project_spec
+        else:
+            project_synid = get_project_by_name(syn, args.project_spec)
+
         upload_entry(syn, args.entry_dir, project_synid)
     except prog_error_syn_excepts as ex:
         handle_prog_errors(ex)

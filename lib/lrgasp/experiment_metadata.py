@@ -263,7 +263,7 @@ def load_from_entry(entry_md, experiment_id):
     if experiment_md.experiment_id != osp.basename(experiment_dir):
         raise LrgaspException(f"experiment_id and directory name must be the same; '{experiment_md.experiment_id}' is in '{osp.basename(experiment_dir)}' ({experiment_dir})")
 
-    experiment_md.experiment_dir = experiment_dir
+    experiment_md.experiment_dir = osp.normpath(experiment_dir)
     experiment_md.experiment_json = experiment_json
     return experiment_md
 

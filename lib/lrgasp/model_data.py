@@ -58,7 +58,7 @@ def load_exons(models_gtf):
     #   error_bad_lines=True,
     #   warn_bad_lines=True,
     with warnings.catch_warnings():
-        warnings.filterwarnings('ignore',  '.*_bad_lines argument.*', category=FutureWarning)
+        warnings.filterwarnings('ignore', '.*_bad_lines argument.*', category=FutureWarning)
         gtf_df = read_gtf(models_gtf)
     gtf_df = gtf_df.loc[gtf_df.feature == 'exon']
     if len(gtf_df) == 0:

@@ -73,15 +73,23 @@ def load(entry_json):
     entry_md.experiments = None
     return entry_md
 
+def parser_entry_dirname(entry_dir):
+    try:
+        entry_base_dir = osp.basename(osp.normpath(entry_dir))
+        validate_entry_ident(entry_base_dir)
+        return entry_base_dir
+    except LrgaspException as ex:
+        raise LrgaspException(f"entry directory is not a valid entry id: '{entry_dir}'") from ex
+
 def load_dir(entry_dir):
     """load entry metadata, verifying that the file system directory matches
     the entry_id.  Save entry_dir in metadata """
+    entry_base_dir = parser_entry_dirname(entry_dir)
     entry_json = osp.join(entry_dir, ENTRY_JSON)
     entry_md = load(entry_json)
-    entry_base_dir = osp.basename(osp.realpath(entry_dir))
     if entry_base_dir != entry_md.entry_id:
         raise LrgaspException(f"entry_id and directory name must be the same; '{entry_md.entry_id}' is in '{entry_base_dir}' ({entry_dir})")
-    entry_md.entry_dir = entry_dir
+    entry_md.entry_dir = osp.normpath(entry_dir)
     entry_md.entry_json = entry_json
     return entry_md
 
