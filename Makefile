@@ -123,24 +123,25 @@ dist: clean
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && pip install --no-cache-dir ${dist_tar}
-	${envact} && ${MAKE} test
+	${envact} && cd ${testenv} && pip install --no-cache-dir ${dist_tar}
+	${envact} && cd tests ${MAKE} test
 
 # test release to testpypi
 release-testpypi: dist
 	${TWINE} upload --repository=testpypi ${dist_whl} ${dist_tar}
 
-# test release install from testpypi, testpypi doesn't have requeiments, so install them first
+# test release install from testpypi
+# for some reason, pip sees lrgasp in lib directory and doesn't install it, so cd to virtualenv
 test-release-testpypi:
 	${envsetup}
-	${envact} && pip install --no-cache-dir --index-url=${testpypi_url} --extra-index-url=https://pypi.org/simple ${pkgver_spec}
-	${envact} && ${MAKE} test
+	${envact} && cd ${testenv} && pip install --no-cache-dir --index-url=${testpypi_url} --extra-index-url=https://pypi.org/simple ${pkgver_spec}
+	${envact} && cd tests && ${MAKE} test
 
 release: dist
 	${TWINE} upload --repository=pypi ${dist_whl} ${dist_tar}
 
 release-test:
 	${envsetup}
-	${envact} && pip install --no-cache-dir ${pkgver_spec}
-	${envact} && ${MAKE} test
+	${envact} && cd ${testenv} && pip install --no-cache-dir ${pkgver_spec}
+	${envact} && cd tests && ${MAKE} test
 
