@@ -18,6 +18,9 @@ def parse_args():
 
 # unique names are generate by including the parent name to prefix the label
 
+# root node, use to force order
+ROOT = "root"
+
 # metadata files
 ENTRY_MD = "entry.json"
 EXPERIMENT_MD = "experiment.json"
@@ -28,8 +31,8 @@ READ_MODEL_MAP_GZ = "read_model_map.tsv.gz"
 EXPRESSION_TSV_GZ = "expression.tsv.gz"
 
 # directories
-ENTRY_MODEL = "entry_A\n(" + str(Challenge.iso_detect_ref) + ")"
-ENTRY_QUANT = "entry_B\n(" + str(Challenge.iso_quant) + ")"
+ENTRY_MODEL = str(Challenge.iso_detect_ref) + "_darwin\n(entry)"
+ENTRY_QUANT = str(Challenge.iso_quant) + "_darwin\n(entry)"
 
 MODEL_HS1 = "model_hs1\n(experiment)"
 MODEL_HS2 = "model_hs2\n(experiment)"
@@ -94,15 +97,10 @@ def build_submission_tree(g):
     build_entry_model(g)
     build_entry_quant(g)
 
-def build_model_experiment(g):
-    pass
-
-def build_quant_experiment(g):
-    pass
-
-def build_experiment_tree(g):
-    build_model_experiment(g)
-    build_quant_experiment(g)
+    # force ordering
+    g.add_node(ROOT, style='invisible')
+    g.add_edge(ROOT, ENTRY_MODEL, style='invisible')
+    g.add_edge(ROOT, ENTRY_QUANT, style='invisible')
 
 def mk_graph(args):
     g = pgv.AGraph()
