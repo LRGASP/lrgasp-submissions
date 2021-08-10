@@ -1,6 +1,6 @@
 # Synapse submissions
 
-Submission to LRGASP is managing by [SAGE Synapse](https://www.synapse.org) system.
+Submission to LRGASP is managed by [SAGE Synapse](https://www.synapse.org) system.
 Synapse is used to control access for participant submission, allowing data to be shared
 only with the LGRASP evaluators.  The Synapse evaluation results report facility is not
 used.
@@ -60,8 +60,8 @@ select the entry directory to submit.  Please ensure that the entry directory is
 as shown below.
 
 Once submitted, mail [lrgasp-support-group@ucsc.edu](mailto:lrgasp-support-group@ucsc.edu) and let
-us know you have submitted.  Would you please provide your lab's synapse name,
-team name, and the name of the submission?  We will send you a positive
+us know you have submitted.  Please include your lab's synapse name,
+team name, and the name of the submission in the email.  We will send you a positive
 acknowledgment that we have received the entry.
 
 ![Picking entry directory for submission](submit-pick.png)
