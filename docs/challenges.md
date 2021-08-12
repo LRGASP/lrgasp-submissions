@@ -43,7 +43,7 @@ Each *entry* must meet the following requirements:
 
 * At least one *experiment* must be supplied for each *sample* available for
   a given challenge, library prep, and sequencing platform combination that is selected. Human and mouse samples will have biological replicates that must be used for the entry.
-* The data used for a given *experiment* must fit in one of the following *data categories*:
+* A major goal of LRGASP is to assess the capabilities of long-read sequencing for transcriptome analysis and also how much improvement there is over short-read methods. Additionally, long-read computational pipelines vary in their use of only long-read data or if they incorporate additional data for transcript analysis. To facilitate comparisons between long-read and short-read methods and variation in tool parameters, we organize entries into different *data categories*:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used.
@@ -73,14 +73,14 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
 ![Challenge 3 entry diagram](challenge_3_entries.png)
 
 * At least one *experiment* must be supplied for each *sample* available for a given library prep and sequencing platform combination that is selected. Mouse samples will have biological replicates that should be used for the entry. Manatee samples only have cDNA library prep type and sequenced on Illumina, ONT, and PacBio.
-* The data used for a given *experiment* must fit in one of the following categories:
+* For similar reasons as described above, the data used for a given experiment must fit in one of the following data categories:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform. No genome reference can be used.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches. No genome reference can be used.
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. No genome reference can be used.
   * *long and genome* - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A genome sequence can be used.
   * *freestyle* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + ONT cDNA).
 
-In all the above categories, except for *freestyle* a transcriptome reference CANNOT be used.
+In all the above categories, except for *freestyle*, a transcriptome reference CANNOT be used.
 
 The submitted FASTA file should only contain transcripts that have been assigned a read.
 
