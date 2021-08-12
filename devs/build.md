@@ -26,8 +26,9 @@ data matrix in another directory:
 
 ## lint
 
-Markdown doc can be linted if the following packages are installed:
+Python can be validated with flake8 using `make lint`
 
+Markdown doc is validated if the following packages are installed:
 * markdownlint (mdl) - Ruby package: `gem install mdl`
 * markdown-link-check - Node.js package: `npm install -g markdown-link-check`
 * LinkChecker - `pip3 install LinkChecker`
