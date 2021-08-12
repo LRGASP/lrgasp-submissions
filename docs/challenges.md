@@ -31,19 +31,19 @@ For details on result files that must be submitted, see [Submission structure](s
     * `rna.fasta.gz`
     * `read_model_map.tsv.gz`
 
-## Challenge data requirements
+## Challenge requirements
 
-A submission to a challenge is an *entry*, consisting of
-one or more *experiments*.
+Computational methods may have been developed and tuned to a specific sequencing platform, library prep approach(e.g. ONT dRNA), or use of additional orthogonal data; therefore, entries are organized such that a comparison can be made across different tools using the same type of data. Additionally, it is important to evaluate how robust computational tools are to transcript analysis in different species or biological samples. Thus, for each *entry* to a challenge, a team will select a *data category*, library prep, and sequencing platform and submit *experiments* for all samples that are available for the challenge + library prep + sequencing platform combination. The samples that are available for a challenge + library prep + sequencing platform combination can be found in the [LRGASP RNA-seq Data Matrix] (rnaseq-data-matrix.md). Note that there are also simulated samples that should also be selected for Challenges 1 and 2.
+
 Each *entry* must meet the following requirements:
 
 ### Requirements for Challenge 1 and 2
 
 * At least one *experiment* must be supplied for each *sample* available for
-  a given challenge. Human and mouse samples will have biological replicates that must be used for the entry.
-* The data used for a given *experiment* must fit in one of the following categories:
+  a given challenge, library prep, and sequencing platform combination that is selected. Human and mouse samples will have biological replicates that must be used for the entry.
+* The data used for a given *experiment* must fit in one of the following *data categories*:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
-  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches
+  * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches
   * *long and short* - Use only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used.
   * *freestyle* - Any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *freestyle* experiments.
 
@@ -52,7 +52,7 @@ In all the above categories, the genome and transcriptome references specified b
 All replicates must be used in each experiment.  Challenge 2 must report
 replicates separately in the [expression matrix](expression_matrix_format.md).
 
-Each team can only submit one entry per challenge.
+Each team can submit multiple entries for each challenge; however, they can only submit one entry per challenge + data type + library prep + sequencing platform combination. This is to encourage tool development that is robust to different library preps and sequencing platforms, but prevent multiple entries that are subtle parameter changes.
 
 For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read. For Challenge 2, submitters have the option of quantifying against the reference transcriptome or a transcriptome derived from the data (i.e., results from Challenge 1). The GTF used for quantification is included as part of the [Challenge 2 submission](submission.md).
 
@@ -68,7 +68,7 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
 
 ### Requirements for Challenge 3
 
-* At least one *experiment* must be supplied for each *sample* available for the challenge. Mouse samples will have biological replicates that should be used for the entry.
+* At least one *experiment* must be supplied for each *sample* available for a given library prep and sequencing platform combination that is selected. Mouse samples will have biological replicates that should be used for the entry. Manatee samples only have cDNA library prep type and sequenced on Illumina, ONT, and PacBio.
 * The data used for a given *experiment* must fit in one of the following categories:
   * *long-only* - Use only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform. No genome reference can be used.
   * *short-only* - Use only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read approaches. No genome reference can be used.
@@ -80,4 +80,4 @@ In all the above categories, except for *freestyle* a transcriptome reference CA
 
 The submitted FASTA file should only contain transcripts that have been assigned a read.
 
-Each team can only submit one entry per category.
+Each team can submit multiple entries for each challenge; however, they can only submit one entry per challenge + data type + library prep + sequencing platform combination. This is to encourage tool development that is robust to different library preps and sequencing platforms, but prevent multiple entries that are subtle parameter changes.
