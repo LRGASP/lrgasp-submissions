@@ -8,7 +8,7 @@ use.  Templates and a validator are provided.
 
 This file contains information about the *entry* and team that is submitting
 it.  This is at the top of an entry tree (see [Submission structure](submission.md)).
-See [``entry.json``](../examples/darwin_lab/iso_detect_ref_darwin/entry.json) for an example.  An empty
+See [``entry.json``](../examples/darwin_lab/iso_detect_ref_darwin_drna_ont/entry.json) for an example.  An empty
 template is also available: [``entry.json``](../templates/entry.json).
 
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.

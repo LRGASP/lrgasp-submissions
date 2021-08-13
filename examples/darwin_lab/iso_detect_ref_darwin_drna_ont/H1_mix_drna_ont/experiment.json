@@ -1,12 +1,13 @@
 {
-    "experiment_id": "mouse_sim_cdna_ont",
+    "experiment_id": "H1_mix_drna_ont",
     "challenge_id": "iso_detect_ref",
-    "description": "Transcript models for mouse simulatated ONT cDNA sequenceing, more sensitive and less specific models",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
-    "species": "mouse",
+    "description": "Transcript models for human H1 mix ONT direct RNA sequenceing, more sensitive and less specific models",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "syn25591653"
+        "ENCFF854BEI",
+        "ENCFF804BPC",
+        "ENCFF557WRQ"
     ],
     "software": [
         {

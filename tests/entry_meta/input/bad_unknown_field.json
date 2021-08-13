@@ -5,6 +5,9 @@
     "team_name": "Long-reads Expert Lab",
     "fred": "flintstone",
     "barney": 100,
+    "data_category": "long_only",
+    "library_prep": "dRNA",
+    "platform": "ONT",
     "experiment_ids": [
         "model_try"
     ],

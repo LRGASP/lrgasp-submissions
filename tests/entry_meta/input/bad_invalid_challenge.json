@@ -2,6 +2,9 @@
     "entry_id": "iso_detect_ref_our_entry",
     "challenge_id": "iso_fred_finished",
     "team_id": "syn12345678",
+    "data_category": "long_only",
+    "library_prep": "dRNA",
+    "platform": "ONT",
     "experiment_ids": [
         "model_try"
     ],

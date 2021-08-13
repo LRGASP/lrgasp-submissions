@@ -2,7 +2,7 @@
 Definitions of metadata identifiers, types, and functions to operate on them.
 """
 import re
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 from lrgasp import LrgaspException
 from lrgasp.symEnum import SymEnum, auto
 
@@ -28,18 +28,23 @@ class DataCategory(SymEnum):
     long_genome = auto()
     freestyle = auto()
 
-class Platform(SymEnum):
-    """Simplified sequencing platform, mostly used if figuring out LibraryCategory"""
-    Illumina = auto()
-    PacBio = auto()
-    ONT = auto()
-
 class LibraryPrep(SymEnum):
     """Type of library prep"""
     CapTrap = auto()
     dRNA = auto()
     R2C2 = auto()
     cDNA = auto()
+
+class Platform(SymEnum):
+    """Simplified sequencing platform"""
+    Illumina = auto()
+    PacBio = auto()
+    ONT = auto()
+
+class EntryCategory(namedtuple("EntryCategory",
+                               ("data_category", "library_prep", "platform"))):
+    """Tuple that describes the data used in an experiment"""
+    __slots__ = ()
 
 class Sample(SymEnum):
     """LRGASP sample identifier"""
@@ -140,3 +145,18 @@ def is_simulation(sample):
 
 def challenge_desc(challenge_id):
     return f"Challenge {challenge_id.value} ({str(challenge_id)})"
+
+
+_short_platforms = frozenset([Platform.Illumina])
+_long_platforms = frozenset([Platform.PacBio, Platform.ONT])
+_data_category_platform_map = {
+    DataCategory.long_only: _long_platforms,
+    DataCategory.short_only: _short_platforms,
+    DataCategory.long_short: _short_platforms | _long_platforms,
+    DataCategory.long_genome: _long_platforms,
+    DataCategory.freestyle: _short_platforms | _long_platforms
+}
+
+def get_data_category_platforms(data_category):
+    "allowed platforms for a given data_category"
+    return _data_category_platform_map

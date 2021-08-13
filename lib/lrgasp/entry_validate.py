@@ -4,7 +4,7 @@ all metadata and data files.
 """
 from lrgasp import LrgaspException, iter_to_str
 from lrgasp.defs import Challenge
-from lrgasp.defs import get_challenge_samples, challenge_desc
+from lrgasp.defs import get_challenge_samples, challenge_desc, get_data_category_platforms
 from lrgasp import entry_metadata
 from lrgasp import model_data
 from lrgasp import de_novo_rna_data
@@ -127,14 +127,27 @@ def get_entry_samples(entry_md):
             samples.add(rna_seq_md.get_run_by_file_acc(file_acc).sample)
     return samples
 
+def get_entry_category_samples(entry_md):
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    valid_platforms = get_data_category_platforms(entry_md.data_category)
+    samples = set()
+    for run_md in rna_seq_md.get_runs_by_prep_platform(entry_md.library_prep, entry_md.platform):
+        if run_md.platform in valid_platforms:
+            samples.add(run_md.sample)
+    return samples
+
 def validate_samples(entry_md):
-    "validate that all samples are covered (requires all experiments"
+    """validate that all samples for entry category challenge are covered
+    (requires all experiments)"""
     entry_samples = get_entry_samples(entry_md)
+    entry_category_samples = get_entry_category_samples(entry_md)
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
-    if entry_samples != challenge_samples:
-        raise LrgaspException("{} must have all of the samples '{}', only '{}' were found".format(challenge_desc(entry_md.challenge_id),
-                                                                                                  iter_to_str(challenge_samples),
-                                                                                                  iter_to_str(entry_samples)))
+    required_samples = entry_category_samples & challenge_samples
+    if entry_samples != required_samples:
+        raise LrgaspException("{} entry must use all of the available samples for ({} {} {})".format(challenge_desc(entry_md.challenge_id),
+                                                                                                     entry_md.data_category, entry_md.library_prep, entry_md.platform)
+                              + ", need '{}', only '{}' were found".format(iter_to_str(challenge_samples),
+                                                                           iter_to_str(entry_samples)))
 
 def validate_experiment_consistency(entry_md, allow_partial):
     """validate that all experiments are consistent"""

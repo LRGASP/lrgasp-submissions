@@ -1,0 +1,3 @@
+Error: validation of entry metadata failed: input/bad_platform.json
+caused by: entry field 'platform' is not a valid 'Platform', value is 'Sanger'
+caused by: 'Sanger' is not a member, external name, or alias of Platform

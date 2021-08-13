@@ -27,22 +27,38 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 * ``manatee`` - taxon 127582
 * ``synthetic`` - generated synthetic reads
 
-## Sample identifiers
+## Data categories
 
-* ``WTC11`` - human WTC11 iPSC cell line
-* ``H1_mix`` - human H1 ES cell line mixed with human Definitive Endoderm derived from H1
-* ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
-* ``blood`` - manatee whole blood
-
-## Experiment data categories
-
-They following symbols identify the data category to which the experiment belongs:
+They following symbols identify the data category to which an entry belongs:
 
 * ``long_only`` - uses only LGRASP-provided long-read RNA-Seq data from a single sample, library preparation method and sequencing platform.
 * ``short_only`` - uses only LGRASP-provided short-read Illumina RNA-Seq data from a single sample. This is to compare with long-read  approaches.
 * ``long_short`` - uses only LGRASP-provided long-read and short-read RNA-Seq data from a single long-read library preparation method and the Illumina platform. Additional accessioned data in public genomics data repositories can also be used.
 * ``long_genome`` - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A non-reference quality genome sequence can be used.
 * ``freestyle`` - any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *freestyle* experiments.
+
+## library prep
+
+Library preparation method
+* ``CapTrap``
+* ``dRNA``
+* ``R2C2``
+* ``cDNA``
+
+## Platform
+
+Simplified RNA sequencing platform
+
+* ``Illumina``
+* ``PacBio``
+* ``ONT``
+
+## Sample identifiers
+
+* ``WTC11`` - human WTC11 iPSC cell line
+* ``H1_mix`` - human H1 ES cell line mixed with human Definitive Endoderm derived from H1
+* ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
+* ``blood`` - manatee whole blood
 
 ## Public repository identifiers
 

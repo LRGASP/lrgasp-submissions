@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_missing__platform.json
+caused by: entry field 'platform' is required

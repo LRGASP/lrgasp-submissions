@@ -7,10 +7,14 @@ from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
 from lrgasp import experiment_metadata
-from lrgasp.defs import Challenge, validate_symbolic_ident, validate_synapse_ident, validate_entry_ident, ENTRY_JSON
+from lrgasp.defs import (Challenge, DataCategory, LibraryPrep, Platform, EntryCategory,
+                         validate_symbolic_ident, validate_synapse_ident, validate_entry_ident,
+                         ENTRY_JSON)
 
-# Note: a field "experiments" is added when metadata is loaded.  It is None
-# until experiment metadata is loaded.
+# Note:
+#  - a field entry_category is added from data_category, library_prep, and platform
+#  - field "experiments" is added when metadata is loaded.  It is None until
+#     experiment metadata is loaded.
 
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
@@ -23,6 +27,9 @@ entry_fields = (
     Field("challenge_id", Challenge),
     Field("team_id", validator=validate_synapse_ident),
     Field("team_name"),
+    Field("data_category", DataCategory),
+    Field("library_prep", LibraryPrep),
+    Field("platform", Platform),
     Field("experiment_ids", list, element_dtype=str, validator=validate_symbolic_ident),
     fld_notes,
     Field("contacts", list, element_dtype=dict)
@@ -70,7 +77,11 @@ def load(entry_json):
         entry_validate(entry_md)
     except LrgaspException as ex:
         raise LrgaspException(f"validation of entry metadata failed: {entry_json}") from ex
+    # non-serialized fields
     entry_md.experiments = None
+    entry_md.entry_category = EntryCategory(entry_md.data_category,
+                                            entry_md.library_prep,
+                                            entry_md.platform)
     return entry_md
 
 def parser_entry_dirname(entry_dir):

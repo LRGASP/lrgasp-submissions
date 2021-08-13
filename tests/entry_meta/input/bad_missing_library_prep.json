@@ -1,0 +1,21 @@
+{
+    "entry_id": "iso_detect_ref_our_entry",
+    "challenge_id": "iso_detect_ref",
+    "team_id": "syn12345678",
+    "team_name": "Long-reads Expert Lab",
+    "data_category": "long_only",
+    "platform": "ONT",
+    "experiment_ids": [
+        "model_try"
+    ],
+    "contacts": [
+        {
+            "name": "LongReadsExpertLab",
+            "email": "LongReadsExpertLab@university.edu"
+        },
+        {
+            "name": "Dr. Long Read",
+            "email": "long.read@university.edu"
+        }
+    ]
+}

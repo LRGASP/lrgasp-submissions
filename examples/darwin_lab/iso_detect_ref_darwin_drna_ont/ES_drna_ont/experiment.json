@@ -1,14 +1,14 @@
 {
-    "experiment_id": "WTC11_drna_ont_long",
+    "experiment_id": "ES_drna_ont",
     "challenge_id": "iso_detect_ref",
-    "description": "Transcript models for human WTC11 ONT direct RNA sequenceing",
-    "notes": "noted",
-    "species": "human",
+    "description": "Transcript models for mouse ES ONT direct RNA sequenceing, more sensitive and less specific models",
+    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "species": "mouse",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF155CFF",
-        "ENCFF771DIX",
-        "ENCFF600LIU"
+        "ENCFF765AEC",
+        "ENCFF349BIN",
+        "ENCFF412NKJ"
     ],
     "software": [
         {

@@ -6,7 +6,7 @@ debug = --logDebug
 # set to get debug on error test cases
 #  err_debug=--logDebug
 
-entries = iso_detect_ref_darwin iso_quant_darwin iso_detect_de_novo_darwin
+entries = iso_detect_ref_darwin_drna_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin
 test: entry_tests bad_tests
 
 ##
@@ -31,10 +31,10 @@ bad_isoform_tests: ${bad_isoform_tests:%=test_%}
 test_bad_isoform%: mkout
 	rm -rf output/$@
 	mkdir output/$@
-	(cd ../../examples/darwin_lab && find iso_detect_ref_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
+	(cd ../../examples/darwin_lab && find iso_detect_ref_darwin_drna_ont | cpio --quiet -pduml ../../tests/complete/output/$@/)
 	bash -e input/bad_isoform$*.sh output/$@
-	@echo ${lrgasp_validate_entry} output/$@/iso_detect_ref_darwin "(should fail)"
-	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_ref_darwin 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@echo ${lrgasp_validate_entry} output/$@/iso_detect_ref_darwin_drna_ont "(should fail)"
+	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_ref_darwin_drna_ont 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 bad_quant_tests: ${bad_quant_tests:%=test_%}
@@ -42,10 +42,10 @@ bad_quant_tests: ${bad_quant_tests:%=test_%}
 test_bad_quant%: mkout
 	rm -rf output/$@
 	mkdir output/$@
-	(cd ../../examples/darwin_lab && find iso_quant_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
+	(cd ../../examples/darwin_lab && find iso_quant_drna_ont_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
 	bash -e input/bad_quant$*.sh output/$@
-	@echo ${lrgasp_validate_entry} output/$@/iso_quant_darwin "(should fail)"
-	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_quant_darwin 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@echo ${lrgasp_validate_entry} output/$@/iso_quant_drna_ont_darwin "(should fail)"
+	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_quant_drna_ont_darwin 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
 	diff expected/$@.err output/$@.err
 
 bad_de_novo_tests: ${bad_de_novo_tests:%=test_%}

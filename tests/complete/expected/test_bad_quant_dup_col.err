@@ -1,5 +1,5 @@
-Error: validation of entry 'iso_quant_darwin' failed: output/test_bad_quant_dup_col/iso_quant_darwin/entry.json
-caused by: validation of experiment 'H1_mix_drna_ont_long' failed: output/test_bad_quant_dup_col/iso_quant_darwin/H1_mix_drna_ont_long/experiment.json
-caused by: validation failed on 'output/test_bad_quant_dup_col/iso_quant_darwin/H1_mix_drna_ont_long/models.gtf' with 'output/test_bad_quant_dup_col/iso_quant_darwin/H1_mix_drna_ont_long/expression.tsv'
-caused by: Parse of expression matrix TSV failed: output/test_bad_quant_dup_col/iso_quant_darwin/H1_mix_drna_ont_long/expression.tsv
-caused by: matrix column 'ENCFF804BPC.1' is not listed in experiment_md.libraries for 'H1_mix_drna_ont_long'
+Error: validation of entry 'iso_quant_drna_ont_darwin' failed: output/test_bad_quant_dup_col/iso_quant_drna_ont_darwin/entry.json
+caused by: validation of experiment 'H1_mix_drna_ont' failed: output/test_bad_quant_dup_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/experiment.json
+caused by: validation failed on 'output/test_bad_quant_dup_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/models.gtf' with 'output/test_bad_quant_dup_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/expression.tsv'
+caused by: Parse of expression matrix TSV failed: output/test_bad_quant_dup_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/expression.tsv
+caused by: matrix column 'ENCFF804BPC.1' is not listed in experiment_md.libraries for 'H1_mix_drna_ont'

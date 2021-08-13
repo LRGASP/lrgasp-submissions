@@ -1,17 +1,14 @@
 {
-    "experiment_id": "pbManteeBlood",
-    "challenge_id": "iso_detect_de_novo",
-    "description": "Manatee blood pac-bio cDNA",
-    "notes": "",
-    "species": "manatee",
+    "experiment_id": "WTC11_drna_ont",
+    "challenge_id": "iso_detect_ref",
+    "description": "Transcript models for human WTC11 ONT direct RNA sequenceing",
+    "notes": "noted",
+    "species": "human",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF835YMN",
-        "ENCFF058GPT",
-        "ENCFF123MVQ",
-        "ENCFF529XIE",
-        "ENCFF589LDN",
-        "ENCFF973PES"
+        "ENCFF155CFF",
+        "ENCFF771DIX",
+        "ENCFF600LIU"
     ],
     "software": [
         {

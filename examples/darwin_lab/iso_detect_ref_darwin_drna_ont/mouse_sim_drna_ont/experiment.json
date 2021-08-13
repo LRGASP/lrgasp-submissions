@@ -1,14 +1,12 @@
 {
-    "experiment_id": "ES_drna_ont_long",
+    "experiment_id": "mouse_sim_drna_ont",
     "challenge_id": "iso_detect_ref",
-    "description": "Transcript models for mouse ES ONT direct RNA sequenceing, more sensitive and less specific models",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "description": "Transcript models for mouse simulatated ONT dRNA sequenceing",
+    "notes": "Seem to go well ",
     "species": "mouse",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF765AEC",
-        "ENCFF349BIN",
-        "ENCFF412NKJ"
+        "syn25591653"
     ],
     "software": [
         {

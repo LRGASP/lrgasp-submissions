@@ -1,0 +1,2 @@
+Error: validation of entry metadata failed: input/bad_missing_library_prep.json
+caused by: entry field 'library_prep' is required

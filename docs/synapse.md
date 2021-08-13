@@ -43,9 +43,9 @@ avoid entering the password each time.
 Upload the entry to your lab's project either by name or Synapse id:
 
 ```
-  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin "Darwin LRGASP Project"
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin_drna_ont "Darwin LRGASP Project"
 
-  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin syn123456
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin_drna_ont syn123456
 ```
 
 If you make changes to the entry, just rerun the upload.  If the uploaded entry has already been

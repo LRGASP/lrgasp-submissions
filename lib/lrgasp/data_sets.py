@@ -64,12 +64,17 @@ class LrgaspRnaSeqMetaData(list):
     def __init__(self):
         self.file_md_by_acc = {}
         self.run_by_acc = {}
+
+        # indexed by (library_prep, platform)
+        self.runs_by_prep_platform = defaultdict(list)
+
         # this is indexed by both individual biosample accs and by sorted
         # tuple of accs to handle mixes.  The same values can map to replicates
         # in different sequences technologies, hence it is a list
         self.replicate_by_biosample_acc = defaultdict(list)
 
     def finish(self):
+        self.runs_by_prep_platform.default_factory = None
         self.replicate_by_biosample_acc.default_factory = None
 
     def _edit_run_types(self, run_md):
@@ -108,6 +113,7 @@ class LrgaspRnaSeqMetaData(list):
             raise LrgaspException(f"duplicate run id '{run_md.run_acc}'")
         self.append(run_md)
         self.run_by_acc[run_md.run_acc] = run_md
+        self.runs_by_prep_platform[run_md.library_prep, run_md.platform].append(run_md)
         for replicate_md in run_md.replicates:
             self._add_replicate(run_md, replicate_md)
 
@@ -126,6 +132,9 @@ class LrgaspRnaSeqMetaData(list):
     def get_run_by_file_acc(self, file_acc):
         fil = self.get_file_by_acc(file_acc)
         return self.get_run_by_acc(fil.run_acc)
+
+    def get_runs_by_prep_platform(self, library_prep, platform):
+        return self.runs_by_prep_platform[(library_prep, platform)]
 
 def _pair_files(file_mds):
     "linked paired ends files and construct list of pairs"

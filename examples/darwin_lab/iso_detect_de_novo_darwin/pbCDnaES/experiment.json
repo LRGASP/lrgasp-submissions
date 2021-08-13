@@ -1,17 +1,23 @@
 {
-    "experiment_id": "pbCapTrapES",
+    "experiment_id": "pbCDnaES",
     "challenge_id": "iso_detect_de_novo",
-    "description": "mouse ES CapTrap",
+    "description": "mouse ES CDna",
     "notes": "This went well",
     "species": "mouse",
     "data_category": "long_only",
     "libraries": [
-        "ENCFF535DQA",
-        "ENCFF710FCJ",
-        "ENCFF310IPO",
-        "ENCFF062QXB",
-        "ENCFF654JHQ",
-        "ENCFF110VBJ"
+        "ENCFF874VSI",
+        "ENCFF005VJA",
+        "ENCFF564NGV",
+        "ENCFF714ZJR",
+        "ENCFF667VXS",
+        "ENCFF493CBP",
+        "ENCFF783PVA",
+        "ENCFF993JVA",
+        "ENCFF313VYZ",
+        "ENCFF078IYM",
+        "ENCFF094NZA",
+        "ENCFF280DWZ"
     ],
     "software": [
         {
