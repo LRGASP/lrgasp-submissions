@@ -5,7 +5,7 @@ import os.path as osp
 import json
 from lrgasp import LrgaspException, gopen
 from lrgasp.objDict import ObjDict
-from lrgasp.metadata_validate import Field, check_from_defs, validate_email
+from lrgasp.metadata_validate import Field, check_from_defs, validate_email, field_omitted_or_none
 from lrgasp import experiment_metadata
 from lrgasp.defs import (Challenge, DataCategory, LibraryPrep, Platform, EntryCategory,
                          validate_symbolic_ident, validate_synapse_ident, validate_entry_ident,
@@ -18,6 +18,7 @@ from lrgasp.defs import (Challenge, DataCategory, LibraryPrep, Platform, EntryCa
 
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
+entry_catagory_non_freestyle_fields = ("library_prep", "platform")
 
 ##
 # top-level entry struct (from JSON)
@@ -28,8 +29,8 @@ entry_fields = (
     Field("team_id", validator=validate_synapse_ident),
     Field("team_name"),
     Field("data_category", DataCategory),
-    Field("library_prep", LibraryPrep),
-    Field("platform", Platform),
+    Field("library_prep", LibraryPrep, optional=True),
+    Field("platform", Platform, optional=True),
     Field("experiment_ids", list, element_dtype=str, validator=validate_symbolic_ident),
     fld_notes,
     Field("contacts", list, element_dtype=dict)
@@ -45,6 +46,20 @@ entry_contact_fields = (
     fld_notes
 )
 
+def check_entry_category_fields(entry_md):
+    "library_prep and method required for other than freestyle"
+    if entry_md.data_category == DataCategory.freestyle:
+        for fld in entry_catagory_non_freestyle_fields:
+            if not field_omitted_or_none(entry_md, fld):
+                raise LrgaspException(f"data_category {entry_md.data_category} can not specify field {fld}")
+    else:
+        for fld in entry_catagory_non_freestyle_fields:
+            if field_omitted_or_none(entry_md, fld):
+                raise LrgaspException(f"data_category {entry_md.data_category} must specify field {fld}")
+
+# these are require on other than freestyle, and must be omitted on freestyle
+entry_catagory_non_freestyle_fields = ("library_prep", "platform")
+
 def entry_id_validate(challenge_id, entry_id):
     "entry id must be prefixed by the challenge_id"
     expect_pre = str(challenge_id) + '_'
@@ -52,17 +67,16 @@ def entry_id_validate(challenge_id, entry_id):
         raise LrgaspException(f"entry id '{entry_id}' must be prefixed with challenge_id ({challenge_id}) + '_' + a participant-defined name")
 
 def entry_contact_validate(contact):
-    desc = "entry.contacts"
-    check_from_defs(desc, entry_contact_fields, contact)
+    check_from_defs("entry.contacts", entry_contact_fields, contact)
 
 def entry_validate(entry_md):
-    desc = "entry"
-    check_from_defs(desc, entry_fields, entry_md)
+    check_from_defs("entry", entry_fields, entry_md)
+    check_entry_category_fields(entry_md)
     entry_id_validate(entry_md.challenge_id, entry_md.entry_id)
 
     challenge_id = validate_entry_ident(entry_md.entry_id)
     if entry_md.challenge_id != challenge_id:
-        raise LrgaspException(f"invalid {desc} entry_id '{entry_md.entry_id}' prefix does not match challenge_id '{entry_md.challenge_id}'")
+        raise LrgaspException(f"invalid entry_id '{entry_md.entry_id}' prefix does not match challenge_id '{entry_md.challenge_id}'")
     for contact in entry_md.contacts:
         entry_contact_validate(contact)
 
@@ -77,6 +91,12 @@ def load(entry_json):
         entry_validate(entry_md)
     except LrgaspException as ex:
         raise LrgaspException(f"validation of entry metadata failed: {entry_json}") from ex
+
+    # special handle for freestyle
+    if entry_md.data_category == DataCategory.freestyle:
+        entry_md.library_prep = None
+        entry_md.platform = None
+
     # non-serialized fields
     entry_md.experiments = None
     entry_md.entry_category = EntryCategory(entry_md.data_category,

@@ -6,7 +6,7 @@ debug = --logDebug
 # set to get debug on error test cases
 #  err_debug=--logDebug
 
-entries = iso_detect_ref_darwin_drna_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin
+entries = iso_detect_ref_darwin_drna_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin iso_detect_ref_freestyle_darwin
 test: entry_tests bad_tests
 
 ##

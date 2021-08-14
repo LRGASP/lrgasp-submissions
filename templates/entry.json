@@ -3,6 +3,9 @@
     "challenge_id": "",
     "team_id": "",
     "team_name": "",
+    "data_category": "",
+    "library_prep": "",
+    "platform": "",
     "experiment_ids": [
         ""
     ],

@@ -64,7 +64,6 @@ us know you have submitted.  Please include your lab's synapse name,
 team name, and the name of the submission in the email.  We will send you a positive
 acknowledgment that we have received the entry.
 
-
 ![Submit to a challenge](submit-challenge.png)
 
 ![Picking entry directory for submission](submit-pick.png)

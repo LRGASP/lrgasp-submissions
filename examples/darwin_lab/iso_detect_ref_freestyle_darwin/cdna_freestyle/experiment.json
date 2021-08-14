@@ -1,0 +1,37 @@
+{
+    "experiment_id": "cdna_freestyle",
+    "challenge_id": "iso_detect_ref",
+    "description": "cDNA in crazy ways",
+    "notes": "noted",
+    "species": "human",
+    "data_category": "freestyle",
+    "libraries": [
+        "ENCFF766OAK",
+        "ENCFF644AQW",
+        "ENCFF198RQU",
+        "ENCFF620HBM",
+        "ENCFF247XJT",
+        "ENCFF785SWH",
+        "ENCFF563QZR",
+        "ENCFF112MRR",
+        "ENCFF338WQL",
+        "ENCFF992WSK",
+        "ENCFF370NFS",
+        "ENCFF122GKS",
+        "ENCFF455RXJ",
+        "ENCFF875XMU",
+        "ENCFF245IPA",
+        "ENCFF434SWA",
+        "ENCFF620NFT",
+        "ENCFF962OWJ"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

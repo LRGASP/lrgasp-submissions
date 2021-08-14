@@ -18,6 +18,10 @@ class Field(namedtuple("Field",
             raise LrgaspException("list field '{name}' must specify element_dtype")
         return super().__new__(cls, name, dtype, element_dtype, allow_empty, optional, validator)
 
+def field_omitted_or_none(obj, field):
+    "check if an field is omitted or None"
+    return getattr(obj, field, None) is None
+
 def _should_convert(dtype):
     return dtype not in (str, int, dict)
 

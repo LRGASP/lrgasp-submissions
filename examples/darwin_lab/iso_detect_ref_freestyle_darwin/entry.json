@@ -1,15 +1,12 @@
 {
-    "entry_id": "iso_detect_ref_darwin",
+    "entry_id": "iso_detect_ref_freestyle_darwin",
     "challenge_id": "iso_detect_ref",
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "freestyle",
     "experiment_ids": [
-        "ES_drna_ont_long",
-        "H1_mix_drna_ont_long",
-        "human_sim_cdna_ont",
-        "mouse_sim_cdna_ont",
-        "WTC11_drna_ont_long",
-        "drnaFreestyle"
+        "cdna_freestyle",
+        "drna_freestyle"
     ],
     "contacts": [
         {

@@ -4,7 +4,7 @@ all metadata and data files.
 """
 from lrgasp import LrgaspException, iter_to_str
 from lrgasp.defs import Challenge
-from lrgasp.defs import get_challenge_samples, challenge_desc, get_data_category_platforms
+from lrgasp.defs import DataCategory, get_challenge_samples, challenge_desc, get_data_category_platforms
 from lrgasp import entry_metadata
 from lrgasp import model_data
 from lrgasp import de_novo_rna_data
@@ -137,8 +137,8 @@ def get_entry_category_samples(entry_md):
     return samples
 
 def validate_samples(entry_md):
-    """validate that all samples for entry category challenge are covered
-    (requires all experiments)"""
+    """validate that all samples for entry category challenge are covered;
+    non-freestyle only (requires all experiments loaded)"""
     entry_samples = get_entry_samples(entry_md)
     entry_category_samples = get_entry_category_samples(entry_md)
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
@@ -151,7 +151,7 @@ def validate_samples(entry_md):
 
 def validate_experiment_consistency(entry_md, allow_partial):
     """validate that all experiments are consistent"""
-    if not allow_partial:
+    if (not allow_partial) and (entry_md.data_category != DataCategory.freestyle):
         validate_samples(entry_md)
 
 def _entry_data_validate(entry_md, allow_partial):

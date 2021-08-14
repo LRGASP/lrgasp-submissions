@@ -40,6 +40,7 @@ They following symbols identify the data category to which an entry belongs:
 ## library prep
 
 Library preparation method
+
 * ``CapTrap``
 * ``dRNA``
 * ``R2C2``
