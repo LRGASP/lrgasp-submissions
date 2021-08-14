@@ -101,6 +101,8 @@ def _validate_experiment_libraries(entry_md, experiment_md):
         _validate_experiment_library(entry_md, experiment_md, rna_seq_md, library)
 
 def _validate_experiment(entry_md, experiment_md, allow_partial):
+    if experiment_md.data_category != entry_md.data_category:
+        raise LrgaspException(f"entry '{entry_md.entry_id}' has data_category of '{entry_md.data_category}' which must match experiment '{experiment_md.experiment_id}' data_category '{experiment_md.experiment_id}'")
     if experiment_md.challenge_id != entry_md.challenge_id:
         raise LrgaspException(f"entry '{entry_md.entry_id}' challenge_id '{entry_md.challenge_id}' match experiment '{experiment_md.experiment_id}' challenge_id")
     _validate_experiment_libraries(entry_md, experiment_md)
