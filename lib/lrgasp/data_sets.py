@@ -1,7 +1,7 @@
 """Class to load pre-built data set information from JSON files in source .  All results are cached"""
 import os.path as osp
 import json
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 from lrgasp import LrgaspException
 from lrgasp.objDict import ObjDict
 from lrgasp.defs import Species, Sample, LibraryPrep, Platform
@@ -56,6 +56,13 @@ class LrgaspRnaSeqFile(ObjDict):
         self.paired_with = paired_with
         # self.paired_file is built when deserialized
         # self.replicate_md = added when deserialized
+
+class RunType(namedtuple("RunType",
+                         ("sample", "library_prep", "platform"))):
+    "attributes describing a run"
+
+    def __str__(self):
+        return str(self.sample) + '/' + str(self.library_prep) + '/' + str(self.platform)
 
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
@@ -135,6 +142,9 @@ class LrgaspRnaSeqMetaData(list):
 
     def get_runs_by_prep_platform(self, library_prep, platform):
         return self.runs_by_prep_platform[(library_prep, platform)]
+
+def get_run_type(run_md):
+    return RunType(run_md.sample, run_md.library_prep, run_md.platform)
 
 def _pair_files(file_mds):
     "linked paired ends files and construct list of pairs"

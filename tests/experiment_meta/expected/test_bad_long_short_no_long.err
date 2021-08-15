@@ -1,3 +1,4 @@
 Error: validation of experiment metadata failed: input/bad_long_short_no_long.json
-caused by: long_short experiments must use one and only one long-read library/platform, found: none in these specified library files:
-    ES/cDNA/Illumina: ENCFF006WNS, ENCFF089PFT, ENCFF521IDK, ENCFF914YPT
+caused by: long_short experiments must use one and only one long-read library/platform, found 0, from specified library files:
+    ENCFF521IDK, ENCFF006WNS: ES/cDNA/Illumina
+    ENCFF914YPT, ENCFF089PFT: ES/cDNA/Illumina

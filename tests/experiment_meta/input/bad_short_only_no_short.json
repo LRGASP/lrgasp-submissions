@@ -1,0 +1,21 @@
+{
+    "experiment_id": "model_illumina_cdna",
+    "challenge_id": "iso_detect_ref",
+    "description": "short_only with not short",
+    "species": "mouse",
+    "data_category": "short_only",
+    "libraries": [
+        "ENCFF874VSI",
+        "ENCFF667VXS",
+        "ENCFF313VYZ"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

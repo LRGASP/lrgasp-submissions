@@ -1,18 +1,25 @@
 {
-    "experiment_id": "model_ont_drnaFreestyle",
+    "experiment_id": "model_ont_drna",
     "challenge_id": "iso_detect_ref",
-    "description": "dRNA freestyle",
-    "notes": "should have specified freestyle",
-    "species": "human",
-    "data_category": "long_short",
+    "description": "long only good",
+    "species": "mouse",
+    "data_category": "long_only",
     "libraries": [
-        "ENCFF155CFF",
-        "ENCFF600LIU",
-        "ENCFF854BEI",
-        "ENCFF804BPC",
-        "ENCFF557WRQ",
-        "ENCFF028FCL",
-        "ENCFF003QZT"
+        "ENCFF521IDK",
+        "ENCFF006WNS",
+        "ENCFF089PFT",
+        "ENCFF914YPT",
+        "ENCFF696TCH",
+        "ENCFF751FTE",
+        "ENCFF874VSI",
+        "ENCFF564NGV",
+        "ENCFF714ZJR",
+        "ENCFF667VXS",
+        "ENCFF493CBP",
+        "ENCFF993JVA",
+        "ENCFF313VYZ",
+        "ENCFF094NZA",
+        "ENCFF280DWZ"
     ],
     "extra_libraries": [
         {

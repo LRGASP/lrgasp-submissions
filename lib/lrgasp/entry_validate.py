@@ -146,8 +146,8 @@ def validate_samples(entry_md):
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
     required_samples = entry_category_samples & challenge_samples
     if entry_samples != required_samples:
-        raise LrgaspException("{} entry must use all of the available samples for ({} {} {})".format(challenge_desc(entry_md.challenge_id),
-                                                                                                     entry_md.data_category, entry_md.library_prep, entry_md.platform)
+        raise LrgaspException("{} entry must use all of the available samples for ({}, {}, {})".format(challenge_desc(entry_md.challenge_id),
+                                                                                                       entry_md.data_category, entry_md.library_prep, entry_md.platform)
                               + ", need '{}', only '{}' were found".format(iter_to_str(challenge_samples),
                                                                            iter_to_str(entry_samples)))
 

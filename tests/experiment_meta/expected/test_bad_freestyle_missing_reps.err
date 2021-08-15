@@ -1,4 +1,4 @@
-Error: validation of experiment metadata failed: input/bad_freestyle_type.json
+Error: validation of experiment metadata failed: input/bad_freestyle_missing_reps.json
 caused by: experiment must use all replicates from run ENCSR392BGY, available replicate files:
     ENCSR392BGY ENCFF155CFF 1 fastq
     ENCSR392BGY ENCFF146MTW 1 tar
