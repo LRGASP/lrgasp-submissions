@@ -2,7 +2,7 @@
     "experiment_id": "pbCDnaManatee",
     "challenge_id": "iso_detect_de_novo",
     "description": "Manatee blood pac-bio cDNA",
-    "notes": "",
+    "notes": "Manatees are amazing",
     "species": "manatee",
     "data_category": "long_only",
     "libraries": [

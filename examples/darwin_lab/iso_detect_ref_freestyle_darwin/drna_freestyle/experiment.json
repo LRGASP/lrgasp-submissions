@@ -2,7 +2,7 @@
     "experiment_id": "drna_freestyle",
     "challenge_id": "iso_detect_ref",
     "description": "dRNA freestyle",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "notes": "this combination worked",
     "species": "human",
     "data_category": "freestyle",
     "libraries": [

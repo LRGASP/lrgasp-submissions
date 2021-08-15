@@ -2,7 +2,7 @@
     "experiment_id": "ES_captrap_ont",
     "challenge_id": "iso_detect_ref",
     "description": "Transcript models for mouse ES ONT direct RNA sequenceing",
-    "notes": "Reads were downloaded from http://s3.amazonaws.com/nanopore-human-wgs/rna/fastq/NA12878-DirectRNA_All_Guppy_3.2.6.fastq.gz, known to have duplicates",
+    "notes": "So happy this worked",
     "species": "mouse",
     "data_category": "long_only",
     "libraries": [
