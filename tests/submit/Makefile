@@ -12,10 +12,6 @@ run_download = ${lrgasp_synapse_download} --test_config_json=test-conf.json ${de
 ref_ont_drna_entry = ${darwindir}/iso_detect_ref_darwin_drna_ont
 upload_proj_name = 'LRPLAYER Submit'
 
-define should_fail
- then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
-endef
-
 .PHONEY: test
 ifeq ($(wildcard test-conf.json),)
 test:

@@ -37,7 +37,7 @@ They following symbols identify the data category to which an entry belongs:
 * ``long_genome`` - Use only LGRASP-provided long-read RNA-Seq data from a single long-read library preparation method. A non-reference quality genome sequence can be used.
 * ``freestyle`` - any combination of at least one LRGASP data set as well as any other accessioned data in public genomics data repositories. For example, multiple library methods can be combined (e.g. PacBio cDNA + PacBio CapTrap, ONT cDNA + ONT CapTrap+ ONT R2C2+ ONT dRNA, all data, etc.).  LRGASP simulated reads may not be used in *freestyle* experiments.
 
-## library prep
+## Library prep
 
 Library preparation method
 
@@ -46,7 +46,7 @@ Library preparation method
 * ``R2C2``
 * ``cDNA``
 
-## Platform
+## Sequencing Platform
 
 Simplified RNA sequencing platform
 

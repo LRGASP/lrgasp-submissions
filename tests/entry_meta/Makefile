@@ -20,7 +20,7 @@ bad_tests: ${bad_tests:%=test_%}
 
 test_bad%: mkout
 	@echo ${lrgasp_validate_entry_metadata} input/bad$*.json  "(should fail)"
-	@if ! ${lrgasp_validate_entry_metadata} input/bad$*.json 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@if ! ${lrgasp_validate_entry_metadata} input/bad$*.json 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
 good_tests: ${good_tests:%=test_%}

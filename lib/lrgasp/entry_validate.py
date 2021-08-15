@@ -11,7 +11,7 @@ from lrgasp import de_novo_rna_data
 from lrgasp import read_model_map_data
 from lrgasp import expression_data
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
-from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv
+from lrgasp.experiment_metadata import get_models_gtf, get_read_model_map_tsv, get_rna_fasta, get_expression_tsv, get_experiment_library_preps, get_experiment_platforms
 
 def _model_map_transcript_ids(read_model_map):
     "get list of all read_model_map transcript ids"
@@ -150,18 +150,35 @@ def validate_samples(entry_md):
                                                                                                        entry_md.data_category, entry_md.library_prep, entry_md.platform)
                               + ", need '{}', only '{}' were found".format(iter_to_str(challenge_samples),
                                                                            iter_to_str(entry_samples)))
+def validate_library_prep(entry_md):
+    library_preps = set()
+    for experiment_md in entry_md.experiments:
+        library_preps |= set(get_experiment_library_preps(experiment_md))
+    if len(library_preps) > 1:
+        raise LrgaspException("{} entry experiments must all have same library_prep method, found {}".format(entry_md.data_category,
+                                                                                                             iter_to_str(library_preps)))
+def validate_platform(entry_md):
+    platforms = set()
+    for experiment_md in entry_md.experiments:
+        platforms |= set(get_experiment_platforms(experiment_md))
+    if len(platforms) > 1:
+        raise LrgaspException("{} entry experiments must all have same platform method, found {}".format(entry_md.data_category,
+                                                                                                         iter_to_str(platforms)))
 
-def validate_experiment_consistency(entry_md, allow_partial):
+def validate_experiment_consistency(entry_md):
     """validate that all experiments are consistent"""
-    if (not allow_partial) and (entry_md.data_category != DataCategory.freestyle):
+    if entry_md.data_category != DataCategory.freestyle:
         validate_samples(entry_md)
+        validate_library_prep(entry_md)
+        validate_platform(entry_md)
 
 def _entry_data_validate(entry_md, allow_partial):
     entry_metadata.load_experiments_metadata(entry_md)
 
     for experiment_md in entry_md.experiments:
         validate_experiment(entry_md, experiment_md, allow_partial)
-    validate_experiment_consistency(entry_md, allow_partial)
+    if not allow_partial:
+        validate_experiment_consistency(entry_md)
 
 def entry_data_validate(entry_dir, *, allow_partial=False):
     """load and validate all metadata and data files for an entry, ensuring

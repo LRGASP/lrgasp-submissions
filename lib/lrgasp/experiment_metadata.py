@@ -296,3 +296,13 @@ def get_expression_tsv(experiment_md):
         return osp.join(experiment_md.experiment_dir, EXPRESSION_TSV)
     else:
         return None
+
+def get_experiment_library_preps(experiment_md):
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    return sorted(set([rna_seq_md.get_run_by_file_acc(file_acc).library_prep
+                       for file_acc in experiment_md.libraries]))
+
+def get_experiment_platforms(experiment_md):
+    rna_seq_md = get_lrgasp_rna_seq_metadata()
+    return sorted(set([rna_seq_md.get_run_by_file_acc(file_acc).platform
+                       for file_acc in experiment_md.libraries]))

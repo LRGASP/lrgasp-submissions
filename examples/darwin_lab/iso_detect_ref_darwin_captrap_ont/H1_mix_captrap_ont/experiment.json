@@ -1,0 +1,21 @@
+{
+    "experiment_id": "H1_mix_captrap_ont",
+    "challenge_id": "iso_detect_ref",
+    "description": "Transcript models for human H1 mix ONT CapTrap sequenceing",
+    "species": "human",
+    "data_category": "long_only",
+    "libraries": [
+        "ENCFF716HXZ",
+        "ENCFF595GFC",
+        "ENCFF072FJA"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

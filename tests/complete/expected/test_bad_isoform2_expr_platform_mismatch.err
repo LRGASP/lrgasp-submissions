@@ -1,0 +1,2 @@
+Error: validation of entry 'iso_detect_ref_darwin_captrap_ont' failed: output/test_bad_isoform2_expr_platform_mismatch/iso_detect_ref_darwin_captrap_ont/entry.json
+caused by: long_only entry experiments must all have same platform method, found PacBio, ONT

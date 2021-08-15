@@ -1,0 +1,2 @@
+Error: validation of entry 'iso_detect_ref_darwin_drna_ont' failed: output/test_bad_isoform_expr_lib_prep_mismatch/iso_detect_ref_darwin_drna_ont/entry.json
+caused by: long_only entry experiments must all have same library_prep method, found CapTrap, dRNA

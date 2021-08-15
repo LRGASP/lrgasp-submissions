@@ -26,6 +26,11 @@ ifeq ($(shell uname -s), Darwin)
    export PATH
 endif
 
+# used to generate error if test doesn't fail
+define should_fail
+ then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+endef
+
 lrgasp_validate_de_novo_rna = ${binpre}lrgasp-validate-de-novo-rna
 lrgasp_validate_models = ${binpre}lrgasp-validate-models
 lrgasp_validate_read_model_map = ${binpre}lrgasp-validate-read-model-map

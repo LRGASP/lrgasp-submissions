@@ -12,11 +12,18 @@ See [``entry.json``](../examples/darwin_lab/iso_detect_ref_darwin_drna_ont/entry
 template is also available: [``entry.json``](../templates/entry.json).
 
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
-* ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers)
+* ``challenge_id`` - challenge to which this entry is being submitted.
+    See [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers)
 * ``team_id`` - the Synapse *team* identifier.
 * ``team_name`` - the name of the submitting lab
 * ``experiment_ids`` - Experiment ids, which is also the directory name containing the
   experiment.  It is [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
+* ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, ``long_genome``, or ``freestyle``.
+    See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
+* ``library_prep`` - one of ``CapTrap``,``dRNA``, ``R2C2``, or ``cDNA``.  Omit or NULL for ``data_category`` of ``freestyle``
+    See [Library Prep](metadata-identifiers.md#library-prep).
+* ``platform`` - one of ``Illumina``, ``PacBio``, or * ``ONT`` .  Omit or NULL for ``data_category`` of ``freestyle``
+    See [Library Prep](metadata-identifiers.md#sequencing-platform).
 * ``notes`` - notes (optional)
 * ``contacts`` - an array of contacts, with the first entry considered the primary contact
   * ``name`` - name of the contact
