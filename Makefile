@@ -131,7 +131,7 @@ dist: clean
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && cd ${testenv} && pip install --no-cache-dir ${dist_tar}
+	${envact} && cd ${testenv} && pip install --no-cache-dir $(realpath ${dist_tar})
 	${envact} && cd tests ${MAKE} test
 
 # test release to testpypi

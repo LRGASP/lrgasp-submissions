@@ -3,10 +3,10 @@
 import setuptools
 
 requirements = [
-    "gtfparse>=1.2.1",
-    "validators>=0.18.2",
-    "synapseclient>=2.4.0",
-    "fasta-reader>=1.0.0"
+    "gtfparse==1.2.1",
+    "validators==0.18.2",
+    "synapseclient==2.4.0",
+    "fasta-reader==1.0.0"
 ]
 
 setuptools.setup(
