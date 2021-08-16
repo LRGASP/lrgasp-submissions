@@ -1,6 +1,6 @@
 {
     "experiment_id": "",
-    "challange_id": "",
+    "challenge_id": "",
     "description": "",
     "notes": "",
     "species": "",
@@ -14,8 +14,7 @@
     "platforms": [
         ""
     ],
-    "libraries": [
-    ],
+    "libraries": [],
     "extra_libraries": [
         {
             "repository": "",

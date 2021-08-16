@@ -10,24 +10,26 @@ from lrgasp.objDict import ObjDict
 from lrgasp import LrgaspException
 from lrgasp.defs import DataCategory, Challenge  # noqa: F401
 
+ENTRY = "entry"
+EXPERIMENT = "experiment"
+
 def edit_json(mdfile, md):
     "customize this for each edit case"
 
-    if md.samples[0] == "":
-        md.samples[0] = "WTC11"
-
-    fix_entry_order(md)
-    # fix_experiment_order(md)
+    return
 
 def parse_args():
     desc = """ad-hoc edits of metadata JSON examples
     as schema changes. Code must be modified to implement changes
     """
     parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("--loose", action="store_true",
+                        help="""dont't error on unknown fields""")
     parser.add_argument("--edit", action="store_true",
                         help="""overwrite the files, otherwise output as thefile.edit.json""")
     parser.add_argument("--diff", action="store_true",
                         help="""display a diff""")
+    parser.add_argument("mdtype", choices=(ENTRY, EXPERIMENT))
     parser.add_argument("json_files", nargs='+')
     args = parser.parse_args()
     for f in args.json_files:
@@ -38,12 +40,15 @@ def parse_args():
 def get_edited_name(mdfile):
     return osp.splitext(mdfile)[0] + ".json-edit"
 
-def order_edit(md, order):
+def order_edit(md, order, loose):
     "in place reordering"
     # make sure none are dropped"
     stray = set(md.keys()) - set(order)
     if len(stray) > 0:
-        print(f"WARNING: fields not in order list: {stray}", file=sys.stderr)
+        if loose:
+            print(f"WARNING: fields not in order list: {stray}", file=sys.stderr)
+        else:
+            raise LrgaspException(f"fields not in order list: {stray}")
 
     # create order
     omd = {}
@@ -63,40 +68,46 @@ def order_edit(md, order):
     for fld in stray:
         md[fld] = omd[fld]
 
-def order_edit_list(md, field, order):
+def order_edit_list(md, field, order, loose):
     for submd in md.get(field, ()):
-        order_edit(submd, order)
+        order_edit(submd, order, loose)
 
-def fix_entry_order(md):
+def fix_entry_order(md, loose):
     "keep entry examples in same order as doc and template to keep them clear"
     order = ("entry_id", "challenge_id", "team_id", "team_name", "species", "data_category",
              "samples", "library_preps", "platforms", "experiment_ids", "notes", "contacts")
-    order_edit(md, order)
+    order_edit(md, order, loose)
 
     contacts_order = ("name", "email", "notes")
-    order_edit_list(md, "contacts", contacts_order)
+    order_edit_list(md, "contacts", contacts_order, loose)
 
 
-def fix_experiment_order(md):
+def fix_experiment_order(md, loose):
     "keep experiment examples in same order as doc and template to keep them clear"
     order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category",
              "samples", "library_preps", "platforms",
              "libraries", "extra_libraries", "software",)
-    order_edit(md, order)
+    order_edit(md, order, loose)
 
     extra_lib_order = ("repository", "acc", "notes")
-    order_edit_list(md, "extra_libraries", extra_lib_order)
+    order_edit_list(md, "extra_libraries", extra_lib_order, loose)
 
     software_order = ("name", "description", "version", "url", "config", "notes",)
-    order_edit_list(md, "software", software_order)
+    order_edit_list(md, "software", software_order, loose)
 
 
-def modify_json(mdfile, diff):
+def modify_json(mdfile, mdtype, diff, loose):
     try:
         with open(mdfile) as fh:
             md = json.load(fh, object_pairs_hook=ObjDict)
 
         edit_json(mdfile, md)
+        if mdtype == ENTRY:
+            fix_entry_order(md, loose)
+        elif mdtype == EXPERIMENT:
+            fix_experiment_order(md, loose)
+        else:
+            raise LrgaspException("bug: " + mdtype)
 
         mdfile_edit = get_edited_name(mdfile)
         with open(mdfile_edit, "w") as fh:
@@ -114,7 +125,7 @@ def install_json(mdfile):
 
 def main(args):
     for f in args.json_files:
-        modify_json(f, args.diff)
+        modify_json(f, args.mdtype, args.diff, args.loose)
     if args.edit:
         # only install if all edits succeeded
         for f in args.json_files:

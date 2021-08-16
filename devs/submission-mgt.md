@@ -1,6 +1,6 @@
 # Submission management
 
-## Evaluation queues (LRGASP challanges)
+## Evaluation queues (LRGASP challenges)
     * Challenge 1: iso_detect_ref (9614748)
     * Challenge 2: iso_quant (9614749)
     * Challenge 3: iso_detect_de_novo (9614750)
@@ -45,7 +45,7 @@ people in the past.  We will call these "LRPLAY"
 1. go to the web app and create all evaluation queues pressing user icon,
    selecting `Challenges` and then selecting the LRPLAY project, then select `Challenge`.
 1. Delete the default evaluation queue.. Create evaluation queues:
-   "LRPLAY Challange 1", "LRPLAY Challange 2" and "LRPLAY Challange 3"
+   "LRPLAY Challenge 1", "LRPLAY Challenge 2" and "LRPLAY Challenge 3"
    Note the numeric queue ids (9614870, 9614868, 9614869).
 1. setup a single round for each queue, which restricts a user to one submission
    % challengeutils set-evaluation-quota --num_rounds=1 --round_start=2021-06-01T00:00:00 --round_end=2021-10-01T23:59:59 9614870

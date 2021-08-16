@@ -60,10 +60,11 @@ ${data_matrix_html}: ${data_matrix_tsv} devs/bin/make_html_table.R
 ${submit_tree_png}: devs/bin/genSubmitTree
 	devs/bin/genSubmitTree $@
 
+# edit function also validates format and field names
 lint:
 	${FLAKE8} ${pyprogs} ${pyotherprogs} lib
-	json_pp < templates/entry.json >/dev/null
-	json_pp < templates/experiment.json >/dev/null
+	devs/bin/editExampleJson entry templates/entry.json
+	devs/bin/editExampleJson experiment templates/experiment.json
 
 # requires the NPM packages:
 #   remark-cli remark-lint remark-preset-lint-recommended markdown-link-check

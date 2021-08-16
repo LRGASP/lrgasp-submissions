@@ -17,7 +17,7 @@ for paired-end, take either id
 ** short-only - no read-map
 ** long-and-short additional accessioned data in public genomics data repositories can also be used. [in slides]
 
-* freestyle must be public at the start of the challange available
+* freestyle must be public at the start of the challenge available
 * SUBMISSION IMAGE
 ** code broken
 ** doesn't show model for quant
@@ -50,7 +50,7 @@ https://www.encodeproject.org/references/ENCSR089MWE/
 * add additional file types
 * should expression matrix have transcript_id instead of ID?
 * require included models_gtf in quant.
-* check experiment_type is deduced from challange id
-challange_id can be obtained from entry_id (add to experiment)
+* check experiment_type is deduced from challenge id
+challenge_id can be obtained from entry_id (add to experiment)
 ** validate same type of experiments
 * update refgenomes doc

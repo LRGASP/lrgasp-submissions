@@ -147,8 +147,8 @@ class LrgaspSynConfig:
         self = cls()
         self.user = None
         self.password = None
-        self.lrgasp_synchallange_name = 'LRGASP'
-        self.lrgasp_synchallange_id = 4441
+        self.lrgasp_synchallenge_name = 'LRGASP'
+        self.lrgasp_synchallenge_id = 4441
         self.participants_team_name = 'LRGASP Participants',
         self.syn_queue_ids = {
             Challenge.iso_detect_ref: 9614748,
@@ -164,8 +164,8 @@ class LrgaspSynConfig:
         self = cls()
         self.user = conf.user
         self.password = conf.password
-        self.lrgasp_synchallange_name = conf.lrgasp_synchallange_name
-        self.lrgasp_synchallange_id = conf.lrgasp_synchallange_id
+        self.lrgasp_synchallenge_name = conf.lrgasp_synchallenge_name
+        self.lrgasp_synchallenge_id = conf.lrgasp_synchallenge_id
         self.participants_team_name = conf.participants_team_name
         self.syn_queue_ids = {}
         for key, val in conf.syn_queue_ids.items():
