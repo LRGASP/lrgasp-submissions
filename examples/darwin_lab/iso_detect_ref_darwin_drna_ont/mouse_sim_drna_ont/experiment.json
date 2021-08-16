@@ -2,7 +2,7 @@
     "experiment_id": "mouse_sim_drna_ont",
     "challenge_id": "iso_detect_ref",
     "description": "Transcript models for mouse simulatated ONT dRNA sequenceing",
-    "notes": "Seem to go well ",
+    "notes": "Seemed to go well ",
     "species": "mouse",
     "data_category": "long_only",
     "samples": [
