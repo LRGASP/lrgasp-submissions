@@ -63,8 +63,8 @@ ${submit_tree_png}: devs/bin/genSubmitTree
 # edit function also validates format and field names
 lint:
 	${FLAKE8} ${pyprogs} ${pyotherprogs} lib
-	devs/bin/editExampleJson entry templates/entry.json
-	devs/bin/editExampleJson experiment templates/experiment.json
+	devs/bin/editExampleJson --clean entry templates/entry.json
+	devs/bin/editExampleJson --clean experiment templates/experiment.json
 
 # requires the NPM packages:
 #   remark-cli remark-lint remark-preset-lint-recommended markdown-link-check

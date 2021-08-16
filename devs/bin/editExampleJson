@@ -29,6 +29,8 @@ def parse_args():
                         help="""overwrite the files, otherwise output as thefile.edit.json""")
     parser.add_argument("--diff", action="store_true",
                         help="""display a diff""")
+    parser.add_argument("--clean", action="store_true",
+                        help="""don't leave edited file around if not doing --edit""")
     parser.add_argument("mdtype", choices=(ENTRY, EXPERIMENT))
     parser.add_argument("json_files", nargs='+')
     args = parser.parse_args()
@@ -120,15 +122,24 @@ def modify_json(mdfile, mdtype, diff, loose):
     except Exception as ex:
         raise LrgaspException("Error editing: " + mdfile) from ex
 
-def install_json(mdfile):
-    os.rename(get_edited_name(mdfile), mdfile)
+def modify_jsons(mdfiles, mdtype, diff, loose):
+    for mdfile in mdfiles:
+        modify_json(mdfile, mdtype, diff, loose)
+
+def install_jsons(mdfiles):
+    for mdfile in mdfiles:
+        os.rename(get_edited_name(mdfile), mdfile)
+
+def clean_jsons(mdfiles):
+    for mdfile in mdfiles:
+        os.unlink(get_edited_name(mdfile))
 
 def main(args):
-    for f in args.json_files:
-        modify_json(f, args.mdtype, args.diff, args.loose)
+    modify_jsons(args.json_files, args.mdtype, args.diff, args.loose)
     if args.edit:
-        # only install if all edits succeeded
-        for f in args.json_files:
-            install_json(f)
+        install_jsons(args.json_files)
+    elif args.clean:
+        clean_jsons(args.json_files)
+
 
 main(parse_args())
