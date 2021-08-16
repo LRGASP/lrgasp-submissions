@@ -12,20 +12,12 @@ from lrgasp.defs import DataCategory, Challenge  # noqa: F401
 
 def edit_json(mdfile, md):
     "customize this for each edit case"
-    software = """
-    [
-        {
-            "name": "LRExpress",
-            "description": "LRExpress is a tool for expression quantification if long RNA reads.",
-            "version": "1.0.0",
-            "url": "https://github.com/darwinlab/LRExpress",
-            "config": "LRExpress used default parameters"
-        }
-    ]"""
-    soft = json.loads(software)
-    md.software = soft
 
-    fix_experiment_order(md)
+    if md.samples[0] == "":
+        md.samples[0] = "WTC11"
+
+    fix_entry_order(md)
+    # fix_experiment_order(md)
 
 def parse_args():
     desc = """ad-hoc edits of metadata JSON examples
@@ -51,7 +43,7 @@ def order_edit(md, order):
     # make sure none are dropped"
     stray = set(md.keys()) - set(order)
     if len(stray) > 0:
-        raise LrgaspException(f"fields not in order list: {stray}")
+        print(f"WARNING: fields not in order list: {stray}", file=sys.stderr)
 
     # create order
     omd = {}
@@ -59,19 +51,37 @@ def order_edit(md, order):
         if fld in md:
             omd[fld] = md[fld]
 
-    # update
+    # add strays (possible test cases) at end
+    for fld in stray:
+        omd[fld] = md[fld]
+
+    # update in order
     md.clear()
     for fld in order:
         if fld in omd:
             md[fld] = omd[fld]
+    for fld in stray:
+        md[fld] = omd[fld]
 
 def order_edit_list(md, field, order):
     for submd in md.get(field, ()):
         order_edit(submd, order)
 
+def fix_entry_order(md):
+    "keep entry examples in same order as doc and template to keep them clear"
+    order = ("entry_id", "challenge_id", "team_id", "team_name", "species", "data_category",
+             "samples", "library_preps", "platforms", "experiment_ids", "notes", "contacts")
+    order_edit(md, order)
+
+    contacts_order = ("name", "email", "notes")
+    order_edit_list(md, "contacts", contacts_order)
+
+
 def fix_experiment_order(md):
     "keep experiment examples in same order as doc and template to keep them clear"
-    order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category", "libraries", "extra_libraries", "software",)
+    order = ("experiment_id", "challenge_id", "description", "notes", "species", "data_category",
+             "samples", "library_preps", "platforms",
+             "libraries", "extra_libraries", "software",)
     order_edit(md, order)
 
     extra_lib_order = ("repository", "acc", "notes")

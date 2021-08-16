@@ -5,6 +5,15 @@
     "notes": "very happy with this",
     "species": "mouse",
     "data_category": "long_only",
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF765AEC",
         "ENCFF349BIN",

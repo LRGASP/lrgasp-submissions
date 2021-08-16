@@ -5,6 +5,15 @@
     "notes": "So happy this worked",
     "species": "mouse",
     "data_category": "long_only",
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF356OJC",
         "ENCFF275RMO",

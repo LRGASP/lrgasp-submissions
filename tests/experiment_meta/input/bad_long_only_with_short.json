@@ -4,6 +4,15 @@
     "description": "long only good",
     "species": "mouse",
     "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF521IDK",
         "ENCFF006WNS",

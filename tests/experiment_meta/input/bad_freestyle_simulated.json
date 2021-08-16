@@ -5,8 +5,19 @@
     "notes": "freestyle should not include simulated",
     "species": "human",
     "data_category": "freestyle",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF155CFF",
+        "ENCFF771DIX",
         "ENCFF600LIU",
         "ENCFF854BEI",
         "ENCFF804BPC",

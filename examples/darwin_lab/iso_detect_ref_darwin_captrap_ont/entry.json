@@ -4,8 +4,15 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_only",
-    "library_prep": "CapTrap",
-    "platform": "ONT",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "experiment_ids": [
         "ES_captrap_ont",
         "H1_mix_captrap_ont",

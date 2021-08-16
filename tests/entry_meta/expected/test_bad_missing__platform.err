@@ -1,2 +1,0 @@
-Error: validation of entry metadata failed: input/bad_missing__platform.json
-caused by: data_category long_only must specify field platform

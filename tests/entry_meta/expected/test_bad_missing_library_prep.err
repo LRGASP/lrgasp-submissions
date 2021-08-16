@@ -1,2 +1,2 @@
 Error: validation of entry metadata failed: input/bad_missing_library_prep.json
-caused by: data_category long_only must specify field library_prep
+caused by: entry field 'library_preps' is required

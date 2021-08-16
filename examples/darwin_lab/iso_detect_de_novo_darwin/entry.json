@@ -4,8 +4,15 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_only",
-    "library_prep": "cDNA",
-    "platform": "PacBio",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "PacBio"
+    ],
     "experiment_ids": [
         "pbCDnaES",
         "pbCDnaManatee"

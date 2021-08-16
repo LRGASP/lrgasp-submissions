@@ -1,6 +1,12 @@
 testrootdir = ..
 include ${testrootdir}/testing.mk
 
+# debug in expect ok cases
+# debug=--logDebug
+
+# debug in expected error cases
+# err_debug=--logDebug
+
 bad_jsons = $(wildcard input/bad_*.json)
 bad_tests = $(basename $(notdir ${bad_jsons}))
 
@@ -19,14 +25,14 @@ example_test/%: mkout
 bad_tests: ${bad_tests:%=test_%}
 
 test_bad%: mkout
-	@echo ${lrgasp_validate_entry_metadata} input/bad$*.json  "(should fail)"
-	@if ! ${lrgasp_validate_entry_metadata} input/bad$*.json 2>output/$@.err ; ${should_fail}
+	@echo ${lrgasp_validate_entry_metadata} ${err_debug} input/bad$*.json  "(should fail)"
+	@if ! ${lrgasp_validate_entry_metadata} ${err_debug} input/bad$*.json 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
 good_tests: ${good_tests:%=test_%}
 
 test_good%: mkout
-	${lrgasp_validate_entry_metadata} input/good$*.json
+	${lrgasp_validate_entry_metadata} ${debug} input/good$*.json
 
 clean:
 	rm -rf output

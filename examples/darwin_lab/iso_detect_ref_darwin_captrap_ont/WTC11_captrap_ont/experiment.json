@@ -5,6 +5,15 @@
     "notes": "noted",
     "species": "human",
     "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF654SNK",
         "ENCFF934KDM",

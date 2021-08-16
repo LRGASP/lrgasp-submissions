@@ -3,6 +3,7 @@ import sys
 import gzip
 import traceback
 import logging
+from collections.abc import Iterable
 from lrgasp import loggingOps
 
 __version__ = "1.0.0"
@@ -64,8 +65,11 @@ def gopen(path):
         return open(path)
 
 def iter_to_str(values):
-    "generate string of values for use in error messages.  Sets will be sorted."
-    if isinstance(values, (set, frozenset)):
+    """Generate string of values for use in error messages.  Sets will be sorted.
+    if it is non-iterable, return str"""
+    if not isinstance(values, Iterable):
+        return str(values)
+    elif isinstance(values, (set, frozenset)):
         return ", ".join([str(v) for v in sorted(values)])
     else:
         return ", ".join([str(v) for v in values])

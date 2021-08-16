@@ -4,6 +4,15 @@
     "description": "Transcript models for human H1 mix ONT direct RNA sequenceing",
     "species": "human",
     "data_category": "long_only",
+    "samples": [
+        "H1_mix"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF854BEI",
         "ENCFF804BPC",

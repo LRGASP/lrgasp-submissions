@@ -141,7 +141,8 @@ class LrgaspRnaSeqMetaData(list):
         return self.get_run_by_acc(fil.run_acc)
 
     def get_runs_by_prep_platform(self, library_prep, platform):
-        return self.runs_by_prep_platform[(library_prep, platform)]
+        "get runs for prep/platform"
+        return self.runs_by_prep_platform.get((library_prep, platform), ())
 
 def get_run_type(run_md):
     return RunType(run_md.sample, run_md.library_prep, run_md.platform)

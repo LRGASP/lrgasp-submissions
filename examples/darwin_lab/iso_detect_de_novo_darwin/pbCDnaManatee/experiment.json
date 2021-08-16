@@ -5,6 +5,15 @@
     "notes": "Manatees are amazing",
     "species": "manatee",
     "data_category": "long_only",
+    "samples": [
+        "blood"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF835YMN",
         "ENCFF058GPT",

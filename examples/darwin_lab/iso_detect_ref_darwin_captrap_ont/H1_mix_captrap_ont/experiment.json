@@ -4,6 +4,15 @@
     "description": "Transcript models for human H1 mix ONT CapTrap sequenceing",
     "species": "human",
     "data_category": "long_only",
+    "samples": [
+        "H1_mix"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF716HXZ",
         "ENCFF595GFC",

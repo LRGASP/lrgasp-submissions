@@ -4,6 +4,19 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "freestyle",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "CapTrap",
+        "cDNA",
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT",
+        "Illumina",
+        "PacBio"
+    ],
     "experiment_ids": [
         "cdna_freestyle",
         "drna_freestyle"

@@ -5,6 +5,15 @@
     "notes": "Seem to go well ",
     "species": "mouse",
     "data_category": "long_only",
+    "samples": [
+        "mouse_simulation"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "syn25591653"
     ],

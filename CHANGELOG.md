@@ -1,7 +1,9 @@
 
 * version 1.1.0 
-  - renamed kitchen_sink data category to freestyle
-  - entries (except freestyle) must have same library prep and sequencing platform
-
+  - Renamed kitchen_sink data category to freestyle.
+  - Add samples, library_prep and platform to entry.json and
+    experiment.json to make them explicit rather than implicit from the files
+    used.
+  
 * version 1.0.0 2021-08-09
-  - add commands and instructions for submitting to synapse
+  - Add commands and instructions for submitting to synapse.

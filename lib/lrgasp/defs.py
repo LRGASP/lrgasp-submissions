@@ -2,7 +2,7 @@
 Definitions of metadata identifiers, types, and functions to operate on them.
 """
 import re
-from collections import defaultdict, namedtuple
+from collections import defaultdict
 from lrgasp import LrgaspException
 from lrgasp.symEnum import SymEnum, auto
 
@@ -40,11 +40,6 @@ class Platform(SymEnum):
     Illumina = auto()
     PacBio = auto()
     ONT = auto()
-
-class EntryCategory(namedtuple("EntryCategory",
-                               ("data_category", "library_prep", "platform"))):
-    """Tuple that describes the data used in an experiment"""
-    __slots__ = ()
 
 class Sample(SymEnum):
     """LRGASP sample identifier"""

@@ -1,2 +1,2 @@
 Error: validation of entry 'iso_detect_ref_darwin_drna_ont' failed: output/test_bad_isoform_library_prep_mismatch/iso_detect_ref_darwin_drna_ont/entry.json
-caused by: Challenge 1 (iso_detect_ref) entry must use all of the available samples for (long_only, cDNA, ONT), need 'WTC11, H1_mix, ES, mouse_simulation, human_simulation', only 'WTC11, H1_mix, ES, mouse_simulation' were found
+caused by: entry 'iso_detect_ref_darwin_drna_ont field library_preps must contain all library_preps values from all experiments, found 'cDNA', expected 'dRNA'

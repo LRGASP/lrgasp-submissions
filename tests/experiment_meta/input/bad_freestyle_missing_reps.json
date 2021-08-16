@@ -5,9 +5,20 @@
     "notes": "should have all replicates",
     "species": "human",
     "data_category": "freestyle",
+    "samples": [
+        "WTC11",
+        "H1_mix"
+    ],
+    "library_preps": [
+        "CapTrap",
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF155CFF",
-        "ENCFF600LIU",
         "ENCFF854BEI",
         "ENCFF804BPC",
         "ENCFF557WRQ",

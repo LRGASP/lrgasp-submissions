@@ -3,8 +3,15 @@
     "team_id": "syn12345678",
     "team_name": "Long-reads Expert Lab",
     "data_category": "long_only",
-    "library_prep": "dRNA",
-    "platform": "ONT",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "experiment_ids": [
         "model_try"
     ],

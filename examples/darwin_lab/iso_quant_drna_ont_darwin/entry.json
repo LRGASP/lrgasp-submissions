@@ -4,8 +4,15 @@
     "team_id": "syn1809",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_only",
-    "library_prep": "dRNA",
-    "platform": "ONT",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "experiment_ids": [
         "H1_mix_drna_ont",
         "mouse_sim_drna_ont",

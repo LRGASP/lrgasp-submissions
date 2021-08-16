@@ -5,6 +5,15 @@
     "notes": "noted",
     "species": "human",
     "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF155CFF",
         "ENCFF771DIX",

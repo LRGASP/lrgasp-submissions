@@ -46,7 +46,7 @@ Library preparation method
 * ``R2C2``
 * ``cDNA``
 
-## Sequencing Platform
+## Sequencing platform
 
 Simplified RNA sequencing platform
 
@@ -60,6 +60,7 @@ Simplified RNA sequencing platform
 * ``H1_mix`` - human H1 ES cell line mixed with human Definitive Endoderm derived from H1
 * ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
 * ``blood`` - manatee whole blood
+* ``synthetic`` - generated, synthetic RNAs
 
 ## Public repository identifiers
 

@@ -1,2 +1,7 @@
 Error: validation of entry 'iso_detect_ref_darwin_captrap_ont' failed: output/test_bad_isoform2_expr_platform_mismatch/iso_detect_ref_darwin_captrap_ont/entry.json
-caused by: long_only entry experiments must all have same platform method, found PacBio, ONT
+caused by: error parse metadata for entry 'iso_detect_ref_darwin_captrap_ont', experiment 'WTC11_captrap_ont' (obtained from entry.json): output/test_bad_isoform2_expr_platform_mismatch/iso_detect_ref_darwin_captrap_ont/WTC11_captrap_ont/experiment.json
+caused by: validation of experiment metadata failed: output/test_bad_isoform2_expr_platform_mismatch/iso_detect_ref_darwin_captrap_ont/WTC11_captrap_ont/experiment.json
+caused by: experiment 'WTC11_captrap_ont' platform, 'ONT', must match platform for all library files, 'PacBio', from specified library files:
+    ENCFF105WIJ: WTC11/CapTrap/PacBio
+    ENCFF212HLP: WTC11/CapTrap/PacBio
+    ENCFF003QZT: WTC11/CapTrap/PacBio

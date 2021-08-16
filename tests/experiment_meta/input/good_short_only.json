@@ -4,6 +4,15 @@
     "description": "good short_only",
     "species": "human",
     "data_category": "short_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina"
+    ],
     "libraries": [
         "ENCFF644AQW",
         "ENCFF766OAK",

@@ -5,6 +5,15 @@
     "notes": "",
     "species": "",
     "data_category": "",
+    "samples": [
+        ""
+    ],
+    "library_preps": [
+        ""
+    ],
+    "platforms": [
+        ""
+    ],
     "libraries": [
     ],
     "extra_libraries": [

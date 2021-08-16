@@ -4,6 +4,16 @@
     "description": "bad file accession",
     "species": "mouse",
     "data_category": "long_short",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFZ521IDK",
         "ENCFQ006WNS",
