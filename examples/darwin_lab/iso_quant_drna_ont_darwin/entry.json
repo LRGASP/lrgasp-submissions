@@ -5,7 +5,9 @@
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_only",
     "samples": [
-        "WTC11"
+        "WTC11",
+        "H1_mix",
+        "mouse_simulation"
     ],
     "library_preps": [
         "dRNA"

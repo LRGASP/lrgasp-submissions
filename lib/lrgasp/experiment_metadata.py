@@ -178,8 +178,8 @@ def _validate_data_category_compat(rna_seq_md, experiment_md, long_run_types, sh
 
 def _validate_library_category_compat(rna_seq_md, experiment_md, file_mds, run_types):
     def _match_err(fld_name, fld_value, expect_value):
-        raise LrgaspException(f"experiment '{experiment_md.experiment_id}' {fld_name}, '{iter_to_str(fld_value)}', must match"
-                              f" {fld_name} for all library files, '{iter_to_str(expect_value)}', "
+        raise LrgaspException(f"experiment '{experiment_md.experiment_id}' field '{fld_name}', '{iter_to_str(fld_value)}', must match"
+                              f" '{fld_name}' for all library files, got '{iter_to_str(expect_value)}', "
                               "from specified library files:\n    " +
                               "\n    ". join(get_run_type_descs(rna_seq_md, file_mds)))
 

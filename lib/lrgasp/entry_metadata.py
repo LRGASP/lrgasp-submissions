@@ -66,9 +66,12 @@ def validate_entry_experiment_compat(entry_md, experiment_md):
 def entry_experiments_validate_combined_attrs(entry_md):
     """check samples, library_preps, and platforms to see if they cover all experiments"""
     def _match_err(fld_name, fld_value, expect_value):
-        raise LrgaspException(f"entry '{entry_md.entry_id} field {fld_name} must contain all {fld_name} values from all experiments,"
+        raise LrgaspException(f"entry '{entry_md.entry_id} field '{fld_name}' must be the '{fld_name}' values from all experiments,"
                               f" found '{iter_to_str(fld_value)}', expected '{iter_to_str(expect_value)}'")
 
+    expr_samples = set([p for ex in entry_md.experiments for p in ex.samples])
+    if expr_samples != set(entry_md.samples):
+        _match_err("samples", entry_md.samples, expr_samples)
     expr_library_preps = set([p for ex in entry_md.experiments for p in ex.library_preps])
     if expr_library_preps != set(entry_md.library_preps):
         _match_err("library_preps", entry_md.library_preps, expr_library_preps)
@@ -95,10 +98,10 @@ def get_entry_category_samples(entry_md):
                     samples.add(run_md.sample)
     return samples
 
-def validate_samples(entry_md):
+def validate_challenge_samples(entry_md):
     """validate that all samples for entry category challenge are covered;
     non-freestyle only (requires all experiments loaded)"""
-    entry_samples = get_entry_samples(entry_md)
+    entry_samples = set(entry_md.samples)
     entry_category_samples = get_entry_category_samples(entry_md)
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
     required_samples = entry_category_samples & challenge_samples
@@ -111,7 +114,7 @@ def entry_experiments_validate(entry_md):
         validate_entry_experiment_compat(entry_md, experiment_md)
     entry_experiments_validate_combined_attrs(entry_md)
     if entry_md.data_category != DataCategory.freestyle:
-        validate_samples(entry_md)
+        validate_challenge_samples(entry_md)
 
 def entry_validate(entry_md):
     entry_id_validate(entry_md.challenge_id, entry_md.entry_id)

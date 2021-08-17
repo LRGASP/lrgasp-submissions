@@ -1,2 +1,2 @@
 Error: validation of entry 'iso_detect_ref_darwin_drna_ont' failed: output/test_bad_isoform_library_prep_mismatch/iso_detect_ref_darwin_drna_ont/entry.json
-caused by: entry 'iso_detect_ref_darwin_drna_ont field library_preps must contain all library_preps values from all experiments, found 'cDNA', expected 'dRNA'
+caused by: entry 'iso_detect_ref_darwin_drna_ont field 'library_preps' must be the 'library_preps' values from all experiments, found 'cDNA', expected 'dRNA'

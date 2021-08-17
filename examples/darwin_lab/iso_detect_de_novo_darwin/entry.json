@@ -5,7 +5,8 @@
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_only",
     "samples": [
-        "WTC11"
+        "ES",
+        "blood"
     ],
     "library_preps": [
         "cDNA"
