@@ -1,4 +1,5 @@
 Error: validation of experiment metadata failed: input/bad_library_compat_type.json
-caused by: long_only experiments must use one and only one long-read library/platform, found: H1_mix/CapTrap/PacBio, H1_mix/dRNA/ONT in these specified library files:
-    H1_mix/CapTrap/PacBio: ENCFF073YYF, ENCFF509GUL
-    H1_mix/dRNA/ONT: ENCFF854BEI
+caused by: long_only experiments must use one and only one long-read library/platform, found 2, from specified library files:
+    ENCFF073YYF: H1_mix/CapTrap/PacBio
+    ENCFF509GUL: H1_mix/CapTrap/PacBio
+    ENCFF854BEI: H1_mix/dRNA/ONT

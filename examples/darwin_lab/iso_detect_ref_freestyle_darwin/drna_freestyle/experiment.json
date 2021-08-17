@@ -1,0 +1,50 @@
+{
+    "experiment_id": "drna_freestyle",
+    "challenge_id": "iso_detect_ref",
+    "description": "dRNA freestyle",
+    "notes": "this combination worked",
+    "species": "human",
+    "data_category": "freestyle",
+    "samples": [
+        "WTC11",
+        "H1_mix"
+    ],
+    "library_preps": [
+        "dRNA",
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT",
+        "PacBio"
+    ],
+    "libraries": [
+        "ENCFF155CFF",
+        "ENCFF771DIX",
+        "ENCFF600LIU",
+        "ENCFF854BEI",
+        "ENCFF804BPC",
+        "ENCFF557WRQ",
+        "ENCFF028FCL",
+        "ENCFF950ANU",
+        "ENCFF003QZT"
+    ],
+    "extra_libraries": [
+        {
+            "repository": "ENC",
+            "acc": "ENF12345"
+        },
+        {
+            "repository": "SRA",
+            "acc": "SRA01234"
+        }
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

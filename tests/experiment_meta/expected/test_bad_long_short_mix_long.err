@@ -1,5 +1,7 @@
 Error: validation of experiment metadata failed: input/bad_long_short_mix_long.json
-caused by: long_short experiments must use one and only one long-read library/platform, found: ES/dRNA/ONT, ES/cDNA/PacBio in these specified library files:
-    ES/dRNA/ONT: ENCFF464USM, ENCFF765AEC
-    ES/cDNA/Illumina: ENCFF006WNS, ENCFF089PFT, ENCFF521IDK, ENCFF914YPT
-    ES/cDNA/PacBio: ENCFF714ZJR
+caused by: long_short experiments must use one and only one long-read library/platform, found 2, from specified library files:
+    ENCFF765AEC: ES/dRNA/ONT
+    ENCFF464USM: ES/dRNA/ONT
+    ENCFF521IDK, ENCFF006WNS: ES/cDNA/Illumina
+    ENCFF914YPT, ENCFF089PFT: ES/cDNA/Illumina
+    ENCFF714ZJR: ES/cDNA/PacBio

@@ -1,0 +1,31 @@
+{
+    "experiment_id": "WTC11_drna_ont",
+    "challenge_id": "iso_detect_ref",
+    "description": "Transcript models for human WTC11 ONT direct RNA sequenceing",
+    "notes": "noted",
+    "species": "human",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "libraries": [
+        "ENCFF155CFF",
+        "ENCFF771DIX",
+        "ENCFF600LIU"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

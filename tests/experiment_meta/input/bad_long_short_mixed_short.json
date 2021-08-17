@@ -1,0 +1,41 @@
+{
+    "experiment_id": "model_illumina_cdna",
+    "challenge_id": "iso_detect_ref",
+    "description": "short_only with multiple libraries",
+    "species": "human",
+    "data_category": "short_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina"
+    ],
+    "libraries": [
+        "ENCFF644AQW",
+        "ENCFF766OAK",
+        "ENCFF198RQU",
+        "ENCFF620HBM",
+        "ENCFF247XJT",
+        "ENCFF785SWH",
+        "ENCFF201EVI",
+        "ENCFF591ISP",
+        "ENCFF221SLD",
+        "ENCFF223VFL",
+        "ENCFF145IIO",
+        "ENCFF597GZT",
+        "ENCFF701OIK",
+        "ENCFF139HIY"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

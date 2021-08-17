@@ -1,0 +1,5 @@
+Error: validation of experiment metadata failed: input/bad_long_short_no_short.json
+caused by: long_short experiments must use one and only one short-read library/platform, found 0, from specified library files:
+    ENCFF824JVI: ES/R2C2/ONT
+    ENCFF104DMI: ES/R2C2/ONT
+    ENCFF412UHU: ES/R2C2/ONT

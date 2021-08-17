@@ -1,8 +1,8 @@
 {
     "user": "<test particpant>",
     "password": "",
-    "lrgasp_synchallange_name": "",
-    "lrgasp_synchallange_id": "",
+    "lrgasp_synchallenge_name": "",
+    "lrgasp_synchallenge_id": "",
     "participants_team_name": "",
     "syn_queue_ids": {
         "iso_detect_ref": ,

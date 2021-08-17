@@ -4,6 +4,15 @@
     "description": "long/genome good",
     "species": "manatee",
     "data_category": "long_genome",
+    "samples": [
+        "blood"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "libraries": [
         "ENCFF090GGQ",
         "ENCFF620ASK"

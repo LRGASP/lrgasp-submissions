@@ -1,0 +1,29 @@
+{
+    "experiment_id": "mouse_sim_drna_ont",
+    "challenge_id": "iso_quant",
+    "description": "Transcript expression for mouse simulatated ONT cDNA sequenceing",
+    "notes": "last minute",
+    "species": "mouse",
+    "data_category": "long_only",
+    "samples": [
+        "mouse_simulation"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "libraries": [
+        "syn25591653"
+    ],
+    "software": [
+        {
+            "name": "LRExpress",
+            "description": "LRExpress is a tool for expression quantification if long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRExpress",
+            "config": "LRExpress used default parameters"
+        }
+    ]
+}

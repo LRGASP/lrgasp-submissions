@@ -1,0 +1,29 @@
+{
+    "entry_id": "iso_quant_drna_ont_darwin",
+    "challenge_id": "iso_quant",
+    "team_id": "syn1809",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11",
+        "H1_mix",
+        "mouse_simulation"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "experiment_ids": [
+        "H1_mix_drna_ont",
+        "mouse_sim_drna_ont",
+        "WTC11_drna_ont"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

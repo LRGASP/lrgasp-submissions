@@ -1,0 +1,2 @@
+Error: validation of entry 'iso_detect_ref_darwin_captrap_ont' failed: output/test_bad_isoform2_missing_sample/iso_detect_ref_darwin_captrap_ont/entry.json
+caused by: entry must use all of the available samples for Challenge 1 (iso_detect_ref), need 'WTC11, H1_mix, ES, mouse_simulation, human_simulation', only 'WTC11, ES' were found

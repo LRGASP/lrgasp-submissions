@@ -1,7 +1,7 @@
 """Class to load pre-built data set information from JSON files in source .  All results are cached"""
 import os.path as osp
 import json
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 from lrgasp import LrgaspException
 from lrgasp.objDict import ObjDict
 from lrgasp.defs import Species, Sample, LibraryPrep, Platform
@@ -57,6 +57,13 @@ class LrgaspRnaSeqFile(ObjDict):
         # self.paired_file is built when deserialized
         # self.replicate_md = added when deserialized
 
+class RunType(namedtuple("RunType",
+                         ("sample", "library_prep", "platform"))):
+    "attributes describing a run"
+
+    def __str__(self):
+        return str(self.sample) + '/' + str(self.library_prep) + '/' + str(self.platform)
+
 class LrgaspRnaSeqMetaData(list):
     """deserialized LRSGAP RNA-Seq metadata, along with access methods"""
     cache = None
@@ -64,12 +71,17 @@ class LrgaspRnaSeqMetaData(list):
     def __init__(self):
         self.file_md_by_acc = {}
         self.run_by_acc = {}
+
+        # indexed by (library_prep, platform)
+        self.runs_by_prep_platform = defaultdict(list)
+
         # this is indexed by both individual biosample accs and by sorted
         # tuple of accs to handle mixes.  The same values can map to replicates
         # in different sequences technologies, hence it is a list
         self.replicate_by_biosample_acc = defaultdict(list)
 
     def finish(self):
+        self.runs_by_prep_platform.default_factory = None
         self.replicate_by_biosample_acc.default_factory = None
 
     def _edit_run_types(self, run_md):
@@ -108,6 +120,7 @@ class LrgaspRnaSeqMetaData(list):
             raise LrgaspException(f"duplicate run id '{run_md.run_acc}'")
         self.append(run_md)
         self.run_by_acc[run_md.run_acc] = run_md
+        self.runs_by_prep_platform[run_md.library_prep, run_md.platform].append(run_md)
         for replicate_md in run_md.replicates:
             self._add_replicate(run_md, replicate_md)
 
@@ -126,6 +139,13 @@ class LrgaspRnaSeqMetaData(list):
     def get_run_by_file_acc(self, file_acc):
         fil = self.get_file_by_acc(file_acc)
         return self.get_run_by_acc(fil.run_acc)
+
+    def get_runs_by_prep_platform(self, library_prep, platform):
+        "get runs for prep/platform"
+        return self.runs_by_prep_platform.get((library_prep, platform), ())
+
+def get_run_type(run_md):
+    return RunType(run_md.sample, run_md.library_prep, run_md.platform)
 
 def _pair_files(file_mds):
     "linked paired ends files and construct list of pairs"

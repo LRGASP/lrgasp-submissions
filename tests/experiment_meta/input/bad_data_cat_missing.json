@@ -3,6 +3,9 @@
     "challenge_id": "iso_detect_ref",
     "description": "Transcript models for Human NA12878 ONT direct RNA sequenceing",
     "species": "human",
+    "samples": [
+        "WTC11"
+    ],
     "libraries": [
         "ENCFF155CFF",
         "ENCFF600LIU"

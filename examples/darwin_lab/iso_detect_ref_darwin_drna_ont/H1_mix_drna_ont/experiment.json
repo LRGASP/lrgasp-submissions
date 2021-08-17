@@ -1,0 +1,30 @@
+{
+    "experiment_id": "H1_mix_drna_ont",
+    "challenge_id": "iso_detect_ref",
+    "description": "Transcript models for human H1 mix ONT direct RNA sequenceing",
+    "species": "human",
+    "data_category": "long_only",
+    "samples": [
+        "H1_mix"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "libraries": [
+        "ENCFF854BEI",
+        "ENCFF804BPC",
+        "ENCFF557WRQ"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

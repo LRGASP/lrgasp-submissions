@@ -1,0 +1,14 @@
+Error: validation of experiment metadata failed: input/bad_long_only_with_short.json
+caused by: long_only experiments must not use short-read platforms, from specified library files:
+    ENCFF521IDK, ENCFF006WNS: ES/cDNA/Illumina
+    ENCFF089PFT, ENCFF914YPT: ES/cDNA/Illumina
+    ENCFF696TCH, ENCFF751FTE: ES/cDNA/Illumina
+    ENCFF874VSI: ES/cDNA/PacBio
+    ENCFF564NGV: ES/cDNA/PacBio
+    ENCFF714ZJR: ES/cDNA/PacBio
+    ENCFF667VXS: ES/cDNA/PacBio
+    ENCFF493CBP: ES/cDNA/PacBio
+    ENCFF993JVA: ES/cDNA/PacBio
+    ENCFF313VYZ: ES/cDNA/PacBio
+    ENCFF094NZA: ES/cDNA/PacBio
+    ENCFF280DWZ: ES/cDNA/PacBio

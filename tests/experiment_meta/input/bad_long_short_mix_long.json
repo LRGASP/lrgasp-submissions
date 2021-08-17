@@ -4,6 +4,16 @@
     "description": "long/short bad mix",
     "species": "mouse",
     "data_category": "long_short",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF765AEC",
         "ENCFF464USM",

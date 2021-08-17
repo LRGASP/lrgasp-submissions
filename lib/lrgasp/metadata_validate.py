@@ -1,5 +1,4 @@
 """Functions for validating metadata"""
-import re
 from collections import namedtuple
 import validators.url
 import validators.email
@@ -10,7 +9,8 @@ class Field(namedtuple("Field",
     """Specify information for basic validation of a field.
     - dtype is a Python type (str, SymEnum, int, etc).  If dtype is not str,
       int, or dict, it will be converted automatically.  If it is a
-      list, each entry is processed using element_dtype if it is not None
+      list, tuple, set or frozenset, each entry is processed using element_dtype
+      if it is not None.
     - validator is a callable to validate the type or each element if a list.
     """
     def __new__(cls, name, dtype=str, *, element_dtype=None, allow_empty=False, optional=False, validator=None):
@@ -62,13 +62,13 @@ def _check_list(desc, field, vals):
         if ival in new_vals:
             raise LrgaspException(f"{desc} field '{field.name}[{i}]' duplicate value '{ival}'")
         new_vals.append(ival)
-    return new_vals
+    return field.dtype(new_vals)
 
 def _check_present_field(desc, field, obj):
     val = getattr(obj, field.name)
     if (not field.allow_empty) and (len(val) == 0):
         raise LrgaspException(f"{desc} field '{field.name}' must be a non-empty '{field.dtype.__name__}'")
-    if field.dtype is list:
+    if field.dtype in (list, tuple, set, frozenset):
         val = _check_list(desc, field, val)
     else:
         val = _check_scalar(desc, field, val)
@@ -105,11 +105,6 @@ def validate_http_url(val):
     validate_url(val)
     if not (val.startswith("http:") or val.startswith("https:")):
         raise LrgaspException(f"must be an HTTP URL '{val}'")
-
-def validate_md5(val):
-    "checks MD5 string"
-    if not re.search("^[a-fA-F0-9]{32}$", val):
-        raise LrgaspException(f"MD5 must be a 128-bit hexadecimal number '{val}'")
 
 def check_from_defs(desc, fields, obj):
     """basic check of fields given a definition table"""

@@ -35,7 +35,7 @@ def download_file(syn, root_path, file_name, file_synid, local_dir):
     syn.get(file_synid, downloadLocation=osp.join(local_dir, root_path))
 
 def download_files(syn, synid, local_dir):
-    for root_info, dirs_info, files_info in synapseutils.walk(syn, synid):
+    for root_info, _, files_info in synapseutils.walk(syn, synid):
         for file_info in files_info:
             download_file(syn, root_info[0], file_info[0], file_info[1], local_dir)
 

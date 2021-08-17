@@ -1,0 +1,2 @@
+Error: validation of experiment metadata failed: input/bad_software_miss_version.json
+caused by: experiment_md.software[0] field 'version' is required

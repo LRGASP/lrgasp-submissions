@@ -1,5 +1,8 @@
 Error: validation of experiment metadata failed: input/bad_freestyle_type.json
-caused by: long_short experiments must use one and only one long-read library/platform, found: WTC11/CapTrap/PacBio, WTC11/dRNA/ONT, H1_mix/dRNA/ONT in these specified library files:
-    WTC11/CapTrap/PacBio: ENCFF003QZT, ENCFF028FCL
-    WTC11/dRNA/ONT: ENCFF155CFF, ENCFF600LIU
-    H1_mix/dRNA/ONT: ENCFF557WRQ, ENCFF804BPC, ENCFF854BEI
+caused by: experiment must use all replicates from run ENCSR392BGY, available replicate files:
+    ENCSR392BGY ENCFF155CFF 1 fastq
+    ENCSR392BGY ENCFF146MTW 1 tar
+    ENCSR392BGY ENCFF771DIX 2 fastq
+    ENCSR392BGY ENCFF389XGB 2 tar
+    ENCSR392BGY ENCFF600LIU 3 fastq
+    ENCSR392BGY ENCFF591QYR 3 tar

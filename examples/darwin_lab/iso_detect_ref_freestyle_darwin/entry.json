@@ -1,0 +1,31 @@
+{
+    "entry_id": "iso_detect_ref_freestyle_darwin",
+    "challenge_id": "iso_detect_ref",
+    "team_id": "syn1809",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "freestyle",
+    "samples": [
+        "WTC11",
+        "H1_mix"
+    ],
+    "library_preps": [
+        "CapTrap",
+        "cDNA",
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT",
+        "Illumina",
+        "PacBio"
+    ],
+    "experiment_ids": [
+        "cdna_freestyle",
+        "drna_freestyle"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

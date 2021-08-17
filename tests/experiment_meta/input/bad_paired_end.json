@@ -4,6 +4,16 @@
     "description": "short bad paired end",
     "species": "human",
     "data_category": "short_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF644AQW"
     ],

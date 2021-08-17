@@ -1,12 +1,20 @@
 {
     "experiment_id": "",
-    "challange_id": "",
+    "challenge_id": "",
     "description": "",
     "notes": "",
     "species": "",
     "data_category": "",
-    "libraries": [
+    "samples": [
+        ""
     ],
+    "library_preps": [
+        ""
+    ],
+    "platforms": [
+        ""
+    ],
+    "libraries": [],
     "extra_libraries": [
         {
             "repository": "",

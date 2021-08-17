@@ -1,0 +1,9 @@
+Error: validation of experiment metadata failed: input/bad_long_short_mixed_short.json
+caused by: short_only experiments must use one and only one short-read library/platform, found 2, from specified library files:
+    ENCFF644AQW, ENCFF766OAK: WTC11/cDNA/Illumina
+    ENCFF198RQU, ENCFF620HBM: WTC11/cDNA/Illumina
+    ENCFF247XJT, ENCFF785SWH: WTC11/cDNA/Illumina
+    ENCFF201EVI, ENCFF591ISP: H1_mix/cDNA/Illumina
+    ENCFF221SLD, ENCFF223VFL: H1_mix/cDNA/Illumina
+    ENCFF145IIO, ENCFF597GZT: H1_mix/cDNA/Illumina
+    ENCFF701OIK, ENCFF139HIY: H1_mix/cDNA/Illumina

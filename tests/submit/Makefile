@@ -9,12 +9,8 @@ include ${testrootdir}/testing.mk
 run_upload_entry = ${lrgasp_upload_entry} --test_config_json=test-conf.json ${debug}
 run_download = ${lrgasp_synapse_download} --test_config_json=test-conf.json ${debug}
 
-ref_ont_drna_entry = ${darwindir}/iso_detect_ref_darwin
+ref_ont_drna_entry = ${darwindir}/iso_detect_ref_darwin_drna_ont
 upload_proj_name = 'LRPLAYER Submit'
-
-define should_fail
- then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
-endef
 
 .PHONEY: test
 ifeq ($(wildcard test-conf.json),)
@@ -35,7 +31,7 @@ test_upload_bad_name: mkout
 ##
 
 # function to link input tree, less .emacs.bak files
-link_entry = (cd ${darwindir} && find iso_detect_ref_darwin | fgrep -v .emacs.bak | cpio --quiet -pduml ../../tests/submit/$(1))
+link_entry = (cd ${darwindir} && find iso_detect_ref_darwin_drna_ont | fgrep -v .emacs.bak | cpio --quiet -pduml ../../tests/submit/$(1))
 
 # clean entry
 test_upload_ok: mkout
@@ -45,13 +41,13 @@ test_upload_ok: mkout
 	# remove existing synapse data
 	bin/clean-test-project --test_config_json=test-conf.json ${upload_proj_name}
 	# upload, download, and compare
-	${run_upload_entry} output/$@.up/iso_detect_ref_darwin ${upload_proj_name}
-	${run_download} ${upload_proj_name}/iso_detect_ref_darwin output/$@.down-orig
+	${run_upload_entry} output/$@.up/iso_detect_ref_darwin_drna_ont ${upload_proj_name}
+	${run_download} ${upload_proj_name}/iso_detect_ref_darwin_drna_ont output/$@.down-orig
 	diff -r output/$@.up output/$@.down-orig
 	# edit and update upload; put time-unique data in modification to make sure we got latest
-	sed --in-place -e "s/Reads were downloaded from/Spaghetti made fresh $$(date)/" output/$@.up/iso_detect_ref_darwin/drnaFreestyle/experiment.json 
-	${run_upload_entry} output/$@.up/iso_detect_ref_darwin ${upload_proj_name}
-	${run_download} ${upload_proj_name}/iso_detect_ref_darwin output/$@.down-update
+	sed --in-place -e "s/Transcript models for human/Spaghetti made fresh $$(date)/" output/$@.up/iso_detect_ref_darwin_drna_ont/WTC11_drna_ont/experiment.json 
+	${run_upload_entry} output/$@.up/iso_detect_ref_darwin_drna_ont ${upload_proj_name}
+	${run_download} ${upload_proj_name}/iso_detect_ref_darwin_drna_ont output/$@.down-update
 	diff -r output/$@.up output/$@.down-update
 
 

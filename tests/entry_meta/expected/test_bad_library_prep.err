@@ -1,0 +1,3 @@
+Error: validation of entry metadata failed: input/bad_library_prep.json
+caused by: entry field 'library_preps' is not a valid 'LibraryPrep', value is 'wilman'
+caused by: 'wilman' is not a member, external name, or alias of LibraryPrep

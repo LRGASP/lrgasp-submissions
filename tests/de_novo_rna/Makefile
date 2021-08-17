@@ -16,7 +16,7 @@ bad_tests: ${bad_tests:%=test_%}
 
 test_bad%: mkout
 	@echo ${lrgasp_validate_de_novo_rna} input/bad$*.fasta  "(should fail)"
-	@if ! ${lrgasp_validate_de_novo_rna} ${err_debug} input/bad$*.fasta 2>output/$@.err ; then exit 0 ; else echo Error Test $@ should have failed >&2; exit 1 ; fi
+	@if ! ${lrgasp_validate_de_novo_rna} ${err_debug} input/bad$*.fasta 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
 good_tests: ${good_tests:%=test_%}

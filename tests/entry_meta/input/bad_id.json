@@ -2,10 +2,20 @@
     "entry_id": "iso_detect_ref_our_entry",
     "challenge_id": "iso_detect_ref",
     "team_id": "123-experts",
+    "team_name": "Long-reads Expert Lab",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "dRNA"
+    ],
+    "platforms": [
+        "ONT"
+    ],
     "experiment_ids": [
         "model_try"
     ],
-    "team_name": "Long-reads Expert Lab",
     "contacts": [
         {
             "name": "LongReadsExpertLab",

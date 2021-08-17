@@ -3,6 +3,16 @@
     "challenge_id": "",
     "team_id": "",
     "team_name": "",
+    "data_category": "",
+    "samples": [
+        ""
+    ],
+    "library_preps": [
+        ""
+    ],
+    "platforms": [
+        ""
+    ],
     "experiment_ids": [
         ""
     ],

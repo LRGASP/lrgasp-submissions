@@ -1,2 +1,2 @@
-rm $1/iso_quant_darwin/WTC11_drna_ont_long/models.gtf
+rm $1/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf
 

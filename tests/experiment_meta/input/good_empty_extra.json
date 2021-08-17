@@ -4,6 +4,16 @@
     "description": "long/short good",
     "species": "mouse",
     "data_category": "long_short",
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "PacBio"
+    ],
     "libraries": [
         "ENCFF521IDK",
         "ENCFF006WNS",

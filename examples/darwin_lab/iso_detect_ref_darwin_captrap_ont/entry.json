@@ -1,0 +1,29 @@
+{
+    "entry_id": "iso_detect_ref_darwin_captrap_ont",
+    "challenge_id": "iso_detect_ref",
+    "team_id": "syn1809",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11",
+        "H1_mix",
+        "ES"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "experiment_ids": [
+        "ES_captrap_ont",
+        "H1_mix_captrap_ont",
+        "WTC11_captrap_ont"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

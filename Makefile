@@ -2,8 +2,10 @@ PYTHON = python3
 FLAKE8 = python3 -m flake8
 export PYTHONPATH = lib
 TWINE = ${PYTHON} -m twine
+VULTURE = vulture
 
-pyprogs = $(shell file -F $$'\t' bin/* devs/bin/* tests/*/bin/* | awk '/Python script/{print $$1}')
+pyprogs = $(shell file -F $$'\t' bin/* | awk '/Python script/{print $$1}')
+pyotherprogs = $(shell file -F $$'\t' devs/bin/* tests/*/bin/* | awk '/Python script/{print $$1}')
 pypi_url = https://upload.pypi.org/simple/
 testpypi_url = https://test.pypi.org/simple/
 testenv = testenv
@@ -24,6 +26,7 @@ help:
 	@echo "lint-doc - check documentation"
 	@echo "lint-all - lint plus lint-doc"
 	@echo "lint-pages - lint github pages, must have been pushed first"
+	@echo "vulture - find unused code"
 	@echo "test - run tests quickly with the default Python"
 	@echo "install - install the package to the active Python's site-packages"
 	@echo "dist - package"
@@ -57,10 +60,11 @@ ${data_matrix_html}: ${data_matrix_tsv} devs/bin/make_html_table.R
 ${submit_tree_png}: devs/bin/genSubmitTree
 	devs/bin/genSubmitTree $@
 
+# edit function also validates format and field names
 lint:
-	${FLAKE8} ${pyprogs} lib
-	json_pp < templates/entry.json >/dev/null
-	json_pp < templates/experiment.json >/dev/null
+	${FLAKE8} ${pyprogs} ${pyotherprogs} lib
+	devs/bin/editExampleJson --clean entry templates/entry.json
+	devs/bin/editExampleJson --clean experiment templates/experiment.json
 
 # requires the NPM packages:
 #   remark-cli remark-lint remark-preset-lint-recommended markdown-link-check
@@ -93,6 +97,10 @@ endif
 lint-pages:
 	linkchecker ${github_pages_url}
 
+# this gets a lot of false-positive, just use for code cleanup rather than making it
+# standard
+vulture:
+	${VULTURE} ${pyprogs} lib
 
 test:
 	cd tests && ${MAKE} test
@@ -123,7 +131,7 @@ dist: clean
 # test install locally
 test-pip: dist
 	${envsetup}
-	${envact} && cd ${testenv} && pip install --no-cache-dir ${dist_tar}
+	${envact} && cd ${testenv} && pip install --no-cache-dir $(realpath ${dist_tar})
 	${envact} && cd tests ${MAKE} test
 
 # test release to testpypi
