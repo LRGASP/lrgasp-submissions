@@ -38,6 +38,6 @@ If there are questions or problems with this software, please create an issue in
 ## Contacts
 
 - [lrgasp-support](mailto:lrgasp-support-group@ucsc.edu) Support list for LRGASP participants. Messages will not be shared publicly
-- [lrgasp-announce](https://groups.google.com/a/ucsc.edu/g/lrgasp-announce-group) Subscribe to announcement list for the LRGASP
+- [lrgasp-announce](https://groups.google.com/a/ucsc.edu/g/lrgasp-announce-group) Subscribe to announcement list for LRGASP
 
 
