@@ -14,11 +14,11 @@ a Synapse sub-challenge, represented by a Synapse evaluation queue.
 1. All individuals in the lab that will be using Synapse to submit must create
    an account and pass the easy certification quiz as described in
    [Getting Started with Synapse](https://docs.synapse.org/articles/getting_started.html).
-1. The lab can create a [Synapse team](https://help.synapse.org/docs/Teams.1985446029.html) (e.g. "Darwin LRGASP Team") to allow
+1. Optionally, the lab can create a [Synapse team](https://help.synapse.org/docs/Teams.1985446029.html) (e.g. "Darwin LRGASP Team") to allow
    multiple users in the lab to upload.
 1. Participating Lab members should join these teams:
-    * the lab team ("Darwin LRGASP Team")
     * "LRGASP Participants"
+    * the lab team ("Darwin LRGASP Team"), if created
 1. Create a Synapse project (e.g., "Darwin LRGASP Project") that will be used
    to contain uploaded entries before submission to an LRGASP evaluation
    queue.
