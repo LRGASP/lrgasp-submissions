@@ -20,6 +20,7 @@ Github repository is at [LRGASP/lrgasp-submissions](https://github.com/LRGASP/lr
   - [RNA-Seq data matrix](rnaseq-data-matrix.md)
   - [RNA-Seq data matrix TSV](rnaseq-data-matrix.tsv)
   - [Adapters and other data](other-data.md)
+- [Self-evaluation](evaluation.md)
 - [Submission structure](submission.md)
 - Submission formats:
   - [Metadata](metadata.md)
