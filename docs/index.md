@@ -28,7 +28,7 @@ Github repository is at [LRGASP/lrgasp-submissions](https://github.com/LRGASP/lr
   - [Transcript model format](model-format.md)
   - [Read to model map format](read_model_map_format.md)
   - [Transcript expression matrix format](expression_matrix_format.md)
-  - [Example entries](../examples/darwin_lab)
+  - [Example entries](https://github.com/LRGASP/lrgasp-submissions/tree/master/examples/darwin_lab)
   - [Submission tools](submission-tools.md)
   - [Synapse submissions](synapse.md)
 

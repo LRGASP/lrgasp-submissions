@@ -19,7 +19,7 @@ When a team registers for LRGASP on [Synapse](https://www.synapse.org/#!Synapse:
 experiment identifiers assigned by the team and must be valid
 [symbolic identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
 
-The [example entries](../examples/darwin_lab) will be useful in understanding structure.
+The [example entries](https://github.com/LRGASP/lrgasp-submissions/tree/master/examples/darwin_lab) will be useful in understanding structure.
 
 ## Submission overview
 
@@ -72,6 +72,6 @@ Challenge 3 novel model experiments must contain the following files:
 - [Transcript model format](model-format.md)
 - [Read to model map format](read_model_map_format.md)
 - [Transcript expression matrix format](expression_matrix_format.md)
-- [Example entries](../examples/darwin_lab)
+- [Example entries](https://github.com/LRGASP/lrgasp-submissions/tree/master/examples/darwin_lab)
 - [Submission tools](submission-tools.md)
 - [Synapse submissions](synapse.md)
