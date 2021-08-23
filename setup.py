@@ -6,12 +6,12 @@ requirements = [
     "gtfparse==1.2.1",
     "validators==0.18.2",
     "synapseclient==2.4.0",
-    "fasta-reader==1.0.0"
+    "fasta-reader==1.1.0"
 ]
 
 setuptools.setup(
     name = 'lrgasp-tools',
-    version = '1.0.0',
+    version = '1.1.0',
     description = "LRGASP tools",
     long_description = "LRGASP tools for submission",
     author = "Mark Diekhans",
