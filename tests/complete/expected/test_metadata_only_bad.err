@@ -1,0 +1,2 @@
+Error: validation of entry metadata 'iso_detect_ref_darwin_drna_ont' failed: output/test_metadata_only_bad/iso_detect_ref_darwin_drna_ont/entry.json
+caused by: entry 'iso_detect_ref_darwin_drna_ont field 'library_preps' must be the 'library_preps' values from all experiments, found 'cDNA', expected 'dRNA'

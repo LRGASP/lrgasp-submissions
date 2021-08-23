@@ -12,6 +12,8 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description=desc)
     loggingOps.addCmdOptions(parser)
+    parser.add_argument("--metadata_only", action="store_true",
+                        help="check entry and experiment metadata, skipping data to speed up initial checking")
     parser.add_argument("entry_dir",
                         help="entry directory")
     return parser.parse_args()
@@ -19,7 +21,10 @@ def parse_args():
 def main(args):
     loggingOps.setupFromCmd(args)
     try:
-        entry_validate.entry_data_validate(args.entry_dir)
+        if args.metadata_only:
+            entry_validate.entry_metadata_validate(args.entry_dir)
+        else:
+            entry_validate.entry_data_validate(args.entry_dir)
     except prog_error_excepts as ex:
         handle_prog_errors(ex)
 

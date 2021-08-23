@@ -4,16 +4,20 @@ include ${testrootdir}/testing.mk
 bad_tsvs = $(wildcard input/bad_*.tsv)
 bad_tests = $(basename $(notdir ${bad_tsvs}))
 
-test: test_example test_with_NA bad_tests
+test: test_example test_example_gz test_with_NA bad_tests
 
 example_dir = ${darwindir}/iso_quant_drna_ont_darwin/WTC11_drna_ont
 test_example:
-	${lrgasp_validate_expression_matrix} ${example_dir}/expression.tsv ${example_dir}/models.gtf
+	${lrgasp_validate_expression_matrix} ${example_dir}/expression.tsv --models_gtf=${example_dir}/models.gtf
 
-test_example_gz: output/expression-matrix.tsv.gz
-	${lrgasp_validate_expression_matrix} $<
+test_example_gz: output/expression-matrix.tsv.gz output/models.gtf.gz
+	${lrgasp_validate_expression_matrix} $< --models_gtf=output/models.gtf.gz
 
-output/expression-matrix.tsv.gz: ${darwindir}/iso_quant_darwin1/drnaA/expression.tsv
+output/expression-matrix.tsv.gz: ${example_dir}/expression.tsv
+	@mkdir -p output	
+	gzip -c $< >$@
+
+output/models.gtf.gz: ${example_dir}/models.gtf
 	@mkdir -p output	
 	gzip -c $< >$@
 

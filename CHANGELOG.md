@@ -1,3 +1,6 @@
+* version 1.2.0
+  - added option to lrgasp-validate-entry to skip data validation and only check metadata for consistency
+  - lrgasp-validate-expression-matrix takes optional models GTF as an option rather than a optional positional
 
 * version 1.1.0 2021-08-16
   - Renamed kitchen_sink data category to freestyle.

@@ -85,7 +85,7 @@ def _validate_expression_experiment(experiment_md):
     except Exception as ex:
         raise LrgaspException(f"validation failed on '{models_gtf}' with '{expression_tsv}'") from ex
 
-def validate_experiment(entry_md, experiment_md):
+def validate_experiment_data(entry_md, experiment_md):
     try:
         if experiment_md.challenge_id == Challenge.iso_detect_ref:
             _validate_ref_model_experiment(experiment_md)
@@ -101,7 +101,7 @@ def validate_experiment(entry_md, experiment_md):
 def _entry_data_validate(entry_md):
     entry_metadata.load_experiments_metadata(entry_md)
     for experiment_md in entry_md.experiments:
-        validate_experiment(entry_md, experiment_md)
+        validate_experiment_data(entry_md, experiment_md)
 
 def entry_data_validate(entry_dir):
     """load and validate all metadata and data files for an entry, ensuring
@@ -111,3 +111,11 @@ def entry_data_validate(entry_dir):
         _entry_data_validate(entry_md)
     except Exception as ex:
         raise LrgaspException(f"validation of entry '{entry_md.entry_id}' failed: {entry_md.entry_json}") from ex
+
+def entry_metadata_validate(entry_dir):
+    """load and validate all metadata for an entry. This does not check data."""
+    entry_md = entry_metadata.load_dir(entry_dir)
+    try:
+        entry_metadata.load_experiments_metadata(entry_md)
+    except Exception as ex:
+        raise LrgaspException(f"validation of entry metadata '{entry_md.entry_id}' failed: {entry_md.entry_json}") from ex

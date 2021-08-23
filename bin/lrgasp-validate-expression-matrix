@@ -13,10 +13,10 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description=desc)
     loggingOps.addCmdOptions(parser)
+    parser.add_argument("--models_gtf",
+                        help="optional GTF model file")
     parser.add_argument("expression_tsv",
                         help="Expression matrix to validate")
-    parser.add_argument("models_gtf", nargs='?',
-                        help="optional GTF model file")
     return parser.parse_args()
 
 def main(args):
