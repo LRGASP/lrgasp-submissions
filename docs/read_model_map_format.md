@@ -5,7 +5,7 @@ This file is included in the experiment directory and must be named ```read_mode
 
 To better understand how each pipeline deals differently with the same initial input, it will be asked to the participants to submit a **.tsv file** that relates the starting point (the reads provided by LRGASP) to their final transcript models. This file will have two columns:
 
-* ``read_id`` It will contain the ID of the "raw" sequence, and must the provided BAM or FASTQ file.
+* ``read_id`` It will contain the ID of the "raw" sequence, and must be present in the source BAM or FASTQ file.
 * ``transcript_id`` It will show the transcript model's ID built using the read in the previous column. The transcript ID must be as it is in the GTF or FASTA submitted by the participant.
 
 If a read is not used to generate any transcript model, it may be shown in its second column a `*`. However, we should check if all the read IDs present in the initial FASTQ file are included or not in this *read-model* file.
