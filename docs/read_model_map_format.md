@@ -8,7 +8,7 @@ To better understand how each pipeline deals differently with the same initial i
 * ``read_id`` It will contain the ID of the "raw" sequence, and must be present in the source BAM or FASTQ file.
 * ``transcript_id`` It will show the transcript model's ID built using the read in the previous column. The transcript ID must be as it is in the GTF or FASTA submitted by the participant.
 
-If a read is not used to generate any transcript model, it may be shown in its second column a `*`. However, we should check if all the read IDs present in the initial FASTQ file are included or not in this *read-model* file.
+If a read is not used to generate any transcript model it may be omitted or have its transcript_id column specified as `*`.
 
 ## Example
 
