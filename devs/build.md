@@ -60,7 +60,7 @@ make test-pip
 Ensure data matrix documentation is up-to-date:
 ```
 make doc
-commit -am 'updated data matrix doc'
+git commit -am 'updated data matrix doc'
 ```
 
 ### pypitest
