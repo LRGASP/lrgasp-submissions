@@ -4,7 +4,7 @@ read-to-model map parser/validator
 import sys
 import csv
 from collections import defaultdict, namedtuple
-from lrgasp import LrgaspException, gopen
+from lrgasp import LrgaspException, gopen, existing_datafile_name
 from lrgasp.defs import validate_feature_ident
 
 csv.field_size_limit(sys.maxsize)
@@ -79,7 +79,7 @@ def _tsv_reader(fh):
 def load(model_map_tsv):
     read_model_map = ReadModelMap()
     try:
-        with gopen(model_map_tsv) as fh:
+        with gopen(existing_datafile_name(model_map_tsv)) as fh:
             for pair in _tsv_reader(fh):
                 read_model_map.add(pair)
         if len(read_model_map) == 0:

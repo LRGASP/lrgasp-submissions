@@ -1,5 +1,3 @@
 Error: validation of entry 'iso_detect_ref_darwin_drna_ont' failed: output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/entry.json
 caused by: validation of experiment 'H1_mix_drna_ont' failed: output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/experiment.json
-caused by: validation failed on 'output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/models.gtf' and 'output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/read_model_map.tsv'
-caused by: Parse of reads-to-models TSV failed: output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/read_model_map.tsv
-caused by: [Errno 2] No such file or directory: 'output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/read_model_map.tsv'
+caused by: missing file; neither compressed or uncompressed exist: output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/read_model_map.tsv.gz and output/test_bad_isoform_missing_read_model_map/iso_detect_ref_darwin_drna_ont/H1_mix_drna_ont/read_model_map.tsv

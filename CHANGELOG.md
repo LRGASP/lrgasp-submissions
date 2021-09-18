@@ -1,3 +1,6 @@
+* version 1.3.0
+  - fixed but with validating full entry containing compressed data files
+
 * version 1.2.0
   - added option to lrgasp-validate-entry to skip data validation and only check metadata for consistency
   - lrgasp-validate-expression-matrix takes optional models GTF as an option rather than a optional positional

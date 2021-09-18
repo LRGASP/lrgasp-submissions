@@ -1,5 +1,3 @@
 Error: validation of entry 'iso_quant_drna_ont_darwin' failed: output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/entry.json
 caused by: validation of experiment 'WTC11_drna_ont' failed: output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/experiment.json
-caused by: validation failed on 'output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf' with 'output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/expression.tsv'
-caused by: Parse of GTF failed: output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf
-caused by: GTF file does not exist: output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf
+caused by: missing file; neither compressed or uncompressed exist: output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf.gz and output/test_bad_quant_missing_gtf/iso_quant_drna_ont_darwin/WTC11_drna_ont/models.gtf

@@ -32,20 +32,15 @@ mkdir output/$@
 (cd ../../examples/darwin_lab && find iso_detect_de_novo_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
 endef
 
-define clone_
+define clone_iso_detect_ref_freestyle_darwin
 rm -rf output/$@
 mkdir output/$@
+(cd ../../examples/darwin_lab && find iso_detect_ref_freestyle_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
 endef
-
-define clone_
-rm -rf output/$@
-mkdir output/$@
-endef
-
 
 entries = iso_detect_ref_darwin_drna_ont iso_detect_ref_darwin_captrap_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin iso_detect_ref_freestyle_darwin
 
-test: entry_tests metadata_only_tests bad_tests
+test: entry_tests metadata_only_tests gz_tests bad_tests
 
 ##
 # full validation of each entry
@@ -55,7 +50,9 @@ entry_tests: ${entries:%=entry_test_%}
 entry_test_%:
 	${lrgasp_validate_entry} ${debug} ${darwindir}/$*
 
-
+##
+# only check metadata
+##
 metadata_only_tests: test_metadata_only_good test_metadata_only_bad
 
 test_metadata_only_good: mkout
@@ -69,6 +66,16 @@ test_metadata_only_bad: mkout
 	@echo ${lrgasp_validate_entry} --metadata output/$@/iso_detect_ref_darwin_drna_ont "(should fail)"
 	@if ! ${lrgasp_validate_entry} ${err_debug} --metadata output/$@/iso_detect_ref_darwin_drna_ont 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
+
+# compressed tests
+gz_tests:  ${entries:%=gz_test_%}
+
+gz_test_%: mkout
+	${clone_${*}}
+	find output/$@ -type f ! -name '*.json' | xargs gzip -f
+	${lrgasp_validate_entry} ${debug} output/$@/$*
+
+
 
 # bad entry tests clones examples, using hardlinks, then edits them with script that runs sed.
 # Added new edit programs adds new testss.
