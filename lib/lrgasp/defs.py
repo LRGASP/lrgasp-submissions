@@ -85,7 +85,7 @@ def validate_feature_ident(ident):
     return ident
 
 def validate_synapse_ident(ident):
-    if not re.match("[0-9]{4,30}$", ident):
+    if not re.match("^syn[0-9]{4,30}$", ident):
         raise LrgaspException(f"'{ident}' is not a valid Synapse identifier")
     return ident
 
