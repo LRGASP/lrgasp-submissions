@@ -1,3 +1,0 @@
-Error: validation of entry metadata failed: input/bad_id.json
-caused by: entry field 'team_id' is not valid, value is '123-experts'
-caused by: '123-experts' is not a valid Synapse identifier

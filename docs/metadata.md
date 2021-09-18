@@ -14,8 +14,8 @@ template is also available: [``entry.json``](../templates/entry.json).
 * ``entry_id`` - submitter-assigned [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``challenge_id`` - challenge to which this entry is being submitted.
     See [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers)
-* ``team_id`` - the Synapse *team* identifier.
-* ``team_name`` - the name of the submitting lab
+* ``team_name`` - the name of the Synapse team or Synapse user submitting the entry.  This should exactly match the 
+    name in Synapse.
 * ``experiment_ids`` - Experiment ids, which is also the directory name containing the
     experiment.  It is a [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, ``long_genome``, or ``freestyle``.

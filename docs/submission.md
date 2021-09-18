@@ -14,10 +14,9 @@ the unit of both submission and evaluation.  The *experiments* in an *entry*
 should uses as similar a set of parameters and data to allow
 for the meaningful combination of the results.
 
-When a team registers for LRGASP on [Synapse](https://www.synapse.org/#!Synapse:syn25007472/wiki/608702), they are assigned a
-[Synapse identifier](metadata-identifiers.md#synapse-identifiers), called the ``team_id``.  Other symbolic
-experiment identifiers assigned by the team and must be valid
-[symbolic identifier](metadata-identifiers.md#symbolic-identifiers), as described below.
+Symbolic experiment identifiers assigned by the team and must be valid
+[symbolic identifier](metadata-identifiers.md#symbolic-identifiers), as
+described below.
 
 The [example entries](https://github.com/LRGASP/lrgasp-submissions/tree/master/examples/darwin_lab) will be useful in understanding structure.
 

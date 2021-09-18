@@ -1,5 +1,8 @@
 * version 1.3.0
   - fixed but with validating full entry containing compressed data files
+  - remove term_id field from metadata.  This id is no longer easy to find
+    in the Synapse UI.  Instead, use team_name field.
+  - document that team_name field should have user name, if not submitting as a team.
 
 * version 1.2.0
   - added option to lrgasp-validate-entry to skip data validation and only check metadata for consistency

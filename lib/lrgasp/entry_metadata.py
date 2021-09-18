@@ -25,7 +25,6 @@ fld_notes = Field("notes", allow_empty=True, optional=True)
 entry_fields = (
     Field("entry_id", validator=validate_entry_ident),
     Field("challenge_id", Challenge),
-    Field("team_id", validator=validate_synapse_ident),
     Field("team_name"),
     Field("data_category", DataCategory),
     Field("samples", list, element_dtype=Sample),

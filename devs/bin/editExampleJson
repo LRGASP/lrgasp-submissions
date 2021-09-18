@@ -76,7 +76,7 @@ def order_edit_list(md, field, order, loose):
 
 def fix_entry_order(md, loose):
     "keep entry examples in same order as doc and template to keep them clear"
-    order = ("entry_id", "challenge_id", "team_id", "team_name", "species", "data_category",
+    order = ("entry_id", "challenge_id", "team_name", "species", "data_category",
              "samples", "library_preps", "platforms", "experiment_ids", "notes", "contacts")
     order_edit(md, order, loose)
 
