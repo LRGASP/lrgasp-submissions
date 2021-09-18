@@ -8,7 +8,7 @@ from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
 from lrgasp import experiment_metadata
 from lrgasp.defs import (Challenge, DataCategory, Sample, LibraryPrep, Platform,
-                         validate_symbolic_ident, validate_synapse_ident, validate_entry_ident,
+                         validate_symbolic_ident, validate_entry_ident,
                          challenge_desc, get_challenge_samples, get_data_category_platforms,
                          ENTRY_JSON)
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
