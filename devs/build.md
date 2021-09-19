@@ -87,7 +87,7 @@ bump2version (major|minor|patch)
 git push origin --tags
 git push
 make release
-make release-test
+make test-release
 ```
 
 

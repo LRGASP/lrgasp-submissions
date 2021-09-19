@@ -114,7 +114,7 @@ test_clean:
 define envsetup
 	@rm -rf ${testenv}/
 	mkdir -p ${testenv}
-	${PYTHON} -m virtualenv --quiet ${testenv}
+	${PYTHON} -m venv ${testenv}
 endef
 envact = source ${testenv}/bin/activate
 
@@ -148,7 +148,7 @@ test-release-testpypi:
 release: dist
 	${TWINE} upload --repository=pypi ${dist_whl} ${dist_tar}
 
-release-test:
+test-release:
 	${envsetup}
 	${envact} && cd ${testenv} && pip install --no-cache-dir ${pkgver_spec}
 	${envact} && cd tests && ${MAKE} test
