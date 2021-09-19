@@ -21,6 +21,16 @@ of a typical installation:
     pip install lrgasp-tools
 ```
 
+If you do not have the ``virtualenv`` package, either pip install it or use the 
+``venv`` package that is part of Python 3.
+
+```
+    python3 -m venv lrgasp-env
+```
+
+Note that ``venv`` maybe significantly slower in creating the environment than
+``virtualenv```.
+
 ## Validation tools
 
 Programs are provided to validate each of the required files independently.

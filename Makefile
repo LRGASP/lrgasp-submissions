@@ -114,7 +114,7 @@ test_clean:
 define envsetup
 	@rm -rf ${testenv}/
 	mkdir -p ${testenv}
-	${PYTHON} -m venv ${testenv}
+	${PYTHON} -m virtualenv ${testenv}
 endef
 envact = source ${testenv}/bin/activate
 
