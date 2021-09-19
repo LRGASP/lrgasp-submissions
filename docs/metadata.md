@@ -20,7 +20,7 @@ template is also available: [``entry.json``](../templates/entry.json).
     experiment.  It is a [symbolic identifer](metadata-identifiers.md#symbolic-identifiers) for this entry.
 * ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, ``long_genome``, or ``freestyle``.
     See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
-* ``samples`` - one or more of ``WTC11``, ``H1_mix``, ``ES``, ``blood``, or ``synthetic``.
+* ``samples`` - one or more of ``WTC11``, ``H1_mix``, ``ES``, ``blood``, ``mouse_simulation``, or ``human_simulation``.
     See [Sample identifiers](metadata-identifiers.md#sample-identifiers).
 * ``library_preps`` - one or more of ``CapTrap``,``dRNA``, ``R2C2``, or ``cDNA``, as allowed by data category.
     See [Library prep](metadata-identifiers.md#library-prep).
@@ -46,10 +46,10 @@ An empty template is also available: [``experiment.json``](../templates/experime
 * ``challenge_id`` - challenge to which this entry is being submitted, see [LRGASP Challenge identifiers](metadata-identifiers.md#challenge-identifiers). This must match the value in``entry.json``.
 * ``description`` - description of experiment
 * ``notes`` - notes (optional)
-* ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``synthetic``, see [Species identifiers](metadata-identifiers.md#species-identifiers).
+* ``species`` - one of ``human``, ``mouse``, ``manatee``, or ``simulated``, see [Species identifiers](metadata-identifiers.md#species-identifiers).
 * ``data_category`` - one of ``long_only``, ``short_only``, ``long_short``, ``long_genome``, or ``freestyle``,
     See [Experiment data categories](metadata-identifiers.md#experiment-data-categories).
-* ``samples`` - one or more of ``WTC11``, ``H1_mix``, ``ES``, ``blood``, or ``synthetic``.
+* ``samples`` - one or more of ``WTC11``, ``H1_mix``, ``ES``, ``blood``, ``mouse_simulation``, or ``human_simulation``.
     See [Sample identifiers](metadata-identifiers.md#sample-identifiers).
 * ``library_preps`` - one or more of ``CapTrap``,``dRNA``, ``R2C2``, or ``cDNA``, as allowed by data category.
     See [Library prep](metadata-identifiers.md#library-prep).

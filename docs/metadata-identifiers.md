@@ -25,7 +25,7 @@ Identifiers assigned by Synapse are in the form ```syn123456``.
 * ``human`` - taxon 9606
 * ``mouse`` - taxon 10090
 * ``manatee`` - taxon 127582
-* ``synthetic`` - generated synthetic reads
+* ``simulated`` - simulated reads
 
 ## Data categories
 
@@ -60,7 +60,8 @@ Simplified RNA sequencing platform
 * ``H1_mix`` - human H1 ES cell line mixed with human Definitive Endoderm derived from H1
 * ``ES`` - mouse Castaneus X S129/SvJae F121-9 ES cell line
 * ``blood`` - manatee whole blood
-* ``synthetic`` - generated, synthetic RNAs
+* ``mouse_simulation`` - simulated mouse RNAs
+* ``human_simulation`` - simulated human RNAs
 
 ## Public repository identifiers
 
