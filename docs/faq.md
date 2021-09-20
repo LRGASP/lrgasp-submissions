@@ -25,6 +25,10 @@ We want to make sure we collect simulated and real data results from each comput
 
 So in this scenario, you would be submitting five GTF files and five corresponding read map files for each of the five samples. This page gives an overview of the file structure for the submission that would contain subfolders for each of these samples: [https://lrgasp.github.io/lrgasp-submissions/docs/submission.html](https://lrgasp.github.io/lrgasp-submissions/docs/submission.html).
 
+## The R2C2 libraries have both size-selected and non-size-selected libraries. How do I submit results?
+
+The data from sequencing of the different library preparations were kept separately; however, the data for each bioreplicate should be combined. For example, if submitting R2C2 libraries for quantification, the data from size-selected and non-size-selected libraries for the same bioreplicate should be combined and the file accessions should be delimited with a `,` in the header of the [transcript expression matrix](https://lrgasp.github.io/lrgasp-submissions/docs/expression_matrix_format.html).
+
 ## I notice some libraries have multiple files. I also notice other oddities of the data. Are these known issues?
 
 - Please visit our [known issues](https://lrgasp.github.io/lrgasp-submissions/docs/known-issues.html) page, which highlights known issues or answers common questions about the LRGASP data.
