@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument("--dataset_json", default="/dev/stdout",
                         help="combined metadata JSON, see src/lrgasp/data_matrix.py")
     parser.add_argument("encode_jsons", nargs="+",
-                        help="per-run dumps of encode metadata")
+                        help="dumps of encode metadata")
     return parser.parse_args()
 
 def encode_id_to_acc(eid):
