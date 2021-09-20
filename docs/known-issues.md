@@ -8,3 +8,7 @@
 ## Manatee
 
 * Percentage of sequenced spike-in SIRVs is higher than expected. For example, the PacBio library has 14% of reads corresponding to SIRVs
+
+## R2C2 libraries
+
+* It was intended to keep size-selected and non-size-selected R2C2 libraries in separate files; however, they should be combined for analyses, which has caused confusion. The data for each bioreplicate should be combined for both Challenges 1 and 2.
