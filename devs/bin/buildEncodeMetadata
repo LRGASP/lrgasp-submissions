@@ -64,7 +64,7 @@ def determine_species(encode_md, sample):
 def determine_sample(encode_md):
     "map to LRGASP samples"
     biosample = encode_md.biosample_summary
-    if biosample == "Castaneus X S129/SvJae F121-9":
+    if biosample in ("Castaneus X S129/SvJae F121-9", "F121-9"):
         return Sample.ES
     elif biosample == "H1 and endodermal cell":
         return Sample.H1_mix
@@ -229,7 +229,7 @@ def build_run(encode_md):
     try:
         return parse_run(encode_md, run_acc)
     except Exception as ex:
-        rec = json.dumps(encode_md, sys.stderr, cls=SymEnumJsonEncoder, indent=4)
+        rec = json.dumps(encode_md, cls=SymEnumJsonEncoder, indent=4)
         raise LrgaspException(f"error parsing run {run_acc}\n{rec}") from ex
 
 def load_encode_run(runs, encode_json, encode_md):
