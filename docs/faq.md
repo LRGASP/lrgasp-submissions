@@ -32,3 +32,13 @@ The data from sequencing of the different library preparations were kept separat
 ## I notice some libraries have multiple files. I also notice other oddities of the data. Are these known issues?
 
 - Please visit our [known issues](https://lrgasp.github.io/lrgasp-submissions/docs/known-issues.html) page, which highlights known issues or answers common questions about the LRGASP data.
+
+## What is the plan for authorship for the LRGASP study?
+
+The LRGASP Consortium effort is being submitted as a [Registered Report](https://www.cos.io/initiatives/registered-reports). The author list of [Stage 1 of the LRGASP Registered Report](https://www.researchsquare.com/article/rs-777702/v1) consists of the LRGASP Organizers.  The Stage 2, and final, version of the manuscript will include submission participants as co-authors, primarily as "LRGASP Submission Participants".
+- “LRGASP Submission Participants” will be part of the author list in the publication. Those in the “LRGASP Submission Participants” group will have their name and affiliation included in the “Author Information” section. Authorship should be indexed in PubMed
+  - Team/lab members who contribute to the submission should be listed in the ``contacts`` section of the ``entry.json`` [metadata](https://lrgasp.github.io/lrgasp-submissions/docs/metadata.html).
+- Submitters who additionally make significant contributions to the evaluation stage will be included as named authors
+- Example authorship structure:
+  - Co-first named authors (e.g. Jane Doe, John Doe), Additional significant contributors as named authors, LRGASP Submission Participants, Co-Senior authors
+
