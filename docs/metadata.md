@@ -30,7 +30,7 @@ template is also available: [``entry.json``](../templates/entry.json).
 * ``contacts`` - an array of contacts, with the first entry considered the primary contact
   * ``name`` - name of the contact
   * ``email`` - e-mail of the contact, which can be an e-mail list
-  * ``notes`` - notes about the contact (optional)
+  * ``notes`` - notes about the contact (optional). Institutional information can be included here.
 
 ## ``experiment.json``
 
