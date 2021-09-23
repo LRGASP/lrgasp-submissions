@@ -2,9 +2,9 @@
 
 Data was simulated using the following tools:
 
-- [IsoSeqSim](https://github.com/yunhaowang/IsoSeqSim) for Illumina paired-end data
-- [Trans-NanoSim](https://github.com/bcgsc/NanoSim) for PacBio CCS data
-- [RSEM simulator](http://deweylab.biostat.wisc.edu/rsem/README.html) for ONT cDNA/dRNA data
+- [RSEM simulator](http://deweylab.biostat.wisc.edu/rsem/README.html) for Illumina paired-end data
+- [IsoSeqSim](https://github.com/yunhaowang/IsoSeqSim) for PacBio CCS data
+- [Trans-NanoSim](https://github.com/bcgsc/NanoSim) for ONT cDNA/dRNA data
 
 Transcripts were generated with the same [reference genomes and annotations](reference-genomes.md)
 that are used for the LRGASP challenge.
