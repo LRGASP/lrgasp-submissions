@@ -78,7 +78,7 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
 
 ### Requirements for Challenge 3
 
-![Challenge 3 entry diagram](challenge_3_entries.png)
+![Challenge 3 entry diagram](challenge_3_entries_v2.png)
 
 * At least one *experiment* must be supplied for each *sample* available for a given library prep and sequencing platform combination that is selected. Mouse samples will have biological replicates that should be used for the entry. Manatee samples only have cDNA library prep type and sequenced on Illumina, ONT, and PacBio.
 * For similar reasons as described above, the data used for a given experiment must fit in one of the following data categories:
