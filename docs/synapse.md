@@ -54,6 +54,9 @@ and let us know you have made changes.
 
 ## Submit entry to LRGASP
 
+Before submitting your project, change the *Project Sharing Settings*  to give *Can Download* access
+to "LRGASP Evaluators".
+
 To submit to LRGASP, go to [https://www.synapse.org/LRGASP](https://www.synapse.org/LRGASP) and
 click *Submit to an LRGASP Challenge*.  In the window that opens, click *Find Entity* and
 select the entry directory to submit.  Please ensure that the entry directory is select,
