@@ -70,6 +70,7 @@ git commit -am 'updated data matrix doc'
 
 Test without committing version number:
 ```
+git pull
 bump2version --allow-dirty --no-commit --no-tag (major|minor|patch)
 make release-testpypi
 make test-release-testpypi
@@ -83,11 +84,12 @@ a slight delay in index update.
 
 
 ```
+git pull
 bump2version (major|minor|patch)
 git push origin --tags
 git push
 make release
-make test-release
+make test-release -j 32 -O
 ```
 
 
