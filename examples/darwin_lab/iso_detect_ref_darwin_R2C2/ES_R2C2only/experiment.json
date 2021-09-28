@@ -1,0 +1,40 @@
+{
+    "experiment_id": "ES_R2C2only",
+    "challenge_id": "iso_detect_ref",
+    "description": "Human ES R2C2only",
+    "notes": "-R3 -I 150 -C PC",
+    "species": "mouse",
+    "data_category": "long_only",
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "R2C2"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "libraries": [
+        "ENCFF513AEK",
+        "ENCFF824JVI",
+        "ENCFF104DMI",
+        "ENCFF850MIB",
+        "ENCFF412UHU",
+        "ENCFF595TIH",
+        "ENCFF797PJV",
+        "ENCFF055REA",
+        "ENCFF598YQO",
+        "ENCFF742GCO",
+        "ENCFF717LLT",
+        "ENCFF335WMC"
+    ],
+    "software": [
+        {
+            "name": "Mandalorion",
+            "description": "Mandalorion generates isoform level transcriptomes in the form of consensus sequence fasta and gtf files",
+            "version": "3.6.1",
+            "url": "https://github.com/christopher-vollmers/Mandalorion",
+            "config": "default parameters except -R 3, -I 150 -C PC"
+        }
+    ]
+}

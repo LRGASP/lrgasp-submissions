@@ -1,3 +1,6 @@
+* version 1.4.0
+  - allow R2C2_subreads format library files
+
 * version 1.3.0
   - fixed but with validating full entry containing compressed data files
   - remove term_id field from metadata.  This id is no longer easy to find
