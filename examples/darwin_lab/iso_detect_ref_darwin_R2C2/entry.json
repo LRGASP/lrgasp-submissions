@@ -1,0 +1,28 @@
+{
+    "entry_id": "iso_detect_ref_darwin_R2C2",
+    "challenge_id": "iso_detect_ref",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11",
+        "H1_mix",
+        "ES"
+    ],
+    "library_preps": [
+        "R2C2"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "experiment_ids": [
+        "ES_R2C2only",
+        "H1_mix_R2C2only",
+        "WTC11_R2C2only"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

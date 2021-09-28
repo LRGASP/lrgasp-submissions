@@ -38,7 +38,13 @@ mkdir output/$@
 (cd ../../examples/darwin_lab && find iso_detect_ref_freestyle_darwin | cpio --quiet -pduml ../../tests/complete/output/$@/)
 endef
 
-entries = iso_detect_ref_darwin_drna_ont iso_detect_ref_darwin_captrap_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin iso_detect_ref_freestyle_darwin
+define clone_iso_detect_ref_darwin_R2C2
+rm -rf output/$@
+mkdir output/$@
+(cd ../../examples/darwin_lab && find iso_detect_ref_darwin_R2C2 | cpio --quiet -pduml ../../tests/complete/output/$@/)
+endef
+
+entries = iso_detect_ref_darwin_drna_ont iso_detect_ref_darwin_captrap_ont iso_quant_drna_ont_darwin iso_detect_de_novo_darwin iso_detect_ref_freestyle_darwin iso_detect_ref_darwin_R2C2
 
 test: entry_tests metadata_only_tests gz_tests bad_tests
 

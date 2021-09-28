@@ -44,7 +44,7 @@ experiment_software_fields = (
     fld_notes,
 )
 
-valid_file_content = frozenset(["reads", "subreads", "nanopore_signal"])
+valid_file_content = frozenset(["reads", "subreads", "nanopore_signal", "R2C2_subreads"])
 
 def get_extra_libraries(experiment_md):
     """get the extra_libraries field, or empty if not specified"""

@@ -1,0 +1,40 @@
+{
+    "experiment_id": "WTC11_R2C2only",
+    "challenge_id": "iso_detect_ref",
+    "description": "Human WTC11 R2C2only",
+    "notes": "-R3 -I 150 -C PC",
+    "species": "human",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11"
+    ],
+    "library_preps": [
+        "R2C2"
+    ],
+    "platforms": [
+        "ONT"
+    ],
+    "libraries": [
+        "ENCFF089IVT",
+        "ENCFF153SIE",
+        "ENCFF377IEH",
+        "ENCFF548RZB",
+        "ENCFF997UNC",
+        "ENCFF489PQQ",
+        "ENCFF542VPN",
+        "ENCFF679LUJ",
+        "ENCFF357UQD",
+        "ENCFF178BYM",
+        "ENCFF063ASB",
+        "ENCFF408XXR"
+    ],
+    "software": [
+        {
+            "name": "Mandalorion",
+            "description": "Mandalorion generates isoform level transcriptomes in the form of consensus sequence fasta and gtf files",
+            "version": "3.6.1",
+            "url": "https://github.com/christopher-vollmers/Mandalorion",
+            "config": "default parameters except -R 3, -I 150, and -C PC"
+        }
+    ]
+}
