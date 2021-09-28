@@ -1,5 +1,6 @@
 * version 1.4.0
   - allow R2C2_subreads format library files
+  - add instructions to change Synapse project to allow download by "LRGASP Evaluators"
 
 * version 1.3.0
   - fixed but with validating full entry containing compressed data files
