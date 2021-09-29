@@ -11,7 +11,7 @@ requirements = [
 
 setuptools.setup(
     name = 'lrgasp-tools',
-    version = '1.5.0',
+    version = '1.6.0',
     description = "LRGASP tools",
     long_description = "LRGASP tools for submission",
     author = "Mark Diekhans",

@@ -6,7 +6,7 @@ import logging
 from collections.abc import Iterable
 from lrgasp import loggingOps
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 
 class LrgaspException(Exception):
     pass
