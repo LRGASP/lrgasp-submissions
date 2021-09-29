@@ -20,7 +20,7 @@ The standard GTF fields have the following restrictions:
 * start - Standard, one-based start position.
 * end - Standard, one-based end position.
 * score - Ignored.
-* strand - Must be specified as `+`, `-` or `.` on `exon` features. Other feature types may be validated.
+* strand - Must be specified as `+`, or `-` on `exon` features. A strand of `.` is not allowed.  Other feature types may be validated.
 * frame - Should be `.` on `exon` features, but not valid. Other feature types may be validated but are not required.
 * attributes:
   * `transcript_id` - Required for all `exon` features and assigned by the submitter.

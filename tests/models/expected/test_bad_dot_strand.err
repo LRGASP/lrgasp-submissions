@@ -1,0 +1,2 @@
+Error: Parse of GTF failed: input/bad_dot_strand.gtf
+caused by: strand must be '+' or '-', got '.': exon at chr1:12613-12721

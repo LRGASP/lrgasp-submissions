@@ -1,3 +1,6 @@
+* version 1.5.0
+  - disallow strand of `.` in GTF files, as validation tools can not handle unspecified strand.
+
 * version 1.4.0
   - allow R2C2_subreads format library files
   - add instructions to change Synapse project to allow download by "LRGASP Evaluators"

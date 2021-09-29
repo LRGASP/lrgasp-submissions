@@ -76,8 +76,10 @@ def validate_exon(exon):
         raise GtfException("must specify gene_id attribute: " + rec_desc(exon))
     if exon.start > exon.end:
         raise GtfException("start must be <= end: " + rec_desc(exon))
-    if exon.strand not in ('+', '-', '.'):
-        raise GtfException("strand must be '+', '-', or '.': " + rec_desc(exon))
+    if exon.strand not in ('+', '-'):
+        # '.' is converted to 'nan'
+        got_strand = '.' if exon.strand == 'nan' else exon.strand
+        raise GtfException(f"strand must be '+' or '-', got '{got_strand}': " + rec_desc(exon))
 
 def validate_exons(exons):
     if len(exons) == 0:
