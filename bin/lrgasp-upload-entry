@@ -26,10 +26,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     add_login_args(parser)
     loggingOps.addCmdOptions(parser)
-    parser.add_argument("entry_dir",
-                        help="entry directory")
     parser.add_argument("project_spec",
-                        help="name or synapse id of Synapes project where data is to be uploaded")
+                        help="name or synapse id of Synaapes project where data is to be uploaded. "
+                        "this may include sub-directories that are create as needed")
+    parser.add_argument("entry_dirs", nargs='+',
+                        help="entry directories")
     return parser.parse_args()
 
 def entry_tree_add_experiment(entry_tree, entry_node, experiment_md):
@@ -59,6 +60,20 @@ def load_entry(entry_dir):
     entry_metadata.load_experiments_metadata(entry_md)
     entry_tree = build_entry_tree(entry_md)
     return entry_md, entry_tree
+
+def ensure_dir(syn, parent_synid, dirname):
+    dir_synid = syn.findEntityId(dirname, parent_synid)
+    if dir_synid is None:
+        dir_synid = syn.store(synapseclient.Folder(dirname, parent_synid))
+    return dir_synid
+
+def recursive_make_dir(syn, parent_synid, dirpath):
+    "returns synid of lowest directory in path"
+    parts = dirpath.split('/', 1)
+    dir_synid = ensure_dir(syn, parent_synid, parts[0])
+    if len(parts) > 1:
+        dir_synid = recursive_make_dir(syn, dir_synid, parts[1])
+    return dir_synid
 
 def get_syn_upload_project(syn, project_synid):
     "Make sure folder exist and is writable. Return the entity"
@@ -96,24 +111,39 @@ def recursive_upload(syn, entry_md, parent_synid, fnode):
     else:
         upload_file(syn, entry_md, parent_synid, fnode)
 
-def upload_entry_data(syn, entry_md, entry_tree, project_entity):
-    recursive_upload(syn, entry_md, project_entity, entry_tree.root)
-
-def upload_entry(syn, entry_dir, project_synid):
-    project_entity = get_syn_upload_project(syn, project_synid)
+def upload_entry(syn, entry_dir, parent_synid):
     entry_md, entry_tree = load_entry(entry_dir)
-    upload_entry_data(syn, entry_md, entry_tree, project_entity)
+    recursive_upload(syn, entry_md, parent_synid, entry_tree.root)
+
+def parse_project_spec(syn, project_spec):
+    parts = project_spec.split('/', 1)
+    if parts[0].startswith('syn'):
+        project_synid = parts[0]
+    else:
+        project_synid = get_project_by_name(syn, parts[0])
+    return (project_synid,
+            parts[1] if len(parts) > 1 else None)
+
+def get_upload_parent(syn, project_spec):
+    "get directory under project where upload should happen"
+
+    project_synid, project_dirpath = parse_project_spec(syn, project_spec)
+
+    # make sure project exists and is writable, create sub-directories of project as needed
+    get_syn_upload_project(syn, project_synid)
+    parent_synid = project_synid
+    if project_dirpath is not None:
+        parent_synid = recursive_make_dir(syn, parent_synid, project_dirpath)
+    return parent_synid
+
 
 def main(args):
     loggingOps.setupFromCmd(args)
     try:
         syn = syn_connect(args)
-        if args.project_spec.startswith('syn'):
-            project_synid = args.project_spec
-        else:
-            project_synid = get_project_by_name(syn, args.project_spec)
-
-        upload_entry(syn, args.entry_dir, project_synid)
+        parent_synid = get_upload_parent(syn, args.project_spec)
+        for entry_dir in args.entry_dirs:
+            upload_entry(syn, entry_dir, parent_synid)
     except prog_error_syn_excepts as ex:
         handle_prog_errors(ex)
 

@@ -40,12 +40,20 @@ avoid entering the password each time.
   synapse login -u cdarwin@cam.ac.uk  --remember-me
 ```
 
-Upload the entry to your lab's project either by name or Synapse id:
+Upload the all of your labs entries for a given challenge using your lab's project either by name or Synapse id.
 
 ```
-  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin_drna_ont "Darwin LRGASP Project"
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk "Darwin LRGASP Project" results/darwin_lab/iso_detect_ref_darwin_drna_ont results/darwin_lab/iso_detect_ref_darwin_captrap_ont
 
-  lrgasp-upload-entry -u cdarwin@cam.ac.uk results/darwin_lab/iso_detect_ref_darwin_drna_ont syn123456
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk syn123456 results/darwin_lab/iso_detect_ref_darwin_drna_ont results/darwin_lab/iso_detect_ref_darwin_captrap_ont
+```
+
+An optional sub-directory maybe specified by appending it to the project name or id:
+
+```
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk "Darwin LRGASP Project"/darwin_data results/darwin_lab/iso_detect_ref_darwin_drna_ont results/darwin_lab/iso_detect_ref_darwin_captrap_ont
+
+  lrgasp-upload-entry -u cdarwin@cam.ac.uk syn123456/darwin_data results/darwin_lab/iso_detect_ref_darwin_drna_ont results/darwin_lab/iso_detect_ref_darwin_captrap_ont
 ```
 
 If you make changes to the entry, just rerun the upload.  If the uploaded entry has already been

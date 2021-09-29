@@ -56,7 +56,7 @@ These tools are provide to assist submission of entries to LRGASP challenges to 
 See [Uploading to Synapse and submitting to LRGASP](synapse.md) for details on the submission
 process.
 
-- `lrgasp-upload-entry` - uploads or updates an [LRGASP entry](submission.md/#entry_structure) metadata and data to the participates private project.
+- `lrgasp-upload-entry` - uploads updates one or more [LRGASP entries](submission.md/#entry_structure) metadata and data to the participates private project.
   This does not submit the entry for evaluation, which must be done in a separate step.
 - `lrgasp-synapse-download` - download file hierarchies from Synapse.  While mainly intended for LRGASP organizers,
   this may also be used by participates to download their entries if they need to review them.

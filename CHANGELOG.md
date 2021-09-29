@@ -1,3 +1,7 @@
+* version 1.6.0
+  - add ability to have``lrgasp-upload-entry`` upload multiple entries in one call.  Note that this changes the order of the arguments.
+  - add ability to specify a sub-directory of a project to``lrgasp-upload-entry`` 
+  
 * version 1.5.0
   - disallow strand of `.` in GTF files, as validation tools can not handle unspecified strand.
 

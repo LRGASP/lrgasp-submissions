@@ -12,6 +12,8 @@ run_download = ${lrgasp_synapse_download} --test_config_json=test-conf.json ${de
 ref_ont_drna_entry = ${darwindir}/iso_detect_ref_darwin_drna_ont
 upload_proj_name = 'LRPLAYER Submit'
 
+debug = 
+
 .PHONEY: test
 ifeq ($(wildcard test-conf.json),)
 test:
@@ -23,7 +25,7 @@ endif
 upload_tests: test_upload_bad_name test_upload_ok
 
 test_upload_bad_name: mkout
-	if ! ${run_upload_entry} ${ref_ont_drna_entry} fred 2>output/$@.err ; ${should_fail}
+	if ! ${run_upload_entry} ${debug} fred ${ref_ont_drna_entry} 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
 ##
@@ -31,7 +33,7 @@ test_upload_bad_name: mkout
 ##
 
 # function to link input tree, less .emacs.bak files
-link_entry = (cd ${darwindir} && find iso_detect_ref_darwin_drna_ont | fgrep -v .emacs.bak | cpio --quiet -pduml ../../tests/submit/$(1))
+link_entry = (cd ${darwindir} && git ls-files iso_detect_ref_darwin_drna_ont iso_detect_ref_darwin_captrap_ont | cpio --quiet -pduml ../../tests/submit/$(1))
 
 # clean entry
 test_upload_ok: mkout
@@ -41,9 +43,9 @@ test_upload_ok: mkout
 	# remove existing synapse data
 	bin/clean-test-project --test_config_json=test-conf.json ${upload_proj_name}
 	# upload, download, and compare
-	${run_upload_entry} output/$@.up/iso_detect_ref_darwin_drna_ont ${upload_proj_name}
-	${run_download} ${upload_proj_name}/iso_detect_ref_darwin_drna_ont output/$@.down
-	diff -r output/$@.up output/$@.down
+	${run_upload_entry} ${debug} ${upload_proj_name}/darwin_stuff output/$@.up/iso_detect_ref_darwin_drna_ont output/$@.up/iso_detect_ref_darwin_captrap_ont
+	${run_download} ${upload_proj_name}/darwin_stuff output/$@.down
+	diff -r output/$@.up output/$@.down/darwin_stuff
 
 
 clean:
