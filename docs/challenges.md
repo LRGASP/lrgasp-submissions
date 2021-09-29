@@ -55,7 +55,7 @@ All replicates must be used in each experiment. For Challenge 1, different pipel
 
 Each team can submit multiple entries for each challenge; however, they can only submit one entry per challenge + data type + library prep + sequencing platform combination. This is to encourage tool development that is robust to different library preps and sequencing platforms, but prevent multiple entries that are subtle parameter changes.
 
-For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read. 
+For Challenge 1, the submitted GTF file should only contain transcripts that have been assigned a read.
 
 * The type of platform and libraries preparation method used in a given *experiment*, except for *freestyle* experiments, is limited to data from a single library preparation method plus sequencing technology (*long-only*).  LRGASP Illumina short-read data of the same sample may optionally be used in an experiment with the LRGASP long-read data (*long and short*)
   * Illumina cDNA - *short-only*
@@ -73,7 +73,7 @@ For Challenge 1, the submitted GTF file should only contain transcripts that hav
 
 * Challenge 2 must report replicate quantification separately in the [expression matrix](expression_matrix_format.md).
 
-* Due to the challenges of isoform-level quantification and the lack of a gold standard, we devised a mixture sample, `H1_mix`, in which an undisclosed ratio of two samples is mixed before sequencing. For validation, we sequenced `H1` and `endodermal cell` (derived from H1) samples individually to establish the isoforms present in only one or the other sample before mixing. In essence, the pre-mixed sample represents the “ground truth” of isoform expression before the mix. After the close of LRGASP submissions on October 1, the `H1` and `endodermal cell` data will be released. 
+* Due to the challenges of isoform-level quantification and the lack of a gold standard, we devised a mixture sample, `H1_mix`, in which an undisclosed ratio of two samples is mixed before sequencing. For validation, we sequenced `H1` and `endodermal cell` (derived from H1) samples individually to establish the isoforms present in only one or the other sample before mixing. In essence, the pre-mixed sample represents the “ground truth” of isoform expression before the mix. After the close of LRGASP submissions on October 1, the `H1` and `endodermal cell` data will be released.
   * Participants of Challenge 2, will need to provide transcript quantification from these additional datasets **using the same GTF and same computational pipeline from the original submission**, i.e., the GTF and pipeline used to quantify `H1_mix`. Libraries and computational pipelines can then be evaluated based on how well the transcript quantification in the `H1_mix` sample represents the expected ratios determined from quantification from the individual cell lines, `H1` and `endodermal cell`. These submissions will be due 1 month after the main close of submissions, **November 1**.
 
 ### Requirements for Challenge 3

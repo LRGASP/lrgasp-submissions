@@ -21,7 +21,7 @@ of a typical installation:
     pip install lrgasp-tools
 ```
 
-If you do not have the ``virtualenv`` package, either pip install it or use the 
+If you do not have the ``virtualenv`` package, either pip install it or use the
 ``venv`` package that is part of Python 3.
 
 ```
