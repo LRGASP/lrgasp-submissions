@@ -8,6 +8,7 @@
 ## Manatee
 
 * Percentage of sequenced spike-in SIRVs is higher than expected. For example, the PacBio library has 14% of reads corresponding to SIRVs
+* The ONT cDNA and PacBio cDNA data from size selected and non-size selected libraries that should be combined and included in the submission. It is up to the submitter how they decide to combine the information, e.g. just merge the reads or treat size-selected and non-size selected differently during the processing.
 
 ## R2C2 libraries
 
