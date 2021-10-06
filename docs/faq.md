@@ -29,6 +29,10 @@ So in this scenario, you would be submitting five GTF files and five correspondi
 
 The data from sequencing of the different library preparations were kept separately; however, the data for each bioreplicate should be combined. For example, if submitting R2C2 libraries for quantification, the data from size-selected and non-size-selected libraries for the same bioreplicate should be combined and the file accessions should be delimited with a `,` in the header of the [transcript expression matrix](https://lrgasp.github.io/lrgasp-submissions/docs/expression_matrix_format.html).
 
+## The manatee samples have 2 PacBio and 2 ONT runs (size selected and normal, but both cDNA). Do you know if I should make 4 submissions for those or combine size-selected with normal ones?
+
+Long-read sequencing platforms should not be combined unless the submission is "freestyle". For the manatee submissions, the data from size selected and non-size selected libraries should be combined and included in the submission. It is up to the submitter how they decide to combine the information, e.g. just merge the reads or treat size-selected and non-size selected differently during the processing.
+
 ## I notice some libraries have multiple files. I also notice other oddities of the data. Are these known issues?
 
 - Please visit our [known issues](https://lrgasp.github.io/lrgasp-submissions/docs/known-issues.html) page, which highlights known issues or answers common questions about the LRGASP data.
