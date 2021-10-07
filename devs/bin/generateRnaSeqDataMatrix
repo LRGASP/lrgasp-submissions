@@ -59,18 +59,15 @@ def make_replicate_cols(replicate_md):
 
 def make_file_cols(file_md, for_markdown):
     def fmt_link(uri):
+        # synapse files can't have a URL
         if uri in (None, ""):
             return ''
-        if not for_markdown:
+        elif not for_markdown:
             return uri  # unchanged
+        elif uri.find("https://www.encodeproject.org") >= 0:
+            return f"[ENCODE]({uri})"
         else:
-            if uri.find("https://www.encodeproject.org") >= 0:
-                name = "ENCODE"
-            elif uri.find("synpase.org/") >= 0:
-                name = "Synpase"
-            else:
-                raise LrgaspException(f"bug: don't know location of '{uri}'")
-            return f"[{name}]({uri})"
+            return uri  # unchanged
 
     if file_md.paired_file is not None:
         paired_with = file_md.paired_file.file_acc

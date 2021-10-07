@@ -1,3 +1,9 @@
+* version 1.7.0
+   - It was discovered that the Synapse ids for the simulated data in the
+     data matrix were for the staging project, not the released Synapse ids.
+     The validation rules have been change to allow use of either the staging
+     or released synapse ids.
+   
 * version 1.6.0
   - add ability to have``lrgasp-upload-entry`` upload multiple entries in one call.  Note that this changes the order of the arguments.
   - add ability to specify a sub-directory of a project to``lrgasp-upload-entry`` 
