@@ -1,0 +1,34 @@
+{
+    "experiment_id": "ES_illumina",
+    "challenge_id": "iso_detect_ref",
+    "description": "Transcript models for mouse ES Illumina cDNA sequenceing",
+    "notes": "very happy with this",
+    "species": "mouse",
+    "data_category": "short_only",
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina"
+    ],
+    "libraries": [
+        "ENCFF521IDK",
+        "ENCFF006WNS",
+        "ENCFF089PFT",
+        "ENCFF914YPT",
+        "ENCFF696TCH",
+        "ENCFF751FTE"
+    ],
+    "software": [
+        {
+            "name": "LRModel",
+            "description": "LRModel is a tool building genomic transcript models from long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRModel",
+            "config": "LRModel used default parameters"
+        }
+    ]
+}

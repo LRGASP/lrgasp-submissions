@@ -3,6 +3,7 @@ Simplified GTF parser/validator
 """
 import numpy as np
 import warnings
+import lrgasp.tame_pandas  # noqa: F401
 from gtfparse import read_gtf, ParsingError
 from lrgasp import LrgaspException
 

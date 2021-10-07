@@ -1,0 +1,32 @@
+{
+    "entry_id": "iso_detect_ref_darwin_illumina",
+    "challenge_id": "iso_detect_ref",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "short_only",
+    "samples": [
+        "WTC11",
+        "H1_mix",
+        "ES",
+        "human_simulation",
+        "mouse_simulation"
+    ],
+    "library_preps": [
+        "cDNA"
+    ],
+    "platforms": [
+        "Illumina"
+    ],
+    "experiment_ids": [
+        "ES_illumina",
+        "H1_mix_illumina",
+        "human_sim_illumina",
+        "mouse_sim_illumina",
+        "WTC11_illumina"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

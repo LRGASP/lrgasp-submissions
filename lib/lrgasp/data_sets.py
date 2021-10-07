@@ -165,18 +165,34 @@ def _pair_files(file_mds):
             paired_files.append(p1)
     return paired_files
 
+def _stage_hack(run_md):
+    #FIXME: testing hack, map back to stage values
+    def edit_stage(md):
+        if "run_acc_stage" in md:
+            md.run_acc = md.run_acc_stage
+        if "file_acc_stage" in md:
+            md.file_acc = md.file_acc_stage
+        if "paired_with_stage" in md:
+            md.paired_with = md.paired_with_stage
+    edit_stage(run_md)
+    for rep in run_md.replicates:
+        edit_stage(rep)
+        for fil in rep.files:
+            edit_stage(fil)
+
 def _edit_run(run_md):
     """Modify deserialized run. Link paired end files and convert biosample_accs
     to a sorted tuple"""
+    _stage_hack(run_md)
     for rep in run_md.replicates:
         rep.files = _pair_files(rep.files)
         rep.biosample_accs = tuple(sorted(rep.biosample_accs))
-    return run_md
 
 def _load_lrgasp_rna_seq_metadata_file(rna_seq_md, metadata_json):
     with open(metadata_json) as fh:
         for run_md in json.load(fh, object_pairs_hook=ObjDict):
-            rna_seq_md.add(_edit_run(run_md))
+            _edit_run(run_md)
+            rna_seq_md.add(run_md)
 
 def _load_lrgasp_rna_seq_metadata_files():
     "load of all metadata files when not cached"

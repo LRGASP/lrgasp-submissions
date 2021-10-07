@@ -3,7 +3,7 @@ expression matrix parser/validator
 """
 import csv
 import numpy as np
-import pandas as pd
+from lrgasp.tame_pandas import pandas as pd
 from lrgasp import LrgaspException
 from lrgasp import gopen, iter_to_str
 from lrgasp.defs import validate_feature_ident

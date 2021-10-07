@@ -2,7 +2,8 @@
     {
         "species": "mouse",
         "sample": "mouse_simulation",
-        "run_acc": "syn25591622",
+        "run_acc": "syn25683381",
+        "run_acc_stage": "syn25591622",
         "description": "LRGASP Mouse PacBio simulated data",
         "library_prep": "cDNA",
         "platform": "PacBio",
@@ -15,17 +16,18 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25591622",
+                        "file_acc": "syn25683381",
+                        "file_acc_stage": "syn25591622",
                         "file_type": "fasta",
-                        "url": "",
+                        "url": "mouse.PacBio.simulated.fasta.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "2c71488b4602547fff8a9ef6a6f6d033",
-                        "run_acc": "syn25591622",
+                        "run_acc": "syn25683381",
+                        "run_acc_stage": "syn25591622",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
-                        "paired_end": null,
-                        "paired_with": null
+                        "paired_end": null
                     }
 		]
 	    }
@@ -34,7 +36,8 @@
     {
         "species": "mouse",
         "sample": "mouse_simulation",
-        "run_acc": "syn25591653",
+        "run_acc": "syn25683380",
+        "run_acc_stage": "syn25591653",
         "description": "LRGASP Mouse ONT dRNA simulated data",
         "library_prep": "dRNA",
         "platform": "ONT",
@@ -47,17 +50,18 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25591653",
+                        "file_acc": "syn25683380",
+                        "file_acc_stage": "syn25591653",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "mouse.ONT.simulated.fq.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "faed34ccc9f8e4977a4ee6f05b72131c",
-                        "run_acc": "syn25591653",
+                        "run_acc": "syn25683380",
+                        "run_acc_stage": "syn25591653",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
-                        "paired_end": null,
-                        "paired_with": null
+                        "paired_end": null
                     }
 		]
 	   }
@@ -66,7 +70,8 @@
     {
         "species": "mouse",
         "sample": "mouse_simulation",
-        "run_acc": "syn25591436",
+        "run_acc": "syn25683378",
+        "run_acc_stage": "syn25591436",
         "description": "LRGASP Mouse Illumina simulated data",
         "library_prep": "cDNA",
         "platform": "Illumina",
@@ -79,30 +84,36 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25591503",
+                        "file_acc": "syn25683378",
+                        "file_acc_stage": "syn25591503",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "mouse.Illumina.simulated_1.fq.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "34c9d6b7039e3a05cbd29aac2e9d195a",
-                        "run_acc": "syn25591436",
+                        "run_acc": "syn25683378",
+                        "run_acc_stage": "syn25591436",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
                         "paired_end": "1",
-                        "paired_with": "syn25591548"
+                        "paired_with": "syn25683379",
+                        "paired_with_stage": "syn25591548"
                     },
                     {
-                        "file_acc": "syn25591548",
+                        "file_acc": "syn25683379",
+                        "file_acc_stage": "syn25591548",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "mouse.Illumina.simulated_2.fq.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "4c7faad1acb282cce2a6f525ce26bc3f",
-                        "run_acc": "syn25591436",
+                        "run_acc": "syn25683378",
+                        "run_acc_stage": "syn25591436",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
                         "paired_end": "2",
-                        "paired_with": "syn25591503"
+                        "paired_with": "syn25683378",
+                        "paired_with_stage": "syn25591503"
                     }
                 ]
             }
@@ -111,7 +122,8 @@
     {
         "species": "human",
         "sample": "human_simulation",
-        "run_acc": "syn25591693",
+        "run_acc": "syn25683376",
+        "run_acc_stage": "syn25591693",
         "description": "LRGASP Human PacBio simulated data",
         "library_prep": "cDNA",
         "platform": "PacBio",
@@ -124,17 +136,18 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25591693",
+                        "file_acc": "syn25683376",
+                        "file_acc_stage": "syn25591693",
                         "file_type": "fasta",
-                        "url": "",
+                        "url": "human.PacBio.simulated.fasta.gz",
                         "s3_uri": "",
                         "file_size": "",
                         "md5sum": "b8e80a82d96209dbe51064d23a7b6250",
-                        "run_acc": "syn25591693",
+                        "run_acc": "syn25683376",
+                        "run_acc_stage": "syn25591693",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
-                        "paired_end": null,
-                        "paired_with": null
+                        "paired_end": null
 
                     }
                 ]
@@ -144,7 +157,8 @@
     {
         "species": "human",
         "sample": "human_simulation",
-        "run_acc": "syn25604221",
+        "run_acc": "syn25683375",
+        "run_acc_stage": "syn25604221",
         "description": "LRGASP Human ONT cDNA simulated data",
         "library_prep": "cDNA",
 	"platform": "ONT",
@@ -157,17 +171,18 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25604221",
+                        "file_acc": "syn25683375",
+                        "file_acc_stage": "syn25604221",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "human.ONT.simulated.fq.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "cccaf1d5cc242d24c4c6bdb296059cc3",
-                        "run_acc": "syn25604221",
+                        "run_acc": "syn25683375",
+                        "run_acc_stage": "syn25604221",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
-                        "paired_end": null,
-                        "paired_with": null
+                        "paired_end": null
 
                     }
                 ]
@@ -177,7 +192,8 @@
     {
         "species": "human",
         "sample": "human_simulation",
-        "run_acc": "syn25591443",
+        "run_acc": "syn25683372",
+        "run_acc_stage": "syn25591443",
         "description": "LRGASP Human Illumina simulated data",
         "library_prep": "cDNA",
         "platform": "Illumina",
@@ -190,30 +206,36 @@
                 "size_range": null,
                 "files": [
                     {
-                        "file_acc": "syn25591675",
+                        "file_acc": "syn25683372",
+                        "file_acc_stage": "syn25591675",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "human.Illumina.simulated_1.fq.gz",
                         "s3_uri": "",
                         "file_size": "" ,
                         "md5sum": "b7c4468cbcb19193851d4f396556d0a5",
-                        "run_acc": "syn25591443",
+                        "run_acc": "syn25683372",
+                        "run_acc_stage": "syn25591443",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
                         "paired_end": 1,
-                        "paired_with": "syn25591686"
+                        "paired_with": "syn25683373",
+                        "paired_with_stage": "syn25591686"
                     },
                     {
-                        "file_acc": "syn25591686",
+                        "file_acc": "syn25683373",
+                        "file_acc_stage": "syn25591686",
                         "file_type": "fastq",
-                        "url": "",
+                        "url": "human.Illumina.simulated_2.fq.gz",
                         "s3_uri": "",
                         "file_size": "",
                         "md5sum": "53b52491347f7d7d6bb47ab3a6a09922",
-                        "run_acc": "syn25591443",
+                        "run_acc": "syn25683372",
+                        "run_acc_stage": "syn25591443",
                         "biological_replicate_number": 1,
                         "output_type": "reads",
                         "paired_end": 2,
-                        "paired_with": "syn25591675"
+                        "paired_with": "syn25683372",
+                        "paired_with_stage": "syn25591675"
                     }
                 ]
             }
