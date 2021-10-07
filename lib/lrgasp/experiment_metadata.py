@@ -10,7 +10,7 @@ from lrgasp.defs import Repository, Species, Challenge, DataCategory, Sample, Li
 from lrgasp.defs import validate_symbolic_ident, is_simulation, challenge_desc, get_challenge_samples
 from lrgasp.defs import MODELS_GTF, READ_MODEL_MAP_TSV, DE_NOVO_RNA_FASTA, EXPRESSION_TSV
 from lrgasp.metadata_validate import Field, check_from_defs, validate_url
-from lrgasp.data_sets import get_lrgasp_rna_seq_metadata, get_run_type
+from lrgasp.data_sets import get_lrgasp_rna_seq_metadata, get_run_type, run_md_desc, file_md_desc
 
 fld_notes = Field("notes", allow_empty=True, optional=True)
 
@@ -68,11 +68,11 @@ def get_libraries_file_metadata(rna_seq_md, experiment_md):
 def library_validate(experiment_md, rna_seq_md, file_md):
     run_md = rna_seq_md.get_run_by_acc(file_md.run_acc)
     if run_md.species != experiment_md.species:
-        raise LrgaspException(f"LRGASP RNA-Seq library '{run_md.run_acc}' file '{file_md.file_acc}' is for species '{run_md.species}' while experiment '{experiment_md.experiment_id}' specifies species as '{experiment_md.species}'")
+        raise LrgaspException(f"LRGASP RNA-Seq library '{run_md_desc(run_md)}' file '{file_md_desc(file_md)}' is for species '{run_md.species}' while experiment '{experiment_md.experiment_id}' specifies species as '{experiment_md.species}'")
 
     # this should never happen, as the data matrix should be restrict to types we allow
     if file_md.output_type not in valid_file_content:
-        raise LrgaspException(f"File '{file_md.file_acc}' of output_type '{file_md.output_type}' not support for LRGASP, "
+        raise LrgaspException(f"File '{file_md_desc(file_md)}' of output_type '{file_md.output_type}' not support for LRGASP, "
                               "valid types are {}; please contact LRGASP project if this type of file is needed".format(", ".join(sorted(valid_file_content))))
 
 def get_file_run_type(rna_seq_md, file_md):
@@ -161,7 +161,7 @@ def _validate_data_category_compat(rna_seq_md, experiment_md, long_run_types, sh
         # simulation not allowed
         for file_md in file_mds:
             if is_simulation(rna_seq_md.get_run_by_file_acc(file_md.file_acc).sample):
-                raise LrgaspException(f"{data_category} experiments may not use simulation data '{file_md.file_acc}'")
+                raise LrgaspException(f"{data_category} experiments may not use simulation data '{file_md_desc(file_md)}'")
 
     if data_category == DataCategory.short_only:
         _validate_short_only()
@@ -208,7 +208,7 @@ def _validate_paired_end(rna_seq_md, file_mds):
     paired_acc = frozenset([fm.file_acc for fm in paired_file_mds])
     for file_md in paired_file_mds:
         if file_md.paired_with not in paired_acc:
-            raise LrgaspException(f"'{file_md.file_acc}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment_md.libraries")
+            raise LrgaspException(f"'{file_md_desc(file_md)}' is a paired-end experiment, however the paired file '{file_md.paired_with}' is not specified in experiment_md.libraries")
 
 def get_runs_replicates(rna_seq_md, file_mds):
     "get dict of runs to set of replicates for all libraries"
