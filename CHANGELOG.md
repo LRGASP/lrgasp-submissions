@@ -1,6 +1,6 @@
 * version 1.8.0
-    - Handle comma-separated sample headers in the expression matrix when multiple files are input
-      to a used in an expression level estimate.
+    - Handle comma-separated sample headers in the expression matrix when multiple files are used as input
+      in a given expression level estimate.
     
 * version 1.7.0
    - It was discovered that the Synapse ids for the simulated data in the
