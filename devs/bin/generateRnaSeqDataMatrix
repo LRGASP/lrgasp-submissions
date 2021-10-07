@@ -5,7 +5,6 @@ import argparse
 import re
 
 sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../../lib")))
-from lrgasp import LrgaspException
 from lrgasp.data_sets import get_lrgasp_rna_seq_metadata
 from lrgasp.defs import sample_to_challenges
 
