@@ -14,7 +14,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
     loggingOps.addCmdOptions(parser)
     parser.add_argument("--models_gtf",
-                        help="optional GTF model file")
+                        help="optional GTF model file to validate against")
     parser.add_argument("expression_tsv",
                         help="Expression matrix to validate")
     return parser.parse_args()

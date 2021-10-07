@@ -21,9 +21,20 @@ class ExpressionMatrix:
     def __init__(self, df):
         self.df = df
 
-def sample_column_names(expression_mat):
-    "return all but ID column"
-    return [col for col in expression_mat.df.columns if col != "ID"]
+def parse_sample_columns(expression_mat):
+    """Return all but ID column, parse the column names into in list of
+    (col _name(sample1, ..))"""
+    sample_cols = []
+    for name in expression_mat.df.columns:
+        if name != "ID":
+            sample_cols.append((name, tuple(sorted(name.split(',')))))
+    return sample_cols
+
+def sample_columns_to_file_accs(sample_cols):
+    file_accs = []
+    for sample_col in sample_cols:
+        file_accs.extend(sample_col[1])
+    return file_accs
 
 def validate_header(expression_mat):
     if "ID" not in expression_mat.df.columns:
@@ -31,29 +42,30 @@ def validate_header(expression_mat):
     if len(expression_mat.df.columns) < 2:
         raise LrgaspException("TSV must have at least one sample column")
 
-def check_column_type(expression_mat, col):
+def check_column_type(expression_mat, col_name):
     "validate column type is correct"
-    if expression_mat.df.dtypes[col] not in (np.float64, np.int64):
-        raise LrgaspException(f"Invalid value(s) in column '{col}', must be a number, NA, or NaN, appears to contain other types or a short row")
+    if expression_mat.df.dtypes[col_name] not in (np.float64, np.int64):
+        raise LrgaspException(f"Invalid value(s) in column '{col_name}', must be a number, NA, or NaN, appears to contain other types or a short row")
 
 def validate_data(expression_mat):
     if expression_mat.df.size == 0:
         raise LrgaspException("TSV contains no data")
     expression_mat.df.ID.apply(validate_feature_ident)
-    for col in sample_column_names(expression_mat):
-        check_column_type(expression_mat, col)
+    for col in parse_sample_columns(expression_mat):
+        check_column_type(expression_mat, col[0])
 
 def validate_replicates(experiment_md, expression_mat):
     """validate that samples match those for the experiment and that all samples
     are in the matrix."""
     rna_seq_md = get_lrgasp_rna_seq_metadata()
-    sample_cols = sample_column_names(expression_mat)
+    sample_cols = parse_sample_columns(expression_mat)
 
     def _check_in_expr():
         "check that all columns are in the experiment"
-        for sc in sample_cols:
-            if sc not in experiment_md.libraries:
-                raise LrgaspException(f"matrix column '{sc}' is not listed in experiment_md.libraries for '{experiment_md.experiment_id}'")
+        for col in sample_cols:
+            for sample_id in col[1]:
+                if sample_id not in experiment_md.libraries:
+                    raise LrgaspException(f"matrix column sample '{sample_id}' is not listed in experiment_md.libraries for '{experiment_md.experiment_id}'")
 
     def _build_run_replicates(file_accs):
         "create a set with tuples of (run_acc, replicate_number)"
@@ -66,7 +78,7 @@ def validate_replicates(experiment_md, expression_mat):
     def _check_covers_expr():
         """check that every run and replicate for an experiment is in matrix"""
         expr_rr = _build_run_replicates(experiment_md.libraries)
-        mat_rr = _build_run_replicates(sample_cols)
+        mat_rr = _build_run_replicates(sample_columns_to_file_accs(sample_cols))
         if len(mat_rr) > len(expr_rr):
             raise LrgaspException(f"BUG: matrix has more run replicates than experiment: matrix='{mat_rr}' experiment='{expr_rr}'")
         missing_rr = expr_rr - mat_rr

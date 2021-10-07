@@ -1,0 +1,34 @@
+{
+    "experiment_id": "H1_mix_captrap_pb",
+    "challenge_id": "iso_quant",
+    "description": "Transcript expression for human H1 mix PacBio CapTrap sequenceing",
+    "notes": "should normally not use subreads in expression, however this serves as a test of multiple files in a TSV column header",
+    "species": "human",
+    "data_category": "long_only",
+    "samples": [
+        "H1_mix"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "PacBio"
+    ],
+    "libraries": [
+        "ENCFF705IEA",
+        "ENCFF073YYF",
+        "ENCFF885YGF",
+        "ENCFF509GUL",
+        "ENCFF822IZD",
+        "ENCFF499AVA"
+    ],
+    "software": [
+        {
+            "name": "LRExpress",
+            "description": "LRExpress is a tool for expression quantification if long RNA reads.",
+            "version": "1.0.0",
+            "url": "https://github.com/darwinlab/LRExpress",
+            "config": "LRExpress used default parameters"
+        }
+    ]
+}

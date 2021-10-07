@@ -8,7 +8,7 @@ Expression matrix files should be gzip-compressed and named ```expression.tsv.gz
 
 * **Header**: The first field must be `ID`, and the rest of the column names should be the replicate labels.
 * **ID column**: Transcripts should have the same IDs as ones provided in GTF, and must be a conforming [feature identifier](metadata-identifiers.md#feature-and-read-identifiers).
-* **Replicate columns**: Should have the FASTQ file accession associated  with the replicate. This can be found in the [RNA-Seq Data Matrix](rnaseq-data-matrix.md)
+* **Replicate columns**: Should have the FASTQ file accession associated  with the replicate. This can be found in the [RNA-Seq Data Matrix](rnaseq-data-matrix.md).  If multiple data files are combined in an expression call, the column name is a comma-separated list of the accessions.
 * **Quantification values reported**: Units must be TPM, `NA` values are allowed when no expression is observed.
 
 Gene expression will be calculated by summing up all the transcripts' expression values coming from the same locus.

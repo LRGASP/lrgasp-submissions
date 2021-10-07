@@ -2,4 +2,4 @@ Error: validation of entry 'iso_quant_drna_ont_darwin' failed: output/test_bad_q
 caused by: validation of experiment 'H1_mix_drna_ont' failed: output/test_bad_quant_unknown_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/experiment.json
 caused by: validation failed on 'output/test_bad_quant_unknown_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/models.gtf' with 'output/test_bad_quant_unknown_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/expression.tsv'
 caused by: Parse of expression matrix TSV failed: output/test_bad_quant_unknown_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/expression.tsv
-caused by: matrix column 'ENCFFLIU600' is not listed in experiment_md.libraries for 'H1_mix_drna_ont'
+caused by: matrix column sample 'ENCFFLIU600' is not listed in experiment_md.libraries for 'H1_mix_drna_ont'

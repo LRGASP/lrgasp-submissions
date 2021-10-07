@@ -1,0 +1,26 @@
+{
+    "entry_id": "iso_quant_captrap_pb",
+    "challenge_id": "iso_quant",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "long_only",
+    "samples": [
+        "WTC11",
+        "H1_mix"
+    ],
+    "library_preps": [
+        "CapTrap"
+    ],
+    "platforms": [
+        "PacBio"
+    ],
+    "experiment_ids": [
+        "H1_mix_captrap_pb",
+        "WTC11_captrap_pb"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}
