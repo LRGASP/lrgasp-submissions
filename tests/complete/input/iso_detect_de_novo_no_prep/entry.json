@@ -1,0 +1,27 @@
+{
+    "entry_id": "iso_detect_de_novo_no_prep",
+    "challenge_id": "iso_detect_de_novo",
+    "team_name": "Center for Evolutionary Biology, University of Cambridge",
+    "data_category": "long_short",
+    "notes": "test case for dRNA entry, where manatee had no dRNA, however it insisted on a manatee blood sample"
+    "samples": [
+        "ES"
+    ],
+    "library_preps": [
+        "cDNA",
+        "dRNA"
+    ],
+    "platforms": [
+        "Illumina",
+        "ONT"
+    ],
+    "experiment_ids": [
+        "mouse_illumina_ont"
+    ],
+    "contacts": [
+        {
+            "name": "Charles Darwin",
+            "email": "cdarwin@cam.ac.uk"
+        }
+    ]
+}

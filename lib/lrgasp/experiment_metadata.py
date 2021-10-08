@@ -95,7 +95,7 @@ def get_run_type_descs(rna_seq_md, file_mds):
 
     def _mk_desc(file_md, done):
         done.add(file_md.file_acc)
-        if file_md.paired_with is None:
+        if file_md.get("paired_with") is None:
             acc_desc = file_md.file_acc
         else:
             acc_desc = file_md.file_acc + ", " + file_md.paired_with
