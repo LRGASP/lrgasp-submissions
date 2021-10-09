@@ -1,3 +1,18 @@
+* challenge sample definitions didn't work out well for long_short:
+see tests/complete/input/iso_detect_de_novo_no_prep
+since the lists of prep/platforms are independent, it want to
+require manatee block, because of ES cDNA/Illumina, but it didn't
+have dRNA.
+
+entry_md long_short [<LibraryPrep.cDNA: 4>, <LibraryPrep.dRNA: 2>] [<Platform.Illumina: 1>, <Platform.ONT: 3>]
+long_runs {(<Sample.ES: 3>, <LibraryPrep.cDNA: 4>, <Platform.ONT: 3>),
+           (<Sample.ES: 3>, <LibraryPrep.dRNA: 2>, <Platform.ONT: 3>),
+           (<Sample.blood: 4>, <LibraryPrep.cDNA: 4>, <Platform.ONT: 3>)}
+short_runs {(<Sample.blood: 4>, <LibraryPrep.cDNA: 4>, <Platform.Illumina: 1>),
+            (<Sample.ES: 3>, <LibraryPrep.cDNA: 4>, <Platform.Illumina: 1>)}
+long_samples {<Sample.ES: 3>, <Sample.blood: 4>}
+short_samples {<Sample.ES: 3>, <Sample.blood: 4>}
+
 * ENCODE search
 https://www.encodeproject.org/search/?type=Experiment&internal_tags=LRGASP
 * DOC:

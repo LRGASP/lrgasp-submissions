@@ -1,0 +1,2 @@
+WARNING:root:WARNING: can't validated required samples for iso_detect_de_novo_no_prep, please check manually: entry must use all of the available samples for Challenge 3 (iso_detect_de_novo), need 'ES, blood', only 'ES' were found
+WARNING: can't validated required samples for iso_detect_de_novo_no_prep, please check manually: entry must use all of the available samples for Challenge 3 (iso_detect_de_novo), need 'ES, blood', only 'ES' were found

@@ -3,7 +3,7 @@
     "challenge_id": "iso_detect_de_novo",
     "team_name": "Center for Evolutionary Biology, University of Cambridge",
     "data_category": "long_short",
-    "notes": "test case for dRNA entry, where manatee had no dRNA, however it insisted on a manatee blood sample"
+    "notes": "test case for dRNA entry, where manatee had no dRNA, however it insisted on a manatee blood sample",
     "samples": [
         "ES"
     ],

@@ -3,6 +3,7 @@ Entry metadata parsing and validation.
 """
 import os.path as osp
 import json
+import logging
 from lrgasp import LrgaspException, gopen, iter_to_str
 from lrgasp.objDict import ObjDict
 from lrgasp.metadata_validate import Field, check_from_defs, validate_email
@@ -105,8 +106,15 @@ def validate_challenge_samples(entry_md):
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
     required_samples = entry_category_samples & challenge_samples
     if entry_samples != required_samples:
-        raise LrgaspException(f"entry must use all of the available samples for {challenge_desc(entry_md.challenge_id)},"
-                              f" need '{iter_to_str(challenge_samples)}', only '{iter_to_str(entry_samples)}' were found")
+        msg = (f"entry must use all of the available samples for {challenge_desc(entry_md.challenge_id)},"
+               f" need '{iter_to_str(challenge_samples)}', only '{iter_to_str(entry_samples)}' were found")
+        if ((entry_md.challenge_id == Challenge.iso_detect_de_novo) and
+            (entry_md.data_category == DataCategory.long_short)):
+            # FIXME ugly hack, should not have mixed prep and platform see todo
+            logging.getLogger().warn(f"WARNING: can't validated required samples for {entry_md.entry_id}, please check manually: "
+                                     + msg)
+        else:
+            raise LrgaspException(msg)
 
 def entry_experiments_validate(entry_md):
     for experiment_md in entry_md.experiments:

@@ -154,4 +154,4 @@ _data_category_platform_map = {
 
 def get_data_category_platforms(data_category):
     "allowed platforms for a given data_category"
-    return _data_category_platform_map
+    return _data_category_platform_map[data_category]

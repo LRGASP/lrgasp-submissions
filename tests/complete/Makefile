@@ -60,7 +60,7 @@ entries = iso_detect_ref_darwin_drna_ont iso_detect_ref_darwin_captrap_ont \
 	iso_quant_drna_ont_darwin iso_detect_de_novo_darwin iso_detect_ref_freestyle_darwin \
 	iso_detect_ref_darwin_R2C2 iso_detect_ref_darwin_illumina iso_quant_captrap_pb
 
-test: entry_tests metadata_only_tests gz_tests bad_tests
+test: entry_tests metadata_only_tests gz_tests bad_tests special_tests
 
 ##
 # full validation of each entry
@@ -141,6 +141,12 @@ test_bad_de_novo%: mkout
 	@echo ${lrgasp_validate_entry} output/$@/iso_detect_de_novo_darwin "(should fail)"
 	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_de_novo_darwin 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
+
+special_tests: no_prep_for_sample_test
+
+no_prep_for_sample_test: mkout
+	${lrgasp_validate_entry} ${debug} --metadata_only input/iso_detect_de_novo_no_prep >& output/$@.out
+	diff expected/$@.out output/$@.out
 
 
 clean:

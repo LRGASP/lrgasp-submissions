@@ -1,6 +1,12 @@
+* version 1.9.0
+   - fixed bug generating error message
+   - Ugly workaround problem validated long_short entries when the short samples have
+     do not have all of the library preps used by the long samples.  Really hard to fix
+     with current metadata structure, so change error to a warning for this case.
+   
 * version 1.8.0
-    - Handle comma-separated sample headers in the expression matrix when multiple files are used as input
-      in a given expression level estimate.
+   - Handle comma-separated sample headers in the expression matrix when multiple files are used as input
+     in a given expression level estimate.
     
 * version 1.7.0
    - It was discovered that the Synapse ids for the simulated data in the
