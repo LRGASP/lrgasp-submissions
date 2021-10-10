@@ -142,12 +142,17 @@ test_bad_de_novo%: mkout
 	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_de_novo_darwin 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
-special_tests: no_prep_for_sample_test
+special_tests: no_prep_for_sample_test missing_sim_msg_test
 
+# nasty case where long_short demands simulation sample that doesn't exist
 no_prep_for_sample_test: mkout
 	${lrgasp_validate_entry} ${debug} --metadata_only input/iso_detect_de_novo_no_prep >& output/$@.out
 	diff expected/$@.out output/$@.out
 
+# case where mouse simulations was missing, but issued error about both mouse and human simulation missing
+missing_sim_msg_test: mkout
+	${lrgasp_validate_entry} ${err_debug} --metadata_only input/iso_quant_drna_ont_missing_sim 2>output/$@.err
+	diff expected/$@.err output/$@.err
 
 clean:
 	rm -rf output

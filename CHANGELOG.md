@@ -1,3 +1,6 @@
+* version 1.10.0
+   - extended workaround for validation failure when simulation samples are not available
+
 * version 1.9.0
    - fixed bug generating error message
    - Ugly workaround problem validated long_short entries when the short samples have

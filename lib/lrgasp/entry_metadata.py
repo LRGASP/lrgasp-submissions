@@ -108,8 +108,7 @@ def validate_challenge_samples(entry_md):
     if entry_samples != required_samples:
         msg = (f"entry must use all of the available samples for {challenge_desc(entry_md.challenge_id)},"
                f" need '{iter_to_str(challenge_samples)}', only '{iter_to_str(entry_samples)}' were found")
-        if ((entry_md.challenge_id == Challenge.iso_detect_de_novo) and
-            (entry_md.data_category == DataCategory.long_short)):
+        if (LibraryPrep.dRNA in entry_md.library_preps):
             # FIXME ugly hack, should not have mixed prep and platform see todo
             logging.getLogger().warn(f"WARNING: can't validated required samples for {entry_md.entry_id}, please check manually: "
                                      + msg)

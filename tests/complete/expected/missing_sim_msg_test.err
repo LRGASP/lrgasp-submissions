@@ -1,0 +1,2 @@
+WARNING:root:WARNING: can't validated required samples for iso_quant_drna_ont_missing_sim, please check manually: entry must use all of the available samples for Challenge 2 (iso_quant), need 'WTC11, H1_mix, mouse_simulation, human_simulation', only 'WTC11, H1_mix' were found
+WARNING: can't validated required samples for iso_quant_drna_ont_missing_sim, please check manually: entry must use all of the available samples for Challenge 2 (iso_quant), need 'WTC11, H1_mix, mouse_simulation, human_simulation', only 'WTC11, H1_mix' were found
