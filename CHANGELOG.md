@@ -1,3 +1,6 @@
+* version 1.11.0
+   - yea another workaround for validation failure when simulation samples are not available
+
 * version 1.10.0
    - extended workaround for validation failure when simulation samples are not available
 

@@ -106,10 +106,16 @@ def validate_challenge_samples(entry_md):
     challenge_samples = get_challenge_samples(entry_md.challenge_id)
     required_samples = entry_category_samples & challenge_samples
     if entry_samples != required_samples:
-        msg = (f"entry must use all of the available samples for {challenge_desc(entry_md.challenge_id)},"
+        msg = (f"entry {entry_md.entry_id} must use all of the available samples for {challenge_desc(entry_md.challenge_id)},"
                f" need '{iter_to_str(challenge_samples)}', only '{iter_to_str(entry_samples)}' were found")
-        if (LibraryPrep.dRNA in entry_md.library_preps):
-            # FIXME ugly hack, should not have mixed prep and platform see todo
+        missing_samples = required_samples - entry_samples
+        if (((Sample.human_simulation in missing_samples) and
+             (LibraryPrep.dRNA in entry_md.library_preps)) or
+            ((Sample.mouse_simulation in missing_samples) and
+             (LibraryPrep.cDNA in entry_md.library_preps) and
+             (Platform.ONT in entry_md.platforms))):
+            # FIXME ugly hack, should not have had prep and platform as independent variables  see todo
+            # this can ask for samples that don't exist.
             logging.getLogger().warn(f"WARNING: can't validated required samples for {entry_md.entry_id}, please check manually: "
                                      + msg)
         else:
