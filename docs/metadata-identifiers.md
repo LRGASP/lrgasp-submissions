@@ -62,6 +62,8 @@ Simplified RNA sequencing platform
 * ``blood`` - manatee whole blood
 * ``mouse_simulation`` - simulated mouse RNAs
 * ``human_simulation`` - simulated human RNAs
+* ``H1`` - human H1 ES cell line for second-phase quantification experiments.
+* ``endodermal`` -  human Definitive Endoderm derived from H1 for second-phase quantification experiments.
 
 ## Public repository identifiers
 
