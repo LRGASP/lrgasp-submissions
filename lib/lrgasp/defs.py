@@ -49,6 +49,8 @@ class Sample(SymEnum):
     blood = auto()
     mouse_simulation = auto()
     human_simulation = auto()
+    H1 = auto()
+    endodermal = auto()
 
 class Species(SymEnum):
     """Species identifiers"""
@@ -111,7 +113,8 @@ def sample_to_species(sample):
 
 _challenge_sample_map = {
     Challenge.iso_detect_ref: frozenset([Sample.WTC11, Sample.H1_mix, Sample.ES, Sample.mouse_simulation, Sample.human_simulation]),
-    Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix, Sample.mouse_simulation, Sample.human_simulation]),
+    Challenge.iso_quant: frozenset([Sample.WTC11, Sample.H1_mix, Sample.mouse_simulation, Sample.human_simulation,
+                                    Sample.H1, Sample.endodermal]),
     Challenge.iso_detect_de_novo: frozenset([Sample.blood, Sample.ES]),
 }
 

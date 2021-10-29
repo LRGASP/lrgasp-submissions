@@ -142,9 +142,10 @@ test_bad_de_novo%: mkout
 	@if ! ${lrgasp_validate_entry} ${err_debug} output/$@/iso_detect_de_novo_darwin 2>output/$@.err ; ${should_fail}
 	diff expected/$@.err output/$@.err
 
-special_tests: no_prep_for_sample_test missing_sim_msg_test
+special_tests:  missing_sim_msg_test
 
 # nasty case where long_short demands simulation sample that doesn't exist
+# Disabled even nastier with sample hacks
 no_prep_for_sample_test: mkout
 	${lrgasp_validate_entry} ${debug} --metadata_only input/iso_detect_de_novo_no_prep >& output/$@.out
 	diff expected/$@.out output/$@.out

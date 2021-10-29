@@ -64,16 +64,20 @@ def determine_species(encode_md, sample):
 def determine_sample(encode_md):
     "map to LRGASP samples"
     biosample = encode_md.biosample_summary
-    if biosample in ("Castaneus X S129/SvJae F121-9", "F121-9"):
+    if biosample in ("Castaneus X S129/SvJae F121-9", "F121-9", "Mus musculus F121-9"):
         return Sample.ES
-    elif biosample == "H1 and endodermal cell":
+    elif biosample in ("H1 and endodermal cell", "Homo sapiens H1 and endodermal cell"):
         return Sample.H1_mix
-    elif biosample == "WTC11":
+    elif biosample in ("Homo sapiens H1",):
+        return Sample.H1
+    elif biosample in ("Homo sapiens endodermal cell",):
+        return Sample.endodermal
+    elif biosample in ("WTC11", "Homo sapiens WTC11"):
         return Sample.WTC11
-    elif biosample == "peripheral blood mononuclear cell":
+    elif biosample in ("peripheral blood mononuclear cell", "Trichechus manatus peripheral blood mononuclear cell"):
         return Sample.blood
     else:
-        raise LrgaspException(f"unable to determine sample from biosample_summary: {biosample}")
+        raise LrgaspException(f"unable to determine sample from biosample_summary: '{biosample}'")
 
 def _guess_library_prep_from_one_desc(desc):
     if desc.startswith("Direct RNA"):
@@ -95,7 +99,7 @@ def guess_library_prep_from_desc(encode_md):
             prep = _guess_library_prep_from_one_desc(desc)
             if prep is not None:
                 return prep, desc
-    return LibraryPrep.cDNA, None
+    return None, None
 
 def library_prep_from_construction_method(encode_md):
     methods = set()
@@ -106,45 +110,52 @@ def library_prep_from_construction_method(encode_md):
     if len(methods) > 1:
         raise LrgaspException("expected to parse zero one construction_method, got {methods}")
     elif len(methods) == 0:
-        return LibraryPrep.cDNA
+        return None, None
     cm = list(methods)[0]
     if cm == "CapTrap":
-        return LibraryPrep.CapTrap
+        return LibraryPrep.CapTrap, cm
     elif cm == "Nanopore Direct RNA Kit":
-        return LibraryPrep.dRNA
+        return LibraryPrep.dRNA, cm
     elif cm == "Nanopore PCR-cDNA Kit":
-        return LibraryPrep.cDNA
+        return LibraryPrep.cDNA, cm
     elif cm == "R2C2":
-        return LibraryPrep.R2C2
+        return LibraryPrep.R2C2, cm
     else:
-        raise LrgaspException(f"Unknown construction_method: {cm}")
+        raise LrgaspException(f"Unknown construction_method: '{cm}'")
 
 def determine_library_prep(encode_md):
     "probe metadata to determine construction method"
-    desc_meth, desc = guess_library_prep_from_desc(encode_md)
-    cons_meth = library_prep_from_construction_method(encode_md)
-    if desc_meth != cons_meth:
-        if desc is None:
-            print(f"Note: {encode_md.accession}: library construction method '{cons_meth}' used, no description: {encode_md.encode_json}", file=sys.stderr)
-        else:
-            print(f"Note: {encode_md.accession}: library construction method '{cons_meth}' does match description guess '{desc_meth}' from '{desc}': {encode_md.encode_json}", file=sys.stderr)
-    return cons_meth
+    desc_prep, desc = guess_library_prep_from_desc(encode_md)
+    cons_prep, cons = library_prep_from_construction_method(encode_md)
+    if (desc_prep is None) and (cons_prep is None):
+        # cDNA is not explict
+        return LibraryPrep.cDNA
+    if (desc_prep is not None) and (cons_prep is not None):
+        if desc_prep != cons_prep:
+            raise LrgaspException(f"{encode_md.accession}: library construction method '{cons_prep}' from '{cons}' does not match description guess '{desc_prep}' from '{desc}': {encode_md.encode_json}")
+        return cons_prep
+    if desc_prep is not None:
+        return desc_prep
+    else:
+        return cons_prep
 
-def determine_platform(encode_md):
-    platforms = set()
-    for file_md in file_md_filter(encode_md):
-        platforms.add(file_md.platform.term_name)
-    if len(platforms) != 1:
-        raise LrgaspException(f"expected to parse one platform name, got {platforms}")
-    pt = list(platforms)[0]
-    if pt == 'Oxford Nanopore MinION':
+def platform_term_to_platform(term):
+    if term.startswith('Oxford Nanopore'):
         return Platform.ONT
-    elif pt.startswith('Pacific Biosciences Sequel'):
+    elif term.startswith('Pacific Biosciences Sequel'):
         return Platform.PacBio
-    elif pt.startswith('Illumina HiSeq'):
+    elif term.startswith('Illumina HiSeq'):
         return Platform.Illumina
     else:
-        raise LrgaspException(f"can't convert platform {pt}")
+        raise LrgaspException(f"can't convert platform term '{term}'")
+
+def determine_platform(encode_md):
+    # make sure all terms collect result in the same Platform
+    terms = frozenset([md.platform.term_name for md in file_md_filter(encode_md)])
+    platforms = frozenset([platform_term_to_platform(t) for t in terms])
+    if len(platforms) > 1:
+        raise LrgaspException(f"platform terms conflict '{terms}'")
+    return list(platforms)[0]
 
 def get_replicate(file_md):
     rep = file_md.replicate

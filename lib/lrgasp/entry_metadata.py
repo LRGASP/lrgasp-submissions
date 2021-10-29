@@ -113,7 +113,8 @@ def validate_challenge_samples(entry_md):
              (LibraryPrep.dRNA in entry_md.library_preps)) or
             ((Sample.mouse_simulation in missing_samples) and
              (LibraryPrep.cDNA in entry_md.library_preps) and
-             (Platform.ONT in entry_md.platforms))):
+             (Platform.ONT in entry_md.platforms)) or
+            (entry_md.challenge_id == Challenge.iso_quant)):
             # FIXME ugly hack, should not have had prep and platform as independent variables  see todo
             # this can ask for samples that don't exist.
             logging.getLogger().warn(f"WARNING: can't validated required samples for {entry_md.entry_id}, please check manually: "

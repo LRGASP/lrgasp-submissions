@@ -1,6 +1,236 @@
 [
     {
         "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR016IKV",
+        "description": "LRGASP Nanopore PCR-cDNA H1-ES",
+        "library_prep": "cDNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF273YSV",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF273YSV/@@download/ENCFF273YSV.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/26/af17d18a-5993-4f02-bad5-5421011c0c9e/ENCFF273YSV.tar.gz",
+                        "file_size": 181095170710,
+                        "md5sum": "62dfb2054d5ac00364ac51bba9502818",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF326IBB",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF326IBB/@@download/ENCFF326IBB.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/ace414ce-90ac-4e47-a1e1-bb8d03c3a53b/ENCFF326IBB.fastq.gz",
+                        "file_size": 12036441352,
+                        "md5sum": "6923062ff417521d2f45a1c4dd7e7d9b",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF496LCG",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF496LCG/@@download/ENCFF496LCG.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/26/a03efd90-d09d-414b-a4f3-db622186be23/ENCFF496LCG.tar.gz",
+                        "file_size": 170376352575,
+                        "md5sum": "7cb41a75190ba22fc903d5775b73a911",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF714YOZ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF714YOZ/@@download/ENCFF714YOZ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/32a7e519-4c67-4f52-8139-c3269b642dc6/ENCFF714YOZ.fastq.gz",
+                        "file_size": 11274221774,
+                        "md5sum": "d785d0cf26a8815597e08351c4c09a6b",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF749ORQ",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF749ORQ/@@download/ENCFF749ORQ.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/27/8e2d1bd2-d8a0-4d32-8012-4934ddc62e55/ENCFF749ORQ.tar.gz",
+                        "file_size": 221563877572,
+                        "md5sum": "2639acd9cbdf2528655bb1e2f9f2e18f",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF955CIA",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF955CIA/@@download/ENCFF955CIA.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/190959ca-ecf0-47d5-aa8a-102eda22bd01/ENCFF955CIA.fastq.gz",
+                        "file_size": 14898415264,
+                        "md5sum": "58a215b1e90781973b91fb2104ffbec7",
+                        "run_acc": "ENCSR016IKV",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR049AYR",
+        "description": "Direct RNA-seq for Human H1 embryonic stem cells",
+        "library_prep": "dRNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF415NBL",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF415NBL/@@download/ENCFF415NBL.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/0cf65762-06c8-4db2-80f1-902b34508147/ENCFF415NBL.tar.gz",
+                        "file_size": 86077144051,
+                        "md5sum": "ee3df9b9b699dedc162a0f56ee3d33e1",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF207KVO",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF207KVO/@@download/ENCFF207KVO.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/2daa1f64-cb95-41df-a910-48b4f81702cd/ENCFF207KVO.fastq.gz",
+                        "file_size": 1658179958,
+                        "md5sum": "ab08972c2d513c4fb5dd773f1fbeeac7",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF556RML",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF556RML/@@download/ENCFF556RML.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/f9e53101-433e-4c0e-a512-1f03995d2ef4/ENCFF556RML.tar.gz",
+                        "file_size": 1615717868,
+                        "md5sum": "6c255b566cd4b86b30e74db1996f8268",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF373LMV",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF373LMV/@@download/ENCFF373LMV.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/8fcc151f-92fb-47f5-aab4-e0b1aefc5b5e/ENCFF373LMV.fastq.gz",
+                        "file_size": 23259630,
+                        "md5sum": "5a836d7c1efeb4a59dec41b2e0686e84",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF329ERA",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF329ERA/@@download/ENCFF329ERA.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/5fcf5398-1e54-428b-bdbc-4fe392164649/ENCFF329ERA.tar.gz",
+                        "file_size": 107997887515,
+                        "md5sum": "e3f5a0b3b543daa813e2752c678e2e49",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF846RID",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF846RID/@@download/ENCFF846RID.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/3e49bc5f-9c5b-43a7-828e-06b9175e5d0a/ENCFF846RID.fastq.gz",
+                        "file_size": 1638831543,
+                        "md5sum": "36b936411b19f8f2012472100a0b154a",
+                        "run_acc": "ENCSR049AYR",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
         "sample": "WTC11",
         "run_acc": "ENCSR054ABL",
         "description": "ENCSR054ABL",
@@ -338,6 +568,121 @@
                         "file_size": 612133763,
                         "md5sum": "49f01a8e82b01794381f65d8e155efd3",
                         "run_acc": "ENCSR096PNA",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR127HKN",
+        "description": "LRGASP H1 definitive endoderm",
+        "library_prep": "cDNA",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF754EPN",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF754EPN/@@download/ENCFF754EPN.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/3c62da75-81fc-48ae-bfe7-4c5776bfc737/ENCFF754EPN.bam",
+                        "file_size": 520969343217,
+                        "md5sum": "ed442f53f10236564af05721b7f44332",
+                        "run_acc": "ENCSR127HKN",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF712CBL",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF712CBL/@@download/ENCFF712CBL.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/3c872e7a-3d4a-4a7c-a05c-b4a9812084a5/ENCFF712CBL.fastq.gz",
+                        "file_size": 1145706817,
+                        "md5sum": "5380b78ca42566e7491bc5cd5f2c52c5",
+                        "run_acc": "ENCSR127HKN",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF941WAF",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF941WAF/@@download/ENCFF941WAF.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/e374bd61-ca93-410b-8a3a-f4d9bd517db8/ENCFF941WAF.bam",
+                        "file_size": 382965015016,
+                        "md5sum": "b825a92a9790a99fb1df12bcb93c8be0",
+                        "run_acc": "ENCSR127HKN",
+                        "biological_replicate_number": 2,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF731HST",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF731HST/@@download/ENCFF731HST.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/26bfc17a-0762-498a-b1dd-e0f0bfc457a0/ENCFF731HST.fastq.gz",
+                        "file_size": 925643555,
+                        "md5sum": "df44a9c196a15d606443858ea666c528",
+                        "run_acc": "ENCSR127HKN",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF337GYI",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF337GYI/@@download/ENCFF337GYI.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/c0a2fb3e-b5d4-4a2f-9c66-b5b6a19306bf/ENCFF337GYI.bam",
+                        "file_size": 513413683220,
+                        "md5sum": "4f109f4be5adec3085e78f113a3ff5a8",
+                        "run_acc": "ENCSR127HKN",
+                        "biological_replicate_number": 3,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF235QXW",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF235QXW/@@download/ENCFF235QXW.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/0d19c057-785e-4ae8-a7b2-3287e9ac2dc1/ENCFF235QXW.fastq.gz",
+                        "file_size": 1145241961,
+                        "md5sum": "5433998ce03951e4a82047719d4093bd",
+                        "run_acc": "ENCSR127HKN",
                         "biological_replicate_number": 3,
                         "output_type": "reads",
                         "paired_end": null,
@@ -801,6 +1146,121 @@
     },
     {
         "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR254DEM",
+        "description": "ENCSR254DEM",
+        "library_prep": "R2C2",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF367JPM",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF367JPM/@@download/ENCFF367JPM.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/c6964d18-ffee-492a-a500-ab34308aa6c1/ENCFF367JPM.fastq.gz",
+                        "file_size": 14898407492,
+                        "md5sum": "5986c4a624722d90b97b6c896ff50f89",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 1,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF142IYH",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF142IYH/@@download/ENCFF142IYH.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/dfa15372-507e-4830-8861-45864462d8a6/ENCFF142IYH.fasta.gz",
+                        "file_size": 691089649,
+                        "md5sum": "ca634c1a2af41934275afc28e48c124d",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF095SQG",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF095SQG/@@download/ENCFF095SQG.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/68decfdf-14a4-4416-af4f-b397c5bcd8a2/ENCFF095SQG.fastq.gz",
+                        "file_size": 12788397135,
+                        "md5sum": "46c18b934e055cda391baa101239e1a5",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 2,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF121GFY",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF121GFY/@@download/ENCFF121GFY.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/97cf4fd9-3d40-4700-ab78-230a4ddf6c73/ENCFF121GFY.fasta.gz",
+                        "file_size": 600648047,
+                        "md5sum": "1b29155870a0d840e177bf4937ffad3c",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF531FUR",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF531FUR/@@download/ENCFF531FUR.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/38f581f5-c55f-4de5-915b-c384fc653633/ENCFF531FUR.fastq.gz",
+                        "file_size": 13862687577,
+                        "md5sum": "475d66e899e9a288f33e4b363525b586",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 3,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF878WTP",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF878WTP/@@download/ENCFF878WTP.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/32370b80-f1b5-47c5-b852-f221341d731a/ENCFF878WTP.fasta.gz",
+                        "file_size": 653836224,
+                        "md5sum": "ebcd99f0023fc799eefadb90d0b4ad53",
+                        "run_acc": "ENCSR254DEM",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
         "sample": "WTC11",
         "run_acc": "ENCSR259DBL",
         "description": "ENCSR259DBL",
@@ -905,6 +1365,236 @@
                         "file_size": 687387035,
                         "md5sum": "44a78b23487362b95766db3d270e5a01",
                         "run_acc": "ENCSR259DBL",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR266XAJ",
+        "description": "LRGASP_H1_endo",
+        "library_prep": "cDNA",
+        "platform": "Illumina",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF783SRR",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF783SRR/@@download/ENCFF783SRR.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/ce5022c0-9888-447e-8fa3-b348f2541ee8/ENCFF783SRR.fastq.gz",
+                        "file_size": 4246538259,
+                        "md5sum": "54e06f3b6207224c265b1aab8937b07d",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF451LZF"
+                    },
+                    {
+                        "file_acc": "ENCFF451LZF",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF451LZF/@@download/ENCFF451LZF.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/65355623-774d-4993-88b9-f59268b16c46/ENCFF451LZF.fastq.gz",
+                        "file_size": 4422559274,
+                        "md5sum": "9105e84076b374b9a81c4a9241be3f10",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF783SRR"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF498FDF",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF498FDF/@@download/ENCFF498FDF.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/42f24ba8-ecf1-463b-834e-72ebadf3bda0/ENCFF498FDF.fastq.gz",
+                        "file_size": 4191512806,
+                        "md5sum": "12d17c1b32c15cc1d34945ddc112be21",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF181VTP"
+                    },
+                    {
+                        "file_acc": "ENCFF181VTP",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF181VTP/@@download/ENCFF181VTP.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/0a73c138-cac0-4cad-ba8a-fcb60bec3ba7/ENCFF181VTP.fastq.gz",
+                        "file_size": 4318935438,
+                        "md5sum": "fa22299e45f8e7f95ff3e19e4a33ef76",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF498FDF"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF962ARN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF962ARN/@@download/ENCFF962ARN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/cbfc1ba7-841b-4981-8e3a-3cb967a17e6a/ENCFF962ARN.fastq.gz",
+                        "file_size": 4073058578,
+                        "md5sum": "917b1d5bd525ad92f91ac759013a123a",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF767RMY"
+                    },
+                    {
+                        "file_acc": "ENCFF767RMY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF767RMY/@@download/ENCFF767RMY.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/c55a9174-776c-473d-9cbe-53de8e3b9000/ENCFF767RMY.fastq.gz",
+                        "file_size": 4219164968,
+                        "md5sum": "241580156f802dd294bb89bc05b74274",
+                        "run_acc": "ENCSR266XAJ",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF962ARN"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR271KEJ",
+        "description": "LRGASP H1 ES",
+        "library_prep": "cDNA",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF047IVP",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF047IVP/@@download/ENCFF047IVP.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/1fb9220b-1e40-45e5-b2aa-38babf2022bf/ENCFF047IVP.bam",
+                        "file_size": 196376008348,
+                        "md5sum": "f15fb07010cbc9c7d1a4ea91055071de",
+                        "run_acc": "ENCSR271KEJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF853OFP",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF853OFP/@@download/ENCFF853OFP.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/f29df669-4d40-4588-ba34-d7ad3fd06d94/ENCFF853OFP.fastq.gz",
+                        "file_size": 548819161,
+                        "md5sum": "93a8fec52dcec8f16682c7379d9db64e",
+                        "run_acc": "ENCSR271KEJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF218LEO",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF218LEO/@@download/ENCFF218LEO.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/92bb13dd-6a3e-48b9-b706-ad827f62af95/ENCFF218LEO.bam",
+                        "file_size": 77191184759,
+                        "md5sum": "728b94ec370a550777b7ec69fc08d6ca",
+                        "run_acc": "ENCSR271KEJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF400BQQ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF400BQQ/@@download/ENCFF400BQQ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/739ddbfc-1777-47f9-8cfb-04990b300c6a/ENCFF400BQQ.fastq.gz",
+                        "file_size": 161774193,
+                        "md5sum": "7447c004b4cab3d9ef1cdd76d796d4d3",
+                        "run_acc": "ENCSR271KEJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF253NIN",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF253NIN/@@download/ENCFF253NIN.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/f5ed29c1-7b6c-4947-8995-104864869ed5/ENCFF253NIN.bam",
+                        "file_size": 443528151366,
+                        "md5sum": "1270bb2abc59d206b0289363620fb349",
+                        "run_acc": "ENCSR271KEJ",
+                        "biological_replicate_number": 3,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF436GKZ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF436GKZ/@@download/ENCFF436GKZ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/7299f57b-7141-410e-b95d-50d367433197/ENCFF436GKZ.fastq.gz",
+                        "file_size": 962635867,
+                        "md5sum": "7040a2f76c08115ee2218f2f4c031594",
+                        "run_acc": "ENCSR271KEJ",
                         "biological_replicate_number": 3,
                         "output_type": "reads",
                         "paired_end": null,
@@ -1093,6 +1783,236 @@
                         "run_acc": "ENCSR309IKK",
                         "biological_replicate_number": 3,
                         "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR319VGI",
+        "description": "LRGASP CapTrap H1 ES",
+        "library_prep": "CapTrap",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF129SON",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF129SON/@@download/ENCFF129SON.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/84724f04-44e9-41bd-8a82-606751e24f1e/ENCFF129SON.bam",
+                        "file_size": 358521361189,
+                        "md5sum": "8f573411bd29cb967820b6fccf7e7eb5",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF143ICB",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF143ICB/@@download/ENCFF143ICB.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/cd929e8b-2f57-4942-92b4-3f6843cc6bcd/ENCFF143ICB.fastq.gz",
+                        "file_size": 516576383,
+                        "md5sum": "5a7931e48b978a8df266eb742d906853",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF247GLM",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF247GLM/@@download/ENCFF247GLM.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/15c8e7ce-2d75-4dea-a158-f6e74bf62aad/ENCFF247GLM.bam",
+                        "file_size": 175821948549,
+                        "md5sum": "2aed5290509269971af3d20703ff6f7b",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 2,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF684YOO",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF684YOO/@@download/ENCFF684YOO.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/5ef97dfa-2b35-47f1-8f7a-263230ffc659/ENCFF684YOO.fastq.gz",
+                        "file_size": 330386751,
+                        "md5sum": "fedcde443864cebb50a0e8fd23ef0e07",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF471ANC",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF471ANC/@@download/ENCFF471ANC.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/d6251abd-6953-42d3-a6ed-1f5610d21f0e/ENCFF471ANC.bam",
+                        "file_size": 234734053415,
+                        "md5sum": "1097ff20f3092f75b4a8ca00ad69e52d",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 3,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF339FMQ",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF339FMQ/@@download/ENCFF339FMQ.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/29/4a85732d-a416-42c7-87cc-aad4141dd1f5/ENCFF339FMQ.fastq.gz",
+                        "file_size": 460844262,
+                        "md5sum": "ba301e406fb465654075c37ecd1d8a59",
+                        "run_acc": "ENCSR319VGI",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR339KRF",
+        "description": "ENCSR339KRF",
+        "library_prep": "R2C2",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF337GCH",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF337GCH/@@download/ENCFF337GCH.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/2917cda1-3ae7-4b0b-82f0-21b32474ebbd/ENCFF337GCH.fastq.gz",
+                        "file_size": 15375036091,
+                        "md5sum": "91db94a8e4ff5ce208bc15081d4ad457",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 1,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF776SFO",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF776SFO/@@download/ENCFF776SFO.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/8db7bdb5-3dc8-433a-b5b2-17910b268557/ENCFF776SFO.fasta.gz",
+                        "file_size": 1437409799,
+                        "md5sum": "419ff92ca1b511937cec24e16565ae53",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF243MUU",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF243MUU/@@download/ENCFF243MUU.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/598495fb-512f-421f-a14e-42411b29a745/ENCFF243MUU.fastq.gz",
+                        "file_size": 12726771424,
+                        "md5sum": "e2d80b9017d94339cce2b9dccb17a2cb",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 2,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF561YYK",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF561YYK/@@download/ENCFF561YYK.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/7e810773-22f8-4aff-842c-d3a1b4012fdb/ENCFF561YYK.fasta.gz",
+                        "file_size": 1230283432,
+                        "md5sum": "404cb66e41bf82cf379d2f0b39b736a1",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF387KPE",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF387KPE/@@download/ENCFF387KPE.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/d62f2d85-92cf-4678-bfa9-989a5a84d442/ENCFF387KPE.fastq.gz",
+                        "file_size": 16596368908,
+                        "md5sum": "e7e3a51212c54dbdc46bd27d32895ae6",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 3,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF750QSC",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF750QSC/@@download/ENCFF750QSC.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/3a747ed4-480a-4329-8aa0-20dfee9232ae/ENCFF750QSC.fasta.gz",
+                        "file_size": 1585437719,
+                        "md5sum": "7dd147365c820f96645e899af1ae60f0",
+                        "run_acc": "ENCSR339KRF",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
                         "paired_end": null,
                         "paired_with": null
                     }
@@ -1557,6 +2477,121 @@
                         "file_size": 641520927,
                         "md5sum": "d98a03895317c29b69f4693329e0f216",
                         "run_acc": "ENCSR472FCO",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR485VRY",
+        "description": "LRGASP Nanopore PCR-cDNA H1-DE",
+        "library_prep": "cDNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF387THY",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF387THY/@@download/ENCFF387THY.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/26/8e2b32ca-0ab1-4855-a134-499d9b244883/ENCFF387THY.tar.gz",
+                        "file_size": 222770157247,
+                        "md5sum": "319d70f6a25c806812c6026e8a2e10bd",
+                        "run_acc": "ENCSR485VRY",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF180OMN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF180OMN/@@download/ENCFF180OMN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/812484b8-6b73-43ae-bd26-d756e78739b4/ENCFF180OMN.fastq.gz",
+                        "file_size": 15102698491,
+                        "md5sum": "8eff49f04b7710f55e7b5a9fbff31374",
+                        "run_acc": "ENCSR485VRY",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF470VRP",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF470VRP/@@download/ENCFF470VRP.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/27/f0197d94-01ad-4fde-a15d-32c6f7d6da9c/ENCFF470VRP.tar.gz",
+                        "file_size": 255840086462,
+                        "md5sum": "f8c783ed40876c19cf0c595916f5de93",
+                        "run_acc": "ENCSR485VRY",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF754BZS",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF754BZS/@@download/ENCFF754BZS.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/1a8f671f-30b8-4e74-af04-962414e116c4/ENCFF754BZS.fastq.gz",
+                        "file_size": 16423711365,
+                        "md5sum": "8604e4d8eca34a0ff19d42bf0bfb7d69",
+                        "run_acc": "ENCSR485VRY",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": "600-5000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF385VVI",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF385VVI/@@download/ENCFF385VVI.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/08/27/1d84d25c-3ad2-41e1-a170-afbf0bbd56cb/ENCFF385VVI.tar.gz",
+                        "file_size": 112412325417,
+                        "md5sum": "b274175827b22d20724bc03267a0d14a",
+                        "run_acc": "ENCSR485VRY",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF277PKW",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF277PKW/@@download/ENCFF277PKW.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/28/0af3e0b8-486f-45d6-8aba-b88e62a883c7/ENCFF277PKW.fastq.gz",
+                        "file_size": 7964390535,
+                        "md5sum": "ab4d0f9b0468c818d9bde02e92043bef",
+                        "run_acc": "ENCSR485VRY",
                         "biological_replicate_number": 3,
                         "output_type": "reads",
                         "paired_end": null,
@@ -2086,6 +3121,121 @@
     },
     {
         "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR522NAJ",
+        "description": "ENCSR522NAJ",
+        "library_prep": "CapTrap",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF841NHP",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF841NHP/@@download/ENCFF841NHP.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/15/e919daae-a3b0-4a24-8b59-7d83bec1ed27/ENCFF841NHP.tar.gz",
+                        "file_size": 290763460997,
+                        "md5sum": "bf9e9ac29f49b5c7be2c25e33a6b4d9b",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF661WLV",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF661WLV/@@download/ENCFF661WLV.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/a49a9380-47de-4634-a5e2-6bf6a0e064c6/ENCFF661WLV.fastq.gz",
+                        "file_size": 16173312966,
+                        "md5sum": "37e764b03f9d2875c684cb267ee72c18",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF988IPM",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF988IPM/@@download/ENCFF988IPM.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/1fe15c5b-8215-4ae8-865f-f99ec2f90f54/ENCFF988IPM.tar.gz",
+                        "file_size": 307731408567,
+                        "md5sum": "a82667eb82145a39130ad49011b1bab5",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF089AMF",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF089AMF/@@download/ENCFF089AMF.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/67cf879e-9977-4bb8-aaff-1a0bc630064f/ENCFF089AMF.fastq.gz",
+                        "file_size": 16572548634,
+                        "md5sum": "afd996b268c4251ce1d3ac1fd151eda8",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF571RQW",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF571RQW/@@download/ENCFF571RQW.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/4f3f1c75-4ec0-4365-8f0e-d844c25c6323/ENCFF571RQW.tar.gz",
+                        "file_size": 288216370145,
+                        "md5sum": "a201401b736a052ad9e5560be0881c34",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF085EVG",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF085EVG/@@download/ENCFF085EVG.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/6552274e-6435-4b6d-b391-8debf7c83129/ENCFF085EVG.fastq.gz",
+                        "file_size": 17607660065,
+                        "md5sum": "e85991d22062695c7edaa745110697b6",
+                        "run_acc": "ENCSR522NAJ",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
         "sample": "WTC11",
         "run_acc": "ENCSR539ZXJ",
         "description": "LRGASP Nanopore PCR-cDNA WTC11",
@@ -2200,6 +3350,121 @@
         ]
     },
     {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR543ORO",
+        "description": "ENCSR543ORO",
+        "library_prep": "CapTrap",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF725RKD",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF725RKD/@@download/ENCFF725RKD.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/15/bbfa07f6-dc32-4d51-b0c7-7fa02a3e5cac/ENCFF725RKD.tar.gz",
+                        "file_size": 218797498586,
+                        "md5sum": "9a83f3a4cbc8c22277cba76de666e99b",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF626JLU",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF626JLU/@@download/ENCFF626JLU.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/7363341a-63ee-4af5-91f7-82c275ed21ff/ENCFF626JLU.fastq.gz",
+                        "file_size": 12913610113,
+                        "md5sum": "101c555c7d702fb8b003ae410956f662",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF094UMT",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF094UMT/@@download/ENCFF094UMT.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/15/8bbdb596-18a6-4c46-bde6-9ebab0417cb0/ENCFF094UMT.tar.gz",
+                        "file_size": 321230972577,
+                        "md5sum": "66c3b7180c4242cb0b9cc9763b6dbeae",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF933LQH",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF933LQH/@@download/ENCFF933LQH.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/c18e6d97-5b4c-4c29-8dd3-4088b4a08ef3/ENCFF933LQH.fastq.gz",
+                        "file_size": 18692382854,
+                        "md5sum": "f06c50888fbb1209340a936e4dc2c1bf",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF083YSL",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF083YSL/@@download/ENCFF083YSL.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/15/28242d1d-dbd9-4b3a-baf3-1acd526e248d/ENCFF083YSL.tar.gz",
+                        "file_size": 281646802248,
+                        "md5sum": "cf183e3dfa9ea51c5cac2b5984070d1a",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF430MWW",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF430MWW/@@download/ENCFF430MWW.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/a5dea747-8b14-4fc5-a077-b90d1108056a/ENCFF430MWW.fastq.gz",
+                        "file_size": 14290859707,
+                        "md5sum": "3c874efd3c150c8de6d749db10cfd87e",
+                        "run_acc": "ENCSR543ORO",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "species": "manatee",
         "sample": "blood",
         "run_acc": "ENCSR583MLP",
@@ -2239,6 +3504,121 @@
                         "output_type": "reads",
                         "paired_end": null,
                         "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "H1",
+        "run_acc": "ENCSR588EJX",
+        "description": "LRGASP_H1ES",
+        "library_prep": "cDNA",
+        "platform": "Illumina",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS664DSZ"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF892WVN",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF892WVN/@@download/ENCFF892WVN.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/3b996145-6b55-4303-9e6d-08a27f08a06e/ENCFF892WVN.fastq.gz",
+                        "file_size": 4251673712,
+                        "md5sum": "054ddcb91183ac18fb2916d3da5ae059",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF481BLH"
+                    },
+                    {
+                        "file_acc": "ENCFF481BLH",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF481BLH/@@download/ENCFF481BLH.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/5740ced7-9bac-4c07-9d34-bd6fe0eff233/ENCFF481BLH.fastq.gz",
+                        "file_size": 4364808781,
+                        "md5sum": "f8d662a730ae290bd8241951672e8312",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF892WVN"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS872CFG"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF980IUG",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF980IUG/@@download/ENCFF980IUG.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/acb4ff47-5b75-4a8a-aef3-3b2ed6d228e3/ENCFF980IUG.fastq.gz",
+                        "file_size": 4011356030,
+                        "md5sum": "464b822b9482398ea4c669c16b636e5c",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF545DTW"
+                    },
+                    {
+                        "file_acc": "ENCFF545DTW",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF545DTW/@@download/ENCFF545DTW.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/c881e350-ffef-4953-8959-06c16307694a/ENCFF545DTW.fastq.gz",
+                        "file_size": 4157145243,
+                        "md5sum": "c053f6206212d39bd14d6a37ebe192ae",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF980IUG"
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS667PZC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF092JRM",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF092JRM/@@download/ENCFF092JRM.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/8ac8f73c-04f1-469e-9a4e-57ae304be6f4/ENCFF092JRM.fastq.gz",
+                        "file_size": 4467072704,
+                        "md5sum": "e2183aab0679a8636b17213a57a1cd11",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "1",
+                        "paired_with": "ENCFF441VMT"
+                    },
+                    {
+                        "file_acc": "ENCFF441VMT",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF441VMT/@@download/ENCFF441VMT.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/04/02/0835b306-262e-405a-827b-57b18aa87aba/ENCFF441VMT.fastq.gz",
+                        "file_size": 4598323406,
+                        "md5sum": "83d33f5a349d0e5654b58e8db96e59da",
+                        "run_acc": "ENCSR588EJX",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": "2",
+                        "paired_with": "ENCFF092JRM"
                     }
                 ]
             }
@@ -2910,6 +4290,236 @@
         ]
     },
     {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR758ABF",
+        "description": "Direct RNA-seq for human H1 definitive endoderm (DE) cells",
+        "library_prep": "dRNA",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF199USF",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF199USF/@@download/ENCFF199USF.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/292ac500-0d6f-48d4-8377-3f66311d2f45/ENCFF199USF.tar.gz",
+                        "file_size": 2059257701,
+                        "md5sum": "8cd74c01048e6aaa7bf4d8f99fb3a722",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 1,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF965CGM",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF965CGM/@@download/ENCFF965CGM.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/0cbeaf97-726f-4f10-adde-0e8b3cf91c11/ENCFF965CGM.fastq.gz",
+                        "file_size": 26476822,
+                        "md5sum": "73d66764a30ea97333bc652efbfffad2",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF760CAB",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF760CAB/@@download/ENCFF760CAB.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/08256c39-c211-4c48-9c7d-c96abfa9fd34/ENCFF760CAB.tar.gz",
+                        "file_size": 59537921800,
+                        "md5sum": "325ebb42edacebd9f30216ab71d59fd2",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 2,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF008HMY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF008HMY/@@download/ENCFF008HMY.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/4720cbe0-c399-4680-842c-5988705e2be6/ENCFF008HMY.fastq.gz",
+                        "file_size": 870433155,
+                        "md5sum": "f47e0b46bc1fbb2e2ad995d290a80d63",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF248HSJ",
+                        "file_type": "tar",
+                        "url": "https://www.encodeproject.org/files/ENCFF248HSJ/@@download/ENCFF248HSJ.tar.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/b8497098-8a8d-4b2f-aba6-7a4451f3059f/ENCFF248HSJ.tar.gz",
+                        "file_size": 10284757953,
+                        "md5sum": "01985d83a32f308783f2aa8fe3084e4a",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 3,
+                        "output_type": "nanopore_signal",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF937WUA",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF937WUA/@@download/ENCFF937WUA.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/09/16/f8d8fbc0-510b-4c17-95f8-2709f0f505c7/ENCFF937WUA.fastq.gz",
+                        "file_size": 153075551,
+                        "md5sum": "73a7b13bda8d2a86c5409bbc888e75af",
+                        "run_acc": "ENCSR758ABF",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR874XXM",
+        "description": "ENCSR874XXM",
+        "library_prep": "R2C2",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF605OXP",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF605OXP/@@download/ENCFF605OXP.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/57cb3792-bee8-4d2b-b3ac-649e39573386/ENCFF605OXP.fastq.gz",
+                        "file_size": 17345557894,
+                        "md5sum": "a0c13d561a4f5d147259020d9db8014e",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 1,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF736LFA",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF736LFA/@@download/ENCFF736LFA.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/2b5d0849-bc6a-4406-8ae0-155c2c25f73f/ENCFF736LFA.fasta.gz",
+                        "file_size": 1646607748,
+                        "md5sum": "a5570401161e428364fba47a28fb70b8",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF988MFC",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF988MFC/@@download/ENCFF988MFC.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/486211f9-5a22-4b54-a045-4d6d4a51ae09/ENCFF988MFC.fastq.gz",
+                        "file_size": 14982597439,
+                        "md5sum": "685ae69a8f19d7d914b859356d19acd1",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 2,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF216EPA",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF216EPA/@@download/ENCFF216EPA.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/9c7ddb35-44db-4295-83b4-895639f98251/ENCFF216EPA.fasta.gz",
+                        "file_size": 1408219170,
+                        "md5sum": "ff903acbfdb67685e398be0ccdc5e9cd",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": "2000-10000",
+                "files": [
+                    {
+                        "file_acc": "ENCFF498ZHI",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF498ZHI/@@download/ENCFF498ZHI.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/ee296bda-1eef-4fc6-ad8e-ff1a0240e464/ENCFF498ZHI.fastq.gz",
+                        "file_size": 15919059646,
+                        "md5sum": "e256f0d5448958d130129b53bbd23fc2",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 3,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF143JBA",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF143JBA/@@download/ENCFF143JBA.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/12/4cba8551-8d9c-4272-97e2-a1963677888b/ENCFF143JBA.fasta.gz",
+                        "file_size": 1501422151,
+                        "md5sum": "c1551f5b09fcff9e1173e489375fa301",
+                        "run_acc": "ENCSR874XXM",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "species": "mouse",
         "sample": "ES",
         "run_acc": "ENCSR879GEQ",
@@ -3017,6 +4627,121 @@
                         "run_acc": "ENCSR879GEQ",
                         "biological_replicate_number": 3,
                         "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR909KUO",
+        "description": "ENCSR909KUO",
+        "library_prep": "R2C2",
+        "platform": "ONT",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF930WML",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF930WML/@@download/ENCFF930WML.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/699c8547-6dc8-4e6f-8c9f-ad4558098059/ENCFF930WML.fastq.gz",
+                        "file_size": 14817829867,
+                        "md5sum": "d88ede104c606b6af3ebf9dddd882079",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 1,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF724JLB",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF724JLB/@@download/ENCFF724JLB.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/94c54783-9523-40bc-98b2-f4e36f6cc41f/ENCFF724JLB.fasta.gz",
+                        "file_size": 690586462,
+                        "md5sum": "139b0e391ab297b1332a1ae7f4be1b69",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF083OEF",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF083OEF/@@download/ENCFF083OEF.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/3f66cfed-e697-43f8-a822-92034abc79ad/ENCFF083OEF.fastq.gz",
+                        "file_size": 12725117784,
+                        "md5sum": "a14778f85f25d6c36e98b9c69f514d1f",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 2,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF818YZR",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF818YZR/@@download/ENCFF818YZR.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/62209b34-0b90-4eaf-b985-6719503c42fe/ENCFF818YZR.fasta.gz",
+                        "file_size": 599294178,
+                        "md5sum": "4f635135cc8052106c9d751c44ba96ac",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF887KHY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF887KHY/@@download/ENCFF887KHY.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/99a8682d-fb1c-45bd-8c05-aeabf1746a11/ENCFF887KHY.fastq.gz",
+                        "file_size": 18033531428,
+                        "md5sum": "efa9e1ba36a05c0088b75ec74b1ca7f9",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 3,
+                        "output_type": "R2C2_subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF884GOA",
+                        "file_type": "fasta",
+                        "url": "https://www.encodeproject.org/files/ENCFF884GOA/@@download/ENCFF884GOA.fasta.gz",
+                        "s3_uri": "s3://encode-public/2021/10/08/ace70d98-f78b-4b6d-9e50-c659643f3f74/ENCFF884GOA.fasta.gz",
+                        "file_size": 850881501,
+                        "md5sum": "2d28290b9f364ca61255989999b4541c",
+                        "run_acc": "ENCSR909KUO",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
                         "paired_end": null,
                         "paired_with": null
                     }
@@ -3437,6 +5162,121 @@
                         "file_size": 601390799,
                         "md5sum": "4291a0381b1f993e5c22f5079ce850f2",
                         "run_acc": "ENCSR967FTZ",
+                        "biological_replicate_number": 3,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "species": "human",
+        "sample": "endodermal",
+        "run_acc": "ENCSR972ABM",
+        "description": "LRGASP CapTrap H1 definitive endoderm",
+        "library_prep": "CapTrap",
+        "platform": "PacBio",
+        "replicates": [
+            {
+                "replicate_number": 1,
+                "biosample_accs": [
+                    "ENCBS464AKI"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF772AJK",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF772AJK/@@download/ENCFF772AJK.bam",
+                        "s3_uri": "s3://encode-public/2021/08/29/32a492aa-ac73-4fc4-a4be-4ada8b72d1f9/ENCFF772AJK.bam",
+                        "file_size": 311551736523,
+                        "md5sum": "f9f6e40db8791cb55618642d20e4d936",
+                        "run_acc": "ENCSR972ABM",
+                        "biological_replicate_number": 1,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF054KCY",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF054KCY/@@download/ENCFF054KCY.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/30/b0cd2874-8ecf-49a9-bc1c-90f62bc9e403/ENCFF054KCY.fastq.gz",
+                        "file_size": 632415337,
+                        "md5sum": "c28deb5e7a7151b741e24693e8eea770",
+                        "run_acc": "ENCSR972ABM",
+                        "biological_replicate_number": 1,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 2,
+                "biosample_accs": [
+                    "ENCBS012DYC"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF939OZC",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF939OZC/@@download/ENCFF939OZC.bam",
+                        "s3_uri": "s3://encode-public/2021/08/30/5089fc23-26db-4c9e-a1b7-30b3cfc0efde/ENCFF939OZC.bam",
+                        "file_size": 269476185745,
+                        "md5sum": "83a249a07cb67cac70d114e1bc636a41",
+                        "run_acc": "ENCSR972ABM",
+                        "biological_replicate_number": 2,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF761BFK",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF761BFK/@@download/ENCFF761BFK.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/30/f2666e92-a9c2-43d1-9ecb-2683b4f47cfb/ENCFF761BFK.fastq.gz",
+                        "file_size": 609386421,
+                        "md5sum": "a2251644a820965a0366f4263f808bc8",
+                        "run_acc": "ENCSR972ABM",
+                        "biological_replicate_number": 2,
+                        "output_type": "reads",
+                        "paired_end": null,
+                        "paired_with": null
+                    }
+                ]
+            },
+            {
+                "replicate_number": 3,
+                "biosample_accs": [
+                    "ENCBS971DDS"
+                ],
+                "size_range": null,
+                "files": [
+                    {
+                        "file_acc": "ENCFF814OQN",
+                        "file_type": "bam",
+                        "url": "https://www.encodeproject.org/files/ENCFF814OQN/@@download/ENCFF814OQN.bam",
+                        "s3_uri": "s3://encode-public/2021/08/30/02e0a3ca-3ec8-49ba-b5d8-105166a88dee/ENCFF814OQN.bam",
+                        "file_size": 262745046170,
+                        "md5sum": "29eed2c0eddbafbc9722119642ca8ce4",
+                        "run_acc": "ENCSR972ABM",
+                        "biological_replicate_number": 3,
+                        "output_type": "subreads",
+                        "paired_end": null,
+                        "paired_with": null
+                    },
+                    {
+                        "file_acc": "ENCFF296KQK",
+                        "file_type": "fastq",
+                        "url": "https://www.encodeproject.org/files/ENCFF296KQK/@@download/ENCFF296KQK.fastq.gz",
+                        "s3_uri": "s3://encode-public/2021/08/30/e8aa1130-ca7e-4e76-a4c4-10bdfe6a58d1/ENCFF296KQK.fastq.gz",
+                        "file_size": 563174120,
+                        "md5sum": "236dee4951dc30e0a3acbba094f64b47",
+                        "run_acc": "ENCSR972ABM",
                         "biological_replicate_number": 3,
                         "output_type": "reads",
                         "paired_end": null,

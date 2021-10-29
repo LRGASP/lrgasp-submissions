@@ -84,7 +84,7 @@ def validate_replicates(experiment_md, expression_mat):
         missing_rr = expr_rr - mat_rr
         if len(missing_rr) > 0:
             missing_desc = iter_to_str(["{}/{}".format(*rr) for rr in missing_rr])
-            raise LrgaspException(f"matrix does not have an entries for all run and replicate in experiment, missing: {missing_desc}")
+            raise LrgaspException(f"matrix does not have an entries for all runs and replicates in experiment, missing: {missing_desc}")
 
     _check_in_expr()
     _check_covers_expr()

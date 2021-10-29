@@ -1,3 +1,5 @@
+WARNING:root:WARNING: can't validated required samples for iso_quant_drna_ont_darwin, please check manually: entry iso_quant_drna_ont_darwin must use all of the available samples for Challenge 2 (iso_quant), need 'WTC11, H1_mix, mouse_simulation, human_simulation, H1, endodermal', only 'WTC11, H1_mix, mouse_simulation' were found
+WARNING: can't validated required samples for iso_quant_drna_ont_darwin, please check manually: entry iso_quant_drna_ont_darwin must use all of the available samples for Challenge 2 (iso_quant), need 'WTC11, H1_mix, mouse_simulation, human_simulation, H1, endodermal', only 'WTC11, H1_mix, mouse_simulation' were found
 Error: validation of entry 'iso_quant_drna_ont_darwin' failed: output/test_bad_quant_wrong_col/iso_quant_drna_ont_darwin/entry.json
 caused by: validation of experiment 'H1_mix_drna_ont' failed: output/test_bad_quant_wrong_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/experiment.json
 caused by: validation failed on 'output/test_bad_quant_wrong_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/models.gtf' with 'output/test_bad_quant_wrong_col/iso_quant_drna_ont_darwin/H1_mix_drna_ont/expression.tsv'
