@@ -1,3 +1,6 @@
+* version v1.12.0
+  - add challenge 2 second phase samples ``H1`` and ``endodermal``.
+
 * version 1.11.0
    - yea another workaround for validation failure when simulation samples are not available
 

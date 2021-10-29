@@ -67,6 +67,7 @@ git commit -am 'updated data matrix doc'
 
 * WARNING: commit any changes first
 * WARNING: [make sure data matrix documentation is current](#make_sure_data_matrix_documentation_is_current)
+* WARNING: make sure CHANGELOG.md is current.
 
 Test without committing version number:
 ```
