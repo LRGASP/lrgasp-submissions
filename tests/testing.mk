@@ -40,3 +40,6 @@ lrgasp_validate_experiment_metadata = ${binpre}lrgasp-validate-experiment-metada
 lrgasp_validate_entry = ${binpre}lrgasp-validate-entry
 lrgasp_upload_entry = ${binpre}lrgasp-upload-entry
 lrgasp_synapse_download = ${binpre}lrgasp-synapse-download
+
+read_model_map_use = ${binpre}read-model-map-use
+read_model_map_use_sum = ${binpre}read-model-map-use-sum

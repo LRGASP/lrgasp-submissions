@@ -6,6 +6,7 @@ import warnings
 import lrgasp.tame_pandas  # noqa: F401
 from gtfparse import read_gtf, ParsingError
 from lrgasp import LrgaspException
+from lrgasp.loggingOps import getLrgaspLogger
 
 class Transcript:
     def __init__(self, transcript_id):
@@ -86,7 +87,12 @@ def validate_exons(exons):
     if len(exons) == 0:
         raise LrgaspException("no exons found in GTF file")
     for exon in exons:
-        validate_exon(exon)
+        try:
+            validate_exon(exon)
+        except GtfException as ex:
+            getLrgaspLogger().debug(f"failure {ex} from exon {exon}")
+            raise
+
 
 def build_transcripts(exons):
     models = Models()

@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import argparse
+from collections import defaultdict
+from lrgasp import handle_prog_errors, prog_error_excepts
+from lrgasp import read_model_map_data
+from lrgasp import loggingOps
+
+from pycbio.tsv import TsvReader
+
+def parse_args():
+    desc = """sum results from read-model-map-use
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    loggingOps.addCmdOptions(parser)
+    parser.add_argument("--out", default='/dev/stdout',
+                        help="TSV with results")
+    parser.add_argument("read_model_map_counts_tsvs", nargs='+',
+                        help="TSVs for read_model_map")
+    return parser.parse_args()
+
+def collect_reads_to_models(counts_tsv, usage_counts):
+    for row in TsvReader(counts_tsv, defaultColType=int):
+        usage_counts[row.usage_count] += row.read_cnt
+
+def sum_read_usage(read_model_map_counts_tsvs):
+    usage_counts = defaultdict(int)  # [usage_cnt] -> read_cnt
+    for counts_tsv in read_model_map_counts_tsvs:
+        collect_reads_to_models(counts_tsv, usage_counts)
+    return usage_counts
+
+def report_multi_use(usage_counts, out_fh):
+    print("usage_count", "read_cnt", sep='\t', file=out_fh)
+    for usage_count in sorted(usage_counts):
+        print(usage_count, usage_counts[usage_count], sep='\t', file=out_fh)
+
+def main(args):
+    loggingOps.setupFromCmd(args)
+    try:
+        usage_counts = sum_read_usage(args.read_model_map_counts_tsvs)
+        with open(args.out, 'w') as out_fh:
+            report_multi_use(usage_counts, out_fh)
+    except prog_error_excepts as ex:
+        handle_prog_errors(ex)
+
+main(parse_args())
