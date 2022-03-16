@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+import sys
+import os.path as osp
+import argparse
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
+from lrgasp import iter_to_str
+from lrgasp import handle_prog_errors, prog_error_excepts
+from lrgasp import entry_metadata
+from lrgasp import loggingOps
+
+def parse_args():
+    desc = """Convert entries to a TSV that can be imported into SQLite3.
+
+    Use --logDebug when reporting a problem.
+    """
+    parser = argparse.ArgumentParser(description=desc)
+    loggingOps.addCmdOptions(parser)
+    parser.add_argument("--out", default="/dev/stdout",
+                        help="output TSV")
+    parser.add_argument("entry_jsons", nargs='+',
+                        help="Entry JSONs to summarize")
+    return parser.parse_args()
+
+def fmt_list(l):
+    return iter_to_str(l, sep=',')
+
+def entry_to_tsv(entry_json, tsv_fh):
+    entry_md = entry_metadata.load_dir(osp.dirname(entry_json))
+    entry_metadata.load_experiments_metadata(entry_md, validate=False)
+
+    for experiment_md in entry_md.experiments:
+        print(entry_md.team_name, entry_md.challenge_id, entry_md.entry_id, entry_md.data_category,
+              experiment_md.experiment_id, experiment_md.species,
+              fmt_list(experiment_md.samples), fmt_list(experiment_md.library_preps),
+              fmt_list(experiment_md.platforms), sep='\t', file=tsv_fh)
+
+def entries_to_tsv(entry_jsons, tsv_fh):
+    print("team_name", "challenge_id", "entry_id", "data_category",
+          "experiment_id", "species", "samples", "library_preps", "platforms",
+          sep='\t', file=tsv_fh)
+
+    for entry_json in entry_jsons:
+        entry_to_tsv(entry_json, tsv_fh)
+
+def main(args):
+    loggingOps.setupFromCmd(args)
+    try:
+        with open(args.out, 'w') as tsv_fh:
+            entries_to_tsv(args.entry_jsons, tsv_fh)
+    except prog_error_excepts as ex:
+        handle_prog_errors(ex)
+
+main(parse_args())

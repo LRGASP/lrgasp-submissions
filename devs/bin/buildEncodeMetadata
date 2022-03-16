@@ -101,10 +101,21 @@ def guess_library_prep_from_desc(encode_md):
                 return prep, desc
     return None, None
 
+def parse_construction_method(rep):
+    cm = rep.library.get("construction_method")
+    if cm is None:
+        return None
+    if isinstance(cm, list):
+        if len(cm) > 1:
+            raise LrgaspException("multiple values for one construction_method, got {cm}")
+        return cm[0]
+    else:
+        return cm
+
 def library_prep_from_construction_method(encode_md):
     methods = set()
     for rep in encode_md.replicates:
-        cm = rep.library.get("construction_method")
+        cm = parse_construction_method(rep)
         if cm is not None:
             methods.add(cm)
     if len(methods) > 1:

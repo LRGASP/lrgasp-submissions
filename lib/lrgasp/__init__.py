@@ -64,12 +64,12 @@ def gopen(path):
     else:
         return open(path)
 
-def iter_to_str(values):
+def iter_to_str(values, sep=', '):
     """Generate string of values for use in error messages.  Sets will be sorted.
     if it is non-iterable, return str"""
     if not isinstance(values, Iterable):
         return str(values)
     elif isinstance(values, (set, frozenset)):
-        return ", ".join([str(v) for v in sorted(values)])
+        return sep.join([str(v) for v in sorted(values)])
     else:
-        return ", ".join([str(v) for v in values])
+        return sep.join([str(v) for v in values])

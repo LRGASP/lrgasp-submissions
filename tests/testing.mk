@@ -43,3 +43,4 @@ lrgasp_synapse_download = ${binpre}lrgasp-synapse-download
 
 read_model_map_use = ${binpre}read-model-map-use
 read_model_map_use_sum = ${binpre}read-model-map-use-sum
+lrgasp_entries_to_tsv = ${binpre}lrgasp-entries-to-tsv

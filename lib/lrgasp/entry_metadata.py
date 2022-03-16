@@ -176,10 +176,11 @@ def load_dir(entry_dir):
         raise LrgaspException(f"entry_id and directory name must be the same; '{entry_md.entry_id}' is in '{entry_base_dir}' ({entry_dir})")
     return entry_md
 
-def load_experiments_metadata(entry_md):
+def load_experiments_metadata(entry_md, *, validate=True):
     """Read experiment metadata and save in entry_md.experiments, no-op if already loaded.
     Validate consistency of entry and experiments metadata"""
     if entry_md.experiments is None:
         entry_md.experiments = [experiment_metadata.load_from_entry(entry_md, experiment_id)
                                 for experiment_id in entry_md.experiment_ids]
-        entry_experiments_validate(entry_md)
+        if validate:
+            entry_experiments_validate(entry_md)

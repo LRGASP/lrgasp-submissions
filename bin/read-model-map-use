@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
+import sys
+import os.path as osp
 import argparse
 from collections import defaultdict
+sys.path.insert(0, osp.normpath(osp.join(osp.dirname(__file__), "../lib")))
+
 from lrgasp import handle_prog_errors, prog_error_excepts
 from lrgasp import read_model_map_data
 from lrgasp import loggingOps
@@ -25,12 +29,12 @@ def collect_reads_to_models(read_model_map):
 
 def count_reads_to_models(reads_to_models, usage_counts):
     for trans_ids in reads_to_models.values():
+        cnt = len(trans_ids)
         if None in trans_ids:
-            usage_counts[0] += 1
-            if len(trans_ids) > 1:
-                loggingOps.getLrgaspLogger().warn("read has '*' and transcript entries")
-        else:
-            usage_counts[len(trans_ids)] += 1
+            cnt -= 1
+            if cnt > 0:
+                usage_counts[-1] += 1  # mix of * and entries
+        usage_counts[cnt] += 1
 
 def count_read_usage(read_model_map_tsv, usage_counts):
     read_model_map = read_model_map_data.load(read_model_map_tsv)
