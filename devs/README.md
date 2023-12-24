@@ -24,3 +24,7 @@ For developers of this package, not of general interest.
   ./devs/bin/make_html_table.R
   
   
+## Other info
+
+* getting list of BAMs given a FASTA accession
+  wget -O - 'https://www.encodeproject.org/search/?type=File&derived_from=/files/ENCFF365HXR/&derived_from=/files/ENCFF492PIB/&file_format=bam&output_type=transcriptome+alignments&format=json'  | json_pp >answer.json
